@@ -7,6 +7,8 @@ public class Main {
         System.out.println("Hello World");
         System.out.println("commit teste");
         
+        System.out.println("Teste");
+        
     }
 
 }
