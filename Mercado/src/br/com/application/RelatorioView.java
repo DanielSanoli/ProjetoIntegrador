@@ -48,7 +48,6 @@ public class RelatorioView extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data de busca", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -61,9 +60,9 @@ public class RelatorioView extends javax.swing.JFrame {
         jLabel2.setText("DATA FINAL:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\yurim\\OneDrive\\Desktop\\PI_2ºsemestre\\ProjetoIntegradorll\\Mercado\\src\\img\\calendario.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/calendario.png"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\yurim\\OneDrive\\Desktop\\PI_2ºsemestre\\ProjetoIntegradorll\\Mercado\\src\\img\\calendario.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/calendario.png"))); // NOI18N
 
         try {
             txtDataInicail.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -83,7 +82,7 @@ public class RelatorioView extends javax.swing.JFrame {
         }
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\yurim\\OneDrive\\Desktop\\PI_2ºsemestre\\ProjetoIntegradorll\\Mercado\\src\\img\\relatorios 1.png")); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/relatorios 1.png"))); // NOI18N
         jButton1.setText("GERAR RELATÓRIO");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -163,7 +162,7 @@ public class RelatorioView extends javax.swing.JFrame {
         );
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\yurim\\OneDrive\\Desktop\\PI_2ºsemestre\\ProjetoIntegradorll\\Mercado\\src\\img\\Sair.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Sair.png"))); // NOI18N
         jButton2.setText("Sair");
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
