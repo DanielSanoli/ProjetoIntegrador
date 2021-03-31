@@ -159,8 +159,18 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/com/application/img/calendario.png"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/com/application/img/calendario.png"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtDataInicail">
           <Properties>
@@ -185,7 +195,7 @@
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/br/com/application/img/ic_vendedor_32px.png"/>
+              <Image iconType="3" name="/br/com/application/img/relatorios 1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="GERAR RELAT&#xd3;RIO"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -246,7 +256,7 @@
           <Font name="Tahoma" size="12" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/com/application/img/ic_pagamentos_32px.png"/>
+          <Image iconType="3" name="/br/com/application/img/Sair.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Sair"/>
         <Property name="horizontalTextPosition" type="int" value="2"/>
@@ -276,7 +286,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" pref="272" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" pref="290" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

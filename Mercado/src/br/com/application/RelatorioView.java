@@ -60,6 +60,10 @@ public class RelatorioView extends javax.swing.JFrame {
         jLabel2.setText("DATA FINAL:");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/calendario.png"))); // NOI18N
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/calendario.png"))); // NOI18N
+
         try {
             txtDataInicail.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -78,7 +82,7 @@ public class RelatorioView extends javax.swing.JFrame {
         }
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_vendedor_32px.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/relatorios 1.png"))); // NOI18N
         jButton1.setText("GERAR RELATÓRIO");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -158,7 +162,7 @@ public class RelatorioView extends javax.swing.JFrame {
         );
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pagamentos_32px.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/Sair.png"))); // NOI18N
         jButton2.setText("Sair");
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +193,7 @@ public class RelatorioView extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
