@@ -49,7 +49,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         btnCadastro.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnCadastro.setForeground(new java.awt.Color(0, 0, 0));
         btnCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/registro.png"))); // NOI18N
-        btnCadastro.setText("Cadastro do Cliente");
+        btnCadastro.setText("Cadastro de Cliente");
         btnCadastro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCadastro.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         btnCadastro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
