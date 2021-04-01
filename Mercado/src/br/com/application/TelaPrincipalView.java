@@ -100,9 +100,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel1.setText("CAIXA");
         jLabel1.setToolTipText("");
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_inicio_24px.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_home_32px.png"))); // NOI18N
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_cancelar_venda_24px.png"))); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_cancelar_32px.png"))); // NOI18N
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_informacao_venda_24px.png"))); // NOI18N
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -711,7 +711,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
