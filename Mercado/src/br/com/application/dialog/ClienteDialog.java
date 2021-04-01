@@ -79,7 +79,7 @@ public class ClienteDialog extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("Adicionar");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_add.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("CPF/CNPJ *");

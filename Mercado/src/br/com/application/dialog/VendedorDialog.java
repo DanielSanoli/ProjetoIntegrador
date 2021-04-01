@@ -39,7 +39,7 @@ public class VendedorDialog extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecione o vendedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jButton1.setText("Adicionar");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_add.png"))); // NOI18N
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matheus", "Yuri", "Jamile", "Ana", "Daniel" }));
 
