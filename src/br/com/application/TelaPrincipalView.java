@@ -211,9 +211,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVendasActionPerformed
 
     private void btnCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroActionPerformed
-        
+        //CadastroView frame = new CadastroView();
+ 
+//        frame.setVisible(true);
+//        dispose();
     }//GEN-LAST:event_btnCadastroActionPerformed
-
+    
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
