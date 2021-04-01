@@ -40,6 +40,7 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
         pgFinalizacaoVenda = new javax.swing.JProgressBar();
         btnOK = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        txtTroco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(0, 0));
@@ -70,6 +71,9 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
             .addGap(0, 30, Short.MAX_VALUE)
         );
 
+        txtTroco.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtTroco.setText("Troco R$0,00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,7 +85,10 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pgFinalizacaoVenda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnOK, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtTroco)
+                                .addGap(48, 48, 48)
+                                .addComponent(btnOK)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(txtFinalizaVEnda)
@@ -96,7 +103,9 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addComponent(pgFinalizacaoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnOK)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnOK)
+                    .addComponent(txtTroco))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -151,19 +160,10 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JProgressBar pgFinalizacaoVenda;
     private javax.swing.JLabel txtFinalizaVEnda;
+    private javax.swing.JLabel txtTroco;
     // End of variables declaration//GEN-END:variables
 
     private void atualiza(int value) {
@@ -172,6 +172,7 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
 
     private void finalizarVenda() {
         btnOK.setVisible(false);
+        txtTroco.setVisible(false);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -185,6 +186,7 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
                 }
                 btnOK.setVisible(true);
                 txtFinalizaVEnda.setText("Venda finalizada com sucesso!");
+                txtTroco.setVisible(true);
             }
         }
         ).start();
