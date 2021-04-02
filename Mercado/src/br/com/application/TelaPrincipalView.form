@@ -148,14 +148,14 @@
                 <Component class="javax.swing.JButton" name="jButton7">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/br/com/application/img/ic_cancelar_32px.png"/>
+                      <Image iconType="3" name="/br/com/application/img/ic_cancelar_venda_32px.png"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton10">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/br/com/application/img/ic_informacao_32px.png"/>
+                      <Image iconType="3" name="/br/com/application/img/ic_infor_32px.png"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -165,7 +165,7 @@
                 <Component class="javax.swing.JButton" name="jButton13">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/br/com/application/img/ic_vendeor_32px.png"/>
+                      <Image iconType="3" name="/br/com/application/img/ic_vendedor_32px.png"/>
                     </Property>
                   </Properties>
                   <Events>
