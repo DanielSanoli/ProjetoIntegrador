@@ -5,6 +5,11 @@
  */
 package br.com.application.dialog;
 
+import br.com.application.utils.UtilsValidacao;
+import br.com.application.utils.UtilsView;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author Matheus Castro
@@ -16,8 +21,9 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
      */
     public EntradaEstoqueDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();        
-        setLocationRelativeTo(null);
+        initComponents();
+        UtilsView.configuracaoInicialJDialog(this);
+        txtDescricaoMotivo.setLineWrap(true);
     }
 
     /**
@@ -31,17 +37,17 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        edtCodigo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        edtQuantidade = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtDescricaoMotivo = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -50,6 +56,12 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Código do Produto: ");
 
+        edtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtCodigoKeyTyped(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Descrição do Produto: ");
 
@@ -57,6 +69,12 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Quantidade:");
+
+        edtQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtQuantidadeKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Motivo:");
@@ -68,10 +86,20 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
 
         jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setText("Realizar entrada");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtDescricaoMotivo.setColumns(20);
+        txtDescricaoMotivo.setRows(5);
+        txtDescricaoMotivo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescricaoMotivoKeyTyped(evt);
+            }
+        });
+        jScrollPane2.setViewportView(txtDescricaoMotivo);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,15 +116,15 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBox1, jScrollPane2, jTextField1, jTextField2, jTextField3});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {edtCodigo, edtQuantidade, jComboBox1, jScrollPane2, jTextField2});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +132,7 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -112,7 +140,7 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -126,7 +154,7 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox1, jTextField1, jTextField2, jTextField3});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {edtCodigo, edtQuantidade, jComboBox1, jTextField2});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,6 +175,61 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void edtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoKeyTyped
+
+        if (edtCodigo.getText().length() > 10) {
+            evt.consume();
+            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
+        }
+
+        char c = evt.getKeyChar();
+
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            new DialogAviso(null, true, "O campo código só aceita valores númericos.", true);
+        }
+    }//GEN-LAST:event_edtCodigoKeyTyped
+
+    private void edtQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtQuantidadeKeyTyped
+
+        if (edtQuantidade.getText().length() > 10) {
+            evt.consume();
+            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
+        }
+
+        char c = evt.getKeyChar();
+
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            new DialogAviso(null, true, "O campo quantidade só aceita valores númericos.", true);
+        }
+    }//GEN-LAST:event_edtQuantidadeKeyTyped
+
+    private void txtDescricaoMotivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoMotivoKeyTyped
+        if (txtDescricaoMotivo.getText().length() > 50) {
+            evt.consume();
+            new DialogAviso(null, true, "Máximo de 50 caracteres atingidos.", true);
+        }
+    }//GEN-LAST:event_txtDescricaoMotivoKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (UtilsValidacao.isNullOuVazio(edtCodigo.getText())) {
+            new DialogAviso(null, true, "Informe o código do produto.", true);
+            edtCodigo.setBackground(Color.YELLOW);
+            return;
+        } else {
+            edtCodigo.setBackground(Color.WHITE);
+        }
+
+        if (UtilsValidacao.isNullOuVazio(edtQuantidade.getText())) {
+            new DialogAviso(null, true, "Informe a quantidade do produto.", true);
+            edtQuantidade.setBackground(Color.YELLOW);
+            return;
+        } else {
+            edtQuantidade.setBackground(Color.WHITE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,6 +274,8 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField edtCodigo;
+    private javax.swing.JTextField edtQuantidade;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -200,9 +285,7 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextArea txtDescricaoMotivo;
     // End of variables declaration//GEN-END:variables
 }
