@@ -9,7 +9,7 @@ import br.com.application.dialog.ClienteDialog;
 import br.com.application.dialog.FinalizarVendaDialog;
 import br.com.application.dialog.InformacoesVendaDialog;
 import br.com.application.dialog.VendedorDialog;
-import br.com.application.utils.Utils;
+import br.com.application.utils.UtilsView;
 
 /**
  *
@@ -22,7 +22,7 @@ public class NovaVendaView extends javax.swing.JFrame {
      */
     public NovaVendaView() {
         initComponents();
-        Utils.configuracaoInicial(this);
+        UtilsView.configuracaoInicialJFrame(this);
     }
 
     /**
