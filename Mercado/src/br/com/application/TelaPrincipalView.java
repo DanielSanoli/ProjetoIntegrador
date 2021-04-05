@@ -15,6 +15,7 @@ import br.com.application.dialog.VendedorDialog;
 import br.com.application.utils.UtilsValidacao;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -260,6 +261,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
+        jButton8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton8KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -362,12 +368,22 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 edtCodProdutoVActionPerformed(evt);
             }
         });
+        edtCodProdutoV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtCodProdutoVKeyTyped(evt);
+            }
+        });
 
         jLabel7.setText("Descrição");
 
         edtrDescricaoProdutoV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtrDescricaoProdutoVActionPerformed(evt);
+            }
+        });
+        edtrDescricaoProdutoV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtrDescricaoProdutoVKeyTyped(evt);
             }
         });
 
@@ -872,6 +888,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 edtCodigoProdutoEActionPerformed(evt);
             }
         });
+        edtCodigoProdutoE.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtCodigoProdutoEKeyTyped(evt);
+            }
+        });
 
         jLabel11.setText("Descrição");
 
@@ -1190,6 +1211,46 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         InformacoesVendaDialog info = new InformacoesVendaDialog(this, true);
         info.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton8KeyPressed
+
+    }//GEN-LAST:event_jButton8KeyPressed
+
+    private void edtCodProdutoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodProdutoVKeyTyped
+        if (edtCodProdutoV.getText().length() > 10) {
+            evt.consume();
+            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
+        }
+
+        char c = evt.getKeyChar();
+
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            new DialogAviso(null, true, "O campo código só aceita valores númericos.", true);
+        }
+    }//GEN-LAST:event_edtCodProdutoVKeyTyped
+
+    private void edtrDescricaoProdutoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtrDescricaoProdutoVKeyTyped
+        if (edtrDescricaoProdutoV.getText().length() > 20) {
+            evt.consume();
+            new DialogAviso(null, true, "Máximo de 20 caracteres atingidos.", true);
+        }
+    }//GEN-LAST:event_edtrDescricaoProdutoVKeyTyped
+
+    private void edtCodigoProdutoEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoProdutoEKeyTyped
+
+        if (edtCodigoProdutoE.getText().length() > 10) {
+            evt.consume();
+            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
+        }
+
+        char c = evt.getKeyChar();
+
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            new DialogAviso(null, true, "O campo código só aceita valores númericos.", true);
+        }
+    }//GEN-LAST:event_edtCodigoProdutoEKeyTyped
 
     /**
      * @param args the command line arguments
