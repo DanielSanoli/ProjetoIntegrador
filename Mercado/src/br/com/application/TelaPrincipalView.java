@@ -1084,17 +1084,20 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         if (!rbCodigoProdutoE.isSelected() && !rbDescricaoProdutoE.isSelected()
                 && !rbDepartamentoE.isSelected()) {
             new DialogAviso(this, false, "Para filtrar os produtos, selecione o tipo de filtro (Por código, descrição ou departamento)", true);
-
         }
 
         if (rbCodigoProdutoE.isSelected() && UtilsValidacao.isNullOuVazio(edtCodigoProdutoE.getText())) {
             new DialogAviso(this, true, "Informe o código do produto para que o filtro seja atendido.", true);
             edtCodigoProdutoE.setBackground(Color.YELLOW);
+        } else {
+            edtCodigoProdutoE.setBackground(Color.WHITE);
         }
 
         if (rbDescricaoProdutoE.isSelected() && UtilsValidacao.isNullOuVazio(edtDescricaoProdutoE.getText())) {
             new DialogAviso(this, true, "Informe a descrição do produto para que o filtro seja atendido.", true);
             edtDescricaoProdutoE.setBackground(Color.YELLOW);
+        } else {
+            edtDescricaoProdutoE.setBackground(Color.WHITE);
         }
 
         if (rbCodigoProdutoE.isSelected() && !UtilsValidacao.isNullOuVazio(edtCodigoProdutoE.getText())) {
