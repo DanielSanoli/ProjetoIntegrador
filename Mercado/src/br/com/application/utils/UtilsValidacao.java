@@ -11,7 +11,11 @@ public class UtilsValidacao {
 
     public static void limparDados(JTextField jtext) {
         jtext.setText("");
-    }        
+    }
+
+    public static boolean validarData(String valor) {
+        return valor.replaceAll(" ", "").equals("//") || valor.length() < 10;
+    }
 
     public static boolean isCPF(String CPF) {
         // considera-se erro CPF's formados por uma sequencia de numeros iguais
