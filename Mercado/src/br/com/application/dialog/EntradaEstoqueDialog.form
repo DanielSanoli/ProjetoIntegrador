@@ -149,6 +149,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="edtQuantidade">
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtQuantidadeActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtQuantidadeKeyTyped"/>
           </Events>
         </Component>

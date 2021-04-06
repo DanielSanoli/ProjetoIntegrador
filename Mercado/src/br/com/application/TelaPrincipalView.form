@@ -201,7 +201,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="1" pref="453" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="1" pref="535" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jPanel5" alignment="1" max="32767" attributes="0"/>
@@ -240,11 +240,11 @@
                           </Border>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="35">
+                          <Table columnCount="4" rowCount="0">
                             <Column editable="true" title="C&#xf3;digo" type="java.lang.Object"/>
-                            <Column editable="false" title="Produto" type="java.lang.Object"/>
-                            <Column editable="false" title="Departamento" type="java.lang.Object"/>
-                            <Column editable="false" title="Pre&#xe7;o" type="java.lang.Object"/>
+                            <Column editable="true" title="Produto" type="java.lang.Object"/>
+                            <Column editable="true" title="Departamento" type="java.lang.Object"/>
+                            <Column editable="true" title="Pre&#xe7;o" type="java.lang.Object"/>
                           </Table>
                         </Property>
                       </Properties>
@@ -407,7 +407,7 @@
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="edtrDescricaoProdutoV" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jDepartamentoV" alignment="1" pref="131" max="32767" attributes="0"/>
+                                      <Component id="jDepartamentoV" alignment="1" pref="213" max="32767" attributes="0"/>
                                       <Component id="edtCodProdutoV" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -702,11 +702,11 @@
                               <Data value="null"/>
                             </Column>
                             <Column editable="false" title="Pre&#xe7;o" type="java.lang.Object">
-                              <Data value="R$2,50"/>
-                              <Data value="R$3,00"/>
-                              <Data value="R$1,00"/>
-                              <Data value="R$10,00"/>
-                              <Data value="R$5,00"/>
+                              <Data value="R$2.50"/>
+                              <Data value="R$3.00"/>
+                              <Data value="R$1.00"/>
+                              <Data value="R$10.00"/>
+                              <Data value="R$5.00"/>
                               <Data value="null"/>
                               <Data value="null"/>
                               <Data value="null"/>
@@ -996,7 +996,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane4" alignment="0" pref="737" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" alignment="0" pref="914" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1104,7 +1104,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="745" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="920" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1126,7 +1126,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="745" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="920" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1148,7 +1148,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="745" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="920" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1170,7 +1170,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="745" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="920" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1192,7 +1192,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="745" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="920" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
