@@ -847,9 +847,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
         if (jtCarrinho.getRowCount() > 0) {
             FinalizarVendaDialog finalizar = new FinalizarVendaDialog(null, true);
             finalizar.setVisible(true);
+            while (jtCarrinho.getRowCount() > 0) {
+                model.removeRow(0);
+            }
         } else {
             new DialogAviso(this, true, "Não é possível finalizar uma venda sem produtos.", true);
         }
