@@ -875,22 +875,19 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         inputQtdDialog.setVisible(true);
         preco *= inputQtdDialog.getQuantidade();
 
-        System.out.println("Código: " + codigo);
-        System.out.println("Produto: " + produto);
-        System.out.println("Departamento: " + departamento);
-        System.out.println("Preço: " + preco);
-
         model.addRow(new String[]{codigo, produto, departamento, String.valueOf(Constante.MASCARA_REAL
             + preco)});
 
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        if (jtCarrinho.getSelectedRow() < 0) {
-            new DialogAviso(this, true, "Para remover do carrinho, primeiro selecione o produto.", true);
+        try {
+            DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
+            model.removeRow(jtCarrinho.getSelectedRow());
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            new DialogAviso(this, true, "Para remover do carrinho, primeiro selecione o produto", true);
         }
-        DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
-        model.removeRow(jtCarrinho.getSelectedRow());
+
 
     }//GEN-LAST:event_jButton9ActionPerformed
 
