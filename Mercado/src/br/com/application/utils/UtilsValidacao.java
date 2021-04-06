@@ -8,7 +8,11 @@ public class UtilsValidacao {
     public static boolean isNullOuVazio(String valor) {
         return valor.isEmpty() || valor == null;
     }
-
+    
+    public static boolean validarData(String valor) {
+        return valor.replaceAll(" ","").equals("//") || valor.length()<10;
+    }
+   
     public static void limparDados(JTextField jtext) {
         jtext.setText("");
     }        
