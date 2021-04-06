@@ -94,26 +94,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jTable3 = new javax.swing.JTable();
         jPanel21 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel14 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jtListaDeProdutos = new javax.swing.JTable();
-        jPanel15 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        edtCodigoProdutoE = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        edtDescricaoProdutoE = new javax.swing.JTextField();
-        btnFiltrar = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
-        rbCodigoProdutoE = new javax.swing.JRadioButton();
-        rbDescricaoProdutoE = new javax.swing.JRadioButton();
-        rbDepartamentoE = new javax.swing.JRadioButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel16 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
@@ -749,251 +729,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Relatório", jPanel10);
 
-        jPanel14.setBackground(new java.awt.Color(27, 59, 108));
-
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_adicionar_32px.png"))); // NOI18N
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_cancelar_remover_32px.png"))); // NOI18N
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_estoque.png"))); // NOI18N
-        jLabel9.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14)
-                .addGap(68, 68, 68))
-        );
-
-        jPanel14Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton5, jButton6});
-
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jButton6))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jButton5))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15))
-        );
-
-        jPanel14Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton5, jButton6});
-
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
-
-        jtListaDeProdutos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Código", "Descrição", "Estoque Atual"
-            }
-        ));
-        jScrollPane2.setViewportView(jtListaDeProdutos);
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar produtos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Frutas", "Verduras", "Limpeza", "Cozinha" }));
-
-        jLabel10.setText("Código");
-
-        edtCodigoProdutoE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtCodigoProdutoEActionPerformed(evt);
-            }
-        });
-        edtCodigoProdutoE.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                edtCodigoProdutoEKeyTyped(evt);
-            }
-        });
-
-        jLabel11.setText("Descrição");
-
-        edtDescricaoProdutoE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtDescricaoProdutoEActionPerformed(evt);
-            }
-        });
-
-        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pesquisar_32px.png"))); // NOI18N
-        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFiltrarActionPerformed(evt);
-            }
-        });
-
-        jLabel12.setText("Departamento");
-
-        buttonGroup1.add(rbCodigoProdutoE);
-
-        buttonGroup1.add(rbDescricaoProdutoE);
-
-        buttonGroup1.add(rbDepartamentoE);
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnFiltrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(41, 41, 41))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(27, 27, 27))
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edtDescricaoProdutoE, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(edtCodigoProdutoE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(rbCodigoProdutoE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rbDepartamentoE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rbDescricaoProdutoE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel10)
-                    .addComponent(edtCodigoProdutoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbCodigoProdutoE))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel11)
-                    .addComponent(edtDescricaoProdutoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbDescricaoProdutoE))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel12)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbDepartamentoE))
-                .addGap(10, 10, 10)
-                .addComponent(btnFiltrar)
-                .addGap(10, 10, 10))
-        );
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
-        );
-
-        jTabbedPane1.addTab("Estoque", jPanel6);
-
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
@@ -1080,54 +815,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
-        if (!rbCodigoProdutoE.isSelected() && !rbDescricaoProdutoE.isSelected()
-                && !rbDepartamentoE.isSelected()) {
-            new DialogAviso(this, false, "Para filtrar os produtos, selecione o tipo de filtro (Por código, descrição ou departamento)", true);
-        }
-
-        if (rbCodigoProdutoE.isSelected() && UtilsValidacao.isNullOuVazio(edtCodigoProdutoE.getText())) {
-            new DialogAviso(this, true, "Informe o código do produto para que o filtro seja atendido.", true);
-            edtCodigoProdutoE.setBackground(Color.YELLOW);
-        } else {
-            edtCodigoProdutoE.setBackground(Color.WHITE);
-        }
-
-        if (rbDescricaoProdutoE.isSelected() && UtilsValidacao.isNullOuVazio(edtDescricaoProdutoE.getText())) {
-            new DialogAviso(this, true, "Informe a descrição do produto para que o filtro seja atendido.", true);
-            edtDescricaoProdutoE.setBackground(Color.YELLOW);
-        } else {
-            edtDescricaoProdutoE.setBackground(Color.WHITE);
-        }
-
-        if (rbCodigoProdutoE.isSelected() && !UtilsValidacao.isNullOuVazio(edtCodigoProdutoE.getText())) {
-            try {
-                int codProduto = Integer.parseInt(edtCodigoProdutoE.getText());
-            } catch (Exception e) {
-                new DialogAviso(this, true, "O campo código só permite a inserção de números.", true);
-                edtCodigoProdutoE.setBackground(Color.RED);
-            }
-        }
-    }//GEN-LAST:event_btnFiltrarActionPerformed
-
-    private void edtDescricaoProdutoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDescricaoProdutoEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtDescricaoProdutoEActionPerformed
-
-    private void edtCodigoProdutoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtCodigoProdutoEActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        SaidaEstoqueDialog saida = new SaidaEstoqueDialog(this, true);
-        saida.setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        EntradaEstoqueDialog entrada = new EntradaEstoqueDialog(this, true);
-        entrada.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void txtDataInicailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataInicailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDataInicailActionPerformed
@@ -1135,7 +822,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void btnFiltrarVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarVActionPerformed
 
         if (!rdCodigoProdutoV.isSelected() && !rdDepartamentoV.isSelected()
-                && !rdDescricaoProdutoV.isSelected()) {
+            && !rdDescricaoProdutoV.isSelected()) {
             new DialogAviso(this, false, "Para filtrar os produtos, selecione o tipo de filtro (Por código, descrição ou departamento)", true);
             return;
         }
@@ -1166,9 +853,30 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFiltrarVActionPerformed
 
+    private void edtrDescricaoProdutoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtrDescricaoProdutoVKeyTyped
+        if (edtrDescricaoProdutoV.getText().length() > 20) {
+            evt.consume();
+            new DialogAviso(null, true, "Máximo de 20 caracteres atingidos.", true);
+        }
+    }//GEN-LAST:event_edtrDescricaoProdutoVKeyTyped
+
     private void edtrDescricaoProdutoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtrDescricaoProdutoVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtrDescricaoProdutoVActionPerformed
+
+    private void edtCodProdutoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodProdutoVKeyTyped
+        if (edtCodProdutoV.getText().length() > 10) {
+            evt.consume();
+            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
+        }
+
+        char c = evt.getKeyChar();
+
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            new DialogAviso(null, true, "O campo código só aceita valores númericos.", true);
+        }
+    }//GEN-LAST:event_edtCodProdutoVKeyTyped
 
     private void edtCodProdutoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodProdutoVActionPerformed
         // TODO add your handling code here:
@@ -1187,6 +895,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             new DialogAviso(this, true, "Não é possível finalizar uma venda sem produtos.", true);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton8KeyPressed
+
+    }//GEN-LAST:event_jButton8KeyPressed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         if (jtListaDeProdutosV.getSelectedRow() < 0) {
@@ -1214,46 +926,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         InformacoesVendaDialog info = new InformacoesVendaDialog(this, true);
         info.setVisible(true);
     }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton8KeyPressed
-
-    }//GEN-LAST:event_jButton8KeyPressed
-
-    private void edtCodProdutoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodProdutoVKeyTyped
-        if (edtCodProdutoV.getText().length() > 10) {
-            evt.consume();
-            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
-        }
-
-        char c = evt.getKeyChar();
-
-        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
-            evt.consume();
-            new DialogAviso(null, true, "O campo código só aceita valores númericos.", true);
-        }
-    }//GEN-LAST:event_edtCodProdutoVKeyTyped
-
-    private void edtrDescricaoProdutoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtrDescricaoProdutoVKeyTyped
-        if (edtrDescricaoProdutoV.getText().length() > 20) {
-            evt.consume();
-            new DialogAviso(null, true, "Máximo de 20 caracteres atingidos.", true);
-        }
-    }//GEN-LAST:event_edtrDescricaoProdutoVKeyTyped
-
-    private void edtCodigoProdutoEKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoProdutoEKeyTyped
-
-        if (edtCodigoProdutoE.getText().length() > 10) {
-            evt.consume();
-            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
-        }
-
-        char c = evt.getKeyChar();
-
-        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
-            evt.consume();
-            new DialogAviso(null, true, "O campo código só aceita valores númericos.", true);
-        }
-    }//GEN-LAST:event_edtCodigoProdutoEKeyTyped
 
     /**
      * @param args the command line arguments
@@ -1300,12 +972,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnFiltrarV;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField edtCodProdutoV;
-    private javax.swing.JTextField edtCodigoProdutoE;
-    private javax.swing.JTextField edtDescricaoProdutoE;
     private javax.swing.JTextField edtrDescricaoProdutoV;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1313,19 +982,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jDepartamentoV;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1333,14 +995,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
@@ -1351,12 +1010,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -1365,11 +1021,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jtCarrinho;
-    private javax.swing.JTable jtListaDeProdutos;
     private javax.swing.JTable jtListaDeProdutosV;
-    private javax.swing.JRadioButton rbCodigoProdutoE;
-    private javax.swing.JRadioButton rbDepartamentoE;
-    private javax.swing.JRadioButton rbDescricaoProdutoE;
     private javax.swing.JRadioButton rdCodigoProdutoV;
     private javax.swing.JRadioButton rdDepartamentoV;
     private javax.swing.JRadioButton rdDescricaoProdutoV;
