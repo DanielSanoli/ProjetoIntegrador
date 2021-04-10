@@ -11,12 +11,12 @@ import br.com.application.utils.UtilsView;
  *
  * @author Matheus Castro
  */
-public class DialogAviso extends javax.swing.JDialog {
+public class AvisosDialog extends javax.swing.JDialog {
 
     public static String txtInformacao = "";
     public static Boolean isAlerta = false;
 
-    public DialogAviso(java.awt.Frame parent, boolean modal, String mensagem, boolean isAlerta) {
+    public AvisosDialog(java.awt.Frame parent, boolean modal, String mensagem, boolean isAlerta) {
         super(parent, modal);
         initComponents();
 
@@ -150,20 +150,21 @@ public class DialogAviso extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DialogAviso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AvisosDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DialogAviso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AvisosDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DialogAviso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AvisosDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DialogAviso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AvisosDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DialogAviso dialog = new DialogAviso(new javax.swing.JFrame(), true, txtInformacao, isAlerta);
+                AvisosDialog dialog = new AvisosDialog(new javax.swing.JFrame(), true, txtInformacao, isAlerta);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

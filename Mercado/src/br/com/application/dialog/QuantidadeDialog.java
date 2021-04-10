@@ -14,7 +14,7 @@ import java.awt.event.KeyEvent;
  *
  * @author Matheus Castro
  */
-public class InputQtdDialog extends javax.swing.JDialog {
+public class QuantidadeDialog extends javax.swing.JDialog {
 
     private int quantidade;
 
@@ -29,7 +29,7 @@ public class InputQtdDialog extends javax.swing.JDialog {
     /**
      * Creates new form NovoClienteDialog
      */
-    public InputQtdDialog(java.awt.Frame parent, boolean modal) {
+    public QuantidadeDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         UtilsView.configuracaoInicialJDialog(this);
@@ -125,9 +125,7 @@ public class InputQtdDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +145,7 @@ public class InputQtdDialog extends javax.swing.JDialog {
 
     private void btnCofirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCofirmarActionPerformed
         if (UtilsValidacao.isNullOuVazio(edtQuantidade.getText())) {
-            new DialogAviso(null, true, "Informe a quantidade do produto.", true);
+            new AvisosDialog(null, true, "Informe a quantidade do produto.", true);
             edtQuantidade.setBackground(Color.YELLOW);
         } else {
             setQuantidade(Integer.parseInt(edtQuantidade.getText()));
@@ -158,14 +156,14 @@ public class InputQtdDialog extends javax.swing.JDialog {
     private void edtQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtQuantidadeKeyTyped
         if (edtQuantidade.getText().length() > 10) {
             evt.consume();
-            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
+            new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
         }
 
         char c = evt.getKeyChar();
 
         if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            new DialogAviso(null, true, "O campo quantidade só aceita valores númericos.", true);
+            new AvisosDialog(null, true, "O campo quantidade só aceita valores númericos.", true);
         }
     }//GEN-LAST:event_edtQuantidadeKeyTyped
 
@@ -186,14 +184,18 @@ public class InputQtdDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InputQtdDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuantidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InputQtdDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuantidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InputQtdDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuantidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InputQtdDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(QuantidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -202,7 +204,7 @@ public class InputQtdDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                InputQtdDialog dialog = new InputQtdDialog(new javax.swing.JFrame(), true);
+                QuantidadeDialog dialog = new QuantidadeDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

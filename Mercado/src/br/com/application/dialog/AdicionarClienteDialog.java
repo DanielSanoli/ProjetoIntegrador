@@ -13,12 +13,12 @@ import javax.rmi.CORBA.Util;
  *
  * @author Matheus Castro
  */
-public class ClienteDialog extends javax.swing.JDialog {
+public class AdicionarClienteDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form NovoClienteDialog
      */
-    public ClienteDialog(java.awt.Frame parent, boolean modal) {
+    public AdicionarClienteDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -191,7 +191,7 @@ public class ClienteDialog extends javax.swing.JDialog {
         String cpf = edtCpf.getText().replaceAll("[^0-9]", "");
 
         if (UtilsValidacao.isNullOuVazio(cpf)) {
-            new DialogAviso(null, true, "O preenchimento do campo CPF/CNPJ é obrigatório.", true);
+            new AvisosDialog(null, true, "O preenchimento do campo CPF/CNPJ é obrigatório.", true);
             edtCpf.setBackground(Color.yellow);
             return;
         } else {
@@ -199,7 +199,7 @@ public class ClienteDialog extends javax.swing.JDialog {
         }
 
         if (!UtilsValidacao.isCPF(cpf)) {
-            new DialogAviso(null, true, "O CPF informado é inválido.", true);
+            new AvisosDialog(null, true, "O CPF informado é inválido.", true);
             edtCpf.setBackground(Color.red);
             return;
         } else {
@@ -207,7 +207,7 @@ public class ClienteDialog extends javax.swing.JDialog {
         }
 
         if (UtilsValidacao.isNullOuVazio(edtNome.getText())) {
-            new DialogAviso(null, true, "O preenchimento do campo nome é obrigatório.", true);
+            new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
             edtNome.setBackground(Color.yellow);
             return;
         } else {
@@ -232,21 +232,23 @@ public class ClienteDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarClienteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarClienteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarClienteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarClienteDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ClienteDialog dialog = new ClienteDialog(new javax.swing.JFrame(), true);
+                AdicionarClienteDialog dialog = new AdicionarClienteDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -5,13 +5,13 @@
  */
 package br.com.application;
 
-import br.com.application.dialog.ClienteDialog;
-import br.com.application.dialog.DialogAviso;
+import br.com.application.dialog.AdicionarClienteDialog;
+import br.com.application.dialog.AvisosDialog;
 import br.com.application.dialog.FinalizarVendaDialog;
 import br.com.application.dialog.InformacoesVendaDialog;
-import br.com.application.dialog.InputQtdDialog;
-import br.com.application.dialog.VendedorDialog;
-import br.com.application.utils.Constante;
+import br.com.application.dialog.QuantidadeDialog;
+import br.com.application.dialog.AdicionarVendedorDialog;
+import br.com.application.dialog.MeiosDePagamentoDialog;
 import br.com.application.utils.UtilsValidacao;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -21,6 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
+import br.com.application.utils.UtilsConstantes;
 
 /**
  *
@@ -1975,12 +1976,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         if (!rdCodigoProdutoV.isSelected() && !rdDepartamentoV.isSelected()
                 && !rdDescricaoProdutoV.isSelected()) {
-            new DialogAviso(this, false, "Para filtrar os produtos, selecione o tipo de filtro (Por código, descrição ou departamento)", true);
+            new AvisosDialog(this, false, "Para filtrar os produtos, selecione o tipo de filtro (Por código, descrição ou departamento)", true);
             return;
         }
 
         if (rdCodigoProdutoV.isSelected() && UtilsValidacao.isNullOuVazio(edtCodProdutoV.getText())) {
-            new DialogAviso(this, true, "Informe o código do produto para que o filtro seja atendido.", true);
+            new AvisosDialog(this, true, "Informe o código do produto para que o filtro seja atendido.", true);
             edtCodProdutoV.setBackground(Color.YELLOW);
             return;
         } else {
@@ -1988,7 +1989,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
 
         if (rdDescricaoProdutoV.isSelected() && UtilsValidacao.isNullOuVazio(edtrDescricaoProdutoV.getText())) {
-            new DialogAviso(this, true, "Informe a descrição do produto para que o filtro seja atendido.", true);
+            new AvisosDialog(this, true, "Informe a descrição do produto para que o filtro seja atendido.", true);
             edtrDescricaoProdutoV.setBackground(Color.YELLOW);
             return;
         } else {
@@ -1999,7 +2000,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             try {
                 int codProduto = Integer.parseInt(edtCodProdutoV.getText());
             } catch (Exception e) {
-                new DialogAviso(this, true, "O campo código só permite a inserção de números.", true);
+                new AvisosDialog(this, true, "O campo código só permite a inserção de números.", true);
                 edtCodProdutoV.setBackground(Color.RED);
             }
         }
@@ -2008,7 +2009,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void edtrDescricaoProdutoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtrDescricaoProdutoVKeyTyped
         if (edtrDescricaoProdutoV.getText().length() > 20) {
             evt.consume();
-            new DialogAviso(null, true, "Máximo de 20 caracteres atingidos.", true);
+            new AvisosDialog(null, true, "Máximo de 20 caracteres atingidos.", true);
         }
     }//GEN-LAST:event_edtrDescricaoProdutoVKeyTyped
 
@@ -2019,14 +2020,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void edtCodProdutoVKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodProdutoVKeyTyped
         if (edtCodProdutoV.getText().length() > 10) {
             evt.consume();
-            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
+            new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
         }
 
         char c = evt.getKeyChar();
 
         if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            new DialogAviso(null, true, "O campo código só aceita valores númericos.", true);
+            new AvisosDialog(null, true, "O campo código só aceita valores númericos.", true);
         }
     }//GEN-LAST:event_edtCodProdutoVKeyTyped
 
@@ -2035,8 +2036,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtCodProdutoVActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        MeiosDePagamentoView meiosDePagamentoView = new MeiosDePagamentoView();
-        meiosDePagamentoView.setVisible(true);
+        MeiosDePagamentoDialog meiosDePagamento = new MeiosDePagamentoDialog(this, true);
+        meiosDePagamento.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2048,7 +2049,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 model.removeRow(0);
             }
         } else {
-            new DialogAviso(this, true, "Não é possível finalizar uma venda sem produtos.", true);
+            new AvisosDialog(this, true, "Não é possível finalizar uma venda sem produtos.", true);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -2058,7 +2059,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         if (jtListaDeProdutosV.getSelectedRow() < 0) {
-            new DialogAviso(this, true, "Para adicionar ao carrinho, primeiro selecione o produto.", true);
+            new AvisosDialog(this, true, "Para adicionar ao carrinho, primeiro selecione o produto.", true);
         }
 
         DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
@@ -2068,11 +2069,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         String departamento = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 2).toString();
         double preco = Double.parseDouble(jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 3).toString().replace("R$", ""));
 
-        InputQtdDialog inputQtdDialog = new InputQtdDialog(this, true);
+        QuantidadeDialog inputQtdDialog = new QuantidadeDialog(this, true);
         inputQtdDialog.setVisible(true);
         preco *= inputQtdDialog.getQuantidade();
 
-        model.addRow(new String[]{codigo, produto, departamento, String.valueOf(Constante.MASCARA_REAL
+        model.addRow(new String[]{codigo, produto, departamento, String.valueOf(UtilsConstantes.MASCARA_REAL
             + preco)});
 
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -2082,19 +2083,19 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
             model.removeRow(jtCarrinho.getSelectedRow());
         } catch (ArrayIndexOutOfBoundsException ex) {
-            new DialogAviso(this, true, "Para remover do carrinho, primeiro selecione o produto", true);
+            new AvisosDialog(this, true, "Para remover do carrinho, primeiro selecione o produto", true);
         }
 
 
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        ClienteDialog clienteDialog = new ClienteDialog(this, true);
+        AdicionarClienteDialog clienteDialog = new AdicionarClienteDialog(this, true);
         clienteDialog.setVisible(true);
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        VendedorDialog vendedorDialog = new VendedorDialog(this, true);
+        AdicionarVendedorDialog vendedorDialog = new AdicionarVendedorDialog(this, true);
         vendedorDialog.setVisible(true);
     }//GEN-LAST:event_jButton13ActionPerformed
 
@@ -2106,7 +2107,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
        UtilsValidacao validaData = new UtilsValidacao();
        if(validaData.validarData(txtDataInicail.getText()) ||validaData.validarData(txtDataFinal.getText()) ){   
-           new DialogAviso(null, true, "Preencha os Campos de data Corretamente", true);
+           new AvisosDialog(null, true, "Preencha os Campos de data Corretamente", true);
        }
        txtDataFinal.setText(""); txtDataInicail.setText("");
     }//GEN-LAST:event_jButton11ActionPerformed

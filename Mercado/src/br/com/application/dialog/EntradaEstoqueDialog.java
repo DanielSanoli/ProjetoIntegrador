@@ -185,14 +185,14 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
 
         if (edtCodigo.getText().length() > 10) {
             evt.consume();
-            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
+            new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
         }
 
         char c = evt.getKeyChar();
 
         if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            new DialogAviso(null, true, "O campo código só aceita valores númericos.", true);
+            new AvisosDialog(null, true, "O campo código só aceita valores númericos.", true);
         }
     }//GEN-LAST:event_edtCodigoKeyTyped
 
@@ -200,27 +200,27 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
 
         if (edtQuantidade.getText().length() > 10) {
             evt.consume();
-            new DialogAviso(null, true, "Máximo de 10 caracteres atingidos.", true);
+            new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
         }
 
         char c = evt.getKeyChar();
 
         if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            new DialogAviso(null, true, "O campo quantidade só aceita valores númericos.", true);
+            new AvisosDialog(null, true, "O campo quantidade só aceita valores númericos.", true);
         }
     }//GEN-LAST:event_edtQuantidadeKeyTyped
 
     private void txtDescricaoMotivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescricaoMotivoKeyTyped
         if (txtDescricaoMotivo.getText().length() > 50) {
             evt.consume();
-            new DialogAviso(null, true, "Máximo de 50 caracteres atingidos.", true);
+            new AvisosDialog(null, true, "Máximo de 50 caracteres atingidos.", true);
         }
     }//GEN-LAST:event_txtDescricaoMotivoKeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (UtilsValidacao.isNullOuVazio(edtCodigo.getText())) {
-            new DialogAviso(null, true, "Informe o código do produto.", true);
+            new AvisosDialog(null, true, "Informe o código do produto.", true);
             edtCodigo.setBackground(Color.YELLOW);
             return;
         } else {
@@ -228,7 +228,7 @@ public class EntradaEstoqueDialog extends javax.swing.JDialog {
         }
 
         if (UtilsValidacao.isNullOuVazio(edtQuantidade.getText())) {
-            new DialogAviso(null, true, "Informe a quantidade do produto.", true);
+            new AvisosDialog(null, true, "Informe a quantidade do produto.", true);
             edtQuantidade.setBackground(Color.YELLOW);
             return;
         } else {

@@ -1,6 +1,6 @@
 package br.com.application.utils;
 
-public interface Constante {
+public interface UtilsConstantes {
     
     String MASCARA_REAL = "R$";
 
