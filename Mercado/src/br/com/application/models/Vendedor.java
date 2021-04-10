@@ -4,7 +4,6 @@ package br.com.application.models;
 
 public class Vendedor {
     private int codigo;
-    private String vendedor;
     private String email;
     private double salario;
     private String nome;
@@ -13,19 +12,12 @@ public class Vendedor {
     public Vendedor() {
     }
 
-    public Vendedor(int codigo, String vendedor, String email, double salario, String nome, String telefone) {
+    public Vendedor(int codigo, String email, double salario, String nome, String telefone) {
         this.codigo = codigo;
-        this.vendedor = vendedor;
         this.email = email;
         this.salario = salario;
         this.nome = nome;
         this.telefone = telefone;
-    }
-    
-    
-
-    public String getVendedor() {
-        return vendedor;
     }
     
     public int getCodigo() {
@@ -35,11 +27,6 @@ public class Vendedor {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-
-    public void setVendedor(String vendedor) {
-        this.vendedor = vendedor;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -70,7 +57,5 @@ public class Vendedor {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-    
-    
+    }    
 }

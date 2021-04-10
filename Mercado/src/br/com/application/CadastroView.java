@@ -5,7 +5,7 @@
  */
 package br.com.application;
 
-import br.com.application.utils.Utils;
+import br.com.application.utils.UtilsView;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,7 +19,7 @@ public class CadastroView extends javax.swing.JFrame {
      */
     public CadastroView() {
         initComponents();
-        Utils.configuracaoInicial(this);
+        UtilsView.configuracaoInicialJFrame(this);
     }
 
     /**

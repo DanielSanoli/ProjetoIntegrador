@@ -5,23 +5,29 @@ public class Produto {
     private String descricao;
     private String departamento;
     private String dataDeValidade;
-    private int quantidade;
     private double valor;
     private int codigo;
-    
-    public Produto() {
-    }
+    private int estoqueAtual;
 
-    public Produto(String descricao, String departamento, String dataDeValidade, int quantidade, double valor, int codigo) {
+    public Produto(String descricao, String departamento, String dataDeValidade, double valor, int codigo, int estoqueAtual) {
         this.descricao = descricao;
         this.departamento = departamento;
         this.dataDeValidade = dataDeValidade;
-        this.quantidade = quantidade;
         this.valor = valor;
         this.codigo = codigo;
+        this.estoqueAtual = estoqueAtual;
     }
     
-    
+    public Produto() {
+    }    
+
+    public int getEstoqueAtual() {
+        return estoqueAtual;
+    }
+
+    public void setEstoqueAtual(int estoqueAtual) {
+        this.estoqueAtual = estoqueAtual;
+    }
 
     public String getDescricao() {
         return descricao;
@@ -53,14 +59,6 @@ public class Produto {
 
     public void setDataDeValidade(String dataDeValidade) {
         this.dataDeValidade = dataDeValidade;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
     }
 
     public double getValor() {
