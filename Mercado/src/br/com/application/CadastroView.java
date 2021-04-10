@@ -41,6 +41,7 @@ public class CadastroView extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jButton3 = new javax.swing.JButton();
         Departamento = new javax.swing.JPanel();
         Vendedor = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -99,6 +100,13 @@ public class CadastroView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
+        jButton3.setText("Confirmar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout ProdutosLayout = new javax.swing.GroupLayout(Produtos);
         Produtos.setLayout(ProdutosLayout);
         ProdutosLayout.setHorizontalGroup(
@@ -118,7 +126,9 @@ public class CadastroView extends javax.swing.JFrame {
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(ProdutosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(ProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(217, Short.MAX_VALUE))
         );
         ProdutosLayout.setVerticalGroup(
@@ -136,7 +146,9 @@ public class CadastroView extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addGap(58, 58, 58)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addGap(62, 62, 62)
+                .addComponent(jButton3)
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Produto", Produtos);
@@ -340,6 +352,10 @@ public class CadastroView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Vendedor Cadastrado");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -383,6 +399,7 @@ public class CadastroView extends javax.swing.JFrame {
     private javax.swing.JPanel Vendedor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
