@@ -1,5 +1,5 @@
 
-package br.com.application.classes;
+package br.com.application.models;
 
 public class Cliente {
 
@@ -15,6 +15,20 @@ public class Cliente {
     
     public Cliente() {
     }
+
+    public Cliente(int idade, String CPF, String nome, String email, String telefone, String enderecoLogradouro, String enderecoNumero, String enderecoComplemento, char sexo) {
+        this.idade = idade;
+        this.CPF = CPF;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.enderecoLogradouro = enderecoLogradouro;
+        this.enderecoNumero = enderecoNumero;
+        this.enderecoComplemento = enderecoComplemento;
+        this.sexo = sexo;
+    }
+    
+    
 
     public int getIdade() {
         return idade;

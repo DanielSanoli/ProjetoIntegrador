@@ -1,5 +1,5 @@
 
-package br.com.application.classes;
+package br.com.application.models;
 
 public class Venda {
 
@@ -10,6 +10,15 @@ public class Venda {
     
     public Venda() {
     }
+
+    public Venda(String dataDeVenda, int quantidade, double valorUnitario, double valorTotal) {
+        this.dataDeVenda = dataDeVenda;
+        this.quantidade = quantidade;
+        this.valorUnitario = valorUnitario;
+        this.valorTotal = valorTotal;
+    }
+    
+    
 
     public String getDataDeVenda() {
         return dataDeVenda;

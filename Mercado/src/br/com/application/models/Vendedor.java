@@ -1,9 +1,9 @@
 
-package br.com.application.classes;
+package br.com.application.models;
 
 
 public class Vendedor {
-
+    private int codigo;
     private String vendedor;
     private String email;
     private double salario;
@@ -13,8 +13,27 @@ public class Vendedor {
     public Vendedor() {
     }
 
+    public Vendedor(int codigo, String vendedor, String email, double salario, String nome, String telefone) {
+        this.codigo = codigo;
+        this.vendedor = vendedor;
+        this.email = email;
+        this.salario = salario;
+        this.nome = nome;
+        this.telefone = telefone;
+    }
+    
+    
+
     public String getVendedor() {
         return vendedor;
+    }
+    
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public void setVendedor(String vendedor) {
