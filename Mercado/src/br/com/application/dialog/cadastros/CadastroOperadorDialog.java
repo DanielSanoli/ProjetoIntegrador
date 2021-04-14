@@ -321,7 +321,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
             } else {
                 edtSenha.setBackground(Color.white);
             }
-            Operador operador = new Operador(cod, Integer.parseInt(usuario), Integer.parseInt(senha));
+            Operador operador = new Operador(cod, Integer.parseInt(usuario), 123);
             AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
             dispose();
         } catch (Exception ex) {

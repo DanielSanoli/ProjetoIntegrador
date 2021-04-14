@@ -2369,7 +2369,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             String usuario = jListaOperador.getValueAt(jListaOperador.getSelectedRow(), 1).toString();
             String senha = jListaOperador.getValueAt(jListaOperador.getSelectedRow(), 2).toString();
 
-            Operador operador = new Operador(Integer.parseInt(codigo), Integer.parseInt(usuario), Integer.parseInt(senha));
+            Operador operador = new Operador(Integer.parseInt(codigo), Integer.parseInt(usuario), 123);
 
             CadastroOperadorDialog cv = new CadastroOperadorDialog(this, true, false, operador);
         } catch (Exception ex) {

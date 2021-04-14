@@ -8,4 +8,6 @@ public interface UtilsConstantes {
     String SENHA = "***********";
     String CADASTRO_REALIZADO = "Cadastro realizado com sucesso.";
     String FALHA_NO_CADASTRO = "Falha no cadastro.";
+    String INFORME_LOGIN = "Informe o login.";
+    String INFORME_SENHA = "Informe a senha.";
 }
