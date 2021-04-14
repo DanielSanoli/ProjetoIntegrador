@@ -42,6 +42,7 @@ public class AdicionarVendedorDialog extends javax.swing.JDialog {
         jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setText("Adicionar");
 
+        jComboBox1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matheus", "Yuri", "Jamile", "Ana", "Daniel" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

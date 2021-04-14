@@ -4,15 +4,13 @@ package br.com.application.models;
 public class Produto {
     private String descricao;
     private String departamento;
-    private String dataDeValidade;
     private double valor;
     private int codigo;
     private int estoqueAtual;
 
-    public Produto(String descricao, String departamento, String dataDeValidade, double valor, int codigo, int estoqueAtual) {
+    public Produto(String descricao, String departamento, double valor, int codigo, int estoqueAtual) {
         this.descricao = descricao;
-        this.departamento = departamento;
-        this.dataDeValidade = dataDeValidade;
+        this.departamento = departamento;        
         this.valor = valor;
         this.codigo = codigo;
         this.estoqueAtual = estoqueAtual;
@@ -51,14 +49,6 @@ public class Produto {
 
     public void setDepartamento(String departamento) {
         this.departamento = departamento;
-    }
-
-    public String getDataDeValidade() {
-        return dataDeValidade;
-    }
-
-    public void setDataDeValidade(String dataDeValidade) {
-        this.dataDeValidade = dataDeValidade;
     }
 
     public double getValor() {

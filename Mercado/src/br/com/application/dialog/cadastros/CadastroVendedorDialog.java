@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.application.dialog;
-import br.com.application.models.Departamento;
+package br.com.application.dialog.cadastros;
+
+import br.com.application.dialog.AvisosDialog;
+import br.com.application.models.Vendedor;
 import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
 import java.awt.Color;
@@ -14,22 +16,20 @@ import java.awt.event.KeyEvent;
  *
  * @author Matheus Castro
  */
-public class CadastroDepartamentoDialog extends javax.swing.JDialog {
+public final class CadastroVendedorDialog extends javax.swing.JDialog {
 
     private static boolean isCadastro;
-    private static Departamento departamento;
+    private static Vendedor vendedor;
 
-    public CadastroDepartamentoDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Departamento departamento) {
+    public CadastroVendedorDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Vendedor vendedor) {
         super(parent, modal);
         initComponents();
         UtilsView.configuracaoInicialJDialog(this);
-        this.isCadastro = isCadastro;
-        this.departamento = departamento;
+        CadastroVendedorDialog.isCadastro = isCadastro;
+        CadastroVendedorDialog.vendedor = vendedor;
         setTitle(isCadastro);
-        setDepartamento(departamento);
-        this.setVisible(true);
-
-    }
+        setVendedor(vendedor);
+        setVisible(true);    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,10 +46,16 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        edtNomeDepartamento = new javax.swing.JTextField();
+        edtNomeVendedor = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         edtCodigo = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        edtEmail = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        edtSalario = new javax.swing.JTextField();
+        edtTelefone = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,7 +63,7 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
 
         txtTitle.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtTitle.setForeground(new java.awt.Color(255, 255, 255));
-        txtTitle.setText("Adicionar Departamento");
+        txtTitle.setText("Adicionar Vendedor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,7 +82,7 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do departamento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do vendedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setText("Confirmar");
@@ -86,7 +92,7 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Nome *");
 
         jButton2.setBackground(new java.awt.Color(255, 204, 204));
@@ -97,7 +103,7 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Código *");
 
         edtCodigo.setEditable(false);
@@ -112,6 +118,33 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Email");
+
+        edtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtEmailKeyTyped(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Salário");
+
+        edtSalario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtSalarioKeyTyped(evt);
+            }
+        });
+
+        edtTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtTelefoneKeyTyped(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Telefone");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -120,18 +153,24 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(38, 38, 38)
-                        .addComponent(edtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(47, 47, 47)
-                        .addComponent(edtNomeDepartamento))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 99, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(edtCodigo)
+                            .addComponent(edtTelefone)
+                            .addComponent(edtSalario)
+                            .addComponent(edtEmail)
+                            .addComponent(edtNomeVendedor))))
                 .addContainerGap())
         );
 
@@ -145,14 +184,26 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
                     .addComponent(jLabel5)
                     .addComponent(edtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3)
-                    .addComponent(edtNomeDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtNomeVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel4)
+                    .addComponent(edtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel6)
+                    .addComponent(edtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel7)
+                    .addComponent(edtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(10, 10, 10))
+                .addContainerGap())
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2});
@@ -171,8 +222,8 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -185,10 +236,13 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
-        String cod = edtCodigo.getText();        
-        String nomeDepartamento = edtNomeDepartamento.getText();        
+        int cod = Integer.parseInt(edtCodigo.getText());
+        String nomeVendedor = edtNomeVendedor.getText();
+        String email = edtEmail.getText();
+        double salario = Double.parseDouble(edtSalario.getText());
+        String telefone = edtTelefone.getText();
 
-        if (UtilsValidacao.isNullOuVazio(cod)) {
+        if (UtilsValidacao.isNullOuVazio(String.valueOf(cod))) {
             new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
             edtCodigo.setBackground(Color.yellow);
             return;
@@ -196,15 +250,15 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
             edtCodigo.setBackground(Color.white);
         }
 
-        if (UtilsValidacao.isNullOuVazio(nomeDepartamento)) {
+        if (UtilsValidacao.isNullOuVazio(nomeVendedor)) {
             new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
-            edtNomeDepartamento.setBackground(Color.yellow);
+            edtNomeVendedor.setBackground(Color.yellow);
             return;
         } else {
-            edtNomeDepartamento.setBackground(Color.white);
+            edtNomeVendedor.setBackground(Color.white);
         }
-      
-        Departamento departamento = new Departamento(nomeDepartamento);
+
+        Vendedor departamento = new Vendedor(cod, email, salario, nomeVendedor, telefone);
 
         // Objeto cliente criado, resta apenas registrar no banco
 
@@ -228,6 +282,40 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_edtCodigoKeyTyped
 
+    private void edtSalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSalarioKeyTyped
+        if (edtSalario.getText().length() > 10) {
+            evt.consume();
+            new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
+        }
+
+        char c = evt.getKeyChar();
+
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            new AvisosDialog(null, true, "O campo salário só aceita valores númericos.", true);
+        }
+    }//GEN-LAST:event_edtSalarioKeyTyped
+
+    private void edtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtEmailKeyTyped
+        if (edtSalario.getText().length() > 10) {
+            evt.consume();
+            new AvisosDialog(null, true, "Máximo de 20 caracteres atingidos.", true);
+        }
+    }//GEN-LAST:event_edtEmailKeyTyped
+
+    private void edtTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtTelefoneKeyTyped
+        if (edtSalario.getText().length() > 11) {
+            evt.consume();
+            new AvisosDialog(null, true, "Máximo de 11 caracteres atingidos.", true);
+        }
+        char c = evt.getKeyChar();
+
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            new AvisosDialog(null, true, "O campo telefone só aceita valores númericos.", true);
+        }
+    }//GEN-LAST:event_edtTelefoneKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -246,21 +334,85 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroDepartamentoDialog.class
+            java.util.logging.Logger.getLogger(CadastroVendedorDialog.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroDepartamentoDialog.class
+            java.util.logging.Logger.getLogger(CadastroVendedorDialog.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroDepartamentoDialog.class
+            java.util.logging.Logger.getLogger(CadastroVendedorDialog.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroDepartamentoDialog.class
+            java.util.logging.Logger.getLogger(CadastroVendedorDialog.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -329,7 +481,7 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastroDepartamentoDialog dialog = new CadastroDepartamentoDialog(new javax.swing.JFrame(), true, isCadastro, departamento);
+                CadastroVendedorDialog dialog = new CadastroVendedorDialog(new javax.swing.JFrame(), true, isCadastro, vendedor);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -341,30 +493,43 @@ public class CadastroDepartamentoDialog extends javax.swing.JDialog {
         });
     }
 
-    public void setDepartamento(Departamento departamento) {
-        if (departamento != null) {
-            String codigo = String.valueOf(departamento.getCodigo());
+    public void setVendedor(Vendedor vendedor) {
+        if (vendedor != null) {
+            String codigo = String.valueOf(vendedor.getCodigo());
+            String nome = vendedor.getNome();
+            String email = vendedor.getEmail();
+            String salario = String.valueOf(vendedor.getSalario());
+            String telefone = vendedor.getTelefone();
             edtCodigo.setText(!UtilsValidacao.isNullOuVazio(codigo) ? codigo : "");
-            edtNomeDepartamento.setText(!UtilsValidacao.isNullOuVazio(departamento.getDescricao()) ? departamento.getDescricao() : "");
+            edtNomeVendedor.setText(!UtilsValidacao.isNullOuVazio(nome) ? nome : "");
+            edtEmail.setText(!UtilsValidacao.isNullOuVazio(email) ? email : "");
+            edtSalario.setText(!UtilsValidacao.isNullOuVazio(salario) ? salario : "");
+            edtTelefone.setText(!UtilsValidacao.isNullOuVazio(telefone) ? telefone : "");
         }
     }
 
     public void setTitle(boolean valor) {
         if (valor) {
-            txtTitle.setText("Adicionar Departamento");
+            txtTitle.setText("Adicionar Vendedor");
         } else {
-            txtTitle.setText("Editar Departamento");
+            txtTitle.setText("Editar Vendedor");
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField edtCodigo;
-    private javax.swing.JTextField edtNomeDepartamento;
+    private javax.swing.JTextField edtEmail;
+    private javax.swing.JTextField edtNomeVendedor;
+    private javax.swing.JTextField edtSalario;
+    private javax.swing.JTextField edtTelefone;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel txtTitle;

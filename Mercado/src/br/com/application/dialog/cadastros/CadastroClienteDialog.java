@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.application.dialog;
+package br.com.application.dialog.cadastros;
 
+import br.com.application.dialog.AvisosDialog;
 import br.com.application.models.Cliente;
 import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
@@ -15,7 +16,7 @@ import java.awt.event.KeyEvent;
  *
  * @author Matheus Castro
  */
-public class CadastroClienteDialog extends javax.swing.JDialog {
+public final class CadastroClienteDialog extends javax.swing.JDialog {
 
     private static boolean isCadastro;
     private static Cliente cliente;
@@ -24,11 +25,11 @@ public class CadastroClienteDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         UtilsView.configuracaoInicialJDialog(this);
-        this.isCadastro = isCadastro;
-        this.cliente = cliente;
+        CadastroClienteDialog.isCadastro = isCadastro;
+        CadastroClienteDialog.cliente = cliente;
         setTitle(isCadastro);
         setCliente(cliente);
-        this.setVisible(true);
+        setVisible(true);
 
     }
 
@@ -113,13 +114,13 @@ public class CadastroClienteDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("CPF/CNPJ *");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Nome *");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Telefone");
 
         edtTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -136,7 +137,7 @@ public class CadastroClienteDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Código *");
 
         edtCodigo.setEditable(false);
@@ -151,7 +152,7 @@ public class CadastroClienteDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Email");
 
         edtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -160,7 +161,7 @@ public class CadastroClienteDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Logradouro");
 
         edtLogradouro.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -169,7 +170,7 @@ public class CadastroClienteDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Número");
 
         edtNumero.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -178,7 +179,7 @@ public class CadastroClienteDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Sexo *");
 
         buttonGroup1.add(rdMasculino);
@@ -192,7 +193,7 @@ public class CadastroClienteDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Complemento");
 
         edtComplemento.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -206,7 +207,7 @@ public class CadastroClienteDialog extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -544,14 +545,22 @@ public class CadastroClienteDialog extends javax.swing.JDialog {
     public void setCliente(Cliente cliente) {
         if (cliente != null) {
             String codigo = String.valueOf(cliente.getCodigo());
+            String cpf = String.valueOf(cliente.getCPF());
+            String nome = String.valueOf(cliente.getNome());
+            String email = String.valueOf(cliente.getEmail());
+            String telefone = String.valueOf(cliente.getTelefone());
+            String enderecoLogradouro = String.valueOf(cliente.getEnderecoLogradouro());
+            String enderecoNumero = String.valueOf(cliente.getEnderecoNumero());
+            String enderecoCompleto = String.valueOf(cliente.getEnderecoComplemento());
+
             edtCodigo.setText(!UtilsValidacao.isNullOuVazio(codigo) ? codigo : "");
-            edtCpf.setText(!UtilsValidacao.isNullOuVazio(cliente.getCPF()) ? cliente.getCPF() : "");
-            edtNome.setText(!UtilsValidacao.isNullOuVazio(cliente.getNome()) ? cliente.getNome() : "");
-            edtEmail.setText(!UtilsValidacao.isNullOuVazio(cliente.getEmail()) ? cliente.getEmail() : "");
-            edtTelefone.setText(!UtilsValidacao.isNullOuVazio(cliente.getTelefone()) ? cliente.getTelefone() : "");
-            edtLogradouro.setText(!UtilsValidacao.isNullOuVazio(cliente.getEnderecoLogradouro()) ? cliente.getEnderecoLogradouro() : "");
-            edtNumero.setText(!UtilsValidacao.isNullOuVazio(cliente.getEnderecoNumero()) ? cliente.getEnderecoNumero() : "");
-            edtComplemento.setText(!UtilsValidacao.isNullOuVazio(cliente.getEnderecoComplemento()) ? cliente.getEnderecoComplemento() : "");
+            edtCpf.setText(!UtilsValidacao.isNullOuVazio(cpf) ? cpf : "");
+            edtNome.setText(!UtilsValidacao.isNullOuVazio(nome) ? nome : "");
+            edtEmail.setText(!UtilsValidacao.isNullOuVazio(email) ? email : "");
+            edtTelefone.setText(!UtilsValidacao.isNullOuVazio(telefone) ? telefone : "");
+            edtLogradouro.setText(!UtilsValidacao.isNullOuVazio(enderecoLogradouro) ? enderecoLogradouro : "");
+            edtNumero.setText(!UtilsValidacao.isNullOuVazio(enderecoNumero) ? enderecoNumero : "");
+            edtComplemento.setText(!UtilsValidacao.isNullOuVazio(enderecoCompleto) ? enderecoCompleto : "");
             if (cliente.getSexo() == 'M') {
                 rdMasculino.setSelected(true);
             } else {

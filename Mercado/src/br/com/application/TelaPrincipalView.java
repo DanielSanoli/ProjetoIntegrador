@@ -11,11 +11,17 @@ import br.com.application.dialog.FinalizarVendaDialog;
 import br.com.application.dialog.InformacoesVendaDialog;
 import br.com.application.dialog.QuantidadeDialog;
 import br.com.application.dialog.AdicionarVendedorDialog;
-import br.com.application.dialog.CadastroClienteDialog;
-import br.com.application.dialog.CadastroDepartamentoDialog;
+import br.com.application.dialog.cadastros.CadastroClienteDialog;
+import br.com.application.dialog.cadastros.CadastroDepartamentoDialog;
+import br.com.application.dialog.cadastros.CadastroOperadorDialog;
+import br.com.application.dialog.cadastros.CadastroProdutoDialog;
+import br.com.application.dialog.cadastros.CadastroVendedorDialog;
 import br.com.application.dialog.MeiosDePagamentoDialog;
 import br.com.application.models.Cliente;
 import br.com.application.models.Departamento;
+import br.com.application.models.Operador;
+import br.com.application.models.Produto;
+import br.com.application.models.Vendedor;
 import br.com.application.utils.UtilsValidacao;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -26,6 +32,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 import br.com.application.utils.UtilsConstantes;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -152,7 +160,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jtListaDeProdutos1 = new javax.swing.JTable();
+        jListaDeProdutosCadastro = new javax.swing.JTable();
         jPanel24 = new javax.swing.JPanel();
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
@@ -172,7 +180,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jPanel29 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jtListaDeProdutos3 = new javax.swing.JTable();
+        jListaDeVendedor = new javax.swing.JTable();
         jPanel30 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         edtCodigoProdutoE3 = new javax.swing.JTextField();
@@ -189,7 +197,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jPanel32 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jtListaDeProdutos4 = new javax.swing.JTable();
+        jListaOperador = new javax.swing.JTable();
         jPanel33 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         edtCodigoProdutoE4 = new javax.swing.JTextField();
@@ -1352,54 +1360,67 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jtListaDeProdutos1.setModel(new javax.swing.table.DefaultTableModel(
+        jListaDeProdutosCadastro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {"1", "Laranja", "Frutas", "2.50", "3"},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Código", "Descrição", "Departamento", "Valor", "Data de Validade", "Estoque Atual"
+                "Código", "Descrição", "Departamento", "Valor", "Estoque Atual"
             }
-        ));
-        jScrollPane6.setViewportView(jtListaDeProdutos1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jListaDeProdutosCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListaDeProdutosCadastroMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(jListaDeProdutosCadastro);
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -1582,9 +1603,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jtListaDeProdutos3.setModel(new javax.swing.table.DefaultTableModel(
+        jListaDeVendedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
+                {"1", "Matheus", "mcastro@teste.com.br", "1.250", "1111-1111"},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -1629,7 +1650,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 "Código", "Nome", "Email", "Salario", "Telefone"
             }
         ));
-        jScrollPane8.setViewportView(jtListaDeProdutos3);
+        jListaDeVendedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListaDeVendedorMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(jListaDeVendedor);
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
@@ -1800,9 +1826,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel32.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jtListaDeProdutos4.setModel(new javax.swing.table.DefaultTableModel(
+        jListaOperador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
+                {"1", "7", "123123"},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -1847,7 +1873,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 "Código", "Usuario", "Senha"
             }
         ));
-        jScrollPane9.setViewportView(jtListaDeProdutos4);
+        jListaOperador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListaOperadorMouseClicked(evt);
+            }
+        });
+        jScrollPane9.setViewportView(jListaOperador);
 
         javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
         jPanel32.setLayout(jPanel32Layout);
@@ -2136,7 +2167,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        CadastroProdutoDialog cc = new CadastroProdutoDialog(this, true, true, null);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -2168,7 +2199,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
+        CadastroVendedorDialog cc = new CadastroVendedorDialog(this, true, true, null);
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
@@ -2192,7 +2223,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFiltrar3ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        // TODO add your handling code here:
+        try {
+            CadastroOperadorDialog co = new CadastroOperadorDialog(this, true, false, null);
+        } catch (Exception ex) {
+            Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
@@ -2293,6 +2328,52 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jListaDepartamentoMouseClicked
 
+    private void jListaDeProdutosCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaDeProdutosCadastroMouseClicked
+        try {
+            String codigo = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 0).toString();
+            String descricaoProduto = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 1).toString();
+            String departamento = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 2).toString();
+            String valor = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 3).toString();
+            String estoqueAtual = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 4).toString();
+            Produto produto = new Produto(descricaoProduto, departamento, Double.parseDouble(valor), Integer.parseInt(codigo), Integer.parseInt(estoqueAtual));
+            CadastroProdutoDialog cc = new CadastroProdutoDialog(this, true, false, produto);
+        } catch (NullPointerException ex) {
+            AvisosDialog av = new AvisosDialog(this, true, "Nenhum departamento na linha selecionada.", true);
+        }
+    }//GEN-LAST:event_jListaDeProdutosCadastroMouseClicked
+
+    private void jListaDeVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaDeVendedorMouseClicked
+        try {
+            String codigo = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 0).toString();
+            String nomeVendedor = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 1).toString();
+            String email = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 2).toString();
+            String salario = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 3).toString();
+            String telefone = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 4).toString();
+
+            Vendedor vendedor = new Vendedor(Integer.parseInt(codigo), email, Double.parseDouble(salario), nomeVendedor, telefone);
+
+            CadastroVendedorDialog cv = new CadastroVendedorDialog(this, true, false, vendedor);
+        } catch (Exception ex) {
+            
+            AvisosDialog av = new AvisosDialog(this, true, "Nenhum vendedor na linha selecionada.", true);
+        }
+    }//GEN-LAST:event_jListaDeVendedorMouseClicked
+
+    private void jListaOperadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaOperadorMouseClicked
+        try {
+            String codigo = jListaOperador.getValueAt(jListaOperador.getSelectedRow(), 0).toString();
+            String usuario = jListaOperador.getValueAt(jListaOperador.getSelectedRow(), 1).toString();
+            String senha = jListaOperador.getValueAt(jListaOperador.getSelectedRow(), 2).toString();
+
+            Operador operador = new Operador(Integer.parseInt(codigo), Integer.parseInt(usuario),Integer.parseInt(senha));
+
+            CadastroOperadorDialog cv = new CadastroOperadorDialog(this, true, false, operador);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            AvisosDialog av = new AvisosDialog(this, true, "Nenhum operador na linha selecionada.", true);
+        }
+    }//GEN-LAST:event_jListaOperadorMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2326,6 +2407,62 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaPrincipalView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -2421,7 +2558,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTable jListaDeClientes;
+    private javax.swing.JTable jListaDeProdutosCadastro;
+    private javax.swing.JTable jListaDeVendedor;
     private javax.swing.JTable jListaDepartamento;
+    private javax.swing.JTable jListaOperador;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -2469,9 +2609,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jtCarrinho;
-    private javax.swing.JTable jtListaDeProdutos1;
-    private javax.swing.JTable jtListaDeProdutos3;
-    private javax.swing.JTable jtListaDeProdutos4;
     private javax.swing.JTable jtListaDeProdutosV;
     private javax.swing.JRadioButton rbCodigoProdutoE1;
     private javax.swing.JRadioButton rbCodigoProdutoE3;
