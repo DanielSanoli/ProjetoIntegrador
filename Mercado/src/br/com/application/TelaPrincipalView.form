@@ -28,7 +28,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="jTabbedPane1" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -38,7 +38,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTabbedPane1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -201,7 +201,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="1" pref="581" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="1" pref="592" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jPanel5" alignment="1" max="32767" attributes="0"/>
@@ -467,7 +467,7 @@
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="edtrDescricaoProdutoV" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jDepartamentoV" alignment="1" pref="155" max="32767" attributes="0"/>
+                                      <Component id="jDepartamentoV" alignment="1" pref="167" max="32767" attributes="0"/>
                                       <Component id="edtCodProdutoV" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1008,7 +1008,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane3" alignment="0" pref="640" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" alignment="0" pref="663" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1054,7 +1054,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane4" alignment="0" pref="902" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" alignment="0" pref="925" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1291,7 +1291,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" pref="858" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="881" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1733,7 +1733,7 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="edtDescricaoProdutoE7" alignment="1" pref="777" max="32767" attributes="0"/>
+                                          <Component id="edtDescricaoProdutoE7" alignment="1" pref="800" max="32767" attributes="0"/>
                                           <Component id="edtCodigoProdutoE7" alignment="0" max="32767" attributes="0"/>
                                           <Component id="edtDescricaoProdutoE8" max="32767" attributes="0"/>
                                       </Group>
@@ -1970,7 +1970,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane7" pref="858" max="32767" attributes="0"/>
+                              <Component id="jScrollPane7" pref="881" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -2366,7 +2366,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane6" pref="858" max="32767" attributes="0"/>
+                              <Component id="jScrollPane6" pref="881" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -2478,7 +2478,7 @@
                                   <Data value="null"/>
                                 </Column>
                                 <Column editable="false" title="Departamento" type="java.lang.Object">
-                                  <Data value="Frutas"/>
+                                  <Data value="Padaria"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
@@ -2520,7 +2520,7 @@
                                   <Data value="null"/>
                                 </Column>
                                 <Column editable="false" title="Valor" type="java.lang.Object">
-                                  <Data value="2.50"/>
+                                  <Data value="12,25"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
@@ -2888,7 +2888,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane8" pref="858" max="32767" attributes="0"/>
+                              <Component id="jScrollPane8" pref="881" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -3378,7 +3378,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane9" pref="858" max="32767" attributes="0"/>
+                              <Component id="jScrollPane9" pref="881" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -3490,7 +3490,7 @@
                                   <Data value="null"/>
                                 </Column>
                                 <Column editable="true" title="Senha" type="java.lang.Object">
-                                  <Data value="123123"/>
+                                  <Data value="****************"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
                                   <Data value="null"/>
@@ -3567,7 +3567,7 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="edtDescricaoProdutoE4" pref="760" max="32767" attributes="0"/>
+                                          <Component id="edtDescricaoProdutoE4" pref="783" max="32767" attributes="0"/>
                                           <Component id="edtCodigoProdutoE4" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>

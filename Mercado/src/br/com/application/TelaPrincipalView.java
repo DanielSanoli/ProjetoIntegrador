@@ -412,7 +412,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -498,7 +498,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edtrDescricaoProdutoV, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDepartamentoV, javax.swing.GroupLayout.Alignment.TRAILING, 0, 155, Short.MAX_VALUE)
+                            .addComponent(jDepartamentoV, javax.swing.GroupLayout.Alignment.TRAILING, 0, 167, Short.MAX_VALUE)
                             .addComponent(edtCodProdutoV))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -742,7 +742,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -765,7 +765,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 925, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -946,7 +946,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -1010,7 +1010,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                             .addComponent(jLabel38))
                         .addGap(10, 10, 10)
                         .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edtDescricaoProdutoE7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE)
+                            .addComponent(edtDescricaoProdutoE7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
                             .addComponent(edtCodigoProdutoE7)
                             .addComponent(edtDescricaoProdutoE8))
                         .addGap(10, 10, 10)
@@ -1185,7 +1185,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel26Layout.setVerticalGroup(
@@ -1362,7 +1362,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jListaDeProdutosCadastro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "Laranja", "Frutas", "2.50", "3"},
+                {"1", "Laranja", "Padaria", "12,25", "3"},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -1428,7 +1428,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel23Layout.setVerticalGroup(
@@ -1663,7 +1663,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel29Layout.setVerticalGroup(
@@ -1828,7 +1828,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jListaOperador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "7", "123123"},
+                {"1", "7", "****************"},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -1886,7 +1886,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel32Layout.setVerticalGroup(
@@ -1941,7 +1941,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                             .addComponent(jLabel32))
                         .addGap(10, 10, 10)
                         .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edtDescricaoProdutoE4, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+                            .addComponent(edtDescricaoProdutoE4, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
                             .addComponent(edtCodigoProdutoE4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1999,7 +1999,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addComponent(jTabbedPane1))
         );
         layout.setVerticalGroup(
@@ -2007,7 +2007,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addGap(10, 10, 10))
         );
 
         pack();
@@ -2224,7 +2224,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         try {
-            CadastroOperadorDialog co = new CadastroOperadorDialog(this, true, false, null);
+            CadastroOperadorDialog co = new CadastroOperadorDialog(this, true, true, null);
         } catch (Exception ex) {
             Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2335,10 +2335,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             String departamento = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 2).toString();
             String valor = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 3).toString();
             String estoqueAtual = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 4).toString();
+            valor = valor.replace(",", ".");
             Produto produto = new Produto(descricaoProduto, departamento, Double.parseDouble(valor), Integer.parseInt(codigo), Integer.parseInt(estoqueAtual));
             CadastroProdutoDialog cc = new CadastroProdutoDialog(this, true, false, produto);
         } catch (NullPointerException ex) {
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum departamento na linha selecionada.", true);
+        } catch (NumberFormatException ex){
+            AvisosDialog av = new AvisosDialog(this, true, "Falha ao concluir cadastro.", true);
+            System.out.println("Motivo da Falha: " + ex.getMessage());
         }
     }//GEN-LAST:event_jListaDeProdutosCadastroMouseClicked
 
@@ -2354,7 +2358,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
             CadastroVendedorDialog cv = new CadastroVendedorDialog(this, true, false, vendedor);
         } catch (Exception ex) {
-            
+
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum vendedor na linha selecionada.", true);
         }
     }//GEN-LAST:event_jListaDeVendedorMouseClicked
@@ -2365,7 +2369,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             String usuario = jListaOperador.getValueAt(jListaOperador.getSelectedRow(), 1).toString();
             String senha = jListaOperador.getValueAt(jListaOperador.getSelectedRow(), 2).toString();
 
-            Operador operador = new Operador(Integer.parseInt(codigo), Integer.parseInt(usuario),Integer.parseInt(senha));
+            Operador operador = new Operador(Integer.parseInt(codigo), Integer.parseInt(usuario), Integer.parseInt(senha));
 
             CadastroOperadorDialog cv = new CadastroOperadorDialog(this, true, false, operador);
         } catch (Exception ex) {
