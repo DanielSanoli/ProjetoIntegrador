@@ -8,6 +8,10 @@ public class Departamento {
     
     public Departamento() {
     }
+    
+    public Departamento (String descricao){
+        this.descricao = descricao;
+    }
 
     public Departamento(String descricao, int codigo) {
         this.descricao = descricao;

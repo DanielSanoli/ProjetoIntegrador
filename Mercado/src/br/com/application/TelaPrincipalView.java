@@ -11,7 +11,11 @@ import br.com.application.dialog.FinalizarVendaDialog;
 import br.com.application.dialog.InformacoesVendaDialog;
 import br.com.application.dialog.QuantidadeDialog;
 import br.com.application.dialog.AdicionarVendedorDialog;
+import br.com.application.dialog.CadastroClienteDialog;
+import br.com.application.dialog.CadastroDepartamentoDialog;
 import br.com.application.dialog.MeiosDePagamentoDialog;
+import br.com.application.models.Cliente;
+import br.com.application.models.Departamento;
 import br.com.application.utils.UtilsValidacao;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -108,7 +112,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtListaDeProdutos = new javax.swing.JTable();
+        jListaDeClientes = new javax.swing.JTable();
         jPanel36 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         edtCodigoProdutoE7 = new javax.swing.JTextField();
@@ -128,7 +132,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jPanel26 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jtListaDeProdutos2 = new javax.swing.JTable();
+        jListaDepartamento = new javax.swing.JTable();
         jPanel35 = new javax.swing.JPanel();
         jComboBox5 = new javax.swing.JComboBox<>();
         jLabel35 = new javax.swing.JLabel();
@@ -874,9 +878,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jtListaDeProdutos.setModel(new javax.swing.table.DefaultTableModel(
+        jListaDeClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
+                {"1", "458.767.068-50", "Matheus", "teste@teste.com.br", "5011-5450", "R. do Teste", "41", "Casa", "Feminino"},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -921,7 +925,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 "Código", "CPF", "Nome", "Email", "Telefone", "Logradouro", "Numero", "Complemento", "Sexo"
             }
         ));
-        jScrollPane2.setViewportView(jtListaDeProdutos);
+        jListaDeClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListaDeClientesMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jListaDeClientes);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -1108,9 +1117,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel26.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        jtListaDeProdutos2.setModel(new javax.swing.table.DefaultTableModel(
+        jListaDepartamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
+                {"1", "Frutas"},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -1155,7 +1164,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 "Código", "Descrição"
             }
         ));
-        jScrollPane7.setViewportView(jtListaDeProdutos2);
+        jListaDepartamento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jListaDepartamentoMouseClicked(evt);
+            }
+        });
+        jScrollPane7.setViewportView(jListaDepartamento);
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -2105,15 +2119,16 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-       UtilsValidacao validaData = new UtilsValidacao();
-       if(validaData.validarData(txtDataInicail.getText()) ||validaData.validarData(txtDataFinal.getText()) ){   
-           new AvisosDialog(null, true, "Preencha os Campos de data Corretamente", true);
-       }
-       txtDataFinal.setText(""); txtDataInicail.setText("");
+        UtilsValidacao validaData = new UtilsValidacao();
+        if (validaData.validarData(txtDataInicail.getText()) || validaData.validarData(txtDataFinal.getText())) {
+            new AvisosDialog(null, true, "Preencha os Campos de data Corretamente", true);
+        }
+        txtDataFinal.setText("");
+        txtDataInicail.setText("");
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
+        CadastroClienteDialog cc = new CadastroClienteDialog(this, true, true, null);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -2145,7 +2160,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFiltrar1ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
+        CadastroDepartamentoDialog cc = new CadastroDepartamentoDialog(this, true, true, null);
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
@@ -2236,6 +2251,48 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtDescricaoProdutoE8ActionPerformed
 
+    private void jListaDeClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaDeClientesMouseClicked
+
+        try {
+            String codigo = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 0).toString();
+            String cpf = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 1).toString();
+            String nome = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 2).toString();
+            String email = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 3).toString();
+            String telefone = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 4).toString();
+            String logradouro = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 5).toString();
+            String numero = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 6).toString();
+            String complemento = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 7).toString();
+            String sexo = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 8).toString();
+
+            Cliente cliente = new Cliente();
+
+            cliente.setCodigo(Integer.parseInt(codigo));
+            cliente.setCPF(cpf);
+            cliente.setNome(nome);
+            cliente.setEmail(email);
+            cliente.setTelefone(telefone);
+            cliente.setEnderecoLogradouro(logradouro);
+            cliente.setEnderecoNumero(numero);
+            cliente.setEnderecoComplemento(complemento);
+            cliente.setSexo(sexo.equals(UtilsConstantes.MASCULINO) ? 'M' : 'F');
+
+            CadastroClienteDialog cc = new CadastroClienteDialog(this, true, false, cliente);
+        } catch (NullPointerException ex) {
+            AvisosDialog av = new AvisosDialog(this, true, "Nenhum cliente na linha selecionada.", true);
+        }
+    }//GEN-LAST:event_jListaDeClientesMouseClicked
+
+    private void jListaDepartamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaDepartamentoMouseClicked
+        try {
+            String codigo = jListaDepartamento.getValueAt(jListaDepartamento.getSelectedRow(), 0).toString();
+            String nomeDepartamento = jListaDepartamento.getValueAt(jListaDepartamento.getSelectedRow(), 1).toString();
+            Departamento departamento = new Departamento(nomeDepartamento, Integer.parseInt(codigo));
+            CadastroDepartamentoDialog cc = new CadastroDepartamentoDialog(this, true, false, departamento);
+        } catch (NullPointerException ex) {
+            AvisosDialog av = new AvisosDialog(this, true, "Nenhum departamento na linha selecionada.", true);
+        }
+    }//GEN-LAST:event_jListaDepartamentoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2269,6 +2326,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaPrincipalView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -2357,6 +2420,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTable jListaDeClientes;
+    private javax.swing.JTable jListaDepartamento;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -2404,9 +2469,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jtCarrinho;
-    private javax.swing.JTable jtListaDeProdutos;
     private javax.swing.JTable jtListaDeProdutos1;
-    private javax.swing.JTable jtListaDeProdutos2;
     private javax.swing.JTable jtListaDeProdutos3;
     private javax.swing.JTable jtListaDeProdutos4;
     private javax.swing.JTable jtListaDeProdutosV;
