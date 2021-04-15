@@ -1,5 +1,6 @@
 package br.com.application.utils;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import javax.swing.JTextField;
 
@@ -16,7 +17,7 @@ public class UtilsValidacao {
     public static boolean validarData(String valor) {
         return valor.replaceAll(" ", "").equals("//") || valor.length() < 10;
     }
-
+    
     public static boolean isCPF(String CPF) {
         // considera-se erro CPF's formados por uma sequencia de numeros iguais
         if (CPF.equals("00000000000")

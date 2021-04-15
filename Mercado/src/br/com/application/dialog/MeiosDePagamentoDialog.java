@@ -5,6 +5,12 @@
  */
 package br.com.application.dialog;
 
+import static br.com.application.utils.UtilsConstantes.MP_CREDITO;
+import static br.com.application.utils.UtilsConstantes.MP_DEBITO;
+import static br.com.application.utils.UtilsConstantes.MP_DINHEIRO;
+import static br.com.application.utils.UtilsConstantes.MP_GIFT_PASS;
+import static br.com.application.utils.UtilsConstantes.MP_VALE_ALIMENTACAO;
+import static br.com.application.utils.UtilsConstantes.MP_VALE_REFEICAO;
 import br.com.application.utils.UtilsView;
 
 /**
@@ -13,13 +19,26 @@ import br.com.application.utils.UtilsView;
  */
 public class MeiosDePagamentoDialog extends javax.swing.JDialog {
 
+    // total, acréscimo, desconto, numero da venda
+    private static Double total;
+    private static Double acrescimo;
+    private static Double desconto;
+    private static Integer nmrVenda;
+
     /**
      * Creates new form MeiosDePagamentoDialog
      */
-    public MeiosDePagamentoDialog(java.awt.Frame parent, boolean modal) {
+    public MeiosDePagamentoDialog(java.awt.Frame parent, boolean modal, double total, double acrescimo, double desconto, int nmrVenda) {
         super(parent, modal);
         initComponents();
-        UtilsView.configuracaoInicialJDialog(this);        
+        UtilsView.configuracaoInicialJDialog(this);
+        MeiosDePagamentoDialog.total = total;
+        MeiosDePagamentoDialog.acrescimo = acrescimo;
+        MeiosDePagamentoDialog.desconto = desconto;
+        MeiosDePagamentoDialog.nmrVenda = nmrVenda;
+        setTotais();
+        atualizarFaltaPagar();
+        setVisible(true);        
     }
 
     /**
@@ -47,24 +66,24 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JLabel();
+        txtFaltaPagar = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        txtAcrescimo = new javax.swing.JLabel();
+        txtDesconto = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        edtDinheiro = new javax.swing.JTextField();
+        edtDebito = new javax.swing.JTextField();
+        edtCredito = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        edtValeRefeicao = new javax.swing.JTextField();
+        edtValeAlimentacao = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        edtGiftPass = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -211,11 +230,11 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Falta pagar");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("R$15,00");
+        txtTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtTotal.setText("R$00.00");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("R$27,50");
+        txtFaltaPagar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtFaltaPagar.setText("R$00.00");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Acréscimo");
@@ -223,13 +242,13 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Desconto");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 153, 0));
-        jLabel8.setText("+R$12,50");
+        txtAcrescimo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtAcrescimo.setForeground(new java.awt.Color(0, 153, 0));
+        txtAcrescimo.setText("+R$00.00");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel9.setText("-R$0,00");
+        txtDesconto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtDesconto.setForeground(new java.awt.Color(255, 0, 0));
+        txtDesconto.setText("-R$00,00");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -238,16 +257,21 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(txtTotal, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtFaltaPagar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtAcrescimo, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtDesconto, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -255,20 +279,20 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel4)
+                    .addComponent(txtTotal)
                     .addComponent(jLabel2))
                 .addGap(10, 10, 10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(txtAcrescimo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel6))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel9)
+                    .addComponent(txtDesconto)
                     .addComponent(jLabel7))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(txtFaltaPagar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -283,34 +307,39 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_cred.png"))); // NOI18N
 
-        jTextField1.setEditable(false);
-        jTextField1.setText("R$");
+        edtDinheiro.setEditable(false);
+        edtDinheiro.setText("R$0.00");
 
-        jTextField2.setEditable(false);
-        jTextField2.setText("R$");
+        edtDebito.setEditable(false);
+        edtDebito.setText("R$0.00");
 
-        jTextField3.setEditable(false);
-        jTextField3.setText("R$");
+        edtCredito.setEditable(false);
+        edtCredito.setText("R$0.00");
+        edtCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtCreditoActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_vr.png"))); // NOI18N
 
-        jTextField4.setEditable(false);
-        jTextField4.setText("R$");
+        edtValeRefeicao.setEditable(false);
+        edtValeRefeicao.setText("R$0.00");
 
-        jTextField5.setEditable(false);
-        jTextField5.setText("R$");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        edtValeAlimentacao.setEditable(false);
+        edtValeAlimentacao.setText("R$0.00");
+        edtValeAlimentacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                edtValeAlimentacaoActionPerformed(evt);
             }
         });
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_va.png"))); // NOI18N
 
-        jTextField6.setEditable(false);
-        jTextField6.setText("R$");
+        edtGiftPass.setEditable(false);
+        edtGiftPass.setText("R$0.00");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_giftpass.png"))); // NOI18N
@@ -327,9 +356,9 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
                     .addComponent(jLabel12))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtDebito, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(edtDinheiro, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(edtCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
@@ -337,9 +366,9 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
                     .addComponent(jLabel13))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField5)
-                    .addComponent(jTextField6))
+                    .addComponent(edtValeRefeicao)
+                    .addComponent(edtValeAlimentacao)
+                    .addComponent(edtGiftPass))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -348,21 +377,21 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtDinheiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtValeRefeicao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtDebito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtValeAlimentacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtGiftPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10))
         );
 
@@ -418,32 +447,48 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        double faltaPagar = Double.parseDouble(txtFaltaPagar.getText().replace("R$", ""));
+        AdicionarPagamentoDialog addPagamento = new AdicionarPagamentoDialog(null, true, edtCredito, faltaPagar, MP_CREDITO);
+        atualizarFaltaPagar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        double faltaPagar = Double.parseDouble(txtFaltaPagar.getText().replace("R$", ""));
+        AdicionarPagamentoDialog addPagamento = new AdicionarPagamentoDialog(null, true, edtDinheiro, faltaPagar, MP_DINHEIRO);
+        atualizarFaltaPagar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        double faltaPagar = Double.parseDouble(txtFaltaPagar.getText().replace("R$", ""));
+        AdicionarPagamentoDialog addPagamento = new AdicionarPagamentoDialog(null, true, edtDebito, faltaPagar, MP_DEBITO);
+        atualizarFaltaPagar();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        double faltaPagar = Double.parseDouble(txtFaltaPagar.getText().replace("R$", ""));
+        AdicionarPagamentoDialog addPagamento = new AdicionarPagamentoDialog(null, true, edtGiftPass, faltaPagar, MP_GIFT_PASS);
+        atualizarFaltaPagar();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
+        double faltaPagar = Double.parseDouble(txtFaltaPagar.getText().replace("R$", ""));
+        AdicionarPagamentoDialog addPagamento = new AdicionarPagamentoDialog(null, true, edtValeAlimentacao, faltaPagar, MP_VALE_ALIMENTACAO);
+        atualizarFaltaPagar();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
+        double faltaPagar = Double.parseDouble(txtFaltaPagar.getText().replace("R$", ""));
+        AdicionarPagamentoDialog addPagamento = new AdicionarPagamentoDialog(null, true, edtValeRefeicao, faltaPagar, MP_VALE_REFEICAO);
+        atualizarFaltaPagar();
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void edtValeAlimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtValeAlimentacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_edtValeAlimentacaoActionPerformed
+
+    private void edtCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCreditoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtCreditoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -475,7 +520,7 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                MeiosDePagamentoDialog dialog = new MeiosDePagamentoDialog(new javax.swing.JFrame(), true);
+                MeiosDePagamentoDialog dialog = new MeiosDePagamentoDialog(new javax.swing.JFrame(), true, total, acrescimo, desconto, nmrVenda);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -488,6 +533,12 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField edtCredito;
+    private javax.swing.JTextField edtDebito;
+    private javax.swing.JTextField edtDinheiro;
+    private javax.swing.JTextField edtGiftPass;
+    private javax.swing.JTextField edtValeAlimentacao;
+    private javax.swing.JTextField edtValeRefeicao;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -509,21 +560,72 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel txtAcrescimo;
+    private javax.swing.JLabel txtDesconto;
+    private javax.swing.JLabel txtFaltaPagar;
+    private javax.swing.JLabel txtTotal;
     // End of variables declaration//GEN-END:variables
+
+    private void setTotais() {
+        if (total == null || total == 0.00) {
+            txtTotal.setText("R$0.00");
+        } else {
+            txtTotal.setText("R$" + total);
+        }
+
+        if (acrescimo == null || acrescimo == 0.00) {
+            txtAcrescimo.setText("R$0.00");
+        } else {
+            txtAcrescimo.setText("R$" + acrescimo);
+        }
+
+        if (desconto == null || desconto == 0.00) {
+            txtDesconto.setText("R$0.00");
+        } else {
+            txtDesconto.setText("R$" + desconto);
+        }
+    }
+
+    private void atualizarFaltaPagar() {
+        String total = txtTotal.getText().replace("R$", "");
+        String acre = txtAcrescimo.getText().replace("R$", "");
+        String desc = txtDesconto.getText().replace("R$", "");
+
+        String dinheiro = edtDinheiro.getText().replace("R$", "");
+        String debito = edtDebito.getText().replace("R$", "");
+        String credito = edtCredito.getText().replace("R$", "");
+        String valeRefeicao = edtValeRefeicao.getText().replace("R$", "");
+        String valeAlimentacao = edtValeAlimentacao.getText().replace("R$", "");
+        String giftPass = edtGiftPass.getText().replace("R$", "");
+
+        Double totalD = Double.parseDouble(total);
+        Double acreD = Double.parseDouble(acre);
+        Double descD = Double.parseDouble(desc);
+
+        Double dinheiroD = Double.parseDouble(dinheiro);
+        Double debitoD = Double.parseDouble(debito);
+        Double creditoD = Double.parseDouble(credito);
+        Double valeRefeicaoD = Double.parseDouble(valeRefeicao);
+        Double valeAlimentacaoD = Double.parseDouble(valeAlimentacao);
+        Double giftPassD = Double.parseDouble(giftPass);
+
+        Double pagamentosRealizados = (dinheiroD + debitoD + creditoD + valeRefeicaoD + valeAlimentacaoD + giftPassD);
+
+        double res = (totalD + acreD - descD) - pagamentosRealizados;
+
+        txtFaltaPagar.setText("R$" + res);
+        
+        System.out.println("res: " + res);
+        
+        if(res == 0.0){
+            FinalizarVendaDialog fv = new FinalizarVendaDialog(null, true);
+            dispose();
+        }        
+    }
 }

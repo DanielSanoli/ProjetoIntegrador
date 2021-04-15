@@ -18,4 +18,12 @@ public interface UtilsConstantes {
     String CLASS_PRODUTO = "produto";
     String CLASS_VENDEDOR = "vendedor";
 
+    //Meios de Pagamento
+    String MP_DINHEIRO = "Dinheiro";
+    String MP_DEBITO = "Débito";
+    String MP_CREDITO = "Crédito";
+    String MP_VALE_ALIMENTACAO = "Vale Alimentação";
+    String MP_VALE_REFEICAO = "Vale Refeição";
+    String MP_GIFT_PASS = "Gift Pass";
+
 }

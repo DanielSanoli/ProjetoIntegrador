@@ -25,6 +25,7 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         UIManager.put("nimbusOrange", new Color(0, 204, 0));
         finalizarVenda();
+        setVisible(true);
     }
 
     /**
@@ -51,6 +52,7 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
 
         pgFinalizacaoVenda.setForeground(new java.awt.Color(102, 255, 102));
 
+        btnOK.setBackground(new java.awt.Color(204, 255, 204));
         btnOK.setText("OK");
         btnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

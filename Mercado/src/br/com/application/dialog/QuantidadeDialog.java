@@ -50,6 +50,7 @@ public class QuantidadeDialog extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         edtQuantidade = new javax.swing.JTextField();
         btnCofirmar = new javax.swing.JButton();
+        btnCofirmar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,9 +65,9 @@ public class QuantidadeDialog extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addComponent(txtTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,10 +93,18 @@ public class QuantidadeDialog extends javax.swing.JDialog {
         });
 
         btnCofirmar.setBackground(new java.awt.Color(204, 255, 204));
-        btnCofirmar.setText("OK");
+        btnCofirmar.setText("Confirmar");
         btnCofirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCofirmarActionPerformed(evt);
+            }
+        });
+
+        btnCofirmar1.setBackground(new java.awt.Color(255, 204, 204));
+        btnCofirmar1.setText("Cancelar");
+        btnCofirmar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCofirmar1ActionPerformed(evt);
             }
         });
 
@@ -113,9 +122,14 @@ public class QuantidadeDialog extends javax.swing.JDialog {
                         .addGap(10, 10, 10))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCofirmar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCofirmar)
                         .addContainerGap())))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCofirmar, btnCofirmar1});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -127,7 +141,9 @@ public class QuantidadeDialog extends javax.swing.JDialog {
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(btnCofirmar)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCofirmar)
+                            .addComponent(btnCofirmar1))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -190,6 +206,10 @@ public class QuantidadeDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_edtQuantidadeKeyTyped
 
+    private void btnCofirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCofirmar1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCofirmar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -241,6 +261,7 @@ public class QuantidadeDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCofirmar;
+    private javax.swing.JButton btnCofirmar1;
     private javax.swing.JTextField edtQuantidade;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

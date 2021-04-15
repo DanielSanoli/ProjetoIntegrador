@@ -84,7 +84,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel34 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
+        txtTotal = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jDepartamentoV = new javax.swing.JComboBox<>();
@@ -254,9 +254,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -387,9 +387,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel34.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Subtotal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel23.setText("R$46,00");
+        txtTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtTotal.setForeground(new java.awt.Color(255, 0, 0));
+        txtTotal.setText("R$46.00");
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel24.setText("Valor");
@@ -402,14 +402,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel23)
+                .addComponent(txtTotal)
                 .addContainerGap())
         );
         jPanel34Layout.setVerticalGroup(
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addGroup(jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel23)
+                    .addComponent(txtTotal)
                     .addComponent(jLabel24))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
@@ -2087,8 +2087,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtCodProdutoVActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        MeiosDePagamentoDialog meiosDePagamento = new MeiosDePagamentoDialog(this, true);
-        meiosDePagamento.setVisible(true);
+        String strTotal = txtTotal.getText().replace("R$", "");
+        Double total = Double.parseDouble(strTotal);
+        Double acrescimo = 0.0;
+        Double desconto = 0.0;
+        Integer nmrVenda = 1020;
+        MeiosDePagamentoDialog meiosDePagamento = new MeiosDePagamentoDialog(this, true, total, acrescimo, desconto, nmrVenda);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2544,7 +2548,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -2638,6 +2641,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JRadioButton rdDescricaoProdutoV;
     private javax.swing.JFormattedTextField txtDataFinal;
     private javax.swing.JFormattedTextField txtDataInicail;
+    private javax.swing.JLabel txtTotal;
     // End of variables declaration//GEN-END:variables
 
     private void adicionarProduto() {

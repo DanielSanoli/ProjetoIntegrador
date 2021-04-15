@@ -5,43 +5,29 @@
  */
 package br.com.application.dialog;
 
-import static br.com.application.utils.UtilsConstantes.CLASS_CLIENTE;
-import static br.com.application.utils.UtilsConstantes.CLASS_DEPARTAMENTO;
-import static br.com.application.utils.UtilsConstantes.CLASS_OPERADOR;
-import static br.com.application.utils.UtilsConstantes.CLASS_PRODUTO;
-import static br.com.application.utils.UtilsConstantes.CLASS_VENDEDOR;
-import br.com.application.utils.UtilsValidacao;
+import static br.com.application.utils.UtilsConstantes.MP_DINHEIRO;
 import br.com.application.utils.UtilsView;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Matheus Castro
  */
-public final class ExcluirCadastroDialog extends javax.swing.JDialog {
+public final class AdicionarPagamentoDialog extends javax.swing.JDialog {
 
-    private int codigo;
-    private static String className;
+    private static JTextField JTextField;
+    private static double faltaPagar;
+    private static String pagamento;
 
-    public int getQuantidade() {
-        return codigo;
-    }
-
-    public void setQuantidade(int codigo) {
-        this.codigo = codigo;
-    }
-
-    /**
-     * Creates new form NovoClienteDialog
-     */
-    public ExcluirCadastroDialog(java.awt.Frame parent, boolean modal, String className) {
+    public AdicionarPagamentoDialog(java.awt.Frame parent, boolean modal, JTextField JTextField, double faltaPagar, String pagamento) {
         super(parent, modal);
         initComponents();
-        ExcluirCadastroDialog.className = className;
         UtilsView.configuracaoInicialJDialog(this);
-        setTitle(className);
-        setVisible(true);        
+        AdicionarPagamentoDialog.JTextField = JTextField;
+        AdicionarPagamentoDialog.faltaPagar = faltaPagar;
+        AdicionarPagamentoDialog.pagamento = pagamento;
+        setVisible(true);
     }
 
     /**
@@ -57,7 +43,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
         txtTitle = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        edtCodigo = new javax.swing.JTextField();
+        edtValor = new javax.swing.JTextField();
         btnCofirmar = new javax.swing.JButton();
         btnCofirmar1 = new javax.swing.JButton();
 
@@ -67,16 +53,16 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
 
         txtTitle.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtTitle.setForeground(new java.awt.Color(255, 255, 255));
-        txtTitle.setText("Remover Cadastro");
+        txtTitle.setText("Adicionar Pagamento");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(102, Short.MAX_VALUE)
+                .addContainerGap(91, Short.MAX_VALUE)
                 .addComponent(txtTitle)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,18 +72,18 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informe o código", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informe o valor R$", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
-        edtCodigo.addActionListener(new java.awt.event.ActionListener() {
+        edtValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtCodigoActionPerformed(evt);
+                edtValorActionPerformed(evt);
             }
         });
-        edtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+        edtValor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                edtCodigoKeyTyped(evt);
+                edtValorKeyTyped(evt);
             }
         });
 
@@ -127,7 +113,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edtCodigo)
+                        .addComponent(edtValor)
                         .addGap(10, 10, 10))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -143,7 +129,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(edtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(edtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
@@ -178,49 +164,32 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void edtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoActionPerformed
+    private void edtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtValorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtCodigoActionPerformed
+    }//GEN-LAST:event_edtValorActionPerformed
 
     private void btnCofirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCofirmarActionPerformed
+        String valor = edtValor.getText();
+        double valorD = Double.parseDouble(valor);
 
-        if (UtilsValidacao.isNullOuVazio(edtCodigo.getText())) {
-            new AvisosDialog(null, true, "Informe o código do " + className, true);
-            edtCodigo.setBackground(Color.YELLOW);
-            return;
-        } else {
-            setQuantidade(Integer.parseInt(edtCodigo.getText()));
-            dispose();
+        if (pagamento != null && JTextField != null) {
+            if (!pagamento.equals(MP_DINHEIRO)) {
+                if (valorD > faltaPagar) {
+                    AvisosDialog av = new AvisosDialog(null, true, "O valor do " + pagamento + ""
+                            + " não pode ser superior ao que falta pagar."
+                            + " Este pagamento não aceita troco (Apenas Dinheiro)", true);
+                    return;
+                } 
+            }
+            
+            JTextField.setText("R$" + valorD);
+            
         }
-
-        int codigo = Integer.parseInt(edtCodigo.getText());
-
-        switch (className) {
-            case CLASS_CLIENTE:
-                // Realizar exclusão do cliente
-                System.out.println("CLASS_CLIENTE");
-                break;
-            case CLASS_DEPARTAMENTO:
-                // Realizar exclusão do departamento
-                System.out.println("CLASS_DEPARTAMENTO");
-                break;
-            case CLASS_OPERADOR:
-                // Realizar exclusão do operador
-                System.out.println("CLASS_OPERADOR");
-                break;
-            case CLASS_PRODUTO:
-                // Realizar exclusão do produto
-                System.out.println("CLASS_PRODUTO");
-                break;
-            case CLASS_VENDEDOR:
-                // Realizar exclusão do vendedor
-                System.out.println("CLASS_VENDEDOR");
-                break;
-        }
+        this.dispose();
     }//GEN-LAST:event_btnCofirmarActionPerformed
 
-    private void edtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoKeyTyped
-        if (edtCodigo.getText().length() > 10) {
+    private void edtValorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtValorKeyTyped
+        if (edtValor.getText().length() > 10) {
             evt.consume();
             new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
         }
@@ -231,7 +200,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
             evt.consume();
             new AvisosDialog(null, true, "O campo quantidade só aceita valores númericos.", true);
         }
-    }//GEN-LAST:event_edtCodigoKeyTyped
+    }//GEN-LAST:event_edtValorKeyTyped
 
     private void btnCofirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCofirmar1ActionPerformed
         dispose();
@@ -251,17 +220,265 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ExcluirCadastroDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarPagamentoDialog.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ExcluirCadastroDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarPagamentoDialog.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ExcluirCadastroDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarPagamentoDialog.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ExcluirCadastroDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdicionarPagamentoDialog.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -282,7 +499,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ExcluirCadastroDialog dialog = new ExcluirCadastroDialog(new javax.swing.JFrame(), true, className);
+                AdicionarPagamentoDialog dialog = new AdicionarPagamentoDialog(new javax.swing.JFrame(), true, JTextField, faltaPagar, pagamento);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -294,18 +511,10 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
         });
     }
 
-    public void setTitle(String v) {
-        if (v != null) {
-            txtTitle.setText("Excluir " + v);
-        } else {
-            txtTitle.setText("Excluir Cadastro");
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCofirmar;
     private javax.swing.JButton btnCofirmar1;
-    private javax.swing.JTextField edtCodigo;
+    private javax.swing.JTextField edtValor;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
