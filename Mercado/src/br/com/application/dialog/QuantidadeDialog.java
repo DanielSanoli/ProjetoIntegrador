@@ -174,22 +174,24 @@ public class QuantidadeDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_edtQuantidadeActionPerformed
 
     private void btnCofirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCofirmarActionPerformed
-        
-        int qtd = Integer.parseInt(edtQuantidade.getText());
-        
-        if(qtd <= 0 || qtd >= 100){
-            new AvisosDialog(null, true, "A quantidade deve ser maior que zero e menor que cem.", true);            
-            edtQuantidade.setBackground(Color.YELLOW);
-            return;
-        }
-        
+
         if (UtilsValidacao.isNullOuVazio(edtQuantidade.getText())) {
             new AvisosDialog(null, true, "Informe a quantidade do produto.", true);
             edtQuantidade.setBackground(Color.YELLOW);
         } else {
             setQuantidade(Integer.parseInt(edtQuantidade.getText()));
-            dispose();            
+            dispose();
         }
+        
+        int qtd = Integer.parseInt(edtQuantidade.getText());
+
+        if (qtd <= 0 || qtd >= 100) {
+            new AvisosDialog(null, true, "A quantidade deve ser maior que zero e menor que cem.", true);
+            edtQuantidade.setBackground(Color.YELLOW);
+            return;
+        }
+
+
     }//GEN-LAST:event_btnCofirmarActionPerformed
 
     private void edtQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtQuantidadeKeyTyped

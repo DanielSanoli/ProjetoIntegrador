@@ -10,6 +10,7 @@ public interface UtilsConstantes {
     String FALHA_NO_CADASTRO = "Falha no cadastro.";
     String INFORME_LOGIN = "Informe o login.";
     String INFORME_SENHA = "Informe a senha.";
+    String VALOR_ZERADO = "R$00.00";
 
     // ClassName
     String CLASS_CLIENTE = "cliente";

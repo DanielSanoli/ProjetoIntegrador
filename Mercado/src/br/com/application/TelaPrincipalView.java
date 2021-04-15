@@ -38,6 +38,7 @@ import static br.com.application.utils.UtilsConstantes.CLASS_DEPARTAMENTO;
 import static br.com.application.utils.UtilsConstantes.CLASS_OPERADOR;
 import static br.com.application.utils.UtilsConstantes.CLASS_PRODUTO;
 import static br.com.application.utils.UtilsConstantes.CLASS_VENDEDOR;
+import static br.com.application.utils.UtilsConstantes.VALOR_ZERADO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -389,7 +390,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         txtTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtTotal.setForeground(new java.awt.Color(255, 0, 0));
-        txtTotal.setText("R$46.00");
+        txtTotal.setText("R$00.00");
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel24.setText("Valor");
@@ -2087,12 +2088,16 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtCodProdutoVActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if (jtCarrinho.getRowCount() <= 0) {
+            new AvisosDialog(null, true, "Não é possível finalizar uma venda sem produtos.", true);
+            return;
+        }
         String strTotal = txtTotal.getText().replace("R$", "");
         Double total = Double.parseDouble(strTotal);
         Double acrescimo = 0.0;
         Double desconto = 0.0;
         Integer nmrVenda = 1020;
-        MeiosDePagamentoDialog meiosDePagamento = new MeiosDePagamentoDialog(this, true, total, acrescimo, desconto, nmrVenda);
+        MeiosDePagamentoDialog meiosDePagamento = new MeiosDePagamentoDialog(this, true, total, acrescimo, desconto, nmrVenda, jtCarrinho, txtTotal);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2103,6 +2108,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             while (jtCarrinho.getRowCount() > 0) {
                 model.removeRow(0);
             }
+            txtTotal.setText(VALOR_ZERADO);
         } else {
             new AvisosDialog(this, true, "Não é possível finalizar uma venda sem produtos.", true);
         }
@@ -2115,33 +2121,41 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         if (jtListaDeProdutosV.getSelectedRow() < 0) {
             new AvisosDialog(this, true, "Para adicionar ao carrinho, primeiro selecione o produto.", true);
+            return;
         }
 
-        DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
+        QuantidadeDialog inputQtdDialog = new QuantidadeDialog(this, true);
+        inputQtdDialog.setVisible(true);
 
+        DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
         String codigo = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 0).toString();
         String produto = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 1).toString();
         String departamento = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 2).toString();
         double preco = Double.parseDouble(jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 3).toString().replace("R$", ""));
-
-        QuantidadeDialog inputQtdDialog = new QuantidadeDialog(this, true);
-        inputQtdDialog.setVisible(true);
         preco *= inputQtdDialog.getQuantidade();
 
         model.addRow(new String[]{codigo, produto, departamento, String.valueOf(UtilsConstantes.MASCARA_REAL
             + preco)});
 
+        String total = txtTotal.getText().replace("R$", "");
+        double totalD = Double.parseDouble(total);
+
+        txtTotal.setText("R$" + (totalD + preco));
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+
         try {
             DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
+            double preco = Double.parseDouble(jtCarrinho.getValueAt(jtCarrinho.getSelectedRow(), 3).toString().replace("R$", ""));
             model.removeRow(jtCarrinho.getSelectedRow());
+            String total = txtTotal.getText().replace("R$", "");
+            double totalD = Double.parseDouble(total);
+            txtTotal.setText("R$" + (totalD - preco));
         } catch (ArrayIndexOutOfBoundsException ex) {
             new AvisosDialog(this, true, "Para remover do carrinho, primeiro selecione o produto", true);
         }
-
-
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed

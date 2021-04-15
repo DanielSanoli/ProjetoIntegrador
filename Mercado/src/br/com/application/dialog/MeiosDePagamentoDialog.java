@@ -11,7 +11,12 @@ import static br.com.application.utils.UtilsConstantes.MP_DINHEIRO;
 import static br.com.application.utils.UtilsConstantes.MP_GIFT_PASS;
 import static br.com.application.utils.UtilsConstantes.MP_VALE_ALIMENTACAO;
 import static br.com.application.utils.UtilsConstantes.MP_VALE_REFEICAO;
+import static br.com.application.utils.UtilsConstantes.VALOR_ZERADO;
 import br.com.application.utils.UtilsView;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,11 +29,13 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
     private static Double acrescimo;
     private static Double desconto;
     private static Integer nmrVenda;
+    private static JTable carrinhoDeCompra;
+    private static JLabel jttotal;
 
     /**
      * Creates new form MeiosDePagamentoDialog
      */
-    public MeiosDePagamentoDialog(java.awt.Frame parent, boolean modal, double total, double acrescimo, double desconto, int nmrVenda) {
+    public MeiosDePagamentoDialog(java.awt.Frame parent, boolean modal, double total, double acrescimo, double desconto, int nmrVenda, JTable carrinhoDeCompra, JLabel jttotal) {
         super(parent, modal);
         initComponents();
         UtilsView.configuracaoInicialJDialog(this);
@@ -36,9 +43,11 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
         MeiosDePagamentoDialog.acrescimo = acrescimo;
         MeiosDePagamentoDialog.desconto = desconto;
         MeiosDePagamentoDialog.nmrVenda = nmrVenda;
+        MeiosDePagamentoDialog.carrinhoDeCompra = carrinhoDeCompra;
+        this.jttotal = jttotal;
         setTotais();
         atualizarFaltaPagar();
-        setVisible(true);        
+        setVisible(true);
     }
 
     /**
@@ -520,7 +529,7 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                MeiosDePagamentoDialog dialog = new MeiosDePagamentoDialog(new javax.swing.JFrame(), true, total, acrescimo, desconto, nmrVenda);
+                MeiosDePagamentoDialog dialog = new MeiosDePagamentoDialog(new javax.swing.JFrame(), true, total, acrescimo, desconto, nmrVenda, carrinhoDeCompra, jttotal);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -620,12 +629,23 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
         double res = (totalD + acreD - descD) - pagamentosRealizados;
 
         txtFaltaPagar.setText("R$" + res);
-        
+
         System.out.println("res: " + res);
-        
-        if(res == 0.0){
+
+        if (res == 0.0) {
             FinalizarVendaDialog fv = new FinalizarVendaDialog(null, true);
             dispose();
-        }        
+            if (carrinhoDeCompra != null) {
+                DefaultTableModel model = (DefaultTableModel) carrinhoDeCompra.getModel();
+                if (carrinhoDeCompra.getRowCount() > 0) {
+                    while (carrinhoDeCompra.getRowCount() > 0) {
+                        model.removeRow(0);
+                    }
+                    if (jttotal != null) {
+                        jttotal.setText(VALOR_ZERADO);
+                    }
+                }
+            }
+        }
     }
 }
