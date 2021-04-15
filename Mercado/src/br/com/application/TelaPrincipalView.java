@@ -11,6 +11,7 @@ import br.com.application.dialog.FinalizarVendaDialog;
 import br.com.application.dialog.InformacoesVendaDialog;
 import br.com.application.dialog.QuantidadeDialog;
 import br.com.application.dialog.AdicionarVendedorDialog;
+import br.com.application.dialog.ExcluirCadastroDialog;
 import br.com.application.dialog.cadastros.CadastroClienteDialog;
 import br.com.application.dialog.cadastros.CadastroDepartamentoDialog;
 import br.com.application.dialog.cadastros.CadastroOperadorDialog;
@@ -32,6 +33,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import javax.swing.table.DefaultTableModel;
 import br.com.application.utils.UtilsConstantes;
+import static br.com.application.utils.UtilsConstantes.CLASS_CLIENTE;
+import static br.com.application.utils.UtilsConstantes.CLASS_DEPARTAMENTO;
+import static br.com.application.utils.UtilsConstantes.CLASS_OPERADOR;
+import static br.com.application.utils.UtilsConstantes.CLASS_PRODUTO;
+import static br.com.application.utils.UtilsConstantes.CLASS_VENDEDOR;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -2163,7 +2169,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
+        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_CLIENTE);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -2171,7 +2177,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
+        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_PRODUTO);
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void edtCodigoProdutoE1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE1ActionPerformed
@@ -2195,7 +2201,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        // TODO add your handling code here:
+        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_DEPARTAMENTO);
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
@@ -2203,7 +2209,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        // TODO add your handling code here:
+        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_VENDEDOR);
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void edtCodigoProdutoE3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE3ActionPerformed
@@ -2231,7 +2237,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        // TODO add your handling code here:
+        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_OPERADOR);
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void edtCodigoProdutoE4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE4ActionPerformed
@@ -2340,7 +2346,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             CadastroProdutoDialog cc = new CadastroProdutoDialog(this, true, false, produto);
         } catch (NullPointerException ex) {
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum departamento na linha selecionada.", true);
-        } catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             AvisosDialog av = new AvisosDialog(this, true, "Falha ao concluir cadastro.", true);
             System.out.println("Motivo da Falha: " + ex.getMessage());
         }

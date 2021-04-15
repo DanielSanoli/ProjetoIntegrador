@@ -5,6 +5,11 @@
  */
 package br.com.application.dialog;
 
+import static br.com.application.utils.UtilsConstantes.CLASS_CLIENTE;
+import static br.com.application.utils.UtilsConstantes.CLASS_DEPARTAMENTO;
+import static br.com.application.utils.UtilsConstantes.CLASS_OPERADOR;
+import static br.com.application.utils.UtilsConstantes.CLASS_PRODUTO;
+import static br.com.application.utils.UtilsConstantes.CLASS_VENDEDOR;
 import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
 import java.awt.Color;
@@ -14,25 +19,29 @@ import java.awt.event.KeyEvent;
  *
  * @author Matheus Castro
  */
-public class QuantidadeDialog extends javax.swing.JDialog {
+public final class ExcluirCadastroDialog extends javax.swing.JDialog {
 
-    private int quantidade;
+    private int codigo;
+    private static String className;
 
     public int getQuantidade() {
-        return quantidade;
+        return codigo;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidade(int codigo) {
+        this.codigo = codigo;
     }
 
     /**
      * Creates new form NovoClienteDialog
      */
-    public QuantidadeDialog(java.awt.Frame parent, boolean modal) {
+    public ExcluirCadastroDialog(java.awt.Frame parent, boolean modal, String className) {
         super(parent, modal);
         initComponents();
+        ExcluirCadastroDialog.className = className;
         UtilsView.configuracaoInicialJDialog(this);
+        setTitle(className);
+        setVisible(true);        
     }
 
     /**
@@ -48,7 +57,7 @@ public class QuantidadeDialog extends javax.swing.JDialog {
         txtTitle = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        edtQuantidade = new javax.swing.JTextField();
+        edtCodigo = new javax.swing.JTextField();
         btnCofirmar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -57,16 +66,16 @@ public class QuantidadeDialog extends javax.swing.JDialog {
 
         txtTitle.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtTitle.setForeground(new java.awt.Color(255, 255, 255));
-        txtTitle.setText("Adicionar Produto");
+        txtTitle.setText("Remover Cadastro");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(102, Short.MAX_VALUE)
                 .addComponent(txtTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,18 +85,18 @@ public class QuantidadeDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informe a quantidade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Informe o código", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
-        edtQuantidade.addActionListener(new java.awt.event.ActionListener() {
+        edtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtQuantidadeActionPerformed(evt);
+                edtCodigoActionPerformed(evt);
             }
         });
-        edtQuantidade.addKeyListener(new java.awt.event.KeyAdapter() {
+        edtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                edtQuantidadeKeyTyped(evt);
+                edtCodigoKeyTyped(evt);
             }
         });
 
@@ -109,7 +118,7 @@ public class QuantidadeDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edtQuantidade)
+                        .addComponent(edtCodigo)
                         .addGap(10, 10, 10))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -120,7 +129,7 @@ public class QuantidadeDialog extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(edtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(edtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(38, 38, 38)
@@ -153,31 +162,49 @@ public class QuantidadeDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void edtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtQuantidadeActionPerformed
+    private void edtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtQuantidadeActionPerformed
+    }//GEN-LAST:event_edtCodigoActionPerformed
 
     private void btnCofirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCofirmarActionPerformed
-        
-        int qtd = Integer.parseInt(edtQuantidade.getText());
-        
-        if(qtd <= 0 || qtd >= 100){
-            new AvisosDialog(null, true, "A quantidade deve ser maior que zero e menor que cem.", true);            
-            edtQuantidade.setBackground(Color.YELLOW);
+
+        if (UtilsValidacao.isNullOuVazio(edtCodigo.getText())) {
+            new AvisosDialog(null, true, "Informe o código do " + className, true);
+            edtCodigo.setBackground(Color.YELLOW);
             return;
-        }
-        
-        if (UtilsValidacao.isNullOuVazio(edtQuantidade.getText())) {
-            new AvisosDialog(null, true, "Informe a quantidade do produto.", true);
-            edtQuantidade.setBackground(Color.YELLOW);
         } else {
-            setQuantidade(Integer.parseInt(edtQuantidade.getText()));
-            dispose();            
+            setQuantidade(Integer.parseInt(edtCodigo.getText()));
+            dispose();
+        }
+
+        int codigo = Integer.parseInt(edtCodigo.getText());
+
+        switch (className) {
+            case CLASS_CLIENTE:
+                // Realizar exclusão do cliente
+                System.out.println("CLASS_CLIENTE");
+                break;
+            case CLASS_DEPARTAMENTO:
+                // Realizar exclusão do departamento
+                System.out.println("CLASS_DEPARTAMENTO");
+                break;
+            case CLASS_OPERADOR:
+                // Realizar exclusão do operador
+                System.out.println("CLASS_OPERADOR");
+                break;
+            case CLASS_PRODUTO:
+                // Realizar exclusão do produto
+                System.out.println("CLASS_PRODUTO");
+                break;
+            case CLASS_VENDEDOR:
+                // Realizar exclusão do vendedor
+                System.out.println("CLASS_VENDEDOR");
+                break;
         }
     }//GEN-LAST:event_btnCofirmarActionPerformed
 
-    private void edtQuantidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtQuantidadeKeyTyped
-        if (edtQuantidade.getText().length() > 10) {
+    private void edtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoKeyTyped
+        if (edtCodigo.getText().length() > 10) {
             evt.consume();
             new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
         }
@@ -188,7 +215,7 @@ public class QuantidadeDialog extends javax.swing.JDialog {
             evt.consume();
             new AvisosDialog(null, true, "O campo quantidade só aceita valores númericos.", true);
         }
-    }//GEN-LAST:event_edtQuantidadeKeyTyped
+    }//GEN-LAST:event_edtCodigoKeyTyped
 
     /**
      * @param args the command line arguments
@@ -207,14 +234,22 @@ public class QuantidadeDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(QuantidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirCadastroDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(QuantidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirCadastroDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(QuantidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirCadastroDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(QuantidadeDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ExcluirCadastroDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -227,7 +262,7 @@ public class QuantidadeDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                QuantidadeDialog dialog = new QuantidadeDialog(new javax.swing.JFrame(), true);
+                ExcluirCadastroDialog dialog = new ExcluirCadastroDialog(new javax.swing.JFrame(), true, className);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -239,9 +274,17 @@ public class QuantidadeDialog extends javax.swing.JDialog {
         });
     }
 
+    public void setTitle(String v) {
+        if (v != null) {
+            txtTitle.setText("Excluir " + v);
+        } else {
+            txtTitle.setText("Excluir Cadastro");
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCofirmar;
-    private javax.swing.JTextField edtQuantidade;
+    private javax.swing.JTextField edtCodigo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
