@@ -5,6 +5,7 @@
  */
 package br.com.application.dialog;
 
+import br.com.application.utils.UtilsView;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,15 +16,18 @@ import javax.swing.UIManager;
  * @author Matheus Castro
  */
 public class FinalizarVendaDialog extends javax.swing.JDialog {
+    
+    private static String troco;
 
     /**
      * Creates new form FinalizarVendaDialog
      */
-    public FinalizarVendaDialog(java.awt.Frame parent, boolean modal) {
+    public FinalizarVendaDialog(java.awt.Frame parent, boolean modal, String troco) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
+        UtilsView.configuracaoInicialJDialog(this);
         UIManager.put("nimbusOrange", new Color(0, 204, 0));
+        FinalizarVendaDialog.troco = troco;
         finalizarVenda();
         setVisible(true);
     }
@@ -148,7 +152,7 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FinalizarVendaDialog dialog = new FinalizarVendaDialog(new javax.swing.JFrame(), true);
+                FinalizarVendaDialog dialog = new FinalizarVendaDialog(new javax.swing.JFrame(), true, troco);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -188,7 +192,9 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
                 }
                 btnOK.setVisible(true);
                 txtFinalizaVEnda.setText("Venda finalizada com sucesso!");
-                txtTroco.setVisible(true);
+                System.out.println("Trco = " + troco);
+                txtTroco.setText("Troco R$" + troco);
+                txtTroco.setVisible(true);                
             }
         }
         ).start();

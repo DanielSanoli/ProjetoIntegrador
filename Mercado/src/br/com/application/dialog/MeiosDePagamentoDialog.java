@@ -627,13 +627,17 @@ public class MeiosDePagamentoDialog extends javax.swing.JDialog {
         Double pagamentosRealizados = (dinheiroD + debitoD + creditoD + valeRefeicaoD + valeAlimentacaoD + giftPassD);
 
         double res = (totalD + acreD - descD) - pagamentosRealizados;
-
-        txtFaltaPagar.setText("R$" + res);
-
+        
         System.out.println("res: " + res);
 
-        if (res == 0.0) {
-            FinalizarVendaDialog fv = new FinalizarVendaDialog(null, true);
+        if (res >= 0.0) {
+            txtFaltaPagar.setText("R$" + res);
+        } else {            
+            txtFaltaPagar.setText(VALOR_ZERADO);            
+        }
+
+        if (res <= 0.0) {
+            FinalizarVendaDialog fv = new FinalizarVendaDialog(null, true, String.valueOf(res).replace("-", ""));
             dispose();
             if (carrinhoDeCompra != null) {
                 DefaultTableModel model = (DefaultTableModel) carrinhoDeCompra.getModel();

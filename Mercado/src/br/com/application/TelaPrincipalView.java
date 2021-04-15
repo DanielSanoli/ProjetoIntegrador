@@ -2103,7 +2103,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
         if (jtCarrinho.getRowCount() > 0) {
-            FinalizarVendaDialog finalizar = new FinalizarVendaDialog(null, true);
+            FinalizarVendaDialog finalizar = new FinalizarVendaDialog(null, true, "0.00");
             finalizar.setVisible(true);
             while (jtCarrinho.getRowCount() > 0) {
                 model.removeRow(0);
