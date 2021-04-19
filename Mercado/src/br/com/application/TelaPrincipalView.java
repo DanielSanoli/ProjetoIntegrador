@@ -2104,7 +2104,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
         if (jtCarrinho.getRowCount() > 0) {
             FinalizarVendaDialog finalizar = new FinalizarVendaDialog(null, true, "0.00");
-            finalizar.setVisible(true);
             while (jtCarrinho.getRowCount() > 0) {
                 model.removeRow(0);
             }
