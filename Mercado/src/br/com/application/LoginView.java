@@ -9,6 +9,8 @@ import br.com.application.dialog.AvisosDialog;
 import static br.com.application.utils.UtilsConstantes.INFORME_LOGIN;
 import static br.com.application.utils.UtilsConstantes.INFORME_SENHA;
 import br.com.application.utils.UtilsView;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -21,7 +23,7 @@ public class LoginView extends javax.swing.JFrame {
      */
     public LoginView() {
         initComponents();
-        UtilsView.configuracaoInicialJFrame(this);        
+        UtilsView.configuracaoInicialJFrame(this);
     }
 
     /**
@@ -53,6 +55,18 @@ public class LoginView extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel2.setText("Senha:");
+
+        txtLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLoginKeyPressed(evt);
+            }
+        });
+
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -123,22 +137,56 @@ public class LoginView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        
+
         if (txtLogin.getText().trim().equals("")) {
             new AvisosDialog(null, true, INFORME_LOGIN, true);
+            txtLogin.setBackground(Color.yellow);
             return;
-            
+        } else {
+            txtLogin.setBackground(Color.white);
         }
+
         if (txtSenha.getText().trim().equals("")) {
             new AvisosDialog(null, true, INFORME_SENHA, true);
+            txtSenha.setBackground(Color.yellow);
             return;
+        } else {
+            txtSenha.setBackground(Color.white);
         }
-        
+
         TelaPrincipalView tl = new TelaPrincipalView();
         tl.setVisible(true);
-        
+
         dispose();
     }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void txtLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyPressed
+        if (txtLogin.getText().length() > 10) {
+            evt.consume();
+            new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
+        }
+
+        char c = evt.getKeyChar();
+
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            new AvisosDialog(null, true, "O campo login só aceita valores númericos.", true);
+        }
+    }//GEN-LAST:event_txtLoginKeyPressed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        if (txtSenha.getText().length() > 10) {
+            evt.consume();
+            new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
+        }
+
+        char c = evt.getKeyChar();
+
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+            evt.consume();
+            new AvisosDialog(null, true, "O campo senha só aceita valores númericos.", true);
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
 
     /**
      * @param args the command line arguments

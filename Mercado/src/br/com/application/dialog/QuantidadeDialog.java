@@ -186,7 +186,7 @@ public class QuantidadeDialog extends javax.swing.JDialog {
         int qtd = Integer.parseInt(edtQuantidade.getText());
 
         if (qtd <= 0 || qtd >= 100) {
-            new AvisosDialog(null, true, "A quantidade deve ser maior que zero e menor que cem.", true);
+            new AvisosDialog(null, true, "A quantidade deve ser maior que 0 e menor que 100.", true);
             edtQuantidade.setBackground(Color.YELLOW);
             return;
         }
