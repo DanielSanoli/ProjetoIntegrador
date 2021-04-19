@@ -895,7 +895,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jListaDeClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "458.767.068-50", "Matheus", "teste@teste.com.br", "5011-5450", "R. do Teste", "41", "Casa", "Feminino"},
+                {"1", "111.111.111-11", "Teste", "teste@teste.com.br", "1111-1111", "R. do Teste", "41", "Casa", "Feminino"},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
