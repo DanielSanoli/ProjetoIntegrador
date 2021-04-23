@@ -42,10 +42,6 @@ import static br.com.application.utils.UtilsConstantes.VALOR_ZERADO;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Matheus Castro
- */
 public class TelaPrincipalView extends javax.swing.JFrame {
 
     /**
