@@ -5,6 +5,7 @@
  */
 package br.com.application.dialog.cadastros;
 
+import br.com.application.dao.ClienteDAO;
 import br.com.application.dialog.AvisosDialog;
 import br.com.application.models.Cliente;
 import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
@@ -13,7 +14,6 @@ import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.sql.SQLException;
 
 /**
  *
@@ -23,13 +23,15 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
 
     private static boolean isCadastro;
     private static Cliente cliente;
+    public static int retorno;
 
-    public CadastroClienteDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Cliente cliente) {
+    public CadastroClienteDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Cliente cliente, int retorno) {
         super(parent, modal);
         initComponents();
         UtilsView.configuracaoInicialJDialog(this);
         CadastroClienteDialog.isCadastro = isCadastro;
         CadastroClienteDialog.cliente = cliente;
+        CadastroClienteDialog.retorno = retorno;
         setTitle(isCadastro);
         setCliente(cliente);
         setVisible(true);
@@ -110,6 +112,7 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        edtCodigo.setEditable(false);
         edtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtCodigoActionPerformed(evt);
@@ -159,7 +162,7 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("CPF/CNPJ *");
+        jLabel2.setText("CPF *");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -528,27 +531,18 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // O código deve ser coletado do banco de dados, com base no próximo disponível.
-        // Lembrando que o código será a primary key, auto incrementada a cada inserção.
+
         try {
-            String cod = edtCodigo.getText();
             String cpf = edtCpf.getText().replaceAll("[^0-9]", "");
             String nome = edtNome.getText();
             String email = edtEmail.getText();
             String telefone = edtTelefone.getText();
             String logradouro = edtLogradouro.getText();
+            String numero = edtNumero.getText();
             String complemento = edtComplemento.getText();
             boolean rdMasculino = this.rdMasculino.isSelected();
             boolean rdFeminino = this.rdFeminino.isSelected();
-            char sexo;
-
-            if (UtilsValidacao.isNullOuVazio(cod)) {
-                new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
-                edtCodigo.setBackground(Color.yellow);
-                return;
-            } else {
-                edtCodigo.setBackground(Color.white);
-            }
+            String sexo;
 
             if (UtilsValidacao.isNullOuVazio(cpf)) {
                 new AvisosDialog(null, true, "O preenchimento do campo CPF/CNPJ é obrigatório.", true);
@@ -578,20 +572,21 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
                 new AvisosDialog(null, true, "Selecione o sexo.", true);
                 return;
             } else {
-                sexo = this.rdMasculino.isSelected() ? 'M' : 'F';
+                sexo = this.rdMasculino.isSelected() ? "M" : "F";
             }
-            Cliente cliente = new Cliente(cpf, nome, email, telefone, logradouro, logradouro, complemento, sexo);
-            AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
-            dispose();
+            Cliente cliente = new Cliente(cpf, nome, email, telefone, logradouro, numero, complemento, sexo);
+            boolean res = ClienteDAO.cadastrar(cliente);
+            if (res) {
+                AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
+                dispose();
+                retorno = 1;
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, true);
+            }
         } catch (Exception ex) {
             AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
             dispose();
         }
-
-        System.out.println("Teste");
-
-        // Objeto cliente criado, resta apenas registrar no banco
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void rdFemininoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdFemininoActionPerformed
@@ -734,7 +729,7 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastroClienteDialog dialog = new CadastroClienteDialog(new javax.swing.JFrame(), true, isCadastro, cliente);
+                CadastroClienteDialog dialog = new CadastroClienteDialog(new javax.swing.JFrame(), true, isCadastro, cliente, retorno);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -765,7 +760,7 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
             edtLogradouro.setText(!UtilsValidacao.isNullOuVazio(enderecoLogradouro) ? enderecoLogradouro : "");
             edtNumero.setText(!UtilsValidacao.isNullOuVazio(enderecoNumero) ? enderecoNumero : "");
             edtComplemento.setText(!UtilsValidacao.isNullOuVazio(enderecoCompleto) ? enderecoCompleto : "");
-            if (cliente.getSexo() == 'M') {
+            if (cliente.getSexo() == "M") {
                 rdMasculino.setSelected(true);
             } else {
                 rdFeminino.setSelected(true);

@@ -1,8 +1,7 @@
-
 package br.com.application.models;
 
 public class Cliente {
-    
+
     private int codigo;
     private String CPF;
     private String nome;
@@ -11,12 +10,12 @@ public class Cliente {
     private String enderecoLogradouro;
     private String enderecoNumero;
     private String enderecoComplemento;
-    private char sexo;
-    
+    private String sexo;
+
     public Cliente() {
     }
-    
-    public Cliente(String CPF, String nome, String email, String telefone, String enderecoLogradouro, String enderecoNumero, String enderecoComplemento, char sexo) {
+
+    public Cliente(String CPF, String nome, String email, String telefone, String enderecoLogradouro, String enderecoNumero, String enderecoComplemento, String sexo) {
         this.CPF = CPF;
         this.nome = nome;
         this.email = email;
@@ -25,7 +24,7 @@ public class Cliente {
         this.enderecoNumero = enderecoNumero;
         this.enderecoComplemento = enderecoComplemento;
         this.sexo = sexo;
-    }    
+    }
 
     public int getCodigo() {
         return codigo;
@@ -34,7 +33,7 @@ public class Cliente {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-    
+
     public String getCPF() {
         return CPF;
     }
@@ -91,13 +90,11 @@ public class Cliente {
         this.enderecoComplemento = enderecoComplemento;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
-    
-    
 }

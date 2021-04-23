@@ -5,6 +5,7 @@
  */
 package br.com.application;
 
+import br.com.application.dao.ClienteDAO;
 import br.com.application.dialog.AdicionarClienteDialog;
 import br.com.application.dialog.AvisosDialog;
 import br.com.application.dialog.FinalizarVendaDialog;
@@ -39,6 +40,7 @@ import static br.com.application.utils.UtilsConstantes.CLASS_OPERADOR;
 import static br.com.application.utils.UtilsConstantes.CLASS_PRODUTO;
 import static br.com.application.utils.UtilsConstantes.CLASS_VENDEDOR;
 import static br.com.application.utils.UtilsConstantes.VALOR_ZERADO;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -50,7 +52,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     public TelaPrincipalView() {
         initComponents();
         initMethods();
-
+        atualizarListaCliente();
     }
 
     /**
@@ -832,6 +834,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Relatório", jPanel10);
 
+        jTabbedPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane2MouseClicked(evt);
+            }
+        });
+
         jPanel14.setBackground(new java.awt.Color(27, 59, 108));
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_adicionar_32px.png"))); // NOI18N
@@ -891,46 +899,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jListaDeClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1", "111.111.111-11", "Teste", "teste@teste.com.br", "1111-1111", "R. do Teste", "41", "Casa", "Feminino"},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "CPF", "Nome", "Email", "Telefone", "Logradouro", "Numero", "Complemento", "Sexo"
@@ -2178,7 +2147,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        CadastroClienteDialog cc = new CadastroClienteDialog(this, true, true, null);
+        CadastroClienteDialog cc = new CadastroClienteDialog(this, true, true, null, 0);
+
+        if (cc.retorno == 1) {
+            atualizarListaCliente();
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -2298,7 +2271,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtDescricaoProdutoE7ActionPerformed
 
     private void btnFiltrar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar7ActionPerformed
-        // TODO add your handling code here:
+        atualizarListaCliente();
     }//GEN-LAST:event_btnFiltrar7ActionPerformed
 
     private void edtDescricaoProdutoE8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDescricaoProdutoE8ActionPerformed
@@ -2328,9 +2301,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             cliente.setEnderecoLogradouro(logradouro);
             cliente.setEnderecoNumero(numero);
             cliente.setEnderecoComplemento(complemento);
-            cliente.setSexo(sexo.equals(UtilsConstantes.MASCULINO) ? 'M' : 'F');
+            cliente.setSexo(sexo.equals(UtilsConstantes.MASCULINO) ? "M" : "F");
 
-            CadastroClienteDialog cc = new CadastroClienteDialog(this, true, false, cliente);
+            CadastroClienteDialog cc = new CadastroClienteDialog(this, true, false, cliente, 0);
         } catch (NullPointerException ex) {
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum cliente na linha selecionada.", true);
         }
@@ -2396,6 +2369,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum operador na linha selecionada.", true);
         }
     }//GEN-LAST:event_jListaOperadorMouseClicked
+
+    private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -2712,5 +2689,39 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         adicionarProduto();
         removerProduto();
+    }
+
+    public void atualizarListaCliente() {
+        ArrayList<Cliente> clientes = ClienteDAO.buscarTodos();
+        if (clientes != null) {
+            DefaultTableModel tmClientes = new DefaultTableModel();
+            tmClientes.addColumn("Código");
+            tmClientes.addColumn("CPF");
+            tmClientes.addColumn("Nome");
+            tmClientes.addColumn("Email");
+            tmClientes.addColumn("Telefone");
+            tmClientes.addColumn("Logradouro");
+            tmClientes.addColumn("Número");
+            tmClientes.addColumn("Complemento");
+            tmClientes.addColumn("Sexo");
+            jListaDeClientes.setModel(tmClientes);
+            tmClientes.setRowCount(0);
+
+            //Para cada cliente resgatado do banco de dados, atualizo a tabela
+            for (Cliente c : clientes) {
+                tmClientes.addRow(new Object[]{
+                    c.getCodigo(),
+                    c.getCPF(),
+                    c.getNome(),
+                    c.getEmail(),
+                    c.getTelefone(),
+                    c.getEnderecoLogradouro(),
+                    c.getEnderecoNumero(),
+                    c.getEnderecoComplemento(),
+                    c.getSexo()});
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi encontrado nenhum computador cadastrado.");
+        }
     }
 }
