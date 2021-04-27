@@ -1367,15 +1367,15 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="edtDescricaoProdutoE7" alignment="1" pref="800" max="32767" attributes="0"/>
-                                          <Component id="edtCodigoProdutoE7" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="edtDescricaoProdutoE8" max="32767" attributes="0"/>
+                                          <Component id="edtCpfCliente" alignment="1" pref="800" max="32767" attributes="0"/>
+                                          <Component id="edtCodigoCliente" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="edtNomeCliente" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="rbCodigoProdutoE7" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="rbDepartamentoE4" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="rbDescricaoProdutoE7" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="rbCodigoCliente" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="rbNomeCliente" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="rbCpfCliente" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1389,20 +1389,20 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
                                   <Component id="jLabel38" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="edtCodigoProdutoE7" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbCodigoProdutoE7" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="edtCodigoCliente" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbCodigoCliente" alignment="2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
                                   <Component id="jLabel39" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="edtDescricaoProdutoE7" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbDescricaoProdutoE7" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="edtCpfCliente" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbCpfCliente" alignment="2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
-                                  <Component id="edtDescricaoProdutoE8" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="edtNomeCliente" alignment="2" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel40" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbDepartamentoE4" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rbNomeCliente" alignment="2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="btnFiltrar7" min="-2" pref="42" max="-2" attributes="0"/>
@@ -1417,10 +1417,10 @@
                         <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="edtCodigoProdutoE7">
+                    <Component class="javax.swing.JTextField" name="edtCodigoCliente">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtCodigoProdutoE7ActionPerformed"/>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtCodigoProdutoE7KeyTyped"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtCodigoClienteActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtCodigoClienteKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel39">
@@ -1428,9 +1428,9 @@
                         <Property name="text" type="java.lang.String" value="CPF"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="edtDescricaoProdutoE7">
+                    <Component class="javax.swing.JTextField" name="edtCpfCliente">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtDescricaoProdutoE7ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtCpfClienteActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnFiltrar7">
@@ -1448,15 +1448,15 @@
                         <Property name="text" type="java.lang.String" value="Nome"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbCodigoProdutoE7">
+                    <Component class="javax.swing.JRadioButton" name="rbCodigoCliente">
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbDescricaoProdutoE7">
+                    <Component class="javax.swing.JRadioButton" name="rbCpfCliente">
                     </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbDepartamentoE4">
+                    <Component class="javax.swing.JRadioButton" name="rbNomeCliente">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="edtDescricaoProdutoE8">
+                    <Component class="javax.swing.JTextField" name="edtNomeCliente">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtDescricaoProdutoE8ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtNomeClienteActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

@@ -531,7 +531,7 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+            
         try {
             String cpf = edtCpf.getText().replaceAll("[^0-9]", "");
             String nome = edtNome.getText();

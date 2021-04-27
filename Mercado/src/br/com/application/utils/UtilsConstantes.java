@@ -1,6 +1,10 @@
 package br.com.application.utils;
 
+
+
 public interface UtilsConstantes {
+    
+    Cliente cliente = new Cliente();
 
     String MASCARA_REAL = "R$";
     String MASCULINO = "Masculino";
