@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.application.dialog.cadastros;
+package br.com.application.view;
 
+import br.com.application.controller.ClienteController;
 import br.com.application.dao.ClienteDAO;
-import br.com.application.dialog.AvisosDialog;
+import br.com.application.view.AvisosDialog;
 import br.com.application.models.Cliente;
 import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
 import static br.com.application.utils.UtilsConstantes.FALHA_NO_CADASTRO;
@@ -35,7 +36,6 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
         setTitle(isCadastro);
         setCliente(cliente);
         setVisible(true);
-
     }
 
     /**
@@ -574,8 +574,7 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
             } else {
                 sexo = this.rdMasculino.isSelected() ? "M" : "F";
             }
-            Cliente cliente = new Cliente(cpf, nome, email, telefone, logradouro, numero, complemento, sexo);
-            boolean res = ClienteDAO.cadastrar(cliente);
+            boolean res = ClienteController.cadastrar(cpf, nome, email, telefone, logradouro, numero, complemento, sexo);
             if (res) {
                 AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
                 dispose();

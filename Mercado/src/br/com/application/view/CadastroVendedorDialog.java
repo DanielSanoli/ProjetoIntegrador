@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.application.dialog.cadastros;
+package br.com.application.view;
 
-import br.com.application.dialog.AvisosDialog;
-import br.com.application.models.Produto;
+import br.com.application.view.AvisosDialog;
+import br.com.application.models.Vendedor;
 import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
 import static br.com.application.utils.UtilsConstantes.FALHA_NO_CADASTRO;
 import br.com.application.utils.UtilsValidacao;
@@ -18,19 +18,19 @@ import java.awt.event.KeyEvent;
  *
  * @author Matheus Castro
  */
-public final class CadastroProdutoDialog extends javax.swing.JDialog {
+public final class CadastroVendedorDialog extends javax.swing.JDialog {
 
     private static boolean isCadastro;
-    private static Produto produto;
+    private static Vendedor vendedor;
 
-    public CadastroProdutoDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Produto produto) {
+    public CadastroVendedorDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Vendedor vendedor) {
         super(parent, modal);
         initComponents();
         UtilsView.configuracaoInicialJDialog(this);
-        CadastroProdutoDialog.isCadastro = isCadastro;
-        CadastroProdutoDialog.produto = produto;
+        CadastroVendedorDialog.isCadastro = isCadastro;
+        CadastroVendedorDialog.vendedor = vendedor;
         setTitle(isCadastro);
-        setProduto(produto);
+        setVendedor(vendedor);
         setVisible(true);
     }
 
@@ -52,19 +52,19 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        edtDescricaoProduto = new javax.swing.JTextField();
+        edtNomeVendedor = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
+        edtEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jListaDeDepartamentos = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
+        edtSalario = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        edtPreco = new javax.swing.JFormattedTextField();
         jPanel7 = new javax.swing.JPanel();
+        edtTelefone = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        edtEstoqueAtual = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,7 +72,7 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
 
         txtTitle.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtTitle.setForeground(new java.awt.Color(255, 255, 255));
-        txtTitle.setText("Adicionar Produto");
+        txtTitle.setText("Adicionar Vendedor");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -91,7 +91,7 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do vendedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -116,8 +116,8 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(edtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(edtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -133,18 +133,7 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Descrição *");
-
-        edtDescricaoProduto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtDescricaoProdutoActionPerformed(evt);
-            }
-        });
-        edtDescricaoProduto.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                edtDescricaoProdutoKeyTyped(evt);
-            }
-        });
+        jLabel3.setText("Nome *");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -154,7 +143,7 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(edtDescricaoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(edtNomeVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -163,16 +152,20 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel3)
-                    .addComponent(edtDescricaoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtNomeVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Departamento");
+        edtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtEmailKeyTyped(evt);
+            }
+        });
 
-        jListaDeDepartamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Frutas", "Verduras", "Legumes", "Padaria" }));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Email");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -182,7 +175,7 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jListaDeDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(edtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -191,21 +184,20 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel4)
-                    .addComponent(jListaDeDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Preço *");
-
-        edtPreco.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
-        edtPreco.addKeyListener(new java.awt.event.KeyAdapter() {
+        edtSalario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                edtPrecoKeyTyped(evt);
+                edtSalarioKeyTyped(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Salário");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -215,29 +207,29 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(edtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addComponent(edtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel6)
-                    .addComponent(edtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Estoque Atual *");
-
-        edtEstoqueAtual.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                edtEstoqueAtualKeyPressed(evt);
+        edtTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtTelefoneKeyTyped(evt);
             }
         });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Telefone");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -246,8 +238,8 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(edtEstoqueAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(edtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -256,25 +248,25 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel7)
-                    .addComponent(edtEstoqueAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanel8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jButton2.setBackground(new java.awt.Color(255, 204, 204));
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setText("Confirmar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(255, 204, 204));
+        jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -297,8 +289,8 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
@@ -308,21 +300,21 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -351,7 +343,7 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
@@ -367,13 +359,13 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
         try {
-            String cod = edtCodigo.getText();
-            String nomeProduto = edtDescricaoProduto.getText();
-            String departamento = jListaDeDepartamentos.getSelectedItem().toString();
-            String preco = edtPreco.getText();
-            String estoqueAtual = edtEstoqueAtual.getText();
+            int cod = Integer.parseInt(edtCodigo.getText());
+            String nomeVendedor = edtNomeVendedor.getText();
+            String email = edtEmail.getText();
+            double salario = Double.parseDouble(edtSalario.getText());
+            String telefone = edtTelefone.getText();
 
-            if (UtilsValidacao.isNullOuVazio(cod)) {
+            if (UtilsValidacao.isNullOuVazio(String.valueOf(cod))) {
                 new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
                 edtCodigo.setBackground(Color.yellow);
                 return;
@@ -381,38 +373,20 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
                 edtCodigo.setBackground(Color.white);
             }
 
-            if (UtilsValidacao.isNullOuVazio(nomeProduto)) {
+            if (UtilsValidacao.isNullOuVazio(nomeVendedor)) {
                 new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
-                edtDescricaoProduto.setBackground(Color.yellow);
+                edtNomeVendedor.setBackground(Color.yellow);
                 return;
             } else {
-                edtDescricaoProduto.setBackground(Color.white);
+                edtNomeVendedor.setBackground(Color.white);
             }
-
-            if (UtilsValidacao.isNullOuVazio(preco)) {
-                new AvisosDialog(null, true, "O preenchimento do campo preço é obrigatório.", true);
-                edtPreco.setBackground(Color.yellow);
-                return;
-            } else {
-                edtPreco.setBackground(Color.white);
-            }
-
-            if (UtilsValidacao.isNullOuVazio(estoqueAtual)) {
-                new AvisosDialog(null, true, "O preenchimento do campo preço é obrigatório.", true);
-                edtEstoqueAtual.setBackground(Color.yellow);
-                return;
-            } else {
-                edtEstoqueAtual.setBackground(Color.white);
-            }
-            preco = preco.replace(",", ".");
-            Produto produto = new Produto(nomeProduto, departamento, Double.parseDouble(preco), Integer.parseInt(cod), Integer.parseInt(estoqueAtual));
+            Vendedor departamento = new Vendedor(cod, email, salario, nomeVendedor, telefone);
             AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
             dispose();
         } catch (Exception ex) {
             AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
             dispose();
         }
-        // Objeto cliente criado, resta apenas registrar no banco
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -434,8 +408,8 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_edtCodigoKeyTyped
 
-    private void edtEstoqueAtualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtEstoqueAtualKeyPressed
-        if (edtEstoqueAtual.getText().length() > 10) {
+    private void edtSalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSalarioKeyTyped
+        if (edtSalario.getText().length() > 10) {
             evt.consume();
             new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
         }
@@ -444,34 +418,29 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
 
         if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            new AvisosDialog(null, true, "O campo estoque atual só aceita valores númericos.", true);
+            new AvisosDialog(null, true, "O campo salário só aceita valores númericos.", true);
         }
-    }//GEN-LAST:event_edtEstoqueAtualKeyPressed
+    }//GEN-LAST:event_edtSalarioKeyTyped
 
-    private void edtDescricaoProdutoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtDescricaoProdutoKeyTyped
-        if (edtDescricaoProduto.getText().length() > 20) {
+    private void edtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtEmailKeyTyped
+        if (edtSalario.getText().length() > 10) {
             evt.consume();
             new AvisosDialog(null, true, "Máximo de 20 caracteres atingidos.", true);
         }
-    }//GEN-LAST:event_edtDescricaoProdutoKeyTyped
+    }//GEN-LAST:event_edtEmailKeyTyped
 
-    private void edtDescricaoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDescricaoProdutoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtDescricaoProdutoActionPerformed
-
-    private void edtPrecoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtPrecoKeyTyped
-        if (edtEstoqueAtual.getText().length() > 10) {
+    private void edtTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtTelefoneKeyTyped
+        if (edtSalario.getText().length() > 11) {
             evt.consume();
-            new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
+            new AvisosDialog(null, true, "Máximo de 11 caracteres atingidos.", true);
         }
-
         char c = evt.getKeyChar();
 
-        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && (c != ',')) {
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
-            new AvisosDialog(null, true, "O campo estoque atual só aceita valores númericos.", true);
+            new AvisosDialog(null, true, "O campo telefone só aceita valores númericos.", true);
         }
-    }//GEN-LAST:event_edtPrecoKeyTyped
+    }//GEN-LAST:event_edtTelefoneKeyTyped
 
     /**
      * @param args the command line arguments
@@ -491,19 +460,19 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroProdutoDialog.class
+            java.util.logging.Logger.getLogger(CadastroVendedorDialog.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroProdutoDialog.class
+            java.util.logging.Logger.getLogger(CadastroVendedorDialog.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroProdutoDialog.class
+            java.util.logging.Logger.getLogger(CadastroVendedorDialog.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroProdutoDialog.class
+            java.util.logging.Logger.getLogger(CadastroVendedorDialog.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -638,7 +607,7 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastroProdutoDialog dialog = new CadastroProdutoDialog(new javax.swing.JFrame(), true, isCadastro, produto);
+                CadastroVendedorDialog dialog = new CadastroVendedorDialog(new javax.swing.JFrame(), true, isCadastro, vendedor);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -650,34 +619,36 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         });
     }
 
-    public void setProduto(Produto produto) {
-        if (produto != null) {
-            String codigo = String.valueOf(produto.getCodigo());
-            String estoqueAtual = String.valueOf(produto.getEstoqueAtual());
-            String valor = String.valueOf(produto.getValor());
-            String departamento = String.valueOf(produto.getDepartamento());
+    public void setVendedor(Vendedor vendedor) {
+        if (vendedor != null) {
+            String codigo = String.valueOf(vendedor.getCodigo());
+            String nome = vendedor.getNome();
+            String email = vendedor.getEmail();
+            String salario = String.valueOf(vendedor.getSalario());
+            String telefone = vendedor.getTelefone();
             edtCodigo.setText(!UtilsValidacao.isNullOuVazio(codigo) ? codigo : "");
-            edtDescricaoProduto.setText(!UtilsValidacao.isNullOuVazio(produto.getDescricao()) ? produto.getDescricao() : "");
-            jListaDeDepartamentos.setSelectedItem(departamento);
-            edtPreco.setText(!UtilsValidacao.isNullOuVazio(valor) ? valor : "");
-            edtEstoqueAtual.setText(!UtilsValidacao.isNullOuVazio(estoqueAtual) ? estoqueAtual : "");
+            edtNomeVendedor.setText(!UtilsValidacao.isNullOuVazio(nome) ? nome : "");
+            edtEmail.setText(!UtilsValidacao.isNullOuVazio(email) ? email : "");
+            edtSalario.setText(!UtilsValidacao.isNullOuVazio(salario) ? salario : "");
+            edtTelefone.setText(!UtilsValidacao.isNullOuVazio(telefone) ? telefone : "");
         }
     }
 
     public void setTitle(boolean valor) {
         if (valor) {
-            txtTitle.setText("Adicionar Produto");
+            txtTitle.setText("Adicionar Vendedor");
         } else {
-            txtTitle.setText("Editar Produto");
+            txtTitle.setText("Editar Vendedor");
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField edtCodigo;
-    private javax.swing.JTextField edtDescricaoProduto;
-    private javax.swing.JTextField edtEstoqueAtual;
-    private javax.swing.JFormattedTextField edtPreco;
+    private javax.swing.JTextField edtEmail;
+    private javax.swing.JTextField edtNomeVendedor;
+    private javax.swing.JTextField edtSalario;
+    private javax.swing.JTextField edtTelefone;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
@@ -685,7 +656,6 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JComboBox<String> jListaDeDepartamentos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

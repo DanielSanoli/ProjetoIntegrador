@@ -1,6 +1,7 @@
 package br.com.application;
 
-import br.com.application.controller.ConexaoController;
+import br.com.application.view.LoginView;
+import br.com.application.dao.Conexao;
 import java.sql.SQLException;
 
 public class Main {
@@ -9,7 +10,7 @@ public class Main {
         
         
         // Teste de conexão com a base de dados...        
-        ConexaoController.getConnection();
+        Conexao.getConnection();
         
         LoginView lg = new LoginView();
         lg.setVisible(true);

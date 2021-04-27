@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.application;
+package br.com.application.view;
 
-import br.com.application.dialog.AvisosDialog;
+import br.com.application.view.AvisosDialog;
 import static br.com.application.utils.UtilsConstantes.INFORME_LOGIN;
 import static br.com.application.utils.UtilsConstantes.INFORME_SENHA;
 import br.com.application.utils.UtilsView;

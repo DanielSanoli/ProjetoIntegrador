@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.application.dialog;
+package br.com.application.view;
 
 import static br.com.application.utils.UtilsConstantes.MP_DINHEIRO;
 import br.com.application.utils.UtilsView;

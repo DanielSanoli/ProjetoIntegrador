@@ -1,11 +1,10 @@
-package br.com.application.dao;
+package br.com.application.utils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
-class UtilsDB {
+public class UtilsDB {
 
     public static void fecharConexao(PreparedStatement instrucaoSQL, Connection conexao) {
         try {
@@ -26,7 +25,7 @@ class UtilsDB {
         } else {
             System.out.println("Falha no(a) " + operacao);
         }
-        return res;
+        return valor > 0;
     }
 
 }

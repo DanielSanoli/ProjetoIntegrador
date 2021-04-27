@@ -3,8 +3,6 @@ package br.com.application.utils;
 
 
 public interface UtilsConstantes {
-    
-    Cliente cliente = new Cliente();
 
     String MASCARA_REAL = "R$";
     String MASCULINO = "Masculino";
@@ -30,5 +28,10 @@ public interface UtilsConstantes {
     String MP_VALE_ALIMENTACAO = "Vale Alimentação";
     String MP_VALE_REFEICAO = "Vale Refeição";
     String MP_GIFT_PASS = "Gift Pass";
+    
+    //DB
+    String CLIENTE_NAO_ENCONTRADO = "Nenhum cliente encontrado.";
+    String SUCESSO_BUSCA = "Sucesso na busca.";
+    
 
 }
