@@ -23,7 +23,6 @@ import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class TelaPrincipalView extends javax.swing.JFrame {
 
     /**
@@ -44,6 +43,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -939,6 +939,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
 
         jLabel40.setText("Nome");
+
+        buttonGroup2.add(rbCodigoCliente);
+
+        buttonGroup2.add(rbCpfCliente);
+
+        buttonGroup2.add(rbNomeCliente);
 
         edtNomeCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2133,7 +2139,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_CLIENTE);
+        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_CLIENTE, 0);
+        if (ex.retorno == 1) {
+            atualizarTabelaCliente();
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -2141,7 +2150,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_PRODUTO);
+        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_PRODUTO, 0);
+
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void edtCodigoProdutoE1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE1ActionPerformed
@@ -2165,7 +2175,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_DEPARTAMENTO);
+        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_DEPARTAMENTO, 0);
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
@@ -2173,7 +2183,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_VENDEDOR);
+        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_VENDEDOR, 0);
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void edtCodigoProdutoE3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE3ActionPerformed
@@ -2201,7 +2211,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_OPERADOR);
+        ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_OPERADOR, 0);
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void edtCodigoProdutoE4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE4ActionPerformed
@@ -2278,6 +2288,24 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             return;
         }
 
+        if (rbCpfCliente.isSelected()) {
+            if (UtilsTabela.atualizarTabela(ClienteController.buscarPorCpf(cpf), jListaDeClientes)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
+            }
+            return;
+        }
+
+        if (rbNomeCliente.isSelected()) {
+            if (UtilsTabela.atualizarTabela(ClienteController.buscarPorNome(nome), jListaDeClientes)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
+            }
+            return;
+        }
+
         if (UtilsTabela.atualizarTabela(ClienteController.buscarTodos(), jListaDeClientes)) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
         } else {
@@ -2313,6 +2341,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             cliente.setSexo(sexo.equals(UtilsConstantes.MASCULINO) ? "M" : "F");
 
             CadastroClienteDialog cc = new CadastroClienteDialog(this, true, false, cliente, 0);
+            if (cc.retorno == 1) {
+                atualizarTabelaCliente();
+            }
         } catch (NullPointerException ex) {
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum cliente na linha selecionada.", true);
         }
@@ -2435,6 +2466,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton btnFiltrar7;
     private javax.swing.JButton btnFiltrarV;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTextField edtCodProdutoV;
     private javax.swing.JTextField edtCodigoCliente;
     private javax.swing.JTextField edtCodigoProdutoE1;
@@ -2576,16 +2608,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtDataInicail;
     private javax.swing.JLabel txtTotal;
     // End of variables declaration//GEN-END:variables
-  
-
 
     private void initMethods() {
         setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
         UtilsTabela.atualizarTabela(ClienteController.buscarTodos(), jListaDeClientes);
     }
-    
-    private void atualizarTabelaCliente(){
-        UtilsTabela.atualizarTabela(ClienteController.buscarTodos(), jListaDeClientes);        
+
+    private void atualizarTabelaCliente() {
+        UtilsTabela.atualizarTabela(ClienteController.buscarTodos(), jListaDeClientes);
     }
 }

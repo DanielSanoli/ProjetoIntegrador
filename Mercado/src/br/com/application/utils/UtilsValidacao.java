@@ -10,6 +10,10 @@ public class UtilsValidacao {
         return valor.isEmpty() || valor == null;
     }
 
+    public static String removerPontuacaoCPF(String pCpf) {
+        return pCpf.replace(".", "").replace("-", "");
+    }
+
     public static void limparDados(JTextField jtext) {
         jtext.setText("");
     }
@@ -17,7 +21,7 @@ public class UtilsValidacao {
     public static boolean validarData(String valor) {
         return valor.replaceAll(" ", "").equals("//") || valor.length() < 10;
     }
-    
+
     public static boolean isCPF(String CPF) {
         // considera-se erro CPF's formados por uma sequencia de numeros iguais
         if (CPF.equals("00000000000")
