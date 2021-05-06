@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class ClienteController {
 
+    // Insert
     public static boolean cadastrar(String pCpf, String pNome, String pEmail,
             String pTelefone, String pEnderecoLogradouro,
             String pEnderecoNumero, String pEnderecoComplemento, String pSexo) {
@@ -24,82 +25,7 @@ public class ClienteController {
 
     }
 
-    public static ArrayList<String[]> buscarTodos() {
-        ArrayList<Cliente> listaRecebida = ClienteDAO.consultarTodos();
-        ArrayList<String[]> listaRetorno = new ArrayList<>();
-        for (Cliente cliente : listaRecebida) {
-            listaRetorno.add(new String[]{
-                String.valueOf(cliente.getCodigo()),
-                cliente.getCPF(),
-                cliente.getNome(),
-                cliente.getEmail(),
-                cliente.getTelefone(),
-                cliente.getEnderecoLogradouro(),
-                cliente.getEnderecoNumero(),
-                cliente.getEnderecoComplemento(),
-                cliente.getSexo()});
-        }
-        return listaRetorno;
-    }
-
-    public static String[] buscarPorCodigo(int pCodigo) {
-        Cliente clienteRecebido = ClienteDAO.consultarPorCodigo(pCodigo);
-        String[] clienteRetorno = null;
-        if (clienteRecebido != null) {
-            clienteRetorno = new String[]{
-                String.valueOf(clienteRecebido.getCodigo()),
-                clienteRecebido.getCPF(),
-                clienteRecebido.getNome(),
-                clienteRecebido.getEmail(),
-                clienteRecebido.getTelefone(),
-                clienteRecebido.getEnderecoLogradouro(),
-                clienteRecebido.getEnderecoNumero(),
-                clienteRecebido.getEnderecoComplemento(),
-                clienteRecebido.getSexo()};
-        }
-        return clienteRetorno;
-    }
-
-    public static String[] buscarPorCpf(String pCpf) {
-        Cliente clienteRecebido = ClienteDAO.consultarPorCpf(pCpf);
-        String[] clienteRetorno = null;
-        if (clienteRecebido != null) {
-            clienteRetorno = new String[]{
-                String.valueOf(clienteRecebido.getCodigo()),
-                clienteRecebido.getCPF(),
-                clienteRecebido.getNome(),
-                clienteRecebido.getEmail(),
-                clienteRecebido.getTelefone(),
-                clienteRecebido.getEnderecoLogradouro(),
-                clienteRecebido.getEnderecoNumero(),
-                clienteRecebido.getEnderecoComplemento(),
-                clienteRecebido.getSexo()};
-        }
-        return clienteRetorno;
-    }
-
-    public static String[] buscarPorNome(String pNome) {
-        Cliente clienteRecebido = ClienteDAO.consultarPorNome(pNome);
-        String[] clienteRetorno = null;
-        if (clienteRecebido != null) {
-            clienteRetorno = new String[]{
-                String.valueOf(clienteRecebido.getCodigo()),
-                clienteRecebido.getCPF(),
-                clienteRecebido.getNome(),
-                clienteRecebido.getEmail(),
-                clienteRecebido.getTelefone(),
-                clienteRecebido.getEnderecoLogradouro(),
-                clienteRecebido.getEnderecoNumero(),
-                clienteRecebido.getEnderecoComplemento(),
-                clienteRecebido.getSexo()};
-        }
-        return clienteRetorno;
-    }
-
-    public static boolean excluir(int pCodigo) {
-        return ClienteDAO.excluirPorCodigo(pCodigo);
-    }
-
+    // Update
     public static boolean alterar(int pCodigo, String pCpf, String pNome, String pEmail,
             String pTelefone, String pEnderecoLogradouro,
             String pEnderecoNumero, String pEnderecoComplemento, String pSexo) {
@@ -117,6 +43,84 @@ public class ClienteController {
 
         return ClienteDAO.alterar(cliente);
 
+    }
+
+    // Delete
+    public static boolean excluir(int pCodigo) {
+        return ClienteDAO.excluirPorCodigo(pCodigo);
+    }
+
+    // Select
+    public static ArrayList<String[]> consultarTodos() {
+        ArrayList<Cliente> listaRecebida = ClienteDAO.consultarTodos();
+        ArrayList<String[]> listaRetorno = new ArrayList<>();
+        for (Cliente cliente : listaRecebida) {
+            listaRetorno.add(new String[]{
+                String.valueOf(cliente.getCodigo()),
+                cliente.getCPF(),
+                cliente.getNome(),
+                cliente.getEmail(),
+                cliente.getTelefone(),
+                cliente.getEnderecoLogradouro(),
+                cliente.getEnderecoNumero(),
+                cliente.getEnderecoComplemento(),
+                cliente.getSexo()});
+        }
+        return listaRetorno;
+    }
+
+    public static String[] consultarPorCodigo(int pCodigo) {
+        Cliente clienteRecebido = ClienteDAO.consultarPorCodigo(pCodigo);
+        String[] clienteRetorno = null;
+        if (clienteRecebido != null) {
+            clienteRetorno = new String[]{
+                String.valueOf(clienteRecebido.getCodigo()),
+                clienteRecebido.getCPF(),
+                clienteRecebido.getNome(),
+                clienteRecebido.getEmail(),
+                clienteRecebido.getTelefone(),
+                clienteRecebido.getEnderecoLogradouro(),
+                clienteRecebido.getEnderecoNumero(),
+                clienteRecebido.getEnderecoComplemento(),
+                clienteRecebido.getSexo()};
+        }
+        return clienteRetorno;
+    }
+
+    public static String[] consultarPorCpf(String pCpf) {
+        Cliente clienteRecebido = ClienteDAO.consultarPorCpf(pCpf);
+        String[] clienteRetorno = null;
+        if (clienteRecebido != null) {
+            clienteRetorno = new String[]{
+                String.valueOf(clienteRecebido.getCodigo()),
+                clienteRecebido.getCPF(),
+                clienteRecebido.getNome(),
+                clienteRecebido.getEmail(),
+                clienteRecebido.getTelefone(),
+                clienteRecebido.getEnderecoLogradouro(),
+                clienteRecebido.getEnderecoNumero(),
+                clienteRecebido.getEnderecoComplemento(),
+                clienteRecebido.getSexo()};
+        }
+        return clienteRetorno;
+    }
+
+    public static String[] consultarPorNome(String pNome) {
+        Cliente clienteRecebido = ClienteDAO.consultarPorNome(pNome);
+        String[] clienteRetorno = null;
+        if (clienteRecebido != null) {
+            clienteRetorno = new String[]{
+                String.valueOf(clienteRecebido.getCodigo()),
+                clienteRecebido.getCPF(),
+                clienteRecebido.getNome(),
+                clienteRecebido.getEmail(),
+                clienteRecebido.getTelefone(),
+                clienteRecebido.getEnderecoLogradouro(),
+                clienteRecebido.getEnderecoNumero(),
+                clienteRecebido.getEnderecoComplemento(),
+                clienteRecebido.getSexo()};
+        }
+        return clienteRetorno;
     }
 
 }

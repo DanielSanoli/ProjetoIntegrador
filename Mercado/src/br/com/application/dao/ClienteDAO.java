@@ -12,7 +12,8 @@ import java.util.ArrayList;
 
 public class ClienteDAO {
 
-    public static boolean cadastrar(Cliente cliente) {
+    // Insert
+    public static boolean cadastrar(Cliente pCliente) {
 
         boolean resultado = false;
         Connection conexao = null;
@@ -24,14 +25,14 @@ public class ClienteDAO {
             instrucaoSQL = conexao.prepareStatement("insert into cliente(cpf,nome,email,telefone,enderecoLogradouro,enderecoNumero,enderecoComplemento,sexo) values (\n"
                     + "?,?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
 
-            instrucaoSQL.setString(1, cliente.getCPF());
-            instrucaoSQL.setString(2, cliente.getNome());
-            instrucaoSQL.setString(3, cliente.getEmail());
-            instrucaoSQL.setString(4, cliente.getTelefone());
-            instrucaoSQL.setString(5, cliente.getEnderecoLogradouro());
-            instrucaoSQL.setString(6, cliente.getEnderecoNumero());
-            instrucaoSQL.setString(7, cliente.getEnderecoComplemento());
-            instrucaoSQL.setString(8, cliente.getSexo());
+            instrucaoSQL.setString(1, pCliente.getCPF());
+            instrucaoSQL.setString(2, pCliente.getNome());
+            instrucaoSQL.setString(3, pCliente.getEmail());
+            instrucaoSQL.setString(4, pCliente.getTelefone());
+            instrucaoSQL.setString(5, pCliente.getEnderecoLogradouro());
+            instrucaoSQL.setString(6, pCliente.getEnderecoNumero());
+            instrucaoSQL.setString(7, pCliente.getEnderecoComplemento());
+            instrucaoSQL.setString(8, pCliente.getSexo());
 
             resultado = instrucaoSQL.executeUpdate() > 0;
 
@@ -44,7 +45,8 @@ public class ClienteDAO {
         return resultado;
     }
 
-    public static boolean alterar(Cliente cliente) {
+    // Update
+    public static boolean alterar(Cliente pCliente) {
         boolean resultado = false;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
@@ -63,15 +65,15 @@ public class ClienteDAO {
                     + "sexo = ?"
                     + "where codigo = ?;");
 
-            instrucaoSQL.setString(1, cliente.getCPF());
-            instrucaoSQL.setString(2, cliente.getNome());
-            instrucaoSQL.setString(3, cliente.getEmail());
-            instrucaoSQL.setString(4, cliente.getTelefone());
-            instrucaoSQL.setString(5, cliente.getEnderecoLogradouro());
-            instrucaoSQL.setString(6, cliente.getEnderecoNumero());
-            instrucaoSQL.setString(7, cliente.getEnderecoComplemento());
-            instrucaoSQL.setString(8, cliente.getSexo());
-            instrucaoSQL.setInt(9, cliente.getCodigo());
+            instrucaoSQL.setString(1, pCliente.getCPF());
+            instrucaoSQL.setString(2, pCliente.getNome());
+            instrucaoSQL.setString(3, pCliente.getEmail());
+            instrucaoSQL.setString(4, pCliente.getTelefone());
+            instrucaoSQL.setString(5, pCliente.getEnderecoLogradouro());
+            instrucaoSQL.setString(6, pCliente.getEnderecoNumero());
+            instrucaoSQL.setString(7, pCliente.getEnderecoComplemento());
+            instrucaoSQL.setString(8, pCliente.getSexo());
+            instrucaoSQL.setInt(9, pCliente.getCodigo());
 
             resultado = instrucaoSQL.executeUpdate() > 0;
 
@@ -84,6 +86,25 @@ public class ClienteDAO {
         return resultado;
     }
 
+    // Delete
+    public static boolean excluirPorCodigo(int pCodigo) {
+        boolean resultado = false;
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+        try {
+            conexao = Conexao.getConnection();
+            instrucaoSQL = conexao.prepareStatement("DELETE FROM cliente where codigo = ?");
+            instrucaoSQL.setInt(1, pCodigo);
+            resultado = instrucaoSQL.executeUpdate() > 0;
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            UtilsDB.fecharConexao(instrucaoSQL, conexao);
+        }
+        return resultado;
+    }
+
+    // Select
     public static ArrayList<Cliente> consultarTodos() {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
@@ -166,9 +187,9 @@ public class ClienteDAO {
 
             pCpf = UtilsValidacao.removerPontuacaoCPF(pCpf);
 
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente WHERE cpf = ?");
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente WHERE cpf like ?");
 
-            instrucaoSQL.setString(1, pCpf);
+            instrucaoSQL.setString(1, "%" + pCpf + "%");
 
             rs = instrucaoSQL.executeQuery();
 
@@ -206,7 +227,7 @@ public class ClienteDAO {
 
             instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente WHERE nome like ?");
 
-            instrucaoSQL.setString(1, pNome);
+            instrucaoSQL.setString(1, "%" + pNome + "%");
 
             rs = instrucaoSQL.executeQuery();
 
@@ -232,20 +253,4 @@ public class ClienteDAO {
         return retorno;
     }
 
-    public static boolean excluirPorCodigo(int codigo) {
-        boolean resultado = false;
-        Connection conexao = null;
-        PreparedStatement instrucaoSQL = null;
-        try {
-            conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("DELETE FROM cliente where codigo = ?");
-            instrucaoSQL.setInt(1, codigo);
-            resultado = instrucaoSQL.executeUpdate() > 0;
-        } catch (SQLException | ClassNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-            UtilsDB.fecharConexao(instrucaoSQL, conexao);
-        }
-        return resultado;
-    }
 }

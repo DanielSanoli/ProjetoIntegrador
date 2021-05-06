@@ -116,6 +116,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         rbCpfCliente = new javax.swing.JRadioButton();
         rbNomeCliente = new javax.swing.JRadioButton();
         edtNomeCliente = new javax.swing.JTextField();
+        btnFiltrar8 = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
         jPanel25 = new javax.swing.JPanel();
         jButton16 = new javax.swing.JButton();
@@ -407,7 +408,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -755,7 +756,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))
         );
 
         jPanel21.setBackground(new java.awt.Color(27, 59, 108));
@@ -897,15 +898,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 889, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                .addGap(5, 5, 5))
         );
 
         jPanel36.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar Clientes", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
@@ -932,6 +933,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
 
         btnFiltrar7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pesquisar_32px.png"))); // NOI18N
+        btnFiltrar7.setText("Buscar pelo filtro");
         btnFiltrar7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrar7ActionPerformed(evt);
@@ -952,31 +954,45 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
 
+        btnFiltrar8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pesquisar_32px.png"))); // NOI18N
+        btnFiltrar8.setText("Buscar todos");
+        btnFiltrar8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrar8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
         jPanel36.setLayout(jPanel36Layout);
         jPanel36Layout.setHorizontalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnFiltrar7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel36Layout.createSequentialGroup()
-                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel40)
-                            .addComponent(jLabel39)
-                            .addComponent(jLabel38))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edtCpfCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-                            .addComponent(edtCodigoCliente)
-                            .addComponent(edtNomeCliente))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(rbCodigoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rbNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rbCpfCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFiltrar7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFiltrar8)
                 .addContainerGap())
+            .addGroup(jPanel36Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel38))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(edtCpfCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+                    .addComponent(edtCodigoCliente)
+                    .addComponent(edtNomeCliente))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rbCodigoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rbNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rbCpfCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
+
+        jPanel36Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnFiltrar7, btnFiltrar8});
+
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
@@ -996,9 +1012,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                     .addComponent(jLabel40)
                     .addComponent(rbNomeCliente))
                 .addGap(10, 10, 10)
-                .addComponent(btnFiltrar7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnFiltrar8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFiltrar7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+
+        jPanel36Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnFiltrar7, btnFiltrar8});
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -1018,9 +1038,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                .addGap(43, 43, 43)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Cliente", jPanel16);
@@ -1149,7 +1169,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1392,7 +1412,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1627,7 +1647,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -1850,7 +1870,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -2280,7 +2300,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
 
         if (rbCodigoCliente.isSelected()) {
-            if (UtilsTabela.atualizarTabela(ClienteController.buscarPorCodigo(Integer.parseInt(codigo)), jListaDeClientes)) {
+            if (UtilsTabela.atualizarTabela(ClienteController.consultarPorCodigo(Integer.parseInt(codigo)), jListaDeClientes)) {
                 AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
             } else {
                 AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
@@ -2289,7 +2309,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
 
         if (rbCpfCliente.isSelected()) {
-            if (UtilsTabela.atualizarTabela(ClienteController.buscarPorCpf(cpf), jListaDeClientes)) {
+            if (UtilsTabela.atualizarTabela(ClienteController.consultarPorCpf(cpf), jListaDeClientes)) {
                 AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
             } else {
                 AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
@@ -2298,21 +2318,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
 
         if (rbNomeCliente.isSelected()) {
-            if (UtilsTabela.atualizarTabela(ClienteController.buscarPorNome(nome), jListaDeClientes)) {
+            if (UtilsTabela.atualizarTabela(ClienteController.consultarPorNome(nome), jListaDeClientes)) {
                 AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
             } else {
                 AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
             }
             return;
         }
-
-        if (UtilsTabela.atualizarTabela(ClienteController.buscarTodos(), jListaDeClientes)) {
-            AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
-        } else {
-            AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
-        }
-
-
     }//GEN-LAST:event_btnFiltrar7ActionPerformed
 
     private void jListaDeClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaDeClientesMouseClicked
@@ -2418,6 +2430,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtNomeClienteActionPerformed
 
+    private void btnFiltrar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar8ActionPerformed
+        if (UtilsTabela.atualizarTabela(ClienteController.consultarTodos(), jListaDeClientes)) {
+            AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+        } else {
+            AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
+        }
+    }//GEN-LAST:event_btnFiltrar8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2464,6 +2484,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton btnFiltrar4;
     private javax.swing.JButton btnFiltrar6;
     private javax.swing.JButton btnFiltrar7;
+    private javax.swing.JButton btnFiltrar8;
     private javax.swing.JButton btnFiltrarV;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -2612,10 +2633,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void initMethods() {
         setLocationRelativeTo(null);
         setExtendedState(MAXIMIZED_BOTH);
-        UtilsTabela.atualizarTabela(ClienteController.buscarTodos(), jListaDeClientes);
+        UtilsTabela.atualizarTabela(ClienteController.consultarTodos(), jListaDeClientes);
     }
 
     private void atualizarTabelaCliente() {
-        UtilsTabela.atualizarTabela(ClienteController.buscarTodos(), jListaDeClientes);
+        UtilsTabela.atualizarTabela(ClienteController.consultarTodos(), jListaDeClientes);
     }
 }
