@@ -1,5 +1,6 @@
 package br.com.application.dao;
 
+import br.com.application.models.Cliente;
 import br.com.application.models.Operador;
 import br.com.application.utils.UtilsDB;
 import java.sql.Connection;
@@ -82,7 +83,7 @@ public class OperadorDAO {
         return resultado;
     }
     
-     public static Operador consultarPorCodigo(int pOperador) {
+     public static Operador consultarPorCodigo(int pCodigo) {
 
         Operador retorno = new Operador();
         Connection conexao = null;
@@ -94,7 +95,7 @@ public class OperadorDAO {
 
             instrucaoSQL = conexao.prepareStatement("SELECT * FROM operador WHERE codigo=?");
 
-            instrucaoSQL.setInt(1, pOperador);
+            instrucaoSQL.setInt(1, pCodigo);
 
             rs = instrucaoSQL.executeQuery();
 
@@ -113,5 +114,37 @@ public class OperadorDAO {
 
         return retorno;
     }
+     
+    public static Operador consultarPorUsuario(int pUsuario) {
+
+        Operador retorno = new Operador();
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+        ResultSet rs = null;
+
+        try {
+            conexao = Conexao.getConnection();
+
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM operador WHERE usuario usuario=?");
+
+            instrucaoSQL.setInt(1, pUsuario);
+
+            rs = instrucaoSQL.executeQuery();
+
+            while (rs.next()) {
+                retorno.setCodigo(rs.getInt("codigo"));
+                retorno.setUsuario(rs.getInt("usuario"));
+                retorno.setSenha(rs.getInt("senha"));
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            retorno = null;
+        } finally {
+            UtilsDB.fecharConexao(instrucaoSQL, conexao);
+        }
+
+        return retorno;
+    } 
     
 }
