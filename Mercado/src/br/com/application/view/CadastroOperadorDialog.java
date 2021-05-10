@@ -60,7 +60,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         edtUsuario = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        edtSenha = new javax.swing.JTextField();
+        edtSenha = new javax.swing.JPasswordField();
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -167,9 +167,11 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Senha *");
 
-        edtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                edtSenhaKeyTyped(evt);
+        edtSenha.setMinimumSize(new java.awt.Dimension(14, 25));
+        edtSenha.setPreferredSize(new java.awt.Dimension(14, 24));
+        edtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtSenhaActionPerformed(evt);
             }
         });
 
@@ -180,18 +182,18 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(27, 27, 27)
-                .addComponent(edtSenha)
+                .addGap(28, 28, 28)
+                .addComponent(edtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(edtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(edtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -259,8 +261,8 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
         );
@@ -351,19 +353,6 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_edtCodigoKeyTyped
 
-    private void edtSenhaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSenhaKeyTyped
-        if (edtSenha.getText().length() > 20) {
-            evt.consume();
-            new AvisosDialog(null, true, "Máximo de 20 caracteres atingidos.", true);
-        }
-        char c = evt.getKeyChar();
-
-        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
-            evt.consume();
-            new AvisosDialog(null, true, "O campo código só aceita valores númericos.", true);
-        }
-    }//GEN-LAST:event_edtSenhaKeyTyped
-
     private void edtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtUsuarioKeyTyped
         if (edtUsuario.getText().length() > 20) {
             evt.consume();
@@ -376,6 +365,10 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
             new AvisosDialog(null, true, "O campo código só aceita valores númericos.", true);
         }
     }//GEN-LAST:event_edtUsuarioKeyTyped
+
+    private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -709,7 +702,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField edtCodigo;
-    private javax.swing.JTextField edtSenha;
+    private javax.swing.JPasswordField edtSenha;
     private javax.swing.JTextField edtUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
