@@ -67,6 +67,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
         btnCofirmar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Excluir Cadastro");
 
         jPanel1.setBackground(new java.awt.Color(27, 59, 108));
 

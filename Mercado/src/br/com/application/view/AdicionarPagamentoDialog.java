@@ -48,6 +48,7 @@ public final class AdicionarPagamentoDialog extends javax.swing.JDialog {
         btnCofirmar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Pagamento");
 
         jPanel1.setBackground(new java.awt.Color(27, 59, 108));
 
