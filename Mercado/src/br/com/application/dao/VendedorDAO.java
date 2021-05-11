@@ -1,7 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.application.dao;
 
+import br.com.application.models.Vendedor;
 import br.com.application.utils.UtilsDB;
-import br.com.application.models.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +14,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class ClienteDAO {
-
-    public static boolean cadastrar(Cliente cliente) {
+/**
+ *
+ * @author yurim
+ */
+public class VendedorDAO {
+     public static boolean cadastrar(Vendedor vendedor) {
 
         boolean resultado = false;
         Connection conexao = null;
@@ -20,17 +28,14 @@ public class ClienteDAO {
         try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("insert into cliente(cpf,nome,email,telefone,enderecoLogradouro,enderecoNumero,enderecoComplemento,sexo) values (\n"
-                    + "?,?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+            instrucaoSQL = conexao.prepareStatement("insert into vendedor(nome,email,salario,telefone) "
+                    + "values (?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
 
-            instrucaoSQL.setString(1, cliente.getCPF());
-            instrucaoSQL.setString(2, cliente.getNome());
-            instrucaoSQL.setString(3, cliente.getEmail());
-            instrucaoSQL.setString(4, cliente.getTelefone());
-            instrucaoSQL.setString(5, cliente.getEnderecoLogradouro());
-            instrucaoSQL.setString(6, cliente.getEnderecoNumero());
-            instrucaoSQL.setString(7, cliente.getEnderecoComplemento());
-            instrucaoSQL.setString(8, cliente.getSexo());
+            instrucaoSQL.setString(1, vendedor.getNome());
+            instrucaoSQL.setString(2, vendedor.getEmail());
+            instrucaoSQL.setDouble(3, vendedor.getSalario());
+            instrucaoSQL.setString(4, vendedor.getTelefone());
+         
 
             resultado = UtilsDB.resultadoQuery(instrucaoSQL.executeUpdate(), "Cadastro");
 
@@ -43,45 +48,42 @@ public class ClienteDAO {
         return resultado;
     }
 
-    public static boolean alterar(Cliente cliente) {
+    public static boolean alterar(Vendedor cliente) {
         return false;
     }
 
-    public static ArrayList<Cliente> consultarTodos() {
+    public static ArrayList<Vendedor> consultarTodos() {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
-        ArrayList<Cliente> clientes = new ArrayList<>();
+        ArrayList<Vendedor> vendedores = new ArrayList<>();
         ResultSet rs = null;
         try {
             conexao = Conexao.getConnection();
             instrucaoSQL = conexao.prepareStatement("SELECT * FROM vendedor");
             rs = instrucaoSQL.executeQuery();
             while (rs.next()) {
-                Cliente vendedor = new Cliente();
+                Vendedor vendedor = new Vendedor();
                 vendedor.setCodigo(rs.getInt("codigo"));
-                vendedor.setCPF(rs.getString("cpf"));
                 vendedor.setNome(rs.getString("nome"));
                 vendedor.setEmail(rs.getString("email"));
-                vendedor.setTelefone(rs.getString("telefone"));
-                vendedor.setEnderecoLogradouro(rs.getString("enderecoLogradouro"));
-                vendedor.setEnderecoNumero(rs.getString("enderecoNumero"));
-                vendedor.setEnderecoComplemento(rs.getString("enderecoComplemento"));
-                vendedor.setSexo(rs.getString("sexo"));
-                clientes.add(vendedor);
+                vendedor.setSalario(rs.getDouble("salario"));
+                vendedor.setTelefone(rs.getString("telefone"));  
+                
+                vendedores.add(vendedor);
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
-            clientes = null;
+            vendedores = null;
         } finally {
             UtilsDB.fecharConexao(instrucaoSQL, conexao);
         }
-        return clientes;
+        return vendedores;
     }
 
-    public static Cliente consultarPorCodigo(int pCodigo) {
+    public static Vendedor consultarPorCodigo(int Codigo) {
 
-        Cliente retorno = new Cliente();
+        Vendedor retorno = new Vendedor();
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
         ResultSet rs = null;
@@ -89,22 +91,18 @@ public class ClienteDAO {
         try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente WHERE codigo=?");
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM vendedor WHERE cod_vendedor=?");
 
-            instrucaoSQL.setInt(1, pCodigo);
+            instrucaoSQL.setInt(1, Codigo);
 
             rs = instrucaoSQL.executeQuery();
 
             while (rs.next()) {
                 retorno.setCodigo(rs.getInt("codigo"));
-                retorno.setCPF(rs.getString("cpf"));
                 retorno.setNome(rs.getString("nome"));
                 retorno.setEmail(rs.getString("email"));
-                retorno.setTelefone(rs.getString("telefone"));
-                retorno.setEnderecoLogradouro(rs.getString("enderecoLogradouro"));
-                retorno.setEnderecoNumero(rs.getString("enderecoNumero"));
-                retorno.setEnderecoComplemento(rs.getString("enderecoComplemento"));
-                retorno.setSexo(rs.getString("sexo"));
+                retorno.setSalario(rs.getDouble("salario"));
+                retorno.setTelefone(rs.getString("telefone"));  
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
@@ -120,4 +118,5 @@ public class ClienteDAO {
     public static boolean excluirPorCodigo(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }
