@@ -14,7 +14,7 @@ public class OperadorController {
         operador.setUsuario(pUsuario);
         operador.setSenha(pSenha);
         
-        return OperadorDAO.cadastrar(operador);
+        return OperadorDAO.cadastrarOperador(operador);
 
     }
     
