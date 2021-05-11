@@ -37,7 +37,7 @@ public class VendedorDAO {
             instrucaoSQL.setString(4, vendedor.getTelefone());
          
 
-            resultado = UtilsDB.resultadoQuery(instrucaoSQL.executeUpdate(), "Cadastro");
+            resultado = instrucaoSQL.executeUpdate() > 0;
 
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());

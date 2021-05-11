@@ -6,11 +6,9 @@
 package br.com.application.view;
 
 import br.com.application.controller.ClienteController;
-import br.com.application.dao.ClienteDAO;
-import br.com.application.view.AvisosDialog;
 import br.com.application.models.Cliente;
-import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
-import static br.com.application.utils.UtilsConstantes.FALHA_NO_CADASTRO;
+import static br.com.application.utils.UtilsConstantes.FALHA;
+import static br.com.application.utils.UtilsConstantes.SUCESSO;
 import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
 import java.awt.Color;
@@ -22,7 +20,7 @@ import java.awt.event.KeyEvent;
  */
 public final class CadastroClienteDialog extends javax.swing.JDialog {
 
-    private static boolean isCadastro;
+    private static boolean isCadastro = false;
     private static Cliente cliente;
     public static int retorno;
 
@@ -84,6 +82,7 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastrar Cliente");
 
         jPanel1.setBackground(new java.awt.Color(27, 59, 108));
 
@@ -531,8 +530,9 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            
+
         try {
+            int codigo = Integer.parseInt(edtCodigo.getText());
             String cpf = edtCpf.getText().replaceAll("[^0-9]", "");
             String nome = edtNome.getText();
             String email = edtEmail.getText();
@@ -574,16 +574,24 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
             } else {
                 sexo = this.rdMasculino.isSelected() ? "M" : "F";
             }
-            boolean res = ClienteController.cadastrar(cpf, nome, email, telefone, logradouro, numero, complemento, sexo);
+            
+            boolean res = false;
+
+            if (isCadastro) {
+                res = ClienteController.cadastrar(cpf, nome, email, telefone, logradouro, numero, complemento, sexo);
+            } else {
+                res = ClienteController.alterar(codigo, cpf, nome, email, telefone, logradouro, numero, complemento, sexo);
+            }
+            
             if (res) {
-                AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO, false);
                 dispose();
                 retorno = 1;
             } else {
-                AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, true);
+                AvisosDialog av = new AvisosDialog(null, true, FALHA, true);
             }
         } catch (Exception ex) {
-            AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
+            AvisosDialog av = new AvisosDialog(null, true, FALHA, false);
             dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed

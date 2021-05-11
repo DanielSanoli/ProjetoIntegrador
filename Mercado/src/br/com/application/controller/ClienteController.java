@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class ClienteController {
 
+    // Insert
     public static boolean cadastrar(String pCpf, String pNome, String pEmail,
             String pTelefone, String pEnderecoLogradouro,
             String pEnderecoNumero, String pEnderecoComplemento, String pSexo) {
@@ -24,7 +25,33 @@ public class ClienteController {
 
     }
 
-    public static ArrayList<String[]> buscarTodos() {
+    // Update
+    public static boolean alterar(int pCodigo, String pCpf, String pNome, String pEmail,
+            String pTelefone, String pEnderecoLogradouro,
+            String pEnderecoNumero, String pEnderecoComplemento, String pSexo) {
+
+        Cliente cliente = new Cliente();
+        cliente.setCodigo(pCodigo);
+        cliente.setCPF(pCpf);
+        cliente.setNome(pNome);
+        cliente.setEmail(pEmail);
+        cliente.setTelefone(pTelefone);
+        cliente.setEnderecoLogradouro(pEnderecoLogradouro);
+        cliente.setEnderecoNumero(pEnderecoNumero);
+        cliente.setEnderecoComplemento(pEnderecoComplemento);
+        cliente.setSexo(pSexo);
+
+        return ClienteDAO.alterar(cliente);
+
+    }
+
+    // Delete
+    public static boolean excluir(int pCodigo) {
+        return ClienteDAO.excluirPorCodigo(pCodigo);
+    }
+
+    // Select
+    public static ArrayList<String[]> consultarTodos() {
         ArrayList<Cliente> listaRecebida = ClienteDAO.consultarTodos();
         ArrayList<String[]> listaRetorno = new ArrayList<>();
         for (Cliente cliente : listaRecebida) {
@@ -42,7 +69,7 @@ public class ClienteController {
         return listaRetorno;
     }
 
-    public static String[] buscarPorCodigo(int pCodigo) {
+    public static String[] consultarPorCodigo(int pCodigo) {
         Cliente clienteRecebido = ClienteDAO.consultarPorCodigo(pCodigo);
         String[] clienteRetorno = null;
         if (clienteRecebido != null) {
@@ -59,4 +86,41 @@ public class ClienteController {
         }
         return clienteRetorno;
     }
+
+    public static String[] consultarPorCpf(String pCpf) {
+        Cliente clienteRecebido = ClienteDAO.consultarPorCpf(pCpf);
+        String[] clienteRetorno = null;
+        if (clienteRecebido != null) {
+            clienteRetorno = new String[]{
+                String.valueOf(clienteRecebido.getCodigo()),
+                clienteRecebido.getCPF(),
+                clienteRecebido.getNome(),
+                clienteRecebido.getEmail(),
+                clienteRecebido.getTelefone(),
+                clienteRecebido.getEnderecoLogradouro(),
+                clienteRecebido.getEnderecoNumero(),
+                clienteRecebido.getEnderecoComplemento(),
+                clienteRecebido.getSexo()};
+        }
+        return clienteRetorno;
+    }
+
+    public static String[] consultarPorNome(String pNome) {
+        Cliente clienteRecebido = ClienteDAO.consultarPorNome(pNome);
+        String[] clienteRetorno = null;
+        if (clienteRecebido != null) {
+            clienteRetorno = new String[]{
+                String.valueOf(clienteRecebido.getCodigo()),
+                clienteRecebido.getCPF(),
+                clienteRecebido.getNome(),
+                clienteRecebido.getEmail(),
+                clienteRecebido.getTelefone(),
+                clienteRecebido.getEnderecoLogradouro(),
+                clienteRecebido.getEnderecoNumero(),
+                clienteRecebido.getEnderecoComplemento(),
+                clienteRecebido.getSexo()};
+        }
+        return clienteRetorno;
+    }
+
 }

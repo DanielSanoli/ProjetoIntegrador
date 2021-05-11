@@ -5,11 +5,14 @@
  */
 package br.com.application.view;
 
+import br.com.application.controller.ClienteController;
 import static br.com.application.utils.UtilsConstantes.CLASS_CLIENTE;
 import static br.com.application.utils.UtilsConstantes.CLASS_DEPARTAMENTO;
 import static br.com.application.utils.UtilsConstantes.CLASS_OPERADOR;
 import static br.com.application.utils.UtilsConstantes.CLASS_PRODUTO;
 import static br.com.application.utils.UtilsConstantes.CLASS_VENDEDOR;
+import static br.com.application.utils.UtilsConstantes.EXCLUSAO_REALIZADA;
+import static br.com.application.utils.UtilsConstantes.FALHA_NA_EXCLUSAO;
 import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
 import java.awt.Color;
@@ -22,7 +25,8 @@ import java.awt.event.KeyEvent;
 public final class ExcluirCadastroDialog extends javax.swing.JDialog {
 
     private int codigo;
-    private static String className;
+    public static String className;
+    public static int retorno = 0;
 
     public int getQuantidade() {
         return codigo;
@@ -35,13 +39,14 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
     /**
      * Creates new form NovoClienteDialog
      */
-    public ExcluirCadastroDialog(java.awt.Frame parent, boolean modal, String className) {
+    public ExcluirCadastroDialog(java.awt.Frame parent, boolean modal, String className, int retorno) {
         super(parent, modal);
         initComponents();
         ExcluirCadastroDialog.className = className;
+        ExcluirCadastroDialog.retorno = retorno;
         UtilsView.configuracaoInicialJDialog(this);
         setTitle(className);
-        setVisible(true);        
+        setVisible(true);
     }
 
     /**
@@ -62,6 +67,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
         btnCofirmar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Excluir Cadastro");
 
         jPanel1.setBackground(new java.awt.Color(27, 59, 108));
 
@@ -217,6 +223,16 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
                 System.out.println("CLASS_VENDEDOR");
                 break;
         }
+
+        boolean res = ClienteController.excluir(codigo);
+
+        if (res) {
+            AvisosDialog av = new AvisosDialog(null, true, EXCLUSAO_REALIZADA, false);
+            dispose();
+            retorno = 1;
+        } else {
+            AvisosDialog av = new AvisosDialog(null, true, FALHA_NA_EXCLUSAO, true);
+        }
     }//GEN-LAST:event_btnCofirmarActionPerformed
 
     private void edtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoKeyTyped
@@ -282,7 +298,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ExcluirCadastroDialog dialog = new ExcluirCadastroDialog(new javax.swing.JFrame(), true, className);
+                ExcluirCadastroDialog dialog = new ExcluirCadastroDialog(new javax.swing.JFrame(), true, className, retorno);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -37,6 +37,7 @@ public class AdicionarVendedorDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Selecionar Vendedor");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecione o vendedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 

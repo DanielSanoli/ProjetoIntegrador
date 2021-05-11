@@ -67,6 +67,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastrar Vendedor");
 
         jPanel1.setBackground(new java.awt.Color(27, 59, 108));
 

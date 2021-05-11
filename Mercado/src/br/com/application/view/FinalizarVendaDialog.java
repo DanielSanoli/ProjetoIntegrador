@@ -48,6 +48,7 @@ public class FinalizarVendaDialog extends javax.swing.JDialog {
         txtTroco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Finalizar Venda");
         setSize(new java.awt.Dimension(0, 0));
         setType(java.awt.Window.Type.POPUP);
 
