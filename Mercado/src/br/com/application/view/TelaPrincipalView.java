@@ -110,11 +110,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         edtCodigoCliente = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         edtCpfCliente = new javax.swing.JTextField();
-<<<<<<< HEAD
-        btnFiltrar9 = new javax.swing.JButton();
-=======
         btnFiltrar7 = new javax.swing.JButton();
->>>>>>> parent of cd68dea (adicionado vendedorDAO e vendedorController)
         jLabel40 = new javax.swing.JLabel();
         rbCodigoCliente = new javax.swing.JRadioButton();
         rbCpfCliente = new javax.swing.JRadioButton();
@@ -695,7 +691,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -917,7 +913,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel36.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar Clientes", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel38.setText("Código");
-        jPanel36.add(jLabel38);
 
         edtCodigoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -929,28 +924,17 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 edtCodigoClienteKeyTyped(evt);
             }
         });
-        jPanel36.add(edtCodigoCliente);
 
         jLabel39.setText("CPF");
-        jPanel36.add(jLabel39);
 
         edtCpfCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtCpfClienteActionPerformed(evt);
             }
         });
-        jPanel36.add(edtCpfCliente);
-
-        btnFiltrar9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pesquisar_32px.png"))); // NOI18N
-        btnFiltrar9.setText("Buscar pelo filtro");
-        btnFiltrar9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFiltrar7ActionPerformed(evt);
-            }
-        });
-        jPanel36.add(btnFiltrar9);
 
         btnFiltrar7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pesquisar_32px.png"))); // NOI18N
+        btnFiltrar7.setText("Buscar pelo filtro");
         btnFiltrar7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrar7ActionPerformed(evt);
@@ -958,25 +942,19 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         });
 
         jLabel40.setText("Nome");
-        jPanel36.add(jLabel40);
 
         buttonGroup2.add(rbCodigoCliente);
-        jPanel36.add(rbCodigoCliente);
 
         buttonGroup2.add(rbCpfCliente);
-        jPanel36.add(rbCpfCliente);
 
         buttonGroup2.add(rbNomeCliente);
-        jPanel36.add(rbNomeCliente);
 
         edtNomeCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtNomeClienteActionPerformed(evt);
             }
         });
-        jPanel36.add(edtNomeCliente);
 
-<<<<<<< HEAD
         btnFiltrar8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pesquisar_32px.png"))); // NOI18N
         btnFiltrar8.setText("Buscar todos");
         btnFiltrar8.addActionListener(new java.awt.event.ActionListener() {
@@ -984,33 +962,38 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 btnFiltrar8ActionPerformed(evt);
             }
         });
-        jPanel36.add(btnFiltrar8);
-=======
+
         javax.swing.GroupLayout jPanel36Layout = new javax.swing.GroupLayout(jPanel36);
         jPanel36.setLayout(jPanel36Layout);
         jPanel36Layout.setHorizontalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnFiltrar7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel36Layout.createSequentialGroup()
-                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel40)
-                            .addComponent(jLabel39)
-                            .addComponent(jLabel38))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edtCpfCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-                            .addComponent(edtCodigoCliente)
-                            .addComponent(edtNomeCliente))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(rbCodigoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rbNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rbCpfCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFiltrar7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFiltrar8)
                 .addContainerGap())
+            .addGroup(jPanel36Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel39)
+                    .addComponent(jLabel38))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(edtCpfCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+                    .addComponent(edtCodigoCliente)
+                    .addComponent(edtNomeCliente))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rbCodigoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rbNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rbCpfCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
+
+        jPanel36Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnFiltrar7, btnFiltrar8});
+
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
@@ -1030,10 +1013,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                     .addComponent(jLabel40)
                     .addComponent(rbNomeCliente))
                 .addGap(10, 10, 10)
-                .addComponent(btnFiltrar7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnFiltrar8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFiltrar7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
->>>>>>> parent of cd68dea (adicionado vendedorDAO e vendedorController)
+
+        jPanel36Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnFiltrar7, btnFiltrar8});
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -1427,7 +1413,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1511,13 +1497,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(btnFiltrar1)
                 .addGap(10, 10, 10))
-<<<<<<< HEAD
-            .addGroup(jPanel24Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
-                .addContainerGap())
-=======
->>>>>>> parent of cd68dea (adicionado vendedorDAO e vendedorController)
         );
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -2509,7 +2488,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton btnFiltrar6;
     private javax.swing.JButton btnFiltrar7;
     private javax.swing.JButton btnFiltrar8;
-    private javax.swing.JButton btnFiltrar9;
     private javax.swing.JButton btnFiltrarV;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
