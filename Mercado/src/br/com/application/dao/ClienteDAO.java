@@ -112,20 +112,20 @@ public class ClienteDAO {
         ResultSet rs = null;
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM vendedor");
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente");
             rs = instrucaoSQL.executeQuery();
             while (rs.next()) {
-                Cliente vendedor = new Cliente();
-                vendedor.setCodigo(rs.getInt("codigo"));
-                vendedor.setCPF(rs.getString("cpf"));
-                vendedor.setNome(rs.getString("nome"));
-                vendedor.setEmail(rs.getString("email"));
-                vendedor.setTelefone(rs.getString("telefone"));
-                vendedor.setEnderecoLogradouro(rs.getString("enderecoLogradouro"));
-                vendedor.setEnderecoNumero(rs.getString("enderecoNumero"));
-                vendedor.setEnderecoComplemento(rs.getString("enderecoComplemento"));
-                vendedor.setSexo(rs.getString("sexo"));
-                clientes.add(vendedor);
+                Cliente cliente = new Cliente();
+                cliente.setCodigo(rs.getInt("codigo"));
+                cliente.setCPF(rs.getString("cpf"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setEnderecoLogradouro(rs.getString("enderecoLogradouro"));
+                cliente.setEnderecoNumero(rs.getString("enderecoNumero"));
+                cliente.setEnderecoComplemento(rs.getString("enderecoComplemento"));
+                cliente.setSexo(rs.getString("sexo"));
+                clientes.add(cliente);
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
