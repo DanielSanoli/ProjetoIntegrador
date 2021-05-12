@@ -532,7 +532,7 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
-            int codigo = Integer.parseInt(edtCodigo.getText());
+            String codigo = edtCodigo.getText().toString();
             String cpf = edtCpf.getText().replaceAll("[^0-9]", "");
             String nome = edtNome.getText();
             String email = edtEmail.getText();
@@ -575,12 +575,18 @@ public final class CadastroClienteDialog extends javax.swing.JDialog {
                 sexo = this.rdMasculino.isSelected() ? "M" : "F";
             }
             
+            int pCodigo = 0;
+            
+            if(!UtilsValidacao.isNullOuVazio(codigo)){
+                pCodigo = Integer.parseInt(codigo);
+            }
+            
             boolean res = false;
 
             if (isCadastro) {
                 res = ClienteController.cadastrar(cpf, nome, email, telefone, logradouro, numero, complemento, sexo);
             } else {
-                res = ClienteController.alterar(codigo, cpf, nome, email, telefone, logradouro, numero, complemento, sexo);
+                res = ClienteController.alterar(pCodigo, cpf, nome, email, telefone, logradouro, numero, complemento, sexo);
             }
             
             if (res) {
