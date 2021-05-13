@@ -48,9 +48,7 @@ public class VendedorDAO {
         return resultado;
     }
 
-    public static boolean alterar(Vendedor cliente) {
-        return false;
-    }
+ 
 
     public static ArrayList<Vendedor> consultarTodos() {
         Connection conexao = null;
@@ -115,8 +113,34 @@ public class VendedorDAO {
         return retorno;
     }
 
-    public static boolean excluirPorCodigo(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        public static boolean alterar (Vendedor vendedor) {
+       boolean resultado = false;
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+
+        try {
+            conexao = Conexao.getConnection();
+
+            instrucaoSQL = conexao.prepareStatement("update vendedor set "
+                    + "nome = ?,"
+                    + "email = ?,"
+                    + "salario = ?"
+                    + "telefone = ?,");
+
+            instrucaoSQL.setString(1, vendedor.getNome());
+            instrucaoSQL.setString(2, vendedor.getEmail());
+            instrucaoSQL.setDouble(3, vendedor.getSalario());
+            instrucaoSQL.setString(4, vendedor.getTelefone());
+
+
+            resultado = instrucaoSQL.executeUpdate() > 0;
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            UtilsDB.fecharConexao(instrucaoSQL, conexao);
+        }
+
+        return resultado;
     }
-    
 }

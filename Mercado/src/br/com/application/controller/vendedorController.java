@@ -45,4 +45,16 @@ public class vendedorController {
         }
         return vededorRetorno;
     }
+    
+    public static boolean alterar(String nome, String email, double salario, String telefone) {
+        
+        Vendedor vendedor = new Vendedor();
+        
+        vendedor.setNome(nome);
+        vendedor.setEmail(email);
+        vendedor.setSalario(salario);
+        vendedor.setTelefone(telefone);
+        
+        return VendedorDAO.alterar(vendedor);    
+    }
 }
