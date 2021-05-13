@@ -1,6 +1,5 @@
 package br.com.application.dao;
 
-import br.com.application.models.Cliente;
 import br.com.application.models.Operador;
 import br.com.application.utils.UtilsDB;
 import java.sql.Connection;
@@ -13,7 +12,7 @@ import javax.swing.JOptionPane;
 public class OperadorDAO {
     
     // Insert
-    public static boolean cadastrarOperador (Operador pOperador){
+    public static boolean cadastrarOperador(Operador pOperador){
         
         boolean resultado = false;
         Connection conexao = null;
@@ -30,6 +29,7 @@ public class OperadorDAO {
             instrucaoSQL.setInt(2, pOperador.getSenha());
 
             resultado = instrucaoSQL.executeUpdate() > 0;
+            
          }catch(SQLException | ClassNotFoundException erro){
              JOptionPane.showMessageDialog(null, erro.getMessage());
          }finally{
@@ -84,25 +84,30 @@ public class OperadorDAO {
     }
     
      public static Operador consultarPorCodigo(int pCodigo) {
-
-        Operador retorno = new Operador();
+         
+        ResultSet rs = null; 
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
-        ResultSet rs = null;
+        
+        Operador retorno = new Operador();
 
         try {
             conexao = Conexao.getConnection();
 
             instrucaoSQL = conexao.prepareStatement("SELECT * FROM operador WHERE codigo=?");
-
+            
             instrucaoSQL.setInt(1, pCodigo);
 
+            //executa uma consulta
             rs = instrucaoSQL.executeQuery();
 
+            //enquanto houver linhas...
             while (rs.next()) {
+               
                 retorno.setCodigo(rs.getInt("codigo"));
                 retorno.setUsuario(rs.getInt("usuario"));
                 retorno.setSenha(rs.getInt("senha"));
+               
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
@@ -146,5 +151,9 @@ public class OperadorDAO {
 
         return retorno;
     } 
+
+    public static boolean cadastrar(Operador operador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

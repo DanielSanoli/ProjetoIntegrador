@@ -82,7 +82,8 @@ public class ClienteController {
                 clienteRecebido.getEnderecoLogradouro(),
                 clienteRecebido.getEnderecoNumero(),
                 clienteRecebido.getEnderecoComplemento(),
-                clienteRecebido.getSexo()};
+                clienteRecebido.getSexo()
+            };
         }
         return clienteRetorno;
     }

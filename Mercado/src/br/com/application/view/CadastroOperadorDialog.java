@@ -26,6 +26,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
 
     private static boolean isCadastro;
     private static Operador operador;
+    Operador objOperador;
 
     public CadastroOperadorDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Operador operador) throws Exception {
         super(parent, modal);
@@ -37,6 +38,13 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         setOperador(operador);
         setVisible(true);
 
+    }
+    
+    public CadastroOperadorDialog(Operador p){
+        initComponents();
+        objOperador = new Operador();        
+        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -135,6 +143,11 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Usuário *");
 
+        edtUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtUsuarioActionPerformed(evt);
+            }
+        });
         edtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 edtUsuarioKeyTyped(evt);
@@ -190,10 +203,10 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(edtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         jPanel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -261,7 +274,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10))
@@ -298,8 +311,11 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
         try {
             int cod = Integer.parseInt(edtCodigo.getText());
-            String usuario = edtUsuario.getText();
-            String senha = edtSenha.getText();
+            int usuario = Integer.parseInt(edtUsuario.getText());
+            int senha =  Integer.parseInt(edtSenha.getText());
+            
+            objOperador.setUsuario(usuario);
+            objOperador.setSenha(senha);
 
             if (UtilsValidacao.isNullOuVazio(String.valueOf(cod))) {
                 new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
@@ -309,7 +325,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
                 edtCodigo.setBackground(Color.white);
             }
 
-            if (UtilsValidacao.isNullOuVazio(usuario)) {
+            if (UtilsValidacao.isNullOuVazio(Integer.toString(usuario))) {
                 new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
                 edtUsuario.setBackground(Color.yellow);
                 return;
@@ -317,21 +333,20 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
                 edtUsuario.setBackground(Color.white);
             }
 
-            if (UtilsValidacao.isNullOuVazio(senha)) {
+            if (UtilsValidacao.isNullOuVazio(Integer.toString(senha))) {
                 new AvisosDialog(null, true, "O preenchimento do campo senha é obrigatório.", true);
                 edtSenha.setBackground(Color.yellow);
                 return;
             } else {
                 edtSenha.setBackground(Color.white);
             }
-            Operador operador = new Operador(cod, Integer.parseInt(usuario), 123);
+            Operador operador = new Operador(cod, usuario, 123);
             AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
             dispose();
         } catch (Exception ex) {
             AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
             dispose();
         }
-
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -369,6 +384,10 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
     private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtSenhaActionPerformed
+
+    private void edtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
