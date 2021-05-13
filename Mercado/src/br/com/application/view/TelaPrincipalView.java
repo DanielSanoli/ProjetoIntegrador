@@ -1,6 +1,7 @@
 package br.com.application.view;
 
 import br.com.application.controller.ClienteController;
+import br.com.application.controller.ProdutoController;
 import br.com.application.models.Cliente;
 import br.com.application.models.Departamento;
 import br.com.application.models.Operador;
@@ -16,12 +17,14 @@ import static br.com.application.utils.UtilsConstantes.CLASS_OPERADOR;
 import static br.com.application.utils.UtilsConstantes.CLASS_PRODUTO;
 import static br.com.application.utils.UtilsConstantes.CLASS_VENDEDOR;
 import static br.com.application.utils.UtilsConstantes.CLIENTE_NAO_ENCONTRADO;
+import static br.com.application.utils.UtilsConstantes.PRODUTO_NAO_ENCONTRADO;
 import static br.com.application.utils.UtilsConstantes.SUCESSO_BUSCA;
 import static br.com.application.utils.UtilsConstantes.VALOR_ZERADO;
 import br.com.application.utils.UtilsTabela;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jdk.nashorn.internal.runtime.ListAdapter;
 
 public class TelaPrincipalView extends javax.swing.JFrame {
 
@@ -147,7 +150,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         jListaDeProdutosCadastro = new javax.swing.JTable();
         jPanel24 = new javax.swing.JPanel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        listaDepartamento = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         edtCodigoProdutoE1 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
@@ -691,7 +694,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1419,7 +1422,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar Produtos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Frutas", "Verduras", "Limpeza", "Cozinha" }));
+        listaDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Frutas", "Verduras", "Limpeza", "Cozinha" }));
 
         jLabel17.setText("Código");
 
@@ -1467,7 +1470,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edtDescricaoProdutoE1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(listaDepartamento, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(edtCodigoProdutoE1))
                         .addGap(10, 10, 10)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1492,7 +1495,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel19)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listaDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbDepartamentoE1))
                 .addGap(10, 10, 10)
                 .addComponent(btnFiltrar1)
@@ -2188,7 +2191,56 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtDescricaoProdutoE1ActionPerformed
 
     private void btnFiltrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar1ActionPerformed
-        // TODO add your handling code here:
+        String codigo = edtCodigoCliente.getText();
+        String descricao = edtDescricaoProdutoE1.getText();
+        String departamento = listaDepartamento.getSelectedItem().toString();
+
+        if (rbCodigoProdutoE1.isSelected() && UtilsValidacao.isNullOuVazio(codigo)) {
+            AvisosDialog av = new AvisosDialog(null, true, "Para que o filtro seja atendido,"
+                    + " informe o código", false);
+            return;
+        }
+        if (rbDescricaoProdutoE1.isSelected() && UtilsValidacao.isNullOuVazio(descricao)) {
+            AvisosDialog av = new AvisosDialog(null, true, "Para que o filtro seja atendido,"
+                    + " informe a descrição", false);
+            return;
+        }
+
+        if (rbCodigoProdutoE1.isSelected()) {
+            if (UtilsTabela.atualizarTabela(ProdutoController.consultarPorCodigo(Integer.parseInt(codigo)), jListaDeProdutosCadastro)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, PRODUTO_NAO_ENCONTRADO, false);
+            }
+            return;
+        }
+
+        if (rbDescricaoProdutoE1.isSelected()) {
+            if (UtilsTabela.atualizarTabela(ProdutoController.consultarPorDescricao(descricao), jListaDeProdutosCadastro)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, PRODUTO_NAO_ENCONTRADO, false);
+            }
+            return;
+        }
+
+        if (rbDepartamentoE1.isSelected() && departamento.equalsIgnoreCase("todos")) {
+            if (UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jListaDeProdutosCadastro)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+                return;
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, PRODUTO_NAO_ENCONTRADO, false);
+            }
+        }
+
+        if (rbDepartamentoE1.isSelected()) {
+            if (UtilsTabela.atualizarTabela(ProdutoController.consultarPorDescricao(descricao), jListaDeProdutosCadastro)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);                
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, PRODUTO_NAO_ENCONTRADO, false);
+            }
+        }
+
     }//GEN-LAST:event_btnFiltrar1ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -2248,9 +2300,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtDescricaoProdutoE4ActionPerformed
 
     private void btnFiltrar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar4ActionPerformed
-        
-        
-        
+
+
     }//GEN-LAST:event_btnFiltrar4ActionPerformed
 
     private void edtCodigoProdutoE6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE6ActionPerformed
@@ -2523,7 +2574,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jDepartamentoV;
     private javax.swing.JLabel jLabel1;
@@ -2612,6 +2662,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jtCarrinho;
     private javax.swing.JTable jtListaDeProdutosV;
+    private javax.swing.JComboBox<String> listaDepartamento;
     private javax.swing.JRadioButton rbCodigoCliente;
     private javax.swing.JRadioButton rbCodigoProdutoE1;
     private javax.swing.JRadioButton rbCodigoProdutoE3;

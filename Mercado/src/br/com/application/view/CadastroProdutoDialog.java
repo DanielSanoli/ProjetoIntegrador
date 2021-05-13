@@ -5,6 +5,7 @@
  */
 package br.com.application.view;
 
+import br.com.application.controller.ProdutoController;
 import br.com.application.view.AvisosDialog;
 import br.com.application.models.Produto;
 import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
@@ -96,6 +97,7 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        edtCodigo.setEditable(false);
         edtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtCodigoActionPerformed(evt);
@@ -367,53 +369,44 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
-        try {
-            String cod = edtCodigo.getText();
-            String nomeProduto = edtDescricaoProduto.getText();
-            String departamento = jListaDeDepartamentos.getSelectedItem().toString();
-            String preco = edtPreco.getText();
-            String estoqueAtual = edtEstoqueAtual.getText();
 
-            if (UtilsValidacao.isNullOuVazio(cod)) {
-                new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
-                edtCodigo.setBackground(Color.yellow);
-                return;
-            } else {
-                edtCodigo.setBackground(Color.white);
-            }
+        String cod = edtCodigo.getText();
+        String nomeProduto = edtDescricaoProduto.getText();
+        String departamento = jListaDeDepartamentos.getSelectedItem().toString();
+        String preco = edtPreco.getText();
+        String estoqueAtual = edtEstoqueAtual.getText();
 
-            if (UtilsValidacao.isNullOuVazio(nomeProduto)) {
-                new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
-                edtDescricaoProduto.setBackground(Color.yellow);
-                return;
-            } else {
-                edtDescricaoProduto.setBackground(Color.white);
-            }
+        if (UtilsValidacao.isNullOuVazio(nomeProduto)) {
+            new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
+            edtDescricaoProduto.setBackground(Color.yellow);
+            return;
+        } else {
+            edtDescricaoProduto.setBackground(Color.white);
+        }
 
-            if (UtilsValidacao.isNullOuVazio(preco)) {
-                new AvisosDialog(null, true, "O preenchimento do campo preço é obrigatório.", true);
-                edtPreco.setBackground(Color.yellow);
-                return;
-            } else {
-                edtPreco.setBackground(Color.white);
-            }
+        if (UtilsValidacao.isNullOuVazio(preco)) {
+            new AvisosDialog(null, true, "O preenchimento do campo preço é obrigatório.", true);
+            edtPreco.setBackground(Color.yellow);
+            return;
+        } else {
+            edtPreco.setBackground(Color.white);
+        }
 
-            if (UtilsValidacao.isNullOuVazio(estoqueAtual)) {
-                new AvisosDialog(null, true, "O preenchimento do campo preço é obrigatório.", true);
-                edtEstoqueAtual.setBackground(Color.yellow);
-                return;
-            } else {
-                edtEstoqueAtual.setBackground(Color.white);
-            }
-            preco = preco.replace(",", ".");
-            Produto produto = new Produto(nomeProduto, departamento, Double.parseDouble(preco), Integer.parseInt(cod), Integer.parseInt(estoqueAtual));
+        if (UtilsValidacao.isNullOuVazio(estoqueAtual)) {
+            new AvisosDialog(null, true, "O preenchimento do campo preço é obrigatório.", true);
+            edtEstoqueAtual.setBackground(Color.yellow);
+            return;
+        } else {
+            edtEstoqueAtual.setBackground(Color.white);
+        }
+        preco = preco.replace(",", ".");
+
+        if (ProdutoController.cadastrar(departamento, nomeProduto, Integer.parseInt(estoqueAtual), Double.parseDouble(preco))) {
             AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
             dispose();
-        } catch (Exception ex) {
+        } else {
             AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
-            dispose();
         }
-        // Objeto cliente criado, resta apenas registrar no banco
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

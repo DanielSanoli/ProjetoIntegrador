@@ -52,7 +52,7 @@ public class ProdutoDAO {
                     + "descricao = ?,"
                     + "valor = ?,"
                     + "estoqueAtual = ?"
-                    + "where codigo = ?");
+                    + "where cod_prod = ?");
 
             instrucaoSQL.setString(1, pProduto.getDepartamento());
             instrucaoSQL.setString(2, pProduto.getDescricao());
@@ -78,7 +78,7 @@ public class ProdutoDAO {
         PreparedStatement instrucaoSQL = null;
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("DELETE FROM produto where codigo = ?");
+            instrucaoSQL = conexao.prepareStatement("DELETE FROM produto where cod_prod = ?");
             instrucaoSQL.setInt(1, pCodigo);
             resultado = instrucaoSQL.executeUpdate() > 0;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -129,14 +129,14 @@ public class ProdutoDAO {
         try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE codigo=?");
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE cod_prod=?");
 
             instrucaoSQL.setInt(1, pCodigo);
 
             rs = instrucaoSQL.executeQuery();
 
             while (rs.next()) {
-                retorno.setCodigo(rs.getInt("codigo"));
+                retorno.setCodigo(rs.getInt("cod_prod"));
                 retorno.setDepartamento(rs.getString("departamento"));
                 retorno.setDescricao(rs.getString("descricao"));
                 retorno.setEstoqueAtual(rs.getInt("estoqueAtual"));
@@ -152,7 +152,6 @@ public class ProdutoDAO {
 
         return retorno;
     }
-    
 
     public static Produto consultarPorDescricao(String pDescricao) {
 
@@ -171,7 +170,44 @@ public class ProdutoDAO {
             rs = instrucaoSQL.executeQuery();
 
             while (rs.next()) {
-                retorno.setCodigo(rs.getInt("codigo"));
+                retorno.setCodigo(rs.getInt("cod_prod"));
+                retorno.setDepartamento(rs.getString("departamento"));
+                retorno.setDescricao(rs.getString("descricao"));
+                retorno.setEstoqueAtual(rs.getInt("estoqueAtual"));
+                retorno.setValor(rs.getDouble("valor"));
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            retorno = null;
+        } finally {
+            UtilsDB.fecharConexao(instrucaoSQL, conexao);
+        }
+
+        return retorno;
+    }
+
+    public static Produto consultarPorDepartamento(String pDepartamento) {
+
+        Produto retorno = new Produto();
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+        ResultSet rs = null;
+
+        try {
+            conexao = Conexao.getConnection();
+
+            if (pDepartamento.equalsIgnoreCase("todos")) {
+                instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto;");
+            } else {
+                instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE departamento like ?");
+                instrucaoSQL.setString(1, "%" + pDepartamento + "%");
+            }
+
+            rs = instrucaoSQL.executeQuery();
+
+            while (rs.next()) {
+                retorno.setCodigo(rs.getInt("cod_prod"));
                 retorno.setDepartamento(rs.getString("departamento"));
                 retorno.setDescricao(rs.getString("descricao"));
                 retorno.setEstoqueAtual(rs.getInt("estoqueAtual"));

@@ -9,11 +9,10 @@ import java.util.ArrayList;
 public class ProdutoController {
 
     // Insert
-    public static boolean cadastrar(int pCodigo, String pDepartamento,
+    public static boolean cadastrar(String pDepartamento,
             String pDescricao, int pEstoqueAtual, Double pValor) {
         
         Produto produto = new Produto();
-        produto.setCodigo(pCodigo);
         produto.setDepartamento(pDepartamento);
         produto.setDescricao(pDescricao);
         produto.setEstoqueAtual(pEstoqueAtual);
@@ -85,5 +84,21 @@ public class ProdutoController {
         }
         return produtoRetorno;
     }
+    
+        public static String[] consultarPorDepartamento(String pDepartamento) {
+        Produto produtoRecebido = ProdutoDAO.consultarPorDepartamento(pDepartamento);
+        String[] produtoRetorno = null;
+        if (produtoRecebido != null) {
+            produtoRetorno = new String[]{
+                String.valueOf(produtoRecebido.getCodigo()),
+                produtoRecebido.getDescricao(),
+                produtoRecebido.getDepartamento(),
+                String.valueOf(produtoRecebido.getValor()),
+                String.valueOf(produtoRecebido.getEstoqueAtual())};
+        }
+        return produtoRetorno;
+    }
+    
+    
 
 }
