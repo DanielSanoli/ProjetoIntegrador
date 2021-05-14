@@ -47,6 +47,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        groupVendedor = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -171,12 +172,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jListaDeVendedor = new javax.swing.JTable();
         jPanel30 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
-        edtCodigoProdutoE3 = new javax.swing.JTextField();
+        edtCodigoVendedor = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        edtDescricaoProdutoE3 = new javax.swing.JTextField();
+        edtNomeVendedor = new javax.swing.JTextField();
         btnFiltrar3 = new javax.swing.JButton();
-        rbCodigoProdutoE3 = new javax.swing.JRadioButton();
-        rbDescricaoProdutoE3 = new javax.swing.JRadioButton();
         jPanel20 = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
         jButton20 = new javax.swing.JButton();
@@ -1659,22 +1658,17 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jLabel27.setText("Código");
 
-        edtCodigoProdutoE3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtCodigoProdutoE3ActionPerformed(evt);
-            }
-        });
-        edtCodigoProdutoE3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                edtCodigoProdutoE3KeyTyped(evt);
+        edtCodigoVendedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtCodigoVendedorKeyReleased(evt);
             }
         });
 
         jLabel28.setText("Nome");
 
-        edtDescricaoProdutoE3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtDescricaoProdutoE3ActionPerformed(evt);
+        edtNomeVendedor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtNomeVendedorKeyReleased(evt);
             }
         });
 
@@ -1692,19 +1686,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel30Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnFiltrar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFiltrar3, javax.swing.GroupLayout.DEFAULT_SIZE, 886, Short.MAX_VALUE)
                     .addGroup(jPanel30Layout.createSequentialGroup()
                         .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel27)
                             .addComponent(jLabel28))
                         .addGap(10, 10, 10)
                         .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edtDescricaoProdutoE3)
-                            .addComponent(edtCodigoProdutoE3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(rbCodigoProdutoE3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rbDescricaoProdutoE3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(edtCodigoVendedor)
+                            .addComponent(edtNomeVendedor))))
                 .addContainerGap())
         );
         jPanel30Layout.setVerticalGroup(
@@ -1713,14 +1703,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel27)
-                    .addComponent(edtCodigoProdutoE3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbCodigoProdutoE3))
-                .addGap(8, 8, 8)
+                    .addComponent(edtCodigoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel28)
-                    .addComponent(edtDescricaoProdutoE3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbDescricaoProdutoE3))
-                .addGap(15, 15, 15)
+                    .addComponent(edtNomeVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
                 .addComponent(btnFiltrar3)
                 .addGap(10, 10, 10))
         );
@@ -2259,20 +2247,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_VENDEDOR, 0);
     }//GEN-LAST:event_jButton19ActionPerformed
 
-    private void edtCodigoProdutoE3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtCodigoProdutoE3ActionPerformed
-
-    private void edtCodigoProdutoE3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE3KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtCodigoProdutoE3KeyTyped
-
-    private void edtDescricaoProdutoE3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDescricaoProdutoE3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtDescricaoProdutoE3ActionPerformed
-
     private void btnFiltrar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar3ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_btnFiltrar3ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
@@ -2492,6 +2468,24 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFiltrar8ActionPerformed
 
+    private void edtNomeVendedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtNomeVendedorKeyReleased
+       if(!edtNomeVendedor.getText().equals("")){
+        edtCodigoVendedor.setEnabled(false);
+        } 
+      else{
+        edtCodigoVendedor.setEnabled(true);
+      } 
+    }//GEN-LAST:event_edtNomeVendedorKeyReleased
+
+    private void edtCodigoVendedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoVendedorKeyReleased
+       if(!edtCodigoVendedor.getText().equals("")){
+        edtNomeVendedor.setEnabled(false);
+        } 
+      else{
+        edtNomeVendedor.setEnabled(true);
+      } 
+    }//GEN-LAST:event_edtCodigoVendedorKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -2545,16 +2539,17 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JTextField edtCodProdutoV;
     private javax.swing.JTextField edtCodigoCliente;
     private javax.swing.JTextField edtCodigoProdutoE1;
-    private javax.swing.JTextField edtCodigoProdutoE3;
     private javax.swing.JTextField edtCodigoProdutoE4;
     private javax.swing.JTextField edtCodigoProdutoE6;
+    private javax.swing.JTextField edtCodigoVendedor;
     private javax.swing.JTextField edtCpfCliente;
     private javax.swing.JTextField edtDescricaoProdutoE1;
-    private javax.swing.JTextField edtDescricaoProdutoE3;
     private javax.swing.JTextField edtDescricaoProdutoE4;
     private javax.swing.JTextField edtDescricaoProdutoE6;
     private javax.swing.JTextField edtNomeCliente;
+    private javax.swing.JTextField edtNomeVendedor;
     private javax.swing.JTextField edtrDescricaoProdutoV;
+    private javax.swing.ButtonGroup groupVendedor;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
@@ -2665,14 +2660,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> listaDepartamento;
     private javax.swing.JRadioButton rbCodigoCliente;
     private javax.swing.JRadioButton rbCodigoProdutoE1;
-    private javax.swing.JRadioButton rbCodigoProdutoE3;
     private javax.swing.JRadioButton rbCodigoProdutoE4;
     private javax.swing.JRadioButton rbCodigoProdutoE6;
     private javax.swing.JRadioButton rbCpfCliente;
     private javax.swing.JRadioButton rbDepartamentoE1;
     private javax.swing.JRadioButton rbDepartamentoE3;
     private javax.swing.JRadioButton rbDescricaoProdutoE1;
-    private javax.swing.JRadioButton rbDescricaoProdutoE3;
     private javax.swing.JRadioButton rbDescricaoProdutoE4;
     private javax.swing.JRadioButton rbDescricaoProdutoE6;
     private javax.swing.JRadioButton rbNomeCliente;

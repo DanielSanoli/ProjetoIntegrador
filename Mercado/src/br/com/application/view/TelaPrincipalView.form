@@ -6,6 +6,8 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="groupVendedor">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -2822,7 +2824,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="btnFiltrar3" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="btnFiltrar3" alignment="1" pref="886" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
@@ -2830,13 +2832,8 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="edtDescricaoProdutoE3" max="32767" attributes="0"/>
-                                          <Component id="edtCodigoProdutoE3" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="rbCodigoProdutoE3" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="rbDescricaoProdutoE3" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="edtCodigoVendedor" max="32767" attributes="0"/>
+                                          <Component id="edtNomeVendedor" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -2850,16 +2847,14 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
                                   <Component id="jLabel27" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="edtCodigoProdutoE3" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbCodigoProdutoE3" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="edtCodigoVendedor" alignment="2" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
                                   <Component id="jLabel28" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="edtDescricaoProdutoE3" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbDescricaoProdutoE3" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="edtNomeVendedor" alignment="2" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               <Component id="btnFiltrar3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           </Group>
@@ -2872,10 +2867,9 @@
                         <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="edtCodigoProdutoE3">
+                    <Component class="javax.swing.JTextField" name="edtCodigoVendedor">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtCodigoProdutoE3ActionPerformed"/>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtCodigoProdutoE3KeyTyped"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtCodigoVendedorKeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel28">
@@ -2883,9 +2877,9 @@
                         <Property name="text" type="java.lang.String" value="Nome"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="edtDescricaoProdutoE3">
+                    <Component class="javax.swing.JTextField" name="edtNomeVendedor">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtDescricaoProdutoE3ActionPerformed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtNomeVendedorKeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnFiltrar3">
@@ -2897,10 +2891,6 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFiltrar3ActionPerformed"/>
                       </Events>
-                    </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbCodigoProdutoE3">
-                    </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbDescricaoProdutoE3">
                     </Component>
                   </SubComponents>
                 </Container>
