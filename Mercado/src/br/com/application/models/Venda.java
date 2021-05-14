@@ -4,6 +4,7 @@ package br.com.application.models;
 public class Venda {
 
     private String dataDeVenda;
+    private int codigoVenda;
     private int quantidade;
     private double valorUnitario;
     private double valorTotal;
@@ -51,6 +52,15 @@ public class Venda {
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
+
+    public int getCodigoVenda() {
+        return codigoVenda;
+    }
+
+    public void setCodigoVenda(int codigoVenda) {
+        this.codigoVenda = codigoVenda;
+    }
+    
     
     
 }
