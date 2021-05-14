@@ -7,6 +7,7 @@ package br.com.application.view;
 
 import br.com.application.view.AvisosDialog;
 import br.com.application.models.Vendedor;
+import br.com.application.controller.vendedorController;
 import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
 import static br.com.application.utils.UtilsConstantes.FALHA_NO_CADASTRO;
 import br.com.application.utils.UtilsValidacao;
@@ -96,6 +97,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        edtCodigo.setEditable(false);
         edtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtCodigoActionPerformed(evt);
@@ -108,7 +110,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
         });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Código *");
+        jLabel5.setText("Código ");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -117,7 +119,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(edtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -125,7 +127,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(edtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -360,31 +362,23 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
         try {
-            int cod = Integer.parseInt(edtCodigo.getText());
             String nomeVendedor = edtNomeVendedor.getText();
             String email = edtEmail.getText();
             double salario = Double.parseDouble(edtSalario.getText());
             String telefone = edtTelefone.getText();
 
-            if (UtilsValidacao.isNullOuVazio(String.valueOf(cod))) {
-                new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
-                edtCodigo.setBackground(Color.yellow);
-                return;
-            } else {
-                edtCodigo.setBackground(Color.white);
-            }
-
             if (UtilsValidacao.isNullOuVazio(nomeVendedor)) {
-                new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
+                AvisosDialog avisosDialog = new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
                 edtNomeVendedor.setBackground(Color.yellow);
                 return;
             } else {
                 edtNomeVendedor.setBackground(Color.white);
             }
-            Vendedor departamento = new Vendedor(cod, email, salario, nomeVendedor, telefone);
+            vendedorController cadastro = new vendedorController();
+            vendedorController.cadastrar(nomeVendedor, email, salario, telefone);
             AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
             dispose();
-        } catch (Exception ex) {
+        } catch (NumberFormatException ex) {
             AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
             dispose();
         }
