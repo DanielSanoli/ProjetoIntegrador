@@ -6,6 +6,7 @@
 package br.com.application.view;
 
 import br.com.application.controller.ClienteController;
+import br.com.application.controller.vendedorController;
 import static br.com.application.utils.UtilsConstantes.CLASS_CLIENTE;
 import static br.com.application.utils.UtilsConstantes.CLASS_DEPARTAMENTO;
 import static br.com.application.utils.UtilsConstantes.CLASS_OPERADOR;
@@ -200,11 +201,12 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
         }
 
         int codigo = Integer.parseInt(edtCodigo.getText());
-
+        boolean res = false;
         switch (className) {
             case CLASS_CLIENTE:
                 // Realizar exclusão do cliente
                 System.out.println("CLASS_CLIENTE");
+                 res = ClienteController.excluir(codigo);
                 break;
             case CLASS_DEPARTAMENTO:
                 // Realizar exclusão do departamento
@@ -221,10 +223,9 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
             case CLASS_VENDEDOR:
                 // Realizar exclusão do vendedor
                 System.out.println("CLASS_VENDEDOR");
+                res = vendedorController.excluir(codigo);
                 break;
         }
-
-        boolean res = ClienteController.excluir(codigo);
 
         if (res) {
             AvisosDialog av = new AvisosDialog(null, true, EXCLUSAO_REALIZADA, false);

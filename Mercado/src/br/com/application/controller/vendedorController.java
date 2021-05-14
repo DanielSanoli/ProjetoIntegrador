@@ -57,4 +57,7 @@ public class vendedorController {
         
         return VendedorDAO.alterar(vendedor);    
     }
+     public static boolean excluir(int Codigo) {
+        return VendedorDAO.excluirPorCodigo(Codigo);
+    }
 }

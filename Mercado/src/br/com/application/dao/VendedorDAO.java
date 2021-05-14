@@ -143,4 +143,20 @@ public class VendedorDAO {
 
         return resultado;
     }
+   public static boolean excluirPorCodigo(int Codigo) {
+        boolean resultado = false;
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+        try {
+            conexao = Conexao.getConnection();
+            instrucaoSQL = conexao.prepareStatement("DELETE FROM vendedor where cod_vendedor = ?");
+            instrucaoSQL.setInt(1, Codigo);
+            resultado = instrucaoSQL.executeUpdate() > 0;
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            UtilsDB.fecharConexao(instrucaoSQL, conexao);
+        }
+        return resultado;
+    }
 }
