@@ -1,48 +1,52 @@
 
 package br.com.application.models;
 
+import java.sql.Date;
+import java.util.ArrayList;
+
 public class Venda {
 
-    private String dataDeVenda;
+    private Date dataDeVenda;
     private int codigoVenda;
-    private int quantidade;
-    private double valorUnitario;
+    private int codigo;
     private double valorTotal;
+    private ArrayList<ItemVenda> listaItens = new ArrayList<>();
+    
     
     public Venda() {
     }
 
-    public Venda(String dataDeVenda, int quantidade, double valorUnitario, double valorTotal) {
+    public Venda(Date dataDeVenda,  double valorTotal, int codigoVenda, ArrayList<ItemVenda> listaItens) {
         this.dataDeVenda = dataDeVenda;
-        this.quantidade = quantidade;
-        this.valorUnitario = valorUnitario;
+        this.codigoVenda = codigoVenda;
+        this.codigo = codigo;
         this.valorTotal = valorTotal;
+         this.listaItens = listaItens;
+       
     }
-    
-    
 
-    public String getDataDeVenda() {
+    public Date getDataDeVenda() {
         return dataDeVenda;
     }
 
-    public void setDataDeVenda(String dataDeVenda) {
+    public ArrayList<ItemVenda> getListaItens() {
+        return listaItens;
+    }
+
+    public void setListaItens(ArrayList<ItemVenda> listaItens) {
+        this.listaItens = listaItens;
+    }
+
+    public void setDataDeVenda(Date dataDeVenda) {
         this.dataDeVenda = dataDeVenda;
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public double getValorUnitario() {
-        return valorUnitario;
-    }
-
-    public void setValorUnitario(double valorUnitario) {
-        this.valorUnitario = valorUnitario;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public double getValorTotal() {

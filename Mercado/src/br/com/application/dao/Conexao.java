@@ -16,7 +16,7 @@ public class Conexao {
     public static final String DATABASE = "mercadodb";
 
     public static final String LOGIN = "root";
-    public static final String SENHA = "";
+    public static final String SENHA = "Jamilca168";
 
     public Conexao() {
     }

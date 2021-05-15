@@ -1,10 +1,10 @@
 package br.com.application.dao;
 
 
-import br.com.application.models.Cliente;
 import br.com.application.models.Venda;
 import br.com.application.utils.UtilsDB;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +25,7 @@ public class VendaDAO {
     
     
     //Insert
-     public static boolean cadastrar(Venda venda, Cliente pCliente) {
+     public static boolean cadastrar(Venda venda) {
 
         boolean resultado = false;
         Connection conexao = null;
@@ -34,17 +34,15 @@ public class VendaDAO {
         try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("insert into venda(DataDeVenda,Quantidade, ValorUnitario,"
+            instrucaoSQL = conexao.prepareStatement("insert into venda(DataDeVenda,"
                     + "ValorTotal, CodigoVenda,Codigo  ) values (\n"
                     + "?,?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
 
             
-            instrucaoSQL.setString(1, venda.getDataDeVenda());
-            instrucaoSQL.setInt(2, venda.getQuantidade());
-            instrucaoSQL.setDouble(3, venda.getValorUnitario());
-            instrucaoSQL.setDouble(4, venda.getValorTotal());
-            instrucaoSQL.setInt(5, venda.getCodigoVenda());
-            instrucaoSQL.setInt(6, pCliente.getCodigo());
+            instrucaoSQL.setDate(1, venda.getDataDeVenda());
+            instrucaoSQL.setDouble(2, venda.getValorTotal());
+            instrucaoSQL.setInt(3, venda.getCodigoVenda());
+            instrucaoSQL.setInt(4,venda.getCodigo());
           
             
    
@@ -71,9 +69,9 @@ public class VendaDAO {
 
             instrucaoSQL = conexao.prepareStatement("update venda set "
                     + "dataVenda = ?,"
-                    + "quantidade = ?,"
+                    + "codigo = ?,"
                     + "valorTotal = ?,"
-                    + "valorUnitario = ?"
+                    + "codigoVenda = ?, "                
                     + "where codigo = ?;");
 
             resultado = instrucaoSQL.executeUpdate() > 0;
@@ -90,7 +88,7 @@ public class VendaDAO {
     }
 
 
-    public static Venda consultarPorCodigo(int vendaCodigo) {
+    public static Venda consultarPorCodigo(int pCodigo) {
 
        
         Connection conexao = null;
@@ -103,7 +101,7 @@ public class VendaDAO {
 
             instrucaoSQL = conexao.prepareStatement("SELECT * FROM venda WHERE cod_venda=?");
 
-            instrucaoSQL.setInt(1, vendaCodigo);
+            instrucaoSQL.setInt(1, pCodigo);
 
             rs = instrucaoSQL.executeQuery();
  
@@ -111,9 +109,8 @@ public class VendaDAO {
             while (rs.next()) {
                 Venda venda = new Venda();   
                 venda.setCodigoVenda(rs.getInt("cVenda"));
-                venda.setDataDeVenda(rs.getString("dataDeVenda"));
-                venda.setQuantidade(rs.getInt("Quantidade"));
-                venda.setValorUnitario(rs.getDouble("ValorUnitario"));
+                venda.setDataDeVenda(rs.getDate("dataDeVenda"));
+                venda.setCodigo(rs.getInt("Codigo"));
                 venda.setValorTotal(rs.getDouble("ValorTotal"));
                
             }
@@ -128,7 +125,7 @@ public class VendaDAO {
         return vendas;
     }
    
-    public static Venda consultarData(String dataDeVenda) {
+    public static Venda consultarData(Date dataDeVenda) {
 
        Venda venda = new Venda();
         Connection conexao = null;
@@ -140,18 +137,16 @@ public class VendaDAO {
 
             instrucaoSQL = conexao.prepareStatement("SELECT * FROM venda WHERE dataVenda=?");
 
-            instrucaoSQL.setString(1, dataDeVenda);
+            instrucaoSQL.setDate(1, dataDeVenda);
 
             rs = instrucaoSQL.executeQuery();
 
             while (rs.next()) {
                
                 venda.setCodigoVenda(rs.getInt("cVenda"));
-                venda.setDataDeVenda(rs.getString("dataDeVenda"));
-                venda.setQuantidade(rs.getInt("Quantidade"));
-                venda.setValorUnitario(rs.getDouble("ValorUnitario"));
+                venda.setDataDeVenda(rs.getDate("dataDeVenda"));            
                 venda.setValorTotal(rs.getDouble("ValorTotal"));
-              
+                venda.setCodigo(rs.getInt("Codigo"));
                 
             }
 
@@ -164,42 +159,8 @@ public class VendaDAO {
 
         return venda;
     }
-   public static Venda consultarQuantidade(int quantidade) {
-
-       Venda venda = new Venda();
-        Connection conexao = null;
-        PreparedStatement instrucaoSQL = null;
-        ResultSet rs = null;
-
-        try {
-            conexao = Conexao.getConnection();
-
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM venda WHERE quantidade=?");
-
-            instrucaoSQL.setInt(1, quantidade);
-
-            rs = instrucaoSQL.executeQuery();
-
-            while (rs.next()) {
-               
-                venda.setCodigoVenda(rs.getInt("cVenda"));
-                venda.setDataDeVenda(rs.getString("dataDeVenda"));
-                venda.setQuantidade(rs.getInt("Quantidade"));
-                venda.setValorUnitario(rs.getDouble("ValorUnitario"));
-                venda.setValorTotal(rs.getDouble("ValorTotal"));
-              
-                
-            }
-
-        } catch (SQLException | ClassNotFoundException ex) {
-            System.out.println(ex.getMessage());
-          venda = null;
-        } finally {
-            UtilsDB.fecharConexao(instrucaoSQL, conexao);
-        }
-
-        return venda;
-    }
+   
+      
        public static Venda consultarValorTotal(double valorTotal) {
 
        Venda venda = new Venda();
@@ -219,11 +180,9 @@ public class VendaDAO {
             while (rs.next()) {
                
                 venda.setCodigoVenda(rs.getInt("cVenda"));
-                venda.setDataDeVenda(rs.getString("dataDeVenda"));
-                venda.setQuantidade(rs.getInt("Quantidade"));
-                venda.setValorUnitario(rs.getDouble("ValorUnitario"));
+                venda.setDataDeVenda(rs.getDate("dataDeVenda"));             
                 venda.setValorTotal(rs.getDouble("ValorTotal"));
-              
+                venda.setCodigo(rs.getInt("Codigo"));
                 
             }
 
@@ -236,40 +195,6 @@ public class VendaDAO {
 
         return venda;
     }
-       public static Venda consultarValorUnitario(double valorUnitario) {
+      
 
-       Venda venda = new Venda();
-        Connection conexao = null;
-        PreparedStatement instrucaoSQL = null;
-        ResultSet rs = null;
-
-        try {
-            conexao = Conexao.getConnection();
-
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM venda WHERE valorUnitario=?");
-
-            instrucaoSQL.setDouble(1, valorUnitario);
-
-            rs = instrucaoSQL.executeQuery();
-
-            while (rs.next()) {
-               
-                venda.setCodigoVenda(rs.getInt("cVenda"));
-                venda.setDataDeVenda(rs.getString("dataDeVenda"));
-                venda.setQuantidade(rs.getInt("Quantidade"));
-                venda.setValorUnitario(rs.getDouble("ValorUnitario"));
-                venda.setValorTotal(rs.getDouble("ValorTotal"));
-              
-                
-            }
-
-        } catch (SQLException | ClassNotFoundException ex) {
-            System.out.println(ex.getMessage());
-          venda = null;
-        } finally {
-            UtilsDB.fecharConexao(instrucaoSQL, conexao);
-        }
-
-        return venda;
     }
-}
