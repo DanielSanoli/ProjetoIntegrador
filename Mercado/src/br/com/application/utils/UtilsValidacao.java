@@ -1,6 +1,5 @@
 package br.com.application.utils;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import javax.swing.JTextField;
 
@@ -82,5 +81,9 @@ public class UtilsValidacao {
         } catch (InputMismatchException erro) {
             return (false);
         }
+    }
+
+    public static String addMaskCpf(String cpf) {
+        return cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-" + cpf.substring(9, 11);
     }
 }

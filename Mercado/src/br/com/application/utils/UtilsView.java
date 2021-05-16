@@ -18,5 +18,4 @@ public class UtilsView {
         dialog.setFocusableWindowState(true);
         dialog.setModal(true);
     }
-    
 }

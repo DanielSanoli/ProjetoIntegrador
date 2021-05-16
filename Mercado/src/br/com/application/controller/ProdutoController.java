@@ -1,8 +1,6 @@
 package br.com.application.controller;
 
-import br.com.application.dao.ClienteDAO;
 import br.com.application.dao.ProdutoDAO;
-import br.com.application.models.Cliente;
 import br.com.application.models.Produto;
 import java.util.ArrayList;
 

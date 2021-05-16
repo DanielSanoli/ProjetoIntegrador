@@ -45,7 +45,6 @@ public class AdicionarVendedorDialog extends javax.swing.JDialog {
         jButton1.setText("Confirmar");
 
         jComboBox1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matheus", "Yuri", "Jamile", "Ana", "Daniel" }));
 
         jButton2.setBackground(new java.awt.Color(255, 204, 204));
         jButton2.setText("Cancelar");
