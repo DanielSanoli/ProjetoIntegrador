@@ -153,75 +153,60 @@ public class ProdutoDAO {
         return retorno;
     }
 
-    public static Produto consultarPorDescricao(String pDescricao) {
-
-        Produto retorno = new Produto();
+    public static ArrayList<Produto> consultarPorDescricao(String pDescricao) {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
+        ArrayList<Produto> produtos = new ArrayList<>();
         ResultSet rs = null;
-
         try {
             conexao = Conexao.getConnection();
-
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE descricao like ?");
-
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto where descricao like ?");
             instrucaoSQL.setString(1, "%" + pDescricao + "%");
-
             rs = instrucaoSQL.executeQuery();
-
             while (rs.next()) {
-                retorno.setCodigo(rs.getInt("cod_prod"));
-                retorno.setDepartamento(rs.getString("departamento"));
-                retorno.setDescricao(rs.getString("descricao"));
-                retorno.setEstoqueAtual(rs.getInt("estoqueAtual"));
-                retorno.setValor(rs.getDouble("valor"));
+                Produto produto = new Produto();
+                produto.setCodigo(rs.getInt("cod_prod"));
+                produto.setDepartamento(rs.getString("departamento"));
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setEstoqueAtual(rs.getInt("estoqueAtual"));
+                produto.setValor(rs.getDouble("valor"));
+                produtos.add(produto);
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
-            retorno = null;
+            produtos = null;
         } finally {
             UtilsDB.fecharConexao(instrucaoSQL, conexao);
         }
-
-        return retorno;
+        return produtos;
     }
 
-    public static Produto consultarPorDepartamento(String pDepartamento) {
-
-        Produto retorno = new Produto();
+    public static ArrayList<Produto> consultarPorDepartamento(String pDepartamento) {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
+        ArrayList<Produto> produtos = new ArrayList<>();
         ResultSet rs = null;
-
         try {
             conexao = Conexao.getConnection();
-
-            if (pDepartamento.equalsIgnoreCase("todos")) {
-                instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto;");
-            } else {
-                instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE departamento like ?");
-                instrucaoSQL.setString(1, "%" + pDepartamento + "%");
-            }
-
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto where departamento like ?");
+            instrucaoSQL.setString(1, "%" + pDepartamento + "%");
             rs = instrucaoSQL.executeQuery();
-
             while (rs.next()) {
-                retorno.setCodigo(rs.getInt("cod_prod"));
-                retorno.setDepartamento(rs.getString("departamento"));
-                retorno.setDescricao(rs.getString("descricao"));
-                retorno.setEstoqueAtual(rs.getInt("estoqueAtual"));
-                retorno.setValor(rs.getDouble("valor"));
+                Produto produto = new Produto();
+                produto.setCodigo(rs.getInt("cod_prod"));
+                produto.setDepartamento(rs.getString("departamento"));
+                produto.setDescricao(rs.getString("descricao"));
+                produto.setEstoqueAtual(rs.getInt("estoqueAtual"));
+                produto.setValor(rs.getDouble("valor"));
+                produtos.add(produto);
             }
-
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
-            retorno = null;
+            produtos = null;
         } finally {
             UtilsDB.fecharConexao(instrucaoSQL, conexao);
         }
-
-        return retorno;
+        return produtos;
     }
-
 }

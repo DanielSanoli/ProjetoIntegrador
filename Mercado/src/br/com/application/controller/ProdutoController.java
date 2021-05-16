@@ -11,7 +11,7 @@ public class ProdutoController {
     // Insert
     public static boolean cadastrar(String pDepartamento,
             String pDescricao, int pEstoqueAtual, Double pValor) {
-        
+
         Produto produto = new Produto();
         produto.setDepartamento(pDepartamento);
         produto.setDescricao(pDescricao);
@@ -71,34 +71,31 @@ public class ProdutoController {
         return produtoRetorno;
     }
 
-    public static String[] consultarPorDescricao(String pDescricao) {
-        Produto produtoRecebido = ProdutoDAO.consultarPorDescricao(pDescricao);
-        String[] produtoRetorno = null;
-        if (produtoRecebido != null) {
-            produtoRetorno = new String[]{
-                String.valueOf(produtoRecebido.getCodigo()),
-                produtoRecebido.getDescricao(),
-                produtoRecebido.getDepartamento(),
-                String.valueOf(produtoRecebido.getValor()),
-                String.valueOf(produtoRecebido.getEstoqueAtual())};
+    public static ArrayList<String[]> consultarPorDescricao(String pDescricao) {
+        ArrayList<Produto> listaRecebida = ProdutoDAO.consultarPorDescricao(pDescricao);
+        ArrayList<String[]> listaRetorno = new ArrayList<>();
+        for (Produto produto : listaRecebida) {
+            listaRetorno.add(new String[]{
+                String.valueOf(produto.getCodigo()),
+                produto.getDescricao(),
+                produto.getDepartamento(),
+                String.valueOf(produto.getValor()),
+                String.valueOf(produto.getEstoqueAtual())});
         }
-        return produtoRetorno;
+        return listaRetorno;
     }
-    
-        public static String[] consultarPorDepartamento(String pDepartamento) {
-        Produto produtoRecebido = ProdutoDAO.consultarPorDepartamento(pDepartamento);
-        String[] produtoRetorno = null;
-        if (produtoRecebido != null) {
-            produtoRetorno = new String[]{
-                String.valueOf(produtoRecebido.getCodigo()),
-                produtoRecebido.getDescricao(),
-                produtoRecebido.getDepartamento(),
-                String.valueOf(produtoRecebido.getValor()),
-                String.valueOf(produtoRecebido.getEstoqueAtual())};
-        }
-        return produtoRetorno;
-    }
-    
-    
 
+    public static ArrayList<String[]> consultarPorDepartamento(String pDepartamento) {
+        ArrayList<Produto> listaRecebida = ProdutoDAO.consultarPorDepartamento(pDepartamento);
+        ArrayList<String[]> listaRetorno = new ArrayList<>();
+        for (Produto produto : listaRecebida) {
+            listaRetorno.add(new String[]{
+                String.valueOf(produto.getCodigo()),
+                produto.getDescricao(),
+                produto.getDepartamento(),
+                String.valueOf(produto.getValor()),
+                String.valueOf(produto.getEstoqueAtual())});
+        }
+        return listaRetorno;
+    }
 }
