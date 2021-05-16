@@ -28,7 +28,8 @@ public interface UtilsConstantes {
     //DB
     String CLIENTE_NAO_ENCONTRADO = "Nenhum cliente encontrado.";
     String PRODUTO_NAO_ENCONTRADO = "Nenhum produto encontrado.";
-    String SUCESSO_BUSCA = "Sucesso na busca.";
+    String SUCESSO_BUSCA = "Sucesso na busca";
+    String FALHA_BUSCA = "Falha na busca";
     String CADASTRO_REALIZADO = "Cadastro realizado com sucesso.";
     String FALHA_NO_CADASTRO = "Falha no cadastro.";
     String EXCLUSAO_REALIZADA = "Exclusão realizada com sucesso.";
