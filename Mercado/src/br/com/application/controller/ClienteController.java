@@ -88,40 +88,39 @@ public class ClienteController {
         return clienteRetorno;
     }
 
-    public static String[] consultarPorCpf(String pCpf) {
-        Cliente clienteRecebido = ClienteDAO.consultarPorCpf(pCpf);
-        String[] clienteRetorno = null;
-        if (clienteRecebido != null) {
-            clienteRetorno = new String[]{
-                String.valueOf(clienteRecebido.getCodigo()),
-                clienteRecebido.getCPF(),
-                clienteRecebido.getNome(),
-                clienteRecebido.getEmail(),
-                clienteRecebido.getTelefone(),
-                clienteRecebido.getEnderecoLogradouro(),
-                clienteRecebido.getEnderecoNumero(),
-                clienteRecebido.getEnderecoComplemento(),
-                clienteRecebido.getSexo()};
+    public static ArrayList<String[]> consultarPorCpf(String pCpf) {
+        ArrayList<Cliente> listaRecebida = ClienteDAO.consultarPorCpf(pCpf);
+        ArrayList<String[]> listaRetorno = new ArrayList<>();
+        for (Cliente cliente : listaRecebida) {
+            listaRetorno.add(new String[]{
+                String.valueOf(cliente.getCodigo()),
+                cliente.getCPF(),
+                cliente.getNome(),
+                cliente.getEmail(),
+                cliente.getTelefone(),
+                cliente.getEnderecoLogradouro(),
+                cliente.getEnderecoNumero(),
+                cliente.getEnderecoComplemento(),
+                cliente.getSexo()});
         }
-        return clienteRetorno;
+        return listaRetorno;
     }
 
-    public static String[] consultarPorNome(String pNome) {
-        Cliente clienteRecebido = ClienteDAO.consultarPorNome(pNome);
-        String[] clienteRetorno = null;
-        if (clienteRecebido != null) {
-            clienteRetorno = new String[]{
-                String.valueOf(clienteRecebido.getCodigo()),
-                clienteRecebido.getCPF(),
-                clienteRecebido.getNome(),
-                clienteRecebido.getEmail(),
-                clienteRecebido.getTelefone(),
-                clienteRecebido.getEnderecoLogradouro(),
-                clienteRecebido.getEnderecoNumero(),
-                clienteRecebido.getEnderecoComplemento(),
-                clienteRecebido.getSexo()};
+    public static ArrayList<String[]> consultarPorNome(String pNome) {
+        ArrayList<Cliente> listaRecebida = ClienteDAO.consultarPorNome(pNome);
+        ArrayList<String[]> listaRetorno = new ArrayList<>();
+        for (Cliente cliente : listaRecebida) {
+            listaRetorno.add(new String[]{
+                String.valueOf(cliente.getCodigo()),
+                cliente.getCPF(),
+                cliente.getNome(),
+                cliente.getEmail(),
+                cliente.getTelefone(),
+                cliente.getEnderecoLogradouro(),
+                cliente.getEnderecoNumero(),
+                cliente.getEnderecoComplemento(),
+                cliente.getSexo()});
         }
-        return clienteRetorno;
+        return listaRetorno;
     }
-
 }

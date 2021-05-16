@@ -22,6 +22,7 @@ import static br.com.application.utils.UtilsConstantes.SUCESSO_BUSCA;
 import static br.com.application.utils.UtilsConstantes.VALOR_ZERADO;
 import br.com.application.utils.UtilsTabela;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jdk.nashorn.internal.runtime.ListAdapter;
@@ -114,11 +115,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         edtCodigoCliente = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         edtCpfCliente = new javax.swing.JTextField();
-        btnFiltrar7 = new javax.swing.JButton();
         jLabel40 = new javax.swing.JLabel();
-        rbCodigoCliente = new javax.swing.JRadioButton();
-        rbCpfCliente = new javax.swing.JRadioButton();
-        rbNomeCliente = new javax.swing.JRadioButton();
         edtNomeCliente = new javax.swing.JTextField();
         btnFiltrar8 = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
@@ -922,6 +919,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
         });
         edtCodigoCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtCodigoClienteKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 edtCodigoClienteKeyTyped(evt);
             }
@@ -934,31 +934,26 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 edtCpfClienteActionPerformed(evt);
             }
         });
-
-        btnFiltrar7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pesquisar_32px.png"))); // NOI18N
-        btnFiltrar7.setText("Buscar pelo filtro");
-        btnFiltrar7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFiltrar7ActionPerformed(evt);
+        edtCpfCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtCpfClienteKeyReleased(evt);
             }
         });
 
         jLabel40.setText("Nome");
-
-        buttonGroup2.add(rbCodigoCliente);
-
-        buttonGroup2.add(rbCpfCliente);
-
-        buttonGroup2.add(rbNomeCliente);
 
         edtNomeCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtNomeClienteActionPerformed(evt);
             }
         });
+        edtNomeCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtNomeClienteKeyReleased(evt);
+            }
+        });
 
         btnFiltrar8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pesquisar_32px.png"))); // NOI18N
-        btnFiltrar8.setText("Buscar todos");
         btnFiltrar8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrar8ActionPerformed(evt);
@@ -969,59 +964,43 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel36.setLayout(jPanel36Layout);
         jPanel36Layout.setHorizontalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnFiltrar7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFiltrar8)
-                .addContainerGap())
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel40)
-                    .addComponent(jLabel39)
-                    .addComponent(jLabel38))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(edtCpfCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
-                    .addComponent(edtCodigoCliente)
-                    .addComponent(edtNomeCliente))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(rbCodigoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rbNomeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(rbCpfCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                    .addGroup(jPanel36Layout.createSequentialGroup()
+                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel39)
+                            .addComponent(jLabel38))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(edtCpfCliente)
+                            .addComponent(edtCodigoCliente)
+                            .addComponent(edtNomeCliente))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel36Layout.createSequentialGroup()
+                        .addComponent(btnFiltrar8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(5, 5, 5))))
         );
-
-        jPanel36Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnFiltrar7, btnFiltrar8});
-
         jPanel36Layout.setVerticalGroup(
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel38)
-                    .addComponent(edtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbCodigoCliente))
-                .addGap(8, 8, 8)
+                    .addComponent(edtCodigoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel39)
-                    .addComponent(edtCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbCpfCliente))
-                .addGap(11, 11, 11)
+                    .addComponent(edtCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(edtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel40)
-                    .addComponent(rbNomeCliente))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnFiltrar8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFiltrar7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel40))
+                .addGap(11, 11, 11)
+                .addComponent(btnFiltrar8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        jPanel36Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnFiltrar7, btnFiltrar8});
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
@@ -2223,7 +2202,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         if (rbDepartamentoE1.isSelected()) {
             if (UtilsTabela.atualizarTabela(ProdutoController.consultarPorDescricao(descricao), jListaDeProdutosCadastro)) {
-                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);                
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
             } else {
                 AvisosDialog av = new AvisosDialog(null, true, PRODUTO_NAO_ENCONTRADO, false);
             }
@@ -2307,55 +2286,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void edtCpfClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCpfClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCpfClienteActionPerformed
-
-    private void btnFiltrar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar7ActionPerformed
-        String codigo = edtCodigoCliente.getText();
-        String cpf = edtCpfCliente.getText();
-        String nome = edtNomeCliente.getText();
-
-        if (rbCodigoCliente.isSelected() && UtilsValidacao.isNullOuVazio(codigo)) {
-            AvisosDialog av = new AvisosDialog(null, true, "Para que o filtro seja atendido,"
-                    + " informe o código", false);
-            return;
-        }
-        if (rbCpfCliente.isSelected() && UtilsValidacao.isNullOuVazio(cpf)) {
-            AvisosDialog av = new AvisosDialog(null, true, "Para que o filtro seja atendido,"
-                    + " informe o cpf", false);
-            return;
-        }
-        if (rbNomeCliente.isSelected() && UtilsValidacao.isNullOuVazio(nome)) {
-            AvisosDialog av = new AvisosDialog(null, true, "Para que o filtro seja atendido,"
-                    + " informe o nome", false);
-            return;
-        }
-
-        if (rbCodigoCliente.isSelected()) {
-            if (UtilsTabela.atualizarTabela(ClienteController.consultarPorCodigo(Integer.parseInt(codigo)), jListaDeClientes)) {
-                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
-            } else {
-                AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
-            }
-            return;
-        }
-
-        if (rbCpfCliente.isSelected()) {
-            if (UtilsTabela.atualizarTabela(ClienteController.consultarPorCpf(cpf), jListaDeClientes)) {
-                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
-            } else {
-                AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
-            }
-            return;
-        }
-
-        if (rbNomeCliente.isSelected()) {
-            if (UtilsTabela.atualizarTabela(ClienteController.consultarPorNome(nome), jListaDeClientes)) {
-                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
-            } else {
-                AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
-            }
-            return;
-        }
-    }//GEN-LAST:event_btnFiltrar7ActionPerformed
 
     private void jListaDeClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaDeClientesMouseClicked
 
@@ -2461,7 +2391,45 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtNomeClienteActionPerformed
 
     private void btnFiltrar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar8ActionPerformed
-        if (UtilsTabela.atualizarTabela(ClienteController.consultarTodos(), jListaDeClientes)) {
+        String codigo = edtCodigoCliente.getText();
+        String cpf = edtCpfCliente.getText();
+        String nome = edtNomeCliente.getText();
+        boolean res = false;
+
+        if (!UtilsValidacao.isNullOuVazio(codigo)) {
+            String[] list = ClienteController.consultarPorCodigo(Integer.parseInt(codigo));
+            if (list.length > 0) {
+                res = true;
+                UtilsTabela.atualizarTabela(list, jListaDeClientes);
+            }
+            return;
+        }
+
+        if (!UtilsValidacao.isNullOuVazio(cpf)) {
+            ArrayList<String[]> list = ClienteController.consultarPorCpf(cpf);
+            if (list.size() > 0) {
+                res = true;
+                UtilsTabela.atualizarTabela(list, jListaDeClientes);
+            }
+            return;
+        }
+
+        if (!UtilsValidacao.isNullOuVazio(nome)) {
+            ArrayList<String[]> list = ClienteController.consultarPorNome(nome);
+            if (list.size() > 0) {
+                res = true;
+                UtilsTabela.atualizarTabela(list, jListaDeClientes);
+            }
+            return;
+        }
+
+        ArrayList<String[]> list = ClienteController.consultarTodos();
+        if (list.size() > 0) {
+            res = true;
+            UtilsTabela.atualizarTabela(list, jListaDeClientes);
+        }
+
+        if (res) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
         } else {
             AvisosDialog av = new AvisosDialog(null, true, CLIENTE_NAO_ENCONTRADO, false);
@@ -2469,22 +2437,50 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFiltrar8ActionPerformed
 
     private void edtNomeVendedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtNomeVendedorKeyReleased
-       if(!edtNomeVendedor.getText().equals("")){
-        edtCodigoVendedor.setEnabled(false);
-        } 
-      else{
-        edtCodigoVendedor.setEnabled(true);
-      } 
+        if (!edtNomeVendedor.getText().equals("")) {
+            edtCodigoVendedor.setEnabled(false);
+        } else {
+            edtCodigoVendedor.setEnabled(true);
+        }
     }//GEN-LAST:event_edtNomeVendedorKeyReleased
 
     private void edtCodigoVendedorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoVendedorKeyReleased
-       if(!edtCodigoVendedor.getText().equals("")){
-        edtNomeVendedor.setEnabled(false);
-        } 
-      else{
-        edtNomeVendedor.setEnabled(true);
-      } 
+        if (!edtCodigoVendedor.getText().equals("")) {
+            edtNomeVendedor.setEnabled(false);
+        } else {
+            edtNomeVendedor.setEnabled(true);
+        }
     }//GEN-LAST:event_edtCodigoVendedorKeyReleased
+
+    private void edtCodigoClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoClienteKeyReleased
+        if (!edtCodigoCliente.getText().equals("")) {
+            edtCpfCliente.setEnabled(false);
+            edtNomeCliente.setEnabled(false);
+        } else {
+            edtCpfCliente.setEnabled(true);
+            edtNomeCliente.setEnabled(true);
+        }
+    }//GEN-LAST:event_edtCodigoClienteKeyReleased
+
+    private void edtCpfClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCpfClienteKeyReleased
+        if (!edtCpfCliente.getText().equals("")) {
+            edtCodigoCliente.setEnabled(false);
+            edtNomeCliente.setEnabled(false);
+        } else {
+            edtCodigoCliente.setEnabled(true);
+            edtNomeCliente.setEnabled(true);
+        }
+    }//GEN-LAST:event_edtCpfClienteKeyReleased
+
+    private void edtNomeClienteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtNomeClienteKeyReleased
+        if (!edtNomeCliente.getText().equals("")) {
+            edtCodigoCliente.setEnabled(false);
+            edtCpfCliente.setEnabled(false);
+        } else {
+            edtCodigoCliente.setEnabled(true);
+            edtCpfCliente.setEnabled(true);
+        }
+    }//GEN-LAST:event_edtNomeClienteKeyReleased
 
     /**
      * @param args the command line arguments
@@ -2531,7 +2527,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton btnFiltrar3;
     private javax.swing.JButton btnFiltrar4;
     private javax.swing.JButton btnFiltrar6;
-    private javax.swing.JButton btnFiltrar7;
     private javax.swing.JButton btnFiltrar8;
     private javax.swing.JButton btnFiltrarV;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -2658,17 +2653,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JTable jtCarrinho;
     private javax.swing.JTable jtListaDeProdutosV;
     private javax.swing.JComboBox<String> listaDepartamento;
-    private javax.swing.JRadioButton rbCodigoCliente;
     private javax.swing.JRadioButton rbCodigoProdutoE1;
     private javax.swing.JRadioButton rbCodigoProdutoE4;
     private javax.swing.JRadioButton rbCodigoProdutoE6;
-    private javax.swing.JRadioButton rbCpfCliente;
     private javax.swing.JRadioButton rbDepartamentoE1;
     private javax.swing.JRadioButton rbDepartamentoE3;
     private javax.swing.JRadioButton rbDescricaoProdutoE1;
     private javax.swing.JRadioButton rbDescricaoProdutoE4;
     private javax.swing.JRadioButton rbDescricaoProdutoE6;
-    private javax.swing.JRadioButton rbNomeCliente;
     private javax.swing.JRadioButton rdCodigoProdutoV;
     private javax.swing.JRadioButton rdDepartamentoV;
     private javax.swing.JRadioButton rdDescricaoProdutoV;

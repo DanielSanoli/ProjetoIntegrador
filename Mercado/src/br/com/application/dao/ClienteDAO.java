@@ -127,7 +127,6 @@ public class ClienteDAO {
                 cliente.setSexo(rs.getString("sexo"));
                 clientes.add(cliente);
             }
-
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
             clientes = null;
@@ -175,82 +174,68 @@ public class ClienteDAO {
         return retorno;
     }
 
-    public static Cliente consultarPorCpf(String pCpf) {
+    public static ArrayList<Cliente> consultarPorCpf(String pCpf) {
 
-        Cliente retorno = new Cliente();
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
+        ArrayList<Cliente> clientes = new ArrayList<>();
         ResultSet rs = null;
-
         try {
             conexao = Conexao.getConnection();
-
-            pCpf = UtilsValidacao.removerPontuacaoCPF(pCpf);
-
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente WHERE cpf like ?");
-
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente where cpf like ?");
             instrucaoSQL.setString(1, "%" + pCpf + "%");
-
             rs = instrucaoSQL.executeQuery();
-
             while (rs.next()) {
-                retorno.setCodigo(rs.getInt("codigo"));
-                retorno.setCPF(rs.getString("cpf"));
-                retorno.setNome(rs.getString("nome"));
-                retorno.setEmail(rs.getString("email"));
-                retorno.setTelefone(rs.getString("telefone"));
-                retorno.setEnderecoLogradouro(rs.getString("enderecoLogradouro"));
-                retorno.setEnderecoNumero(rs.getString("enderecoNumero"));
-                retorno.setEnderecoComplemento(rs.getString("enderecoComplemento"));
-                retorno.setSexo(rs.getString("sexo"));
+                Cliente cliente = new Cliente();
+                cliente.setCodigo(rs.getInt("codigo"));
+                cliente.setCPF(rs.getString("cpf"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setEnderecoLogradouro(rs.getString("enderecoLogradouro"));
+                cliente.setEnderecoNumero(rs.getString("enderecoNumero"));
+                cliente.setEnderecoComplemento(rs.getString("enderecoComplemento"));
+                cliente.setSexo(rs.getString("sexo"));
+                clientes.add(cliente);
             }
-
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
-            retorno = null;
+            clientes = null;
         } finally {
             UtilsDB.fecharConexao(instrucaoSQL, conexao);
         }
-
-        return retorno;
+        return clientes;
     }
 
-    public static Cliente consultarPorNome(String pNome) {
-
-        Cliente retorno = new Cliente();
+    public static ArrayList<Cliente> consultarPorNome(String pNome) {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
+        ArrayList<Cliente> clientes = new ArrayList<>();
         ResultSet rs = null;
-
         try {
             conexao = Conexao.getConnection();
-
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente WHERE nome like ?");
-
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente where nome like ?");
             instrucaoSQL.setString(1, "%" + pNome + "%");
-
             rs = instrucaoSQL.executeQuery();
-
             while (rs.next()) {
-                retorno.setCodigo(rs.getInt("codigo"));
-                retorno.setCPF(rs.getString("cpf"));
-                retorno.setNome(rs.getString("nome"));
-                retorno.setEmail(rs.getString("email"));
-                retorno.setTelefone(rs.getString("telefone"));
-                retorno.setEnderecoLogradouro(rs.getString("enderecoLogradouro"));
-                retorno.setEnderecoNumero(rs.getString("enderecoNumero"));
-                retorno.setEnderecoComplemento(rs.getString("enderecoComplemento"));
-                retorno.setSexo(rs.getString("sexo"));
+                Cliente cliente = new Cliente();
+                cliente.setCodigo(rs.getInt("codigo"));
+                cliente.setCPF(rs.getString("cpf"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setEnderecoLogradouro(rs.getString("enderecoLogradouro"));
+                cliente.setEnderecoNumero(rs.getString("enderecoNumero"));
+                cliente.setEnderecoComplemento(rs.getString("enderecoComplemento"));
+                cliente.setSexo(rs.getString("sexo"));
+                clientes.add(cliente);
             }
-
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
-            retorno = null;
+            clientes = null;
         } finally {
             UtilsDB.fecharConexao(instrucaoSQL, conexao);
         }
-
-        return retorno;
+        return clientes;
     }
-
 }
