@@ -2,6 +2,7 @@ package br.com.application.controller;
 
 import br.com.application.dao.OperadorDAO;
 import br.com.application.models.Operador;
+import java.util.ArrayList;
 
 public class OperadorController {
     
@@ -40,6 +41,19 @@ public class OperadorController {
     }
     
     //Select 
+    
+    public static ArrayList<String[]> consultarTodos() {
+        ArrayList<Operador> listaRecebida = OperadorDAO.consultarTodos();
+        ArrayList<String[]> listaRetorno = new ArrayList<>();
+        for (Operador operador : listaRecebida) {
+            listaRetorno.add(new String[]{
+                String.valueOf(operador.getCodigo()),                
+                Integer.toString(operador.getUsuario()),
+                Integer.toString(operador.getSenha())});
+        }
+        return listaRetorno;           
+    }
+    
     public static int[] consultarPorCodigo(int pCodigo) {
         Operador operadorRecebido = OperadorDAO.consultarPorCodigo(pCodigo);
         int[] operadorRetorno = null;
@@ -67,3 +81,5 @@ public class OperadorController {
     }
     
 }
+
+
