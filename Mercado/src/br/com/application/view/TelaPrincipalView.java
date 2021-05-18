@@ -1,10 +1,13 @@
 package br.com.application.view;
 
 import br.com.application.controller.ClienteController;
+import br.com.application.controller.ItemVendaController;
 import br.com.application.controller.ProdutoController;
+import br.com.application.controller.VendaController;
 import br.com.application.controller.VendedorController;
 import br.com.application.models.Cliente;
 import br.com.application.models.Departamento;
+import br.com.application.models.ItemVenda;
 import br.com.application.models.Operador;
 import br.com.application.models.Produto;
 import br.com.application.models.Vendedor;
@@ -2038,6 +2041,25 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         } else {
             new AvisosDialog(this, true, "Não é possível finalizar uma venda sem produtos.", true);
         }
+        // Caso a venda seja inserida com sucesso, é retornado o número desta venda pois é auto_increment
+        // Este número será utilizado para a tabela itemVenda
+        int numeroVenda = VendaController.cadastrar(new Date(System.currentTimeMillis()), 1, 1, 300.0);
+
+        ArrayList<Integer[]> lista = new ArrayList();
+
+        Integer[] produtoA = {1, 2};
+        Integer[] produtoB = {1, 10};
+        Integer[] produtoC = {1, 15};
+        Integer[] produtoD = {1, 18};
+
+        lista.add(produtoA);
+        lista.add(produtoB);
+        lista.add(produtoC);
+        lista.add(produtoD);
+
+        for (Integer[] produto : lista) {
+            ItemVendaController.cadastrar(numeroVenda, produto[0], produto[1]);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton8KeyPressed
@@ -2219,7 +2241,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         ArrayList<String[]> list = VendedorController.buscarTodos();
         if (UtilsTabela.atualizarTabela(list, jListaDeVendedor)) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
@@ -2747,5 +2769,5 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void atualizarTabelaProduto() {
         UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jListaDeProdutosCadastro);
         UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jtListaDeProdutosV);
-    }    
+    }
 }

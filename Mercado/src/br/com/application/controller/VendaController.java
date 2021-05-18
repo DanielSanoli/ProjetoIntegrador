@@ -15,14 +15,12 @@ import java.util.Date;
  */
 public class VendaController {
 
-    public static int cadastrar(int pNumeroVenda,
-            Date pDataVenda,
+    public static int cadastrar(Date pDataVenda,
             int pCodigoCliente,
             int pCodigoVendedor,
             double pValorTotal) {
 
         Venda venda = new Venda();
-        venda.setNumeroVenda(pNumeroVenda);
         venda.setDataVenda(pDataVenda);
         venda.setCodigoCliente(pCodigoCliente);
         venda.setCodigoVendedor(pCodigoVendedor);
