@@ -2,6 +2,7 @@ package br.com.application.view;
 
 import br.com.application.controller.ClienteController;
 import br.com.application.controller.ItemVendaController;
+import br.com.application.controller.OperadorController;
 import br.com.application.controller.ProdutoController;
 import br.com.application.controller.VendaController;
 import br.com.application.controller.VendedorController;
@@ -2760,6 +2761,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         atualizarTabelaCliente();
         atualizarTabelaProduto();
+        atualizarTabelaOperador();
     }
 
     private void atualizarTabelaCliente() {
@@ -2769,5 +2771,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void atualizarTabelaProduto() {
         UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jListaDeProdutosCadastro);
         UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jtListaDeProdutosV);
+    }
+    
+    private void atualizarTabelaOperador(){
+        UtilsTabela.atualizarTabela(OperadorController.consultarTodos(), jListaOperador);
     }
 }
