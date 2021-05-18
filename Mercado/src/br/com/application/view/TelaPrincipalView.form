@@ -2849,7 +2849,7 @@
                                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="edtDescricaoProdutoE4" pref="899" max="32767" attributes="0"/>
-                                          <Component id="edtCodigoProdutoE4" max="32767" attributes="0"/>
+                                          <Component id="edtCodigoOperador" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -2868,7 +2868,7 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
                                   <Component id="jLabel32" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="edtCodigoProdutoE4" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="edtCodigoOperador" alignment="2" min="-2" max="-2" attributes="0"/>
                                   <Component id="rbCodigoProdutoE4" alignment="2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
@@ -2890,10 +2890,10 @@
                         <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="edtCodigoProdutoE4">
+                    <Component class="javax.swing.JTextField" name="edtCodigoOperador">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtCodigoProdutoE4ActionPerformed"/>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtCodigoProdutoE4KeyTyped"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtCodigoOperadorActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtCodigoOperadorKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel33">

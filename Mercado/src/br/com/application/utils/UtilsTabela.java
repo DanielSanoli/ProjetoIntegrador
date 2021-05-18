@@ -18,7 +18,7 @@ public class UtilsTabela {
             sucesso = false;
         }                
         return sucesso;        
-    }
+    }    
 
     public static boolean atualizarTabela(String[] item, JTable tabela) {
         boolean sucesso = true;

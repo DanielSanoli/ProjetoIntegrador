@@ -54,27 +54,27 @@ public class OperadorController {
         return listaRetorno;           
     }
     
-    public static int[] consultarPorCodigo(int pCodigo) {
+    public static String[] consultarPorCodigo(int pCodigo) {
         Operador operadorRecebido = OperadorDAO.consultarPorCodigo(pCodigo);
-        int[] operadorRetorno = null;
+        String[] operadorRetorno = null;
         if (operadorRecebido != null) {
-            operadorRetorno = new int[]{
-                operadorRecebido.getCodigo(),
-                operadorRecebido.getUsuario(),
-                operadorRecebido.getSenha()
+            operadorRetorno = new String[]{
+                String.valueOf(operadorRecebido.getCodigo()),
+                String.valueOf(operadorRecebido.getUsuario()),
+                String.valueOf(operadorRecebido.getSenha())
             };        
         }
         return operadorRetorno;
     }
     
-    public static int[] consultarPorUsuario(int pUsuario) {
+    public static String[] consultarPorUsuario(int pUsuario) {
         Operador operadorRecebido = OperadorDAO.consultarPorUsuario(pUsuario);
-        int[] operadorRetorno = null;
+        String[] operadorRetorno = null;
         if (operadorRecebido != null) {
-            operadorRetorno = new int[]{
-                operadorRecebido.getCodigo(),
-                operadorRecebido.getUsuario(),
-                operadorRecebido.getSenha()
+            operadorRetorno = new String[]{
+                String.valueOf(operadorRecebido.getCodigo()),
+                String.valueOf(operadorRecebido.getUsuario()),
+                String.valueOf(operadorRecebido.getSenha())
             };        
         }
         return operadorRetorno;
