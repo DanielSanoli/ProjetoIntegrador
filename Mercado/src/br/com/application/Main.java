@@ -2,6 +2,7 @@ package br.com.application;
 
 import br.com.application.controller.ItemVendaController;
 import br.com.application.controller.VendaController;
+import br.com.application.view.TelaPrincipalView;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.Random;
@@ -9,6 +10,10 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
+        
+        TelaPrincipalView tp = new TelaPrincipalView();
+        tp.setVisible(true);
+        
 
 //        Random random = new Random();
 //        DecimalFormat df = new DecimalFormat("###,##0.00");
