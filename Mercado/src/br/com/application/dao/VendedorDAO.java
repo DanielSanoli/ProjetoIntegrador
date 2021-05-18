@@ -7,6 +7,7 @@ package br.com.application.dao;
 
 import br.com.application.models.Vendedor;
 import br.com.application.utils.UtilsDB;
+import com.sun.jmx.remote.protocol.iiop.ClientProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -61,7 +62,7 @@ public class VendedorDAO {
             rs = instrucaoSQL.executeQuery();
             while (rs.next()) {
                 Vendedor vendedor = new Vendedor();
-                vendedor.setCodigo(rs.getInt("codigo"));
+                vendedor.setCodigo(rs.getInt("cod_vendedor"));
                 vendedor.setNome(rs.getString("nome"));
                 vendedor.setEmail(rs.getString("email"));
                 vendedor.setSalario(rs.getDouble("salario"));
@@ -96,7 +97,7 @@ public class VendedorDAO {
             rs = instrucaoSQL.executeQuery();
 
             while (rs.next()) {
-                retorno.setCodigo(rs.getInt("codigo"));
+                retorno.setCodigo(rs.getInt("cod_vendedor"));
                 retorno.setNome(rs.getString("nome"));
                 retorno.setEmail(rs.getString("email"));
                 retorno.setSalario(rs.getDouble("salario"));
@@ -125,7 +126,7 @@ public class VendedorDAO {
                     + "nome = ?,"
                     + "email = ?,"
                     + "salario = ?"
-                    + "telefone = ?,");
+                    + "telefone = ?;");
 
             instrucaoSQL.setString(1, vendedor.getNome());
             instrucaoSQL.setString(2, vendedor.getEmail());
@@ -158,5 +159,33 @@ public class VendedorDAO {
             UtilsDB.fecharConexao(instrucaoSQL, conexao);
         }
         return resultado;
+    }
+   
+   public static ArrayList<Vendedor> consultarPorNome(String nome) {
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+        ArrayList<Vendedor> vendedores = new ArrayList<>();
+        ResultSet rs = null;
+        try {
+            conexao = Conexao.getConnection();
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM vendedor where nome like ?");
+            instrucaoSQL.setString(1, "%" + nome + "%");
+            rs = instrucaoSQL.executeQuery();
+            while (rs.next()) {
+                Vendedor vendedor = new Vendedor();
+                vendedor.setCodigo(rs.getInt("cod_vendedor"));
+                vendedor.setNome(rs.getString("nome"));
+                vendedor.setEmail(rs.getString("email"));
+                vendedor.setSalario(rs.getDouble("salario"));
+                vendedor.setTelefone(rs.getString("telefone"));        
+                vendedores.add(vendedor);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            vendedores = null;
+        } finally {
+            UtilsDB.fecharConexao(instrucaoSQL, conexao);
+        }
+        return vendedores;
     }
 }

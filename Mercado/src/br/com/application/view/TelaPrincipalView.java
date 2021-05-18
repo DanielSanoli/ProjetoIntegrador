@@ -3,6 +3,7 @@ package br.com.application.view;
 import br.com.application.controller.ClienteController;
 import br.com.application.controller.PedidoController;
 import br.com.application.controller.ProdutoController;
+import br.com.application.controller.vendedorController;
 import br.com.application.models.Cliente;
 import br.com.application.models.Departamento;
 import br.com.application.models.Operador;
@@ -2200,7 +2201,36 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void btnFiltrar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar3ActionPerformed
+        String codigo = edtCodigoVendedor.getText();
+        String nome = edtNomeVendedor.getText();
+        boolean res = false;
 
+        if (!UtilsValidacao.isNullOuVazio(codigo)) {
+            String[] list = vendedorController.buscarPorCodigo(Integer.parseInt(codigo));
+            if (UtilsTabela.atualizarTabela(list, jListaDeVendedor)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Vendedor não encontrado", false);
+            }
+            return;
+        }
+
+        if (!UtilsValidacao.isNullOuVazio(nome)) {
+            ArrayList<String[]> list = vendedorController.buscarPorNome(nome);
+            if (UtilsTabela.atualizarTabela(list, jListaDeVendedor)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Vendedor não encontrado", false);
+            }
+            return;
+        }
+        
+        ArrayList<String[]> list = vendedorController.buscarTodos();
+        if (UtilsTabela.atualizarTabela(list, jListaDeVendedor)) {
+            AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+        } else {
+            AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Vendedor não encontrado", false);
+        }
     }//GEN-LAST:event_btnFiltrar3ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed

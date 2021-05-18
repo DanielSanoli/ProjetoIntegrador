@@ -5,7 +5,7 @@ import br.com.application.models.Vendedor;
 import java.util.ArrayList;
 
 public class vendedorController {
-     public static boolean cadastrar(String nome, String email, double salario,String Telefone) {
+     public static boolean cadastrar(String nome, String email, double salario, String Telefone) {
 
         Vendedor vendedor = new Vendedor();
         vendedor.setNome(nome);
@@ -50,6 +50,7 @@ public class vendedorController {
         
         Vendedor vendedor = new Vendedor();
         
+       
         vendedor.setNome(nome);
         vendedor.setEmail(email);
         vendedor.setSalario(salario);
@@ -59,5 +60,21 @@ public class vendedorController {
     }
      public static boolean excluir(int Codigo) {
         return VendedorDAO.excluirPorCodigo(Codigo);
+    }
+     
+    
+     public static ArrayList<String[]> buscarPorNome(String nome) {
+        ArrayList<Vendedor> listaRecebida = VendedorDAO.consultarPorNome(nome);
+        ArrayList<String[]> listaRetorno = new ArrayList<>();
+        for (Vendedor vendedor : listaRecebida) {
+            listaRetorno.add(new String[]{
+                String.valueOf(vendedor.getCodigo()),
+                vendedor.getNome(),
+                vendedor.getEmail(),
+                String.valueOf(vendedor.getSalario()),
+                vendedor.getTelefone(),
+                });
+        }
+        return listaRetorno;
     }
 }

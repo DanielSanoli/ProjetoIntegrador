@@ -361,7 +361,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
-        try {
+          try {
             String nomeVendedor = edtNomeVendedor.getText();
             String email = edtEmail.getText();
             double salario = Double.parseDouble(edtSalario.getText());
