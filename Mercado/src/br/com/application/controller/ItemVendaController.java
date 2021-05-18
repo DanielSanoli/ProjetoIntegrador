@@ -7,65 +7,21 @@ package br.com.application.controller;
 
 import br.com.application.dao.ItemVendaDAO;
 import br.com.application.models.ItemVenda;
-import java.sql.SQLException;
 
 /**
  *
  * @author Jamile
  */
 public class ItemVendaController {
-    
-    public static boolean cadastrar(int quantidade,  double valorUnitario) throws SQLException {
 
-        ItemVenda itemvenda = new ItemVenda();
-        itemvenda.setQuantidade(quantidade);
-        itemvenda.setValorUnitario(valorUnitario);
+    public static boolean cadastrar(int pNumeroVenda, int pCodigoProduto, int pQuantidade) {
 
-        return ItemVendaDAO.cadastrar(itemvenda);
+        ItemVenda iv = new ItemVenda();
+        iv.setNumeroVenda(pNumeroVenda);
+        iv.setCodigoProduto(pCodigoProduto);
+        iv.setQuantidadeProduto(pQuantidade);
 
+        return ItemVendaDAO.cadastrar(iv);
     }
-    // Update
-    public static boolean alterar(int quantidade,  double valorUnitario ) throws SQLException {
 
-         ItemVenda itemvenda = new ItemVenda();
-        itemvenda.setQuantidade(quantidade);
-        itemvenda.setValorUnitario(valorUnitario);
-
-        return ItemVendaDAO.cadastrar(itemvenda);
-    }
-    
-    //Delete
-    public static boolean excluir(int pCodigo) {
-        return ItemVendaDAO.excluirPorCodigo(pCodigo);
-    }
-    
-     public static String[] consultarPorCodigo(int pCodigo) {
-       ItemVenda itemvendaRecebido = ItemVendaDAO.consultarPorCodigo(pCodigo);
-        String[] itemvendaRetorno = null;
-        if (itemvendaRecebido != null) {
-            itemvendaRetorno = new String[]{
-                String.valueOf(itemvendaRecebido.getCodigo()),
-                String.valueOf(itemvendaRecebido.getCodigoItem()),
-                String.valueOf(itemvendaRecebido.getQuantidade()),
-                String.valueOf(itemvendaRecebido.getValorUnitario()),
-                String.valueOf(itemvendaRecebido.getCodigoP())
-        };
-                    }
-        return itemvendaRetorno;
-    }
-     public static String[] consultarQuantidade(int quantidade) {
-       ItemVenda itemvendaRecebido = ItemVendaDAO.consultarQuantidade(quantidade);
-        String[] itemvendaRetorno = null;
-        if (itemvendaRecebido != null) {
-            itemvendaRetorno = new String[]{
-                String.valueOf(itemvendaRecebido.getCodigo()),
-                String.valueOf(itemvendaRecebido.getCodigoItem()),
-                String.valueOf(itemvendaRecebido.getQuantidade()),
-                String.valueOf(itemvendaRecebido.getValorUnitario()),
-                String.valueOf(itemvendaRecebido.getCodigoP())
-        };
-                    }
-        return itemvendaRetorno;
-    }
-    
 }
