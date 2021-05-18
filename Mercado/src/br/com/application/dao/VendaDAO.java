@@ -20,7 +20,6 @@ public class VendaDAO {
         PreparedStatement instrucaoSQL = null;
 
         try {
-
             conexao = Conexao.getConnection();
             instrucaoSQL = conexao.prepareStatement("insert into venda (data_venda,codigo_cliente, codigo_vendedor, valor_total) values (?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
             instrucaoSQL.setDate(1, new java.sql.Date(v.getDataVenda().getTime()));
