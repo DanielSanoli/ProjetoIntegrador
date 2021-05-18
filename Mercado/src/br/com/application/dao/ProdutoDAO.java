@@ -78,7 +78,7 @@ public class ProdutoDAO {
         PreparedStatement instrucaoSQL = null;
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("DELETE FROM produto where cod_prod = ?");
+            instrucaoSQL = conexao.prepareStatement("DELETE FROM produto where codigo = ?");
             instrucaoSQL.setInt(1, pCodigo);
             resultado = instrucaoSQL.executeUpdate() > 0;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -102,7 +102,7 @@ public class ProdutoDAO {
             while (rs.next()) {
 
                 Produto produto = new Produto();
-                produto.setCodigo(rs.getInt("cod_prod"));
+                produto.setCodigo(rs.getInt("codigo"));
                 produto.setDepartamento(rs.getString("departamento"));
                 produto.setDescricao(rs.getString("descricao"));
                 produto.setEstoqueAtual(rs.getInt("estoqueAtual"));
@@ -129,7 +129,7 @@ public class ProdutoDAO {
         try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE cod_prod=?");
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE codigo=?");
 
             instrucaoSQL.setInt(1, pCodigo);
 
@@ -165,7 +165,7 @@ public class ProdutoDAO {
             rs = instrucaoSQL.executeQuery();
             while (rs.next()) {
                 Produto produto = new Produto();
-                produto.setCodigo(rs.getInt("cod_prod"));
+                produto.setCodigo(rs.getInt("codigo"));
                 produto.setDepartamento(rs.getString("departamento"));
                 produto.setDescricao(rs.getString("descricao"));
                 produto.setEstoqueAtual(rs.getInt("estoqueAtual"));
@@ -194,7 +194,7 @@ public class ProdutoDAO {
             rs = instrucaoSQL.executeQuery();
             while (rs.next()) {
                 Produto produto = new Produto();
-                produto.setCodigo(rs.getInt("cod_prod"));
+                produto.setCodigo(rs.getInt("codigo"));
                 produto.setDepartamento(rs.getString("departamento"));
                 produto.setDescricao(rs.getString("descricao"));
                 produto.setEstoqueAtual(rs.getInt("estoqueAtual"));

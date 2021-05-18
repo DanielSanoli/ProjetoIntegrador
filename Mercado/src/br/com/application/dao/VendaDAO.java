@@ -26,6 +26,7 @@ public class VendaDAO {
             instrucaoSQL.setInt(2, v.getCodigoCliente());
             instrucaoSQL.setInt(3, v.getCodigoVendedor());
             instrucaoSQL.setDouble(4, v.getValorTotal());
+            instrucaoSQL.executeUpdate();
 
             ResultSet generatedKeys = instrucaoSQL.getGeneratedKeys();
 

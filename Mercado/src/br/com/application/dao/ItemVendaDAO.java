@@ -24,7 +24,6 @@ public class ItemVendaDAO {
             instrucaoSQL.setInt(1, iv.getNumeroVenda());
             instrucaoSQL.setInt(2, iv.getCodigoProduto());
             instrucaoSQL.setInt(3, iv.getQuantidadeProduto());
-            instrucaoSQL.executeQuery();
             
             resultado = instrucaoSQL.executeUpdate() > 0;
 

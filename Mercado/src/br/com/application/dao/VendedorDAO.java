@@ -20,7 +20,8 @@ import java.util.ArrayList;
  * @author yurim
  */
 public class VendedorDAO {
-     public static boolean cadastrar(Vendedor vendedor) {
+
+    public static boolean cadastrar(Vendedor vendedor) {
 
         boolean resultado = false;
         Connection conexao = null;
@@ -36,7 +37,6 @@ public class VendedorDAO {
             instrucaoSQL.setString(2, vendedor.getEmail());
             instrucaoSQL.setDouble(3, vendedor.getSalario());
             instrucaoSQL.setString(4, vendedor.getTelefone());
-         
 
             resultado = instrucaoSQL.executeUpdate() > 0;
 
@@ -49,8 +49,6 @@ public class VendedorDAO {
         return resultado;
     }
 
- 
-
     public static ArrayList<Vendedor> consultarTodos() {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
@@ -62,12 +60,12 @@ public class VendedorDAO {
             rs = instrucaoSQL.executeQuery();
             while (rs.next()) {
                 Vendedor vendedor = new Vendedor();
-                vendedor.setCodigo(rs.getInt("cod_vendedor"));
+                vendedor.setCodigo(rs.getInt("codigo"));
                 vendedor.setNome(rs.getString("nome"));
                 vendedor.setEmail(rs.getString("email"));
                 vendedor.setSalario(rs.getDouble("salario"));
-                vendedor.setTelefone(rs.getString("telefone"));  
-                
+                vendedor.setTelefone(rs.getString("telefone"));
+
                 vendedores.add(vendedor);
             }
 
@@ -90,18 +88,18 @@ public class VendedorDAO {
         try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM vendedor WHERE cod_vendedor=?");
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM vendedor WHERE codigo=?");
 
             instrucaoSQL.setInt(1, Codigo);
 
             rs = instrucaoSQL.executeQuery();
 
             while (rs.next()) {
-                retorno.setCodigo(rs.getInt("cod_vendedor"));
+                retorno.setCodigo(rs.getInt("codigo"));
                 retorno.setNome(rs.getString("nome"));
                 retorno.setEmail(rs.getString("email"));
                 retorno.setSalario(rs.getDouble("salario"));
-                retorno.setTelefone(rs.getString("telefone"));  
+                retorno.setTelefone(rs.getString("telefone"));
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
@@ -114,8 +112,8 @@ public class VendedorDAO {
         return retorno;
     }
 
-        public static boolean alterar (Vendedor vendedor) {
-       boolean resultado = false;
+    public static boolean alterar(Vendedor vendedor) {
+        boolean resultado = false;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
 
@@ -133,7 +131,6 @@ public class VendedorDAO {
             instrucaoSQL.setDouble(3, vendedor.getSalario());
             instrucaoSQL.setString(4, vendedor.getTelefone());
 
-
             resultado = instrucaoSQL.executeUpdate() > 0;
 
         } catch (SQLException | ClassNotFoundException ex) {
@@ -144,13 +141,14 @@ public class VendedorDAO {
 
         return resultado;
     }
-   public static boolean excluirPorCodigo(int Codigo) {
+
+    public static boolean excluirPorCodigo(int Codigo) {
         boolean resultado = false;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("DELETE FROM vendedor where cod_vendedor = ?");
+            instrucaoSQL = conexao.prepareStatement("DELETE FROM vendedor where codigo = ?");
             instrucaoSQL.setInt(1, Codigo);
             resultado = instrucaoSQL.executeUpdate() > 0;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -160,8 +158,8 @@ public class VendedorDAO {
         }
         return resultado;
     }
-   
-   public static ArrayList<Vendedor> consultarPorNome(String nome) {
+
+    public static ArrayList<Vendedor> consultarPorNome(String nome) {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
         ArrayList<Vendedor> vendedores = new ArrayList<>();
@@ -173,11 +171,11 @@ public class VendedorDAO {
             rs = instrucaoSQL.executeQuery();
             while (rs.next()) {
                 Vendedor vendedor = new Vendedor();
-                vendedor.setCodigo(rs.getInt("cod_vendedor"));
+                vendedor.setCodigo(rs.getInt("codigo"));
                 vendedor.setNome(rs.getString("nome"));
                 vendedor.setEmail(rs.getString("email"));
                 vendedor.setSalario(rs.getDouble("salario"));
-                vendedor.setTelefone(rs.getString("telefone"));        
+                vendedor.setTelefone(rs.getString("telefone"));
                 vendedores.add(vendedor);
             }
         } catch (SQLException | ClassNotFoundException ex) {

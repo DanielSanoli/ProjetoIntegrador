@@ -604,7 +604,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -629,9 +629,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Venda", jPanel1);
@@ -2042,25 +2042,17 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         } else {
             new AvisosDialog(this, true, "Não é possível finalizar uma venda sem produtos.", true);
         }
-        // Caso a venda seja inserida com sucesso, é retornado o número desta venda pois é auto_increment
-        // Este número será utilizado para a tabela itemVenda
         int numeroVenda = VendaController.cadastrar(new Date(System.currentTimeMillis()), 1, 1, 300.0);
 
-        ArrayList<Integer[]> lista = new ArrayList();
+        ArrayList<String[]> listaItens = new ArrayList<>();
 
-        Integer[] produtoA = {1, 2};
-        Integer[] produtoB = {1, 10};
-        Integer[] produtoC = {1, 15};
-        Integer[] produtoD = {1, 18};
-
-        lista.add(produtoA);
-        lista.add(produtoB);
-        lista.add(produtoC);
-        lista.add(produtoD);
-
-        for (Integer[] produto : lista) {
-            ItemVendaController.cadastrar(numeroVenda, produto[0], produto[1]);
+        for (String[] listaIten : listaItens) {
+            listaItens.add(new String[]{
+                String.valueOf(numeroVenda), "1", "2", "300.0"});
         }
+
+        ItemVendaController.cadastrar(listaItens);
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton8KeyPressed
@@ -2772,8 +2764,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jListaDeProdutosCadastro);
         UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jtListaDeProdutosV);
     }
-    
-    private void atualizarTabelaOperador(){
+
+    private void atualizarTabelaOperador() {
         UtilsTabela.atualizarTabela(OperadorController.consultarTodos(), jListaOperador);
     }
 }
