@@ -7,11 +7,10 @@ import java.util.ArrayList;
 public class OperadorController {
     
      // Insert
-    public static boolean cadastrar(int pCodigo, int pUsuario, int pSenha) {
+    public static boolean cadastrar(int pUsuario, int pSenha) {
 
         Operador operador = new Operador();
         
-        operador.setCodigo(pCodigo);
         operador.setUsuario(pUsuario);
         operador.setSenha(pSenha);
         
