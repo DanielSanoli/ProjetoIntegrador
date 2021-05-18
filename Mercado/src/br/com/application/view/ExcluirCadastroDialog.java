@@ -6,7 +6,7 @@
 package br.com.application.view;
 
 import br.com.application.controller.ClienteController;
-import br.com.application.controller.vendedorController;
+import br.com.application.controller.VendedorController;
 import static br.com.application.utils.UtilsConstantes.CLASS_CLIENTE;
 import static br.com.application.utils.UtilsConstantes.CLASS_DEPARTAMENTO;
 import static br.com.application.utils.UtilsConstantes.CLASS_OPERADOR;
@@ -223,7 +223,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
             case CLASS_VENDEDOR:
                 // Realizar exclusão do vendedor
                 System.out.println("CLASS_VENDEDOR");
-                res = vendedorController.excluir(codigo);
+                res = VendedorController.excluir(codigo);
                 break;
         }
 

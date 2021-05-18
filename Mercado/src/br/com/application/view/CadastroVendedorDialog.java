@@ -7,7 +7,7 @@ package br.com.application.view;
 
 import br.com.application.view.AvisosDialog;
 import br.com.application.models.Vendedor;
-import br.com.application.controller.vendedorController;
+import br.com.application.controller.VendedorController;
 import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
 import static br.com.application.utils.UtilsConstantes.FALHA_NO_CADASTRO;
 import br.com.application.utils.UtilsValidacao;
@@ -374,8 +374,8 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
             } else {
                 edtNomeVendedor.setBackground(Color.white);
             }
-            vendedorController cadastro = new vendedorController();
-            vendedorController.cadastrar(nomeVendedor, email, salario, telefone);
+            VendedorController cadastro = new VendedorController();
+            VendedorController.cadastrar(nomeVendedor, email, salario, telefone);
             AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
             dispose();
         } catch (NumberFormatException ex) {

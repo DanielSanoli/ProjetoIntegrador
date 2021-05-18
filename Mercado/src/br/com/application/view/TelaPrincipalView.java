@@ -2,7 +2,7 @@ package br.com.application.view;
 
 import br.com.application.controller.ClienteController;
 import br.com.application.controller.ProdutoController;
-import br.com.application.controller.vendedorController;
+import br.com.application.controller.VendedorController;
 import br.com.application.models.Cliente;
 import br.com.application.models.Departamento;
 import br.com.application.models.Operador;
@@ -2201,7 +2201,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         boolean res = false;
 
         if (!UtilsValidacao.isNullOuVazio(codigo)) {
-            String[] list = vendedorController.buscarPorCodigo(Integer.parseInt(codigo));
+            String[] list = VendedorController.buscarPorCodigo(Integer.parseInt(codigo));
             if (UtilsTabela.atualizarTabela(list, jListaDeVendedor)) {
                 AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
             } else {
@@ -2211,7 +2211,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
 
         if (!UtilsValidacao.isNullOuVazio(nome)) {
-            ArrayList<String[]> list = vendedorController.buscarPorNome(nome);
+            ArrayList<String[]> list = VendedorController.buscarPorNome(nome);
             if (UtilsTabela.atualizarTabela(list, jListaDeVendedor)) {
                 AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
             } else {
@@ -2220,7 +2220,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             return;
         }
         
-        ArrayList<String[]> list = vendedorController.buscarTodos();
+        ArrayList<String[]> list = VendedorController.buscarTodos();
         if (UtilsTabela.atualizarTabela(list, jListaDeVendedor)) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
         } else {

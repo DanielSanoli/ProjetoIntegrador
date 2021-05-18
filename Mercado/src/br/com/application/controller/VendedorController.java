@@ -4,7 +4,7 @@ import br.com.application.dao.VendedorDAO;
 import br.com.application.models.Vendedor;
 import java.util.ArrayList;
 
-public class vendedorController {
+public class VendedorController {
      public static boolean cadastrar(String nome, String email, double salario, String Telefone) {
 
         Vendedor vendedor = new Vendedor();
