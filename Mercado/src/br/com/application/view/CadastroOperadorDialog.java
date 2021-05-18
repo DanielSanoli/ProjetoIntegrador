@@ -5,15 +5,19 @@
  */
 package br.com.application.view;
 
+import br.com.application.controller.ClienteController;
 import br.com.application.controller.OperadorController;
 import br.com.application.view.AvisosDialog;
 import br.com.application.models.Operador;
 import br.com.application.utils.UtilsConstantes;
 import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
+import static br.com.application.utils.UtilsConstantes.FALHA;
 import static br.com.application.utils.UtilsConstantes.FALHA_NO_CADASTRO;
+import static br.com.application.utils.UtilsConstantes.SUCESSO;
 
 import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
+import static br.com.application.view.CadastroClienteDialog.retorno;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
@@ -311,11 +315,11 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
        try {
-            int cod = Integer.parseInt(edtCodigo.getText());
+            int codigo = Integer.parseInt(edtCodigo.getText());
             int usuario = Integer.parseInt(edtUsuario.getText());
             int senha =  Integer.parseInt(edtSenha.getText());
             
-            if (UtilsValidacao.isNullOuVazio(String.valueOf(cod))) {
+            if (UtilsValidacao.isNullOuVazio(String.valueOf(codigo))) {
                 new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
                 edtCodigo.setBackground(Color.yellow);
                 return;
@@ -337,13 +341,23 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
             } else {
                 edtSenha.setBackground(Color.white);
             }
-            OperadorController cadastro = new OperadorController();
-            OperadorController.cadastrar(cod, usuario, senha);
-            AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
-            dispose();
-                       
+             boolean res = false;
+
+            if (isCadastro) {
+                res = OperadorController.cadastrar(usuario, senha);
+            } else {
+                res = OperadorController.alterar(codigo, usuario, senha);
+            }
+            
+            if (res) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO, false);
+                dispose();
+                retorno = 1;
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, FALHA, true);
+            }
         } catch (Exception ex) {
-            AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
+            AvisosDialog av = new AvisosDialog(null, true, FALHA, false);
             dispose();
         }
 
