@@ -44,13 +44,6 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         setVisible(true);
 
     }
-    
-    public CadastroOperadorDialog(Operador p){
-        initComponents();
-        objOperador = new Operador();        
-        
-        setLocationRelativeTo(null);
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -317,7 +310,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
        try {
             int codigo = Integer.parseInt(edtCodigo.getText());
             int usuario = Integer.parseInt(edtUsuario.getText());
-            int senha =  Integer.parseInt(edtSenha.getText());
+            String senha = new String(edtSenha.getPassword()).trim();
             
             if (UtilsValidacao.isNullOuVazio(String.valueOf(codigo))) {
                 new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
@@ -335,7 +328,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
                 edtUsuario.setBackground(Color.white);
             }
 
-            if (UtilsValidacao.isNullOuVazio(Integer.toString(senha))) {
+            if (UtilsValidacao.isNullOuVazio(senha)) {
                 new AvisosDialog(null, true, "O preenchimento do campo senha é obrigatório.", true);
                 edtSenha.setBackground(Color.yellow);
             } else {
@@ -344,9 +337,9 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
              boolean res = false;
 
             if (isCadastro) {
-                res = OperadorController.cadastrar(usuario, senha);
+                res = OperadorController.cadastrar(usuario, Integer.parseInt(senha));
             } else {
-                res = OperadorController.alterar(codigo, usuario, senha);
+                res = OperadorController.alterar(codigo, usuario, Integer.parseInt(senha));
             }
             
             if (res) {
