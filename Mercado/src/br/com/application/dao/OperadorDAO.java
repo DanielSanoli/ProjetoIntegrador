@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class OperadorDAO {
@@ -83,7 +84,32 @@ public class OperadorDAO {
         return resultado;
     }
     
-     public static Operador consultarPorCodigo(int pCodigo) {
+    public static ArrayList<Operador> consultarTodos() {
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+        ArrayList<Operador> operadores = new ArrayList<>();
+        ResultSet rs = null;
+        try {
+            conexao = Conexao.getConnection();
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM operador");
+            rs = instrucaoSQL.executeQuery();
+            while (rs.next()) {
+                Operador operador = new Operador();
+                operador.setCodigo(rs.getInt("codigo"));
+                operador.setUsuario(rs.getInt("usuario"));
+                operador.setSenha(rs.getInt("senha"));
+                operadores.add(operador);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            operadores = null;
+        } finally {
+            UtilsDB.fecharConexao(instrucaoSQL, conexao);
+        }
+        return operadores;
+    }
+    
+    public static Operador consultarPorCodigo(int pCodigo) {
          
         ResultSet rs = null; 
         Connection conexao = null;

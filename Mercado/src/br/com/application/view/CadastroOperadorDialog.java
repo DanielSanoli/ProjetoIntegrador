@@ -5,6 +5,7 @@
  */
 package br.com.application.view;
 
+import br.com.application.controller.OperadorController;
 import br.com.application.view.AvisosDialog;
 import br.com.application.models.Operador;
 import br.com.application.utils.UtilsConstantes;
@@ -309,14 +310,11 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
-        try {
+       try {
             int cod = Integer.parseInt(edtCodigo.getText());
             int usuario = Integer.parseInt(edtUsuario.getText());
             int senha =  Integer.parseInt(edtSenha.getText());
             
-            objOperador.setUsuario(usuario);
-            objOperador.setSenha(senha);
-
             if (UtilsValidacao.isNullOuVazio(String.valueOf(cod))) {
                 new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
                 edtCodigo.setBackground(Color.yellow);
@@ -336,13 +334,14 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
             if (UtilsValidacao.isNullOuVazio(Integer.toString(senha))) {
                 new AvisosDialog(null, true, "O preenchimento do campo senha é obrigatório.", true);
                 edtSenha.setBackground(Color.yellow);
-                return;
             } else {
                 edtSenha.setBackground(Color.white);
             }
-            Operador operador = new Operador(cod, usuario, 123);
+            OperadorController cadastro = new OperadorController();
+            OperadorController.cadastrar(cod, usuario, senha);
             AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
             dispose();
+                       
         } catch (Exception ex) {
             AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
             dispose();
