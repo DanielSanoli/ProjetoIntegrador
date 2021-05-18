@@ -187,7 +187,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jListaOperador = new javax.swing.JTable();
         jPanel33 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
-        edtCodigoProdutoE4 = new javax.swing.JTextField();
+        edtCodigoOperador = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
         edtDescricaoProdutoE4 = new javax.swing.JTextField();
         btnFiltrar4 = new javax.swing.JButton();
@@ -1830,14 +1830,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jLabel32.setText("Código");
 
-        edtCodigoProdutoE4.addActionListener(new java.awt.event.ActionListener() {
+        edtCodigoOperador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtCodigoProdutoE4ActionPerformed(evt);
+                edtCodigoOperadorActionPerformed(evt);
             }
         });
-        edtCodigoProdutoE4.addKeyListener(new java.awt.event.KeyAdapter() {
+        edtCodigoOperador.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                edtCodigoProdutoE4KeyTyped(evt);
+                edtCodigoOperadorKeyTyped(evt);
             }
         });
 
@@ -1871,7 +1871,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edtDescricaoProdutoE4, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
-                            .addComponent(edtCodigoProdutoE4))
+                            .addComponent(edtCodigoOperador))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(rbCodigoProdutoE4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1884,7 +1884,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel32)
-                    .addComponent(edtCodigoProdutoE4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtCodigoOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbCodigoProdutoE4))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
@@ -2255,21 +2255,52 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_OPERADOR, 0);
     }//GEN-LAST:event_jButton21ActionPerformed
 
-    private void edtCodigoProdutoE4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE4ActionPerformed
+    private void edtCodigoOperadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoOperadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtCodigoProdutoE4ActionPerformed
+    }//GEN-LAST:event_edtCodigoOperadorActionPerformed
 
-    private void edtCodigoProdutoE4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE4KeyTyped
+    private void edtCodigoOperadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoOperadorKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtCodigoProdutoE4KeyTyped
+    }//GEN-LAST:event_edtCodigoOperadorKeyTyped
 
     private void edtDescricaoProdutoE4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDescricaoProdutoE4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_edtDescricaoProdutoE4ActionPerformed
 
     private void btnFiltrar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar4ActionPerformed
-
-
+        
+        String codigo = edtCodigoOperador.getText();
+        String usuario = edtDescricaoProdutoE4.getText();
+        boolean res = false;
+        
+        if (!UtilsValidacao.isNullOuVazio(codigo)) {
+            String[] list = OperadorController.consultarPorCodigo(Integer.parseInt(codigo));
+            if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Cliente não encontrado", false);
+            }
+            return;
+        }
+        
+        if (!UtilsValidacao.isNullOuVazio(usuario)) {
+            String[] list = OperadorController.consultarPorCodigo(Integer.parseInt(usuario));
+            if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Cliente não encontrado", false);
+            }
+            return;
+        }
+        
+        ArrayList<String[]> list = OperadorController.consultarTodos();
+        if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
+            AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+        } else {
+            AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Operador não encontrado", false);
+        }       
+        
+        
     }//GEN-LAST:event_btnFiltrar4ActionPerformed
 
     private void edtCodigoProdutoE6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE6ActionPerformed
@@ -2612,8 +2643,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTextField edtCodProdutoV;
     private javax.swing.JTextField edtCodigoCliente;
+    private javax.swing.JTextField edtCodigoOperador;
     private javax.swing.JTextField edtCodigoProdutoE1;
-    private javax.swing.JTextField edtCodigoProdutoE4;
     private javax.swing.JTextField edtCodigoProdutoE6;
     private javax.swing.JTextField edtCodigoVendedor;
     private javax.swing.JTextField edtCpfCliente;
