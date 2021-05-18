@@ -6,96 +6,32 @@
 package br.com.application.controller;
 
 import br.com.application.dao.VendaDAO;
-import br.com.application.models.ItemVenda;
 import br.com.application.models.Venda;
-import java.sql.Date;
-import java.util.ArrayList;
-import br.com.application.dao.ItemVendaDAO;
+import java.util.Date;
 
 /**
  *
  * @author Jamile
  */
 public class VendaController {
-    
-    
-    
-    public static boolean cadastrar(Date dataDeVenda,  double valorTotal, int codigo, ArrayList<String[]> ItensVenda) {
 
-        Venda vendas = new Venda();
-        vendas.setDataDeVenda(dataDeVenda);
-        vendas.setValorTotal(valorTotal);
-        
-        ArrayList <ItemVenda> listaItens = new ArrayList <ItemVenda>();
-        for(String [] item : ItensVenda ){
-            ItemVenda venda = new ItemVenda(); 
-            venda.setCodigoItem(Integer.parseInt(item[0]));
-            listaItens.add(venda);
-            
-        }
-        vendas.setListaItens(listaItens);
+    public static int cadastrar(int pNumeroVenda,
+            Date pDataVenda,
+            int pCodigoCliente,
+            int pCodigoVendedor,
+            double pValorTotal) {
 
-        return VendaDAO.cadastrar(vendas);
-
-    }
-
-    // Update
-    public static boolean alterar(Date dataDeVenda,  double valorTotal ) {
-
-         Venda venda = new Venda();
-        venda.setDataDeVenda(dataDeVenda);
-        venda.setValorTotal(valorTotal);
+        Venda venda = new Venda();
+        venda.setNumeroVenda(pNumeroVenda);
+        venda.setDataVenda(pDataVenda);
+        venda.setCodigoCliente(pCodigoCliente);
+        venda.setCodigoVendedor(pCodigoVendedor);
+        venda.setValorTotal(pValorTotal);
 
         return VendaDAO.cadastrar(venda);
-        
-
     }
 
-
-    public static String[] consultarPorCodigo(int pCodigo) {
-       Venda vendaRecebido = VendaDAO.consultarPorCodigo(pCodigo);
-        String[] vendaRetorno = null;
-        if (vendaRecebido != null) {
-            vendaRetorno = new String[]{
-                String.valueOf(vendaRecebido.getCodigo()),
-                String.valueOf(vendaRecebido.getCodigoVenda()),
-                String.valueOf(vendaRecebido.getDataDeVenda()),
-                String.valueOf(vendaRecebido.getValorTotal()),
-        };
-                    }
-        return vendaRetorno;
+    public static Venda consultar(int pNumeroVenda) {
+        return VendaDAO.consultar(pNumeroVenda);
     }
-        
-        
-    public static String[] consultarData(Date dataDeVenda) {
-      Venda vendaRecebido = VendaDAO.consultarData(dataDeVenda);
-        String[] vendaRetorno = null;
-        if (vendaRecebido != null) {
-            vendaRetorno = new String[]{
-                String.valueOf(vendaRecebido.getCodigo()),
-                String.valueOf(vendaRecebido.getCodigoVenda()),
-                String.valueOf(vendaRecebido.getDataDeVenda()),
-                String.valueOf(vendaRecebido.getValorTotal()),
-            };  
-        }
-        return vendaRetorno;
-    }
-
-    public static String[] consultarValorTotal(double valorTotal) {
-        Venda vendaRecebido = VendaDAO.consultarValorTotal(valorTotal);
-        String[] vendaRetorno = null;
-        if (vendaRecebido != null) {
-            vendaRetorno = new String[]{
-                String.valueOf(vendaRecebido.getCodigo()),
-                String.valueOf(vendaRecebido.getCodigoVenda()),
-                String.valueOf(vendaRecebido.getDataDeVenda()),
-                String.valueOf(vendaRecebido.getValorTotal()),
-            };
-        }
-        return vendaRetorno;
-    }
-
 }
-
-    
-

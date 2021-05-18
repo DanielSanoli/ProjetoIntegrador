@@ -1,7 +1,6 @@
 package br.com.application.view;
 
 import br.com.application.controller.ClienteController;
-import br.com.application.controller.PedidoController;
 import br.com.application.controller.ProdutoController;
 import br.com.application.controller.vendedorController;
 import br.com.application.models.Cliente;
@@ -10,7 +9,6 @@ import br.com.application.models.Operador;
 import br.com.application.models.Produto;
 import br.com.application.models.Vendedor;
 import br.com.application.utils.UtilsValidacao;
-import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import br.com.application.utils.UtilsConstantes;
 import static br.com.application.utils.UtilsConstantes.CLASS_CLIENTE;
@@ -36,7 +34,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     public TelaPrincipalView() {
         initComponents();
         initMethods();
-        System.out.println("Número pedido: " + PedidoController.getUltimoPedido().getNumeroPedido());
     }
 
     /**
@@ -2041,8 +2038,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         } else {
             new AvisosDialog(this, true, "Não é possível finalizar uma venda sem produtos.", true);
         }
-        boolean res = PedidoController.cadastrar(new Date(12121212), 20, 1);
-        System.out.println("Cadastrou? " + res);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton8KeyPressed

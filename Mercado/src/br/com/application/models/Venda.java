@@ -1,70 +1,53 @@
-
 package br.com.application.models;
 
-import java.sql.Date;
-import java.util.ArrayList;
+import java.util.Date;
 
 public class Venda {
 
-    private Date dataDeVenda;
-    private int codigoVenda;
-    private int codigo;
-    private double valorTotal;
-    private ArrayList<ItemVenda> listaItens = new ArrayList<>();
-    
-    
-    public Venda() {
-    }
+    private int numeroVenda;
+    private Date dataVenda;
+    private int codigoCliente;
+    private int codigoVendedor;
+    private Double valorTotal;
 
-    public Venda(Date dataDeVenda,  double valorTotal, int codigoVenda, ArrayList<ItemVenda> listaItens) {
-        this.dataDeVenda = dataDeVenda;
-        this.codigoVenda = codigoVenda;
-        this.codigo = codigo;
-        this.valorTotal = valorTotal;
-         this.listaItens = listaItens;
-       
-    }
-
-    public Date getDataDeVenda() {
-        return dataDeVenda;
-    }
-
-    public ArrayList<ItemVenda> getListaItens() {
-        return listaItens;
-    }
-
-    public void setListaItens(ArrayList<ItemVenda> listaItens) {
-        this.listaItens = listaItens;
-    }
-
-    public void setDataDeVenda(Date dataDeVenda) {
-        this.dataDeVenda = dataDeVenda;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public double getValorTotal() {
+    public Double getValorTotal() {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
+    public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
     }
 
-    public int getCodigoVenda() {
-        return codigoVenda;
+    public int getNumeroVenda() {
+        return numeroVenda;
     }
 
-    public void setCodigoVenda(int codigoVenda) {
-        this.codigoVenda = codigoVenda;
+    public void setNumeroVenda(int numeroVenda) {
+        this.numeroVenda = numeroVenda;
     }
-    
-    
-    
+
+    public Date getDataVenda() {
+        return dataVenda;
+    }
+
+    public void setDataVenda(Date dataVenda) {
+        this.dataVenda = dataVenda;
+    }
+
+    public int getCodigoVendedor() {
+        return codigoVendedor;
+    }
+
+    public void setCodigoVendedor(int codigoVendedor) {
+        this.codigoVendedor = codigoVendedor;
+    }
+
+    public int getCodigoCliente() {
+        return codigoCliente;
+    }
+
+    public void setCodigoCliente(int codigoCliente) {
+        this.codigoCliente = codigoCliente;
+    }
+
 }
