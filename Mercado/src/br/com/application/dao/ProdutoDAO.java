@@ -52,7 +52,7 @@ public class ProdutoDAO {
                     + "descricao = ?,"
                     + "valor = ?,"
                     + "estoqueAtual = ?"
-                    + "where cod_prod = ?");
+                    + "where codigo = ?");
 
             instrucaoSQL.setString(1, pProduto.getDepartamento());
             instrucaoSQL.setString(2, pProduto.getDescricao());
@@ -136,7 +136,7 @@ public class ProdutoDAO {
             rs = instrucaoSQL.executeQuery();
 
             while (rs.next()) {
-                retorno.setCodigo(rs.getInt("cod_prod"));
+                retorno.setCodigo(rs.getInt("codigo"));
                 retorno.setDepartamento(rs.getString("departamento"));
                 retorno.setDescricao(rs.getString("descricao"));
                 retorno.setEstoqueAtual(rs.getInt("estoqueAtual"));

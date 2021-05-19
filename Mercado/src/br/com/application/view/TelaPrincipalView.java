@@ -2017,20 +2017,26 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        boolean resultadoVenda = false;
+
         String cliente = txtCliente.getText();
         String vendedor = txtVendedor.getText();
 
-        int codigoCliente = 0;
-        int codigoVendedor = 0;
+        int codigoCliente = 1;
+        int codigoVendedor = 1;
 
         if (!cliente.equalsIgnoreCase("Sem cliente")) {
-            codigoCliente = Integer.parseInt(cliente.substring(0, cliente.indexOf("")));
+            codigoCliente = Integer.parseInt(cliente.substring(0, cliente.indexOf(" ")));
             if (!vendedor.equalsIgnoreCase("Sem vendedor")) {
-                codigoVendedor = Integer.parseInt(vendedor.substring(0, vendedor.indexOf("")));
+                codigoVendedor = Integer.parseInt(vendedor.substring(0, vendedor.indexOf(" ")));
             }
         }
 
         double valorTotal = Double.parseDouble(txtTotal.getText().replace("R$", ""));
+
+        System.out.println("Código cliente: " + codigoCliente);
+        System.out.println("Código vendedor: " + codigoVendedor);
+        System.out.println("Valor total: " + valorTotal);
 
         int numeroVenda = VendaController.cadastrar(new Date(System.currentTimeMillis()), codigoCliente, codigoVendedor, valorTotal);
 
@@ -2041,15 +2047,24 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             ArrayList<String[]> listaItens = new ArrayList<>();
 
             for (int i = 0; i < qtdLinhasTabela; i++) {
+
+                String codigo = model.getValueAt(i, 0).toString();
+                String precoUnitario = model.getValueAt(i, 3).toString().replace("R$", "").replace(",", ".");
+                String quantidade = model.getValueAt(i, 4).toString();
+                String subTotal = model.getValueAt(i, 5).toString().replace("R$", "").replace(",", ".");
+
                 String[] item = new String[]{
                     String.valueOf(numeroVenda),
-                    String.valueOf(model.getValueAt(i, 0)),
-                    String.valueOf(model.getValueAt(i, 4)),
-                    String.valueOf(model.getValueAt(i, 3)),
-                    String.valueOf(model.getValueAt(i, 5)),};
+                    String.valueOf(codigo),
+                    String.valueOf(quantidade),
+                    String.valueOf(precoUnitario),
+                    String.valueOf(subTotal)};
                 listaItens.add(item);
             }
-            ItemVendaController.cadastrar(listaItens);
+            resultadoVenda = ItemVendaController.cadastrar(listaItens) && numeroVenda > 0;
+        }
+        if (resultadoVenda) {
+            FinalizarVendaDialog fv = new FinalizarVendaDialog(this, true, "0.0");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

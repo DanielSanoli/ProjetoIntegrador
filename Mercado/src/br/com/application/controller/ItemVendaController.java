@@ -28,7 +28,7 @@ public class ItemVendaController {
     }
     
     public static boolean cadastrar(ArrayList<String[]> itens) {
-        
+        boolean res = false;
         for (String[] item : itens) {
             ItemVenda iv = new ItemVenda();
             iv.setNumeroVenda(Integer.parseInt(item[0]));
@@ -36,9 +36,9 @@ public class ItemVendaController {
             iv.setQuantidadeProduto(Integer.parseInt(item[2]));
             iv.setPrecoUnitario(Double.parseDouble(item[3]));
             iv.setSubTotal(Double.parseDouble(item[4]));
-            ItemVendaDAO.cadastrar(iv);
+            res = ItemVendaDAO.cadastrar(iv);
         }        
-        return false;
+        return res;
     }
     
 }
