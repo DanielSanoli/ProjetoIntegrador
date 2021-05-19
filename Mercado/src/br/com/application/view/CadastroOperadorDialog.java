@@ -308,17 +308,9 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
        try {
-            int codigo = Integer.parseInt(edtCodigo.getText());
+            int codigo = Integer.parseInt(edtCodigo.getText().toString());
             int usuario = Integer.parseInt(edtUsuario.getText());
-            String senha = new String(edtSenha.getPassword()).trim();
-            
-            if (UtilsValidacao.isNullOuVazio(String.valueOf(codigo))) {
-                new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
-                edtCodigo.setBackground(Color.yellow);
-                return;
-            } else {
-                edtCodigo.setBackground(Color.white);
-            }
+            String senha = new String(edtSenha.getPassword()).trim();        
 
             if (UtilsValidacao.isNullOuVazio(Integer.toString(usuario))) {
                 new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
@@ -334,12 +326,19 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
             } else {
                 edtSenha.setBackground(Color.white);
             }
-             boolean res = false;
-
+              
+            int pCodigo = 0;
+            
+            if(!UtilsValidacao.isNullOuVazio(Integer.toString(codigo))){
+                pCodigo = codigo;
+            }
+            
+            boolean res = false;
+            
             if (isCadastro) {
                 res = OperadorController.cadastrar(usuario, Integer.parseInt(senha));
             } else {
-                res = OperadorController.alterar(codigo, usuario, Integer.parseInt(senha));
+                res = OperadorController.alterar(pCodigo, usuario, Integer.parseInt(senha));
             }
             
             if (res) {
@@ -348,7 +347,8 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
                 retorno = 1;
             } else {
                 AvisosDialog av = new AvisosDialog(null, true, FALHA, true);
-            }
+            }          
+            
         } catch (Exception ex) {
             AvisosDialog av = new AvisosDialog(null, true, FALHA, false);
             dispose();
@@ -708,10 +708,11 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         if (operador != null) {
             String codigo = String.valueOf(operador.getCodigo());
             String usuario = String.valueOf(operador.getUsuario());
+            String senha = String.valueOf(operador.getSenha());
 
             edtCodigo.setText(codigo);
             edtUsuario.setText(usuario);
-            edtSenha.setText(UtilsConstantes.SENHA);
+            edtSenha.setText(senha);
 
         }
     }
