@@ -84,11 +84,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jtListaDeProdutosV = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txtDadosCliente = new javax.swing.JLabel();
+        txtCliente = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtVendedor = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtNumeroPedido = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -261,7 +259,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Produto", "Departamento", "Preço"
+                "Código", "Produto", "Departamento", "Preço Unitário", "Quantidade", "Subtotal"
             }
         ));
         jScrollPane1.setViewportView(jtCarrinho);
@@ -337,11 +335,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(146, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addGap(30, 30, 30)
                 .addComponent(jButton3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         jPanel5Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton3, jButton4});
@@ -535,17 +533,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Cliente:");
 
-        txtDadosCliente.setText("Sem cliente");
+        txtCliente.setText("Sem cliente");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("Vendedor:");
 
         txtVendedor.setText("Sem vendedor");
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("N Pedido:");
-
-        txtNumeroPedido.setText("Sem vendedor");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -562,11 +555,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDadosCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNumeroPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)))
+                        .addComponent(txtCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -575,16 +564,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txtDadosCliente))
+                    .addComponent(txtCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(txtVendedor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtNumeroPedido))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -2032,27 +2017,40 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
-        if (jtCarrinho.getRowCount() > 0) {
-            FinalizarVendaDialog finalizar = new FinalizarVendaDialog(null, true, "0.00");
-            while (jtCarrinho.getRowCount() > 0) {
-                model.removeRow(0);
+        String cliente = txtCliente.getText();
+        String vendedor = txtVendedor.getText();
+
+        int codigoCliente = 0;
+        int codigoVendedor = 0;
+
+        if (!cliente.equalsIgnoreCase("Sem cliente")) {
+            codigoCliente = Integer.parseInt(cliente.substring(0, cliente.indexOf("")));
+            if (!vendedor.equalsIgnoreCase("Sem vendedor")) {
+                codigoVendedor = Integer.parseInt(vendedor.substring(0, vendedor.indexOf("")));
             }
-            txtTotal.setText(VALOR_ZERADO);
-        } else {
-            new AvisosDialog(this, true, "Não é possível finalizar uma venda sem produtos.", true);
-        }
-        int numeroVenda = VendaController.cadastrar(new Date(System.currentTimeMillis()), 1, 1, 300.0);
-
-        ArrayList<String[]> listaItens = new ArrayList<>();
-
-        for (String[] listaIten : listaItens) {
-            listaItens.add(new String[]{
-                String.valueOf(numeroVenda), "1", "2", "300.0"});
         }
 
-        ItemVendaController.cadastrar(listaItens);
+        double valorTotal = Double.parseDouble(txtTotal.getText().replace("R$", ""));
 
+        int numeroVenda = VendaController.cadastrar(new Date(System.currentTimeMillis()), codigoCliente, codigoVendedor, valorTotal);
+
+        if (numeroVenda > 0) {
+            DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
+            int qtdLinhasTabela = model.getRowCount();
+
+            ArrayList<String[]> listaItens = new ArrayList<>();
+
+            for (int i = 0; i < qtdLinhasTabela; i++) {
+                String[] item = new String[]{
+                    String.valueOf(numeroVenda),
+                    String.valueOf(model.getValueAt(i, 0)),
+                    String.valueOf(model.getValueAt(i, 4)),
+                    String.valueOf(model.getValueAt(i, 3)),
+                    String.valueOf(model.getValueAt(i, 5)),};
+                listaItens.add(item);
+            }
+            ItemVendaController.cadastrar(listaItens);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton8KeyPressed
@@ -2068,15 +2066,17 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         QuantidadeDialog inputQtdDialog = new QuantidadeDialog(this, true);
         inputQtdDialog.setVisible(true);
 
+        int quantidade = inputQtdDialog.getQuantidade();
+
         DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
+
         String codigo = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 0).toString();
         String produto = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 1).toString();
         String departamento = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 2).toString();
         double preco = Double.parseDouble(jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 3).toString().replace("R$", ""));
-        preco *= inputQtdDialog.getQuantidade();
 
-        model.addRow(new String[]{codigo, produto, departamento, String.valueOf(UtilsConstantes.MASCARA_REAL
-            + preco)});
+        model.addRow(new String[]{codigo, produto, departamento, String.valueOf(preco), String.valueOf(quantidade), String.valueOf(UtilsConstantes.MASCARA_REAL
+            + (preco *= quantidade))});
 
         String total = txtTotal.getText().replace("R$", "");
         double totalD = Double.parseDouble(total);
@@ -2104,9 +2104,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         clienteDialog.setVisible(true);
         String dadosCliente = clienteDialog.cliente;
         if (!UtilsValidacao.isNullOuVazio(dadosCliente)) {
-            txtDadosCliente.setText(dadosCliente);
+            txtCliente.setText(dadosCliente);
         } else {
-            txtDadosCliente.setText("Sem cliente");
+            txtCliente.setText("Sem cliente");
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
@@ -2268,11 +2268,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtUsuarioOperadorActionPerformed
 
     private void btnFiltrar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar4ActionPerformed
-        
+
         String codigo = edtCodigoOperador.getText();
         String usuario = edtUsuarioOperador.getText();
         boolean res = false;
-        
+
         if (!UtilsValidacao.isNullOuVazio(codigo)) {
             String[] list = OperadorController.consultarPorCodigo(Integer.parseInt(codigo));
             if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
@@ -2282,7 +2282,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         if (!UtilsValidacao.isNullOuVazio(usuario)) {
             String[] list = OperadorController.consultarPorCodigo(Integer.parseInt(usuario));
             if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
@@ -2292,15 +2292,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         ArrayList<String[]> list = OperadorController.consultarTodos();
         if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
-            AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);            
+            AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
         } else {
             AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Operador não encontrado", false);
-        }       
-        
-        
+        }
+
+
     }//GEN-LAST:event_btnFiltrar4ActionPerformed
 
     private void edtCodigoProdutoE6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE6ActionPerformed
@@ -2679,7 +2679,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -2771,10 +2770,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbDepartamentoE3;
     private javax.swing.JRadioButton rbDescricaoProdutoE4;
     private javax.swing.JRadioButton rbDescricaoProdutoE6;
-    private javax.swing.JLabel txtDadosCliente;
+    private javax.swing.JLabel txtCliente;
     private javax.swing.JFormattedTextField txtDataFinal;
     private javax.swing.JFormattedTextField txtDataInicail;
-    private javax.swing.JLabel txtNumeroPedido;
     private javax.swing.JLabel txtTotal;
     private javax.swing.JLabel txtVendedor;
     // End of variables declaration//GEN-END:variables

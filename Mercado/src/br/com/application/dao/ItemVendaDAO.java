@@ -20,10 +20,12 @@ public class ItemVendaDAO {
 
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("insert into itemVenda (num_venda,codigo_produto,qtd_produto) values (?,?,?);");
+            instrucaoSQL = conexao.prepareStatement("insert into itemVenda (num_venda,codigo_produto,qtd_produto,preco_unitario,sub_total) values (?,?,?,?,?);");
             instrucaoSQL.setInt(1, iv.getNumeroVenda());
             instrucaoSQL.setInt(2, iv.getCodigoProduto());
             instrucaoSQL.setInt(3, iv.getQuantidadeProduto());
+            instrucaoSQL.setDouble(4, iv.getPrecoUnitario());
+            instrucaoSQL.setDouble(5, iv.getSubTotal());
             
             resultado = instrucaoSQL.executeUpdate() > 0;
 
