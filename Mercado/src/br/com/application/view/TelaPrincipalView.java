@@ -189,7 +189,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         edtCodigoOperador = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
-        edtDescricaoProdutoE4 = new javax.swing.JTextField();
+        edtUsuarioOperador = new javax.swing.JTextField();
         btnFiltrar4 = new javax.swing.JButton();
         rbCodigoProdutoE4 = new javax.swing.JRadioButton();
         rbDescricaoProdutoE4 = new javax.swing.JRadioButton();
@@ -1843,9 +1843,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jLabel33.setText("Usuário");
 
-        edtDescricaoProdutoE4.addActionListener(new java.awt.event.ActionListener() {
+        edtUsuarioOperador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtDescricaoProdutoE4ActionPerformed(evt);
+                edtUsuarioOperadorActionPerformed(evt);
             }
         });
 
@@ -1870,7 +1870,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                             .addComponent(jLabel33))
                         .addGap(9, 9, 9)
                         .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edtDescricaoProdutoE4, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
+                            .addComponent(edtUsuarioOperador, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
                             .addComponent(edtCodigoOperador))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1889,7 +1889,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel33)
-                    .addComponent(edtDescricaoProdutoE4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtUsuarioOperador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbDescricaoProdutoE4))
                 .addGap(15, 15, 15)
                 .addComponent(btnFiltrar4)
@@ -2263,14 +2263,14 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCodigoOperadorKeyTyped
 
-    private void edtDescricaoProdutoE4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDescricaoProdutoE4ActionPerformed
+    private void edtUsuarioOperadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtUsuarioOperadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtDescricaoProdutoE4ActionPerformed
+    }//GEN-LAST:event_edtUsuarioOperadorActionPerformed
 
     private void btnFiltrar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar4ActionPerformed
         
         String codigo = edtCodigoOperador.getText();
-        String usuario = edtDescricaoProdutoE4.getText();
+        String usuario = edtUsuarioOperador.getText();
         boolean res = false;
         
         if (!UtilsValidacao.isNullOuVazio(codigo)) {
@@ -2295,7 +2295,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         
         ArrayList<String[]> list = OperadorController.consultarTodos();
         if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
-            AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);            
         } else {
             AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Operador não encontrado", false);
         }       
@@ -2651,10 +2651,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JTextField edtDepartamento;
     private javax.swing.JTextField edtDepartamentoVenda;
     private javax.swing.JTextField edtDescricaoProdutoE2;
-    private javax.swing.JTextField edtDescricaoProdutoE4;
     private javax.swing.JTextField edtDescricaoProdutoE6;
     private javax.swing.JTextField edtNomeCliente;
     private javax.swing.JTextField edtNomeVendedor;
+    private javax.swing.JTextField edtUsuarioOperador;
     private javax.swing.JTextField edtrDescricaoProdutoV;
     private javax.swing.ButtonGroup groupVendedor;
     private javax.swing.JButton jButton11;
