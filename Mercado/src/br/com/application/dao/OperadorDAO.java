@@ -66,14 +66,14 @@ public class OperadorDAO {
     }
     
     // Delete
-    public static boolean excluirPorCodigo(int pOperador) {
+    public static boolean excluirPorCodigo(int pCodigo) {
         boolean resultado = false;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
         try {
             conexao = Conexao.getConnection();
             instrucaoSQL = conexao.prepareStatement("DELETE FROM operador where codigo = ?");
-            instrucaoSQL.setInt(1, pOperador);
+            instrucaoSQL.setInt(1, pCodigo);
             resultado = instrucaoSQL.executeUpdate() > 0;
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());

@@ -309,7 +309,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
        try {
-            int codigo = Integer.parseInt(edtCodigo.getText().toString());
+            int codigo = Integer.parseInt(edtCodigo.getText());
             int usuario = Integer.parseInt(edtUsuario.getText());
             String senha = new String(edtSenha.getPassword()).trim();        
 

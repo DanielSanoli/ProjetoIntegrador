@@ -6,7 +6,7 @@ public class Operador {
     private int usuario;
     private int senha;
 
-    public Operador(int codigo, int usuario, int senha) {
+    public Operador(int usuario, int senha) {
         this.codigo = codigo;
         this.usuario = usuario;
         this.senha = senha;
