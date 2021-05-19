@@ -5,19 +5,22 @@
  */
 package br.com.application.view;
 
+import br.com.application.controller.VendedorController;
+import java.util.ArrayList;
+
 /**
  *
  * @author Matheus Castro
  */
 public class AdicionarVendedorDialog extends javax.swing.JDialog {
 
-    /**
-     * Creates new form VendedorDialog
-     */
+    public String vendedor;
+
     public AdicionarVendedorDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        atualizarListaVendedor();
     }
 
     /**
@@ -43,6 +46,11 @@ public class AdicionarVendedorDialog extends javax.swing.JDialog {
 
         jButton1.setBackground(new java.awt.Color(204, 255, 204));
         jButton1.setText("Confirmar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jComboBox1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
@@ -108,7 +116,7 @@ public class AdicionarVendedorDialog extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,6 +129,11 @@ public class AdicionarVendedorDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        vendedor = jComboBox1.getSelectedItem().toString();
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,6 +176,15 @@ public class AdicionarVendedorDialog extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+
+    public void atualizarListaVendedor() {
+        ArrayList<String[]> list = VendedorController.buscarTodos();
+        for (String[] vendedor : list) {
+            String codigo = vendedor[0];
+            String nome = vendedor[1];
+            jComboBox1.addItem(codigo + " - " + nome);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -2128,6 +2128,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         AdicionarVendedorDialog vendedorDialog = new AdicionarVendedorDialog(this, true);
         vendedorDialog.setVisible(true);
+        String dadosVendedor = vendedorDialog.vendedor;
+        if (!UtilsValidacao.isNullOuVazio(dadosVendedor)) {
+            txtVendedor.setText(dadosVendedor);
+        } else {
+            txtVendedor.setText("Sem vendedor");
+        }
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
