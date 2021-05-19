@@ -104,6 +104,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Código *");
 
+        edtCodigo.setEditable(false);
         edtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtCodigoActionPerformed(evt);
