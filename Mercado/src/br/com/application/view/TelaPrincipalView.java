@@ -1968,7 +1968,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             double totalD = Double.parseDouble(total);
 
             txtTotal.setText("R$" + (totalD + preco));
-        } 
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -2008,12 +2008,19 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        UtilsValidacao validaData = new UtilsValidacao();
-        if (validaData.validarData(txtDataInicail.getText()) || validaData.validarData(txtDataFinal.getText())) {
+        String dataInicial = txtDataInicail.getText();
+        String dataFinal = txtDataFinal.getText();
+
+        if (UtilsValidacao.validarData(dataInicial) || UtilsValidacao.validarData(dataFinal)) {
             new AvisosDialog(null, true, "Preencha os Campos de data Corretamente", true);
+            txtDataFinal.setText("");
+            txtDataInicail.setText("");
+            return;
         }
-        txtDataFinal.setText("");
-        txtDataInicail.setText("");
+        
+        
+
+
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

@@ -7,6 +7,7 @@ package br.com.application.controller;
 
 import br.com.application.dao.VendaDAO;
 import br.com.application.models.Venda;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -31,5 +32,9 @@ public class VendaController {
 
     public static Venda consultar(int pNumeroVenda) {
         return VendaDAO.consultar(pNumeroVenda);
+    }
+
+    public static ArrayList<Venda> consultarVendas(Date dataInicial, Date dataFinal) {
+        return VendaDAO.consultarVendas(dataInicial,dataFinal);
     }
 }

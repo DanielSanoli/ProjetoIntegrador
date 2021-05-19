@@ -1,6 +1,5 @@
 package br.com.application;
 
-import br.com.application.controller.ItemVendaController;
 import br.com.application.controller.VendaController;
 import br.com.application.view.TelaPrincipalView;
 import java.sql.Date;
@@ -10,7 +9,7 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        
+
         TelaPrincipalView tp = new TelaPrincipalView();
         tp.setVisible(true);
         
@@ -31,5 +30,5 @@ public class Main {
 //            System.out.println("Finalizando teste... Resultado: " + (res ? "Sucesso" : "Falha"));
 //
 //        }
+        }
     }
-}
