@@ -22,11 +22,10 @@ public class OperadorDAO {
          try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("insert into operador(codigo, login, senha) values (\n"
-                    + "?,?,?);", Statement.RETURN_GENERATED_KEYS);
-
-            instrucaoSQL.setInt(1, pOperador.getCodigo());
-            instrucaoSQL.setInt(2, pOperador.getUsuario());
+            instrucaoSQL = conexao.prepareStatement("insert into operador(login, senha) values (\n"
+                    + "?,?);", Statement.RETURN_GENERATED_KEYS);
+            
+            instrucaoSQL.setInt(1, pOperador.getUsuario());
             instrucaoSQL.setInt(2, pOperador.getSenha());
 
             resultado = instrucaoSQL.executeUpdate() > 0;
