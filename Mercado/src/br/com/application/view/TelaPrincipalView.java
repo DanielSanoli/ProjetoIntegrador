@@ -29,6 +29,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class TelaPrincipalView extends javax.swing.JFrame {
 
@@ -67,7 +68,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jPanel34 = new javax.swing.JPanel();
         txtTotal = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -203,6 +203,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jLabel1.setToolTipText("");
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_cancelar_venda_32px.png"))); // NOI18N
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_vendedor_32px.png"))); // NOI18N
         jButton13.addActionListener(new java.awt.event.ActionListener() {
@@ -315,18 +320,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Finalizar venda", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pagamento_rapido.png"))); // NOI18N
-        jButton3.setText("Pagamento Rápido");
+        jButton3.setText("Finalizar Venda");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/application/img/ic_pagamentos_32px.png"))); // NOI18N
-        jButton4.setText("Pagamentos");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
             }
         });
 
@@ -335,25 +332,16 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(30, 30, 30)
-                .addComponent(jButton3)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jPanel5Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton3, jButton4});
-
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton3, jButton4});
 
         jPanel34.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Subtotal", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -530,12 +518,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Cliente:");
 
         txtCliente.setText("Sem cliente");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel11.setText("Vendedor:");
 
         txtVendedor.setText("Sem vendedor");
@@ -548,28 +536,28 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                        .addGap(10, 10, 10))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(txtCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel10)
                     .addComponent(txtCliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(txtVendedor))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(txtVendedor)
+                    .addComponent(jLabel11))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -2003,21 +1991,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCodProdutoVActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        if (jtCarrinho.getRowCount() <= 0) {
-            new AvisosDialog(null, true, "Não é possível finalizar uma venda sem produtos.", true);
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
+        boolean resultadoVenda = false;
+
+        if (model.getRowCount() <= 0) {
+            AvisosDialog av = new AvisosDialog(null, true, "Não é possível finalizar uma venda sem itens!", true);
             return;
         }
-        String strTotal = txtTotal.getText().replace("R$", "");
-        Double total = Double.parseDouble(strTotal);
-        Double acrescimo = 0.0;
-        Double desconto = 0.0;
-        Integer nmrVenda = 1020;
-        MeiosDePagamentoDialog meiosDePagamento = new MeiosDePagamentoDialog(this, true, total, acrescimo, desconto, nmrVenda, jtCarrinho, txtTotal);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        boolean resultadoVenda = false;
 
         String cliente = txtCliente.getText();
         String vendedor = txtVendedor.getText();
@@ -2041,7 +2023,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         int numeroVenda = VendaController.cadastrar(new Date(System.currentTimeMillis()), codigoCliente, codigoVendedor, valorTotal);
 
         if (numeroVenda > 0) {
-            DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
+
             int qtdLinhasTabela = model.getRowCount();
 
             ArrayList<String[]> listaItens = new ArrayList<>();
@@ -2065,6 +2047,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
         if (resultadoVenda) {
             FinalizarVendaDialog fv = new FinalizarVendaDialog(this, true, "0.0");
+            while (jtCarrinho.getRowCount() > 0) {
+                model.removeRow(0);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Houve falha no processo de finalização da venda!");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -2083,21 +2070,22 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         int quantidade = inputQtdDialog.getQuantidade();
 
-        DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
+        if (quantidade > 0) {
+            DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
 
-        String codigo = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 0).toString();
-        String produto = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 1).toString();
-        String departamento = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 2).toString();
-        double preco = Double.parseDouble(jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 3).toString().replace("R$", ""));
+            String codigo = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 0).toString();
+            String produto = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 1).toString();
+            String departamento = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 2).toString();
+            double preco = Double.parseDouble(jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 3).toString().replace("R$", ""));
 
-        model.addRow(new String[]{codigo, produto, departamento, String.valueOf(preco), String.valueOf(quantidade), String.valueOf(UtilsConstantes.MASCARA_REAL
-            + (preco *= quantidade))});
+            model.addRow(new String[]{codigo, produto, departamento, String.valueOf(preco), String.valueOf(quantidade), String.valueOf(UtilsConstantes.MASCARA_REAL
+                + (preco *= quantidade))});
 
-        String total = txtTotal.getText().replace("R$", "");
-        double totalD = Double.parseDouble(total);
+            String total = txtTotal.getText().replace("R$", "");
+            double totalD = Double.parseDouble(total);
 
-        txtTotal.setText("R$" + (totalD + preco));
-
+            txtTotal.setText("R$" + (totalD + preco));
+        } 
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -2613,6 +2601,18 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_edtDepartamentoVendaKeyReleased
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
+        while (jtCarrinho.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+        txtCliente.setText("Sem cliente");
+        txtVendedor.setText("Sem vendedor");
+
+        ArrayList<String[]> list = ProdutoController.consultarTodos();
+        UtilsTabela.atualizarTabela(list, jtListaDeProdutosV);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2690,7 +2690,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
