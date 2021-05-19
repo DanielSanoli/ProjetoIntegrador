@@ -17,6 +17,7 @@ import java.awt.event.KeyEvent;
 public class QuantidadeDialog extends javax.swing.JDialog {
 
     private int quantidade;
+    static int estoqueProduto;
 
     public int getQuantidade() {
         return quantidade;
@@ -29,9 +30,10 @@ public class QuantidadeDialog extends javax.swing.JDialog {
     /**
      * Creates new form NovoClienteDialog
      */
-    public QuantidadeDialog(java.awt.Frame parent, boolean modal) {
+    public QuantidadeDialog(java.awt.Frame parent, boolean modal, int estoqueProduto) {
         super(parent, modal);
         initComponents();
+        QuantidadeDialog.estoqueProduto = estoqueProduto;
         UtilsView.configuracaoInicialJDialog(this);
     }
 
@@ -183,11 +185,17 @@ public class QuantidadeDialog extends javax.swing.JDialog {
             setQuantidade(Integer.parseInt(edtQuantidade.getText()));
             dispose();
         }
-        
+
         int qtd = Integer.parseInt(edtQuantidade.getText());
 
         if (qtd <= 0 || qtd >= 100) {
             new AvisosDialog(null, true, "A quantidade deve ser maior que 0 e menor que 100.", true);
+            edtQuantidade.setBackground(Color.YELLOW);
+            return;
+        }
+
+        if (quantidade > estoqueProduto) {
+            new AvisosDialog(null, true, "Quantidade informada superior ao estoque atual deste produto.\nEstoque atual: " + estoqueProduto + " Unidade(s)", true);
             edtQuantidade.setBackground(Color.YELLOW);
             return;
         }
@@ -250,7 +258,7 @@ public class QuantidadeDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                QuantidadeDialog dialog = new QuantidadeDialog(new javax.swing.JFrame(), true);
+                QuantidadeDialog dialog = new QuantidadeDialog(new javax.swing.JFrame(), true, estoqueProduto);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
