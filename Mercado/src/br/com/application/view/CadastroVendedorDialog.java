@@ -10,6 +10,8 @@ import br.com.application.models.Vendedor;
 import br.com.application.controller.VendedorController;
 import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
 import static br.com.application.utils.UtilsConstantes.FALHA_NO_CADASTRO;
+import static br.com.application.utils.UtilsConstantes.SUCESSO;
+import static br.com.application.utils.UtilsConstantes.FALHA;
 import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
 import java.awt.Color;
@@ -23,13 +25,15 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
 
     private static boolean isCadastro;
     private static Vendedor vendedor;
+    public static int retorno;
 
-    public CadastroVendedorDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Vendedor vendedor) {
+    public CadastroVendedorDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Vendedor vendedor, int retorno) {
         super(parent, modal);
         initComponents();
         UtilsView.configuracaoInicialJDialog(this);
         CadastroVendedorDialog.isCadastro = isCadastro;
         CadastroVendedorDialog.vendedor = vendedor;
+        CadastroClienteDialog.retorno = retorno;
         setTitle(isCadastro);
         setVendedor(vendedor);
         setVisible(true);
@@ -362,9 +366,13 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
           try {
+              
             String nomeVendedor = edtNomeVendedor.getText();
             String email = edtEmail.getText();
-            double salario = Double.parseDouble(edtSalario.getText());
+            double salario = 0;
+            if(!UtilsValidacao.isNullOuVazio(edtSalario.getText())){
+            Double.parseDouble(edtSalario.getText());
+            }
             String telefone = edtTelefone.getText();
 
             if (UtilsValidacao.isNullOuVazio(nomeVendedor)) {
@@ -374,10 +382,26 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
             } else {
                 edtNomeVendedor.setBackground(Color.white);
             }
-            VendedorController cadastro = new VendedorController();
-            VendedorController.cadastrar(nomeVendedor, email, salario, telefone);
-            AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
-            dispose();
+            boolean res = false;
+
+            if (isCadastro) {
+                res = VendedorController.cadastrar(nomeVendedor, email, salario, telefone);
+            } else {
+                if(!UtilsValidacao.isNullOuVazio(edtCodigo.getText())){
+                int codigo = Integer.parseInt(edtCodigo.getText());
+            
+                res = VendedorController.alterar(codigo, nomeVendedor, email, salario, telefone);
+                }
+            }
+            
+            if (res) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO, false);
+                dispose();
+                retorno = 1;
+               
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, FALHA, true);
+            }
         } catch (NumberFormatException ex) {
             AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
             dispose();
@@ -602,7 +626,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastroVendedorDialog dialog = new CadastroVendedorDialog(new javax.swing.JFrame(), true, isCadastro, vendedor);
+                CadastroVendedorDialog dialog = new CadastroVendedorDialog(new javax.swing.JFrame(), true, isCadastro, vendedor,0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

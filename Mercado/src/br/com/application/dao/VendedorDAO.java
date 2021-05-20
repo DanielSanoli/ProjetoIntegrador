@@ -112,7 +112,7 @@ public class VendedorDAO {
         return retorno;
     }
 
-    public static boolean alterar(Vendedor vendedor) {
+   public static boolean alterar(Vendedor vendedor) {
         boolean resultado = false;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
@@ -123,13 +123,15 @@ public class VendedorDAO {
             instrucaoSQL = conexao.prepareStatement("update vendedor set "
                     + "nome = ?,"
                     + "email = ?,"
-                    + "salario = ?"
-                    + "telefone = ?;");
+                    + "salario = ?,"
+                    + "telefone = ?"
+                    + "where codigo = ?;");
 
             instrucaoSQL.setString(1, vendedor.getNome());
             instrucaoSQL.setString(2, vendedor.getEmail());
             instrucaoSQL.setDouble(3, vendedor.getSalario());
             instrucaoSQL.setString(4, vendedor.getTelefone());
+            instrucaoSQL.setInt(5, vendedor.getCodigo());
 
             resultado = instrucaoSQL.executeUpdate() > 0;
 

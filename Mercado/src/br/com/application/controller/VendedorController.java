@@ -46,17 +46,17 @@ public class VendedorController {
         return vededorRetorno;
     }
     
-    public static boolean alterar(String nome, String email, double salario, String telefone) {
+    public static boolean alterar(int codigo, String nome, String email, double salario, String telefone) {
         
         Vendedor vendedor = new Vendedor();
         
-       
+        vendedor.setCodigo(codigo);
         vendedor.setNome(nome);
         vendedor.setEmail(email);
         vendedor.setSalario(salario);
         vendedor.setTelefone(telefone);
         
-        return VendedorDAO.alterar(vendedor);    
+        return VendedorDAO.alterar(vendedor);     
     }
      public static boolean excluir(int Codigo) {
         return VendedorDAO.excluirPorCodigo(Codigo);

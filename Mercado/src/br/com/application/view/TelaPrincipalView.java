@@ -2095,7 +2095,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        CadastroVendedorDialog cc = new CadastroVendedorDialog(this, true, true, null);
+         CadastroVendedorDialog cc = new CadastroVendedorDialog(this, true, true, null,0);
+        if (cc.retorno == 1) {
+         UtilsTabela.atualizarTabela(VendedorController.buscarTodos(), jListaDeVendedor);
+        }
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
@@ -2287,16 +2290,26 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jListaDeProdutosCadastroMouseClicked
 
     private void jListaDeVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaDeVendedorMouseClicked
-        try {
+         try {
             String codigo = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 0).toString();
             String nomeVendedor = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 1).toString();
             String email = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 2).toString();
             String salario = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 3).toString();
             String telefone = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 4).toString();
 
-            Vendedor vendedor = new Vendedor(Integer.parseInt(codigo), email, Double.parseDouble(salario), nomeVendedor, telefone);
-
-            CadastroVendedorDialog cv = new CadastroVendedorDialog(this, true, false, vendedor);
+            Vendedor vendedor = new Vendedor();
+            
+            vendedor.setCodigo(Integer.parseInt(codigo));
+            vendedor.setEmail(email);
+            vendedor.setNome(nomeVendedor);
+            vendedor.setSalario(Double.parseDouble(salario));
+            vendedor.setTelefone(telefone);
+            
+         CadastroVendedorDialog cc = new CadastroVendedorDialog(this, true, false, vendedor,0);
+            if (cc.retorno == 1) {
+         UtilsTabela.atualizarTabela(VendedorController.buscarTodos(), jListaDeVendedor);
+        }
+            
         } catch (Exception ex) {
 
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum vendedor na linha selecionada.", true);
