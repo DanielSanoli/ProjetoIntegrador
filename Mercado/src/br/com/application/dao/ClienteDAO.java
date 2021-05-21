@@ -2,7 +2,6 @@ package br.com.application.dao;
 
 import br.com.application.utils.UtilsDB;
 import br.com.application.models.Cliente;
-import br.com.application.utils.UtilsValidacao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

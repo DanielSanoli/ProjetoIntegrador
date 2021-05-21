@@ -2,7 +2,6 @@ package br.com.application.controller;
 
 import br.com.application.dao.DepartamentoDAO;
 import br.com.application.models.Departamento;
-import java.util.ArrayList;
 
 public class DepartamentoController {
 

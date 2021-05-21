@@ -1,4 +1,3 @@
-
 package br.com.application.models;
 
 public class Produto {
