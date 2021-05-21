@@ -27,7 +27,7 @@ public class DepartamentoDAO {
         try {
             conexao = Conexao.getConnection();
             instrucaoSQL = conexao.prepareStatement("insert into departamento (descricao) values (?);");
-            instrucaoSQL.setInt(1, iv.getDescricao());
+            instrucaoSQL.setString(1, iv.getDescricao());
 
             resultado = instrucaoSQL.executeUpdate() > 0;
 

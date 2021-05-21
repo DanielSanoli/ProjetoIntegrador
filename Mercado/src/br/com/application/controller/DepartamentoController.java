@@ -41,46 +41,46 @@ public class DepartamentoController {
 
     }
 
-    //Select 
-    public static ArrayList<String[]> consultarTodos() {
-        ArrayList<Departamento> listaRecebida = DepartamentoDAO.consultarTodos();
-        ArrayList<String[]> listaRetorno = new ArrayList<>();
-        listaRecebida.forEach((Departamento departamento) -> {
-            listaRetorno.add(new String[]{
-                String.valueOf(departamento.getCodigo())
-
-            });
-            return listaRetorno;
-        }
-        /**
-         *
-         * @param pCodigo
-         * @return
-         */
-
-    public static String[] consultarPorCodigo(int pCodigo) {
-        Departamento departamentoRecebido = DepartamentoDAO.consultarPorCodigo(pCodigo);
-        String[] operadorRetorno = null;
-        if (departamentoRecebido != null) {
-            String[] departamentoRetorno = new String[]{
-                String.valueOf(departamentoRecebido.getCodigo()),
-                String.valueOf(departamentoRecebido.getDescricao()),};
-        }
-        String[] departamentoRetorno = null;
-        return departamentoRetorno;
-    }
-
-    public static String[] consultarPorUsuario(int pUsuario) {
-        Departamento departamentoRecebido;
-        departamentoRecebido = DepartamentoDAO.consultarPorDescricao(pDescricao);
-        String[] departamentoRetorno = null;
-        if (departamentoRecebido != null) {
-            departamentoRetorno = new String[]{
-                String.valueOf(departamentoRecebido.getCodigo()),
-                String.valueOf(departamentoRecebido.getDescricao()),};
-        }
-        return departamentoRetorno;
-    }
+//    //Select 
+//    public static ArrayList<String[]> consultarTodos() {
+//        ArrayList<Departamento> listaRecebida = DepartamentoDAO.consultarTodos();
+//        ArrayList<String[]> listaRetorno = new ArrayList<>();
+//        listaRecebida.forEach((Departamento departamento) -> {
+//            listaRetorno.add(new String[]{
+//                String.valueOf(departamento.getCodigo())
+//
+//            });
+//            return listaRetorno;
+//        }
+//        /**
+//         *
+//         * @param pCodigo
+//         * @return
+//         */
+//
+//    public static String[] consultarPorCodigo(int pCodigo) {
+//        Departamento departamentoRecebido = DepartamentoDAO.consultarPorCodigo(pCodigo);
+//        String[] operadorRetorno = null;
+//        if (departamentoRecebido != null) {
+//            String[] departamentoRetorno = new String[]{
+//                String.valueOf(departamentoRecebido.getCodigo()),
+//                String.valueOf(departamentoRecebido.getDescricao()),};
+//        }
+//        String[] departamentoRetorno = null;
+//        return departamentoRetorno;
+//    }
+//
+//    public static String[] consultarPorUsuario(int pUsuario) {
+//        Departamento departamentoRecebido;
+//        departamentoRecebido = DepartamentoDAO.consultarPorDescricao(pDescricao);
+//        String[] departamentoRetorno = null;
+//        if (departamentoRecebido != null) {
+//            departamentoRetorno = new String[]{
+//                String.valueOf(departamentoRecebido.getCodigo()),
+//                String.valueOf(departamentoRecebido.getDescricao()),};
+//        }
+//        return departamentoRetorno;
+//    }
 
     private static class istringdescricao {
 
