@@ -24,11 +24,12 @@ public class VendaDAO {
 
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("insert into venda (data_venda,codigo_cliente, codigo_vendedor, valor_total) values (?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+            instrucaoSQL = conexao.prepareStatement("insert into venda (data_venda,codigo_cliente, codigo_vendedor, valor_total) values (??,?,?,?);", Statement.RETURN_GENERATED_KEYS);
             instrucaoSQL.setDate(1, new java.sql.Date(v.getDataVenda().getTime()));
-            instrucaoSQL.setInt(2, v.getCodigoCliente());
-            instrucaoSQL.setInt(3, v.getCodigoVendedor());
-            instrucaoSQL.setDouble(4, v.getValorTotal());
+            instrucaoSQL.setTime(2, new java.sql.Time(v.getDataVenda().getTime()));
+            instrucaoSQL.setInt(3, v.getCodigoCliente());
+            instrucaoSQL.setInt(4, v.getCodigoVendedor());
+            instrucaoSQL.setDouble(5, v.getValorTotal());
             instrucaoSQL.executeUpdate();
 
             ResultSet generatedKeys = instrucaoSQL.getGeneratedKeys();
@@ -82,7 +83,7 @@ public class VendaDAO {
         ResultSet rs = null;
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM venda WHERE data_venda BETWEEN (?) AND (?);");
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM venda WHERE data_venda BETWEEN ? AND ?;");
             instrucaoSQL.setDate(1, new java.sql.Date(dataInicial.getTime()));
             instrucaoSQL.setDate(2, new java.sql.Date(dataFinal.getTime()));
             rs = instrucaoSQL.executeQuery();
