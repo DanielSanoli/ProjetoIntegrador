@@ -7,7 +7,6 @@ package br.com.application.dao;
 
 import br.com.application.models.Vendedor;
 import br.com.application.utils.UtilsDB;
-import com.sun.jmx.remote.protocol.iiop.ClientProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

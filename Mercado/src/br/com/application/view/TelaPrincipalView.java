@@ -1992,15 +1992,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         } else if (dataInicial.after(dataFinal)) {
             JOptionPane.showMessageDialog(this, "Data inicial esta maior que a data final!", "Erro", JOptionPane.OK_OPTION);
         } 
-
-        ArrayList<Venda> list = new ArrayList<Venda>();
-
-        list = VendaController.consultarVendas(dataInicial, dataFinal);
-
-        for (Venda venda : list) {
-            System.out.println("Nº Venda: " + venda.getNumeroVenda());
-        }
-
+        
+        UtilsTabela.atualizarTabela(VendaController.consultarVendas(dataInicial, dataFinal), jTable2);
+        
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -2526,7 +2520,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-
                 }
             }
         } catch (ClassNotFoundException ex) {

@@ -34,7 +34,21 @@ public class VendaController {
         return VendaDAO.consultar(pNumeroVenda);
     }
 
-    public static ArrayList<Venda> consultarVendas(Date dataInicial, Date dataFinal) {
-        return VendaDAO.consultarVendas(dataInicial,dataFinal);
+    public static ArrayList<String[]> consultarVendas(Date dataInicial, Date dataFinal) {
+        ArrayList<Venda> listaRecebida = VendaDAO.consultarVendas(dataInicial, dataFinal);
+        ArrayList<String[]> listaRetorno = new ArrayList<>();
+        for (Venda venda : listaRecebida) {
+            String nmrVenda = String.valueOf(venda.getNumeroVenda());
+            String dataVenda = venda.getDataVenda().toString();
+            String[] cliente = ClienteController.consultarPorCodigo(venda.getCodigoCliente());
+            String total = venda.getValorTotal().toString();
+            listaRetorno.add(new String[]{
+                nmrVenda,
+                dataVenda,
+                cliente[2],
+                total
+            });
+        }
+        return listaRetorno;
     }
 }

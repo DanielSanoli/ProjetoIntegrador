@@ -69,6 +69,10 @@ public class ProdutoController {
         return produtoRetorno;
     }
 
+    public static Produto consultarPorCodigo(String pCodigo) {
+        return ProdutoDAO.consultarPorCodigo(Integer.parseInt(pCodigo));
+    }
+
     public static ArrayList<String[]> consultarPorDescricao(String pDescricao) {
         ArrayList<Produto> listaRecebida = ProdutoDAO.consultarPorDescricao(pDescricao);
         ArrayList<String[]> listaRetorno = new ArrayList<>();
