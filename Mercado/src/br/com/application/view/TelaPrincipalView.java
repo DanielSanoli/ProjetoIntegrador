@@ -94,12 +94,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jDataFinal = new com.toedter.calendar.JDateChooser();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jRelatorioSintetico = new javax.swing.JTable();
         jPanel13 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jRelatorioAnalitico = new javax.swing.JTable();
         jPanel21 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel16 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -508,7 +509,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -667,15 +668,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Relatório Sintetico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jRelatorioSintetico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Data da Venda", "Cliente ", "Total"
+                "Nº Venda", "Data da Venda", "Cliente ", "Total"
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(jRelatorioSintetico);
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -690,7 +691,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jPanel13.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Relatório analítico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jRelatorioAnalitico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -698,19 +699,19 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 "Código Produto", "Qtd", "Produto", "Valor UN", "Sub total"
             }
         ));
-        jScrollPane4.setViewportView(jTable3);
+        jScrollPane4.setViewportView(jRelatorioAnalitico);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 971, Short.MAX_VALUE)
+            .addComponent(jScrollPane4)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))
         );
 
         jPanel21.setBackground(new java.awt.Color(27, 59, 108));
@@ -739,6 +740,13 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -752,6 +760,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                         .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -762,8 +774,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                     .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
 
         jTabbedPane1.addTab("Relatório", jPanel10);
@@ -1066,7 +1079,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1270,7 +1283,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1471,7 +1484,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -1644,7 +1657,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -1985,10 +1998,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "É preciso preencher as duas datas!", "Erro", JOptionPane.OK_OPTION);
         } else if (dataInicial.after(dataFinal)) {
             JOptionPane.showMessageDialog(this, "Data inicial esta maior que a data final!", "Erro", JOptionPane.OK_OPTION);
-        } 
-        
-        UtilsTabela.atualizarTabela(VendaController.consultarVendas(dataInicial, dataFinal), jTable2);
-        
+        }
+
+        UtilsTabela.atualizarTabela(VendaController.consultarVendas(dataInicial, dataFinal), jRelatorioSintetico);
+
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -2500,6 +2513,20 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtUsuarioOperadorKeyReleased
     }
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (jRelatorioSintetico.getSelectedRow() < 0) {
+            new AvisosDialog(this, true, "Para gerar o relatório analítico, por favor selecione uma venda!", true);
+            return;
+        }
+
+        int numeroVenda = Integer.parseInt(jRelatorioSintetico.getValueAt(jRelatorioSintetico.getSelectedRow(), 0).toString());
+
+        if (numeroVenda > 0) {
+            UtilsTabela.atualizarTabela(ItemVendaController.consultarItens(numeroVenda), jRelatorioAnalitico);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2564,6 +2591,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JTextField edtUsuarioOperador;
     private javax.swing.JTextField edtrDescricaoProdutoV;
     private javax.swing.ButtonGroup groupVendedor;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -2657,6 +2685,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JTable jRelatorioAnalitico;
+    private javax.swing.JTable jRelatorioSintetico;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2668,8 +2698,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jtCarrinho;
     private javax.swing.JTable jtListaDeProdutosV;
     private javax.swing.JRadioButton rbCodigoProdutoE6;
