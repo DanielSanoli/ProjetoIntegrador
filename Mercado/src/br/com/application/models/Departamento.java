@@ -10,7 +10,7 @@ public class Departamento {
     }
     
     public Departamento (String descricao){
-        this.descricao = descricao;
+        this.descricao = descricao;      
     }
 
     public Departamento(String descricao, int codigo) {
@@ -33,4 +33,16 @@ public class Departamento {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }    
+
+    public void setUsuario(int pUsuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setSenha(int pSenha) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setDescricao(int pDescricao) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
