@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.application.view;
 
-import br.com.application.controller.ClienteController;
 import br.com.application.controller.OperadorController;
-import br.com.application.view.AvisosDialog;
 import br.com.application.models.Operador;
-import br.com.application.utils.UtilsConstantes;
-import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
 import static br.com.application.utils.UtilsConstantes.FALHA;
-import static br.com.application.utils.UtilsConstantes.FALHA_NO_CADASTRO;
 import static br.com.application.utils.UtilsConstantes.SUCESSO;
-
 import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
 import static br.com.application.view.CadastroClienteDialog.retorno;
@@ -31,14 +20,16 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
 
     private static boolean isCadastro;
     private static Operador operador;
+    public static int retorno;
     Operador objOperador;
 
-    public CadastroOperadorDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Operador operador) throws Exception {
+    public CadastroOperadorDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Operador operador, int retorno) throws Exception {
         super(parent, modal);
         initComponents();
         UtilsView.configuracaoInicialJDialog(this);
         CadastroOperadorDialog.isCadastro = isCadastro;
         CadastroOperadorDialog.operador = operador;
+        CadastroOperadorDialog.retorno = retorno;
         setTitle(isCadastro);
         setOperador(operador);
         setVisible(true);
@@ -684,7 +675,7 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    CadastroOperadorDialog dialog = new CadastroOperadorDialog(new javax.swing.JFrame(), true, isCadastro, operador);
+                    CadastroOperadorDialog dialog = new CadastroOperadorDialog(new javax.swing.JFrame(), true, isCadastro, operador, retorno);
                     dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override
                         public void windowClosing(java.awt.event.WindowEvent e) {

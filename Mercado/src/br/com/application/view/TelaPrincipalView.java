@@ -1781,7 +1781,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         String descricao = edtrDescricaoProdutoV.getText();
         String departamento = edtDepartamentoVenda.getText();
         boolean res = false;
-        
+
         if (!UtilsValidacao.isNullOuVazio(codigo)) {
             String[] list = ProdutoController.consultarPorCodigo(Integer.parseInt(codigo));
             if (UtilsTabela.atualizarTabela(list, jtListaDeProdutosV)) {
@@ -1791,7 +1791,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         if (!UtilsValidacao.isNullOuVazio(descricao)) {
             ArrayList<String[]> list = ProdutoController.consultarPorDescricao(descricao);
             if (UtilsTabela.atualizarTabela(list, jtListaDeProdutosV)) {
@@ -1801,7 +1801,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         if (!UtilsValidacao.isNullOuVazio(departamento)) {
             ArrayList<String[]> list = ProdutoController.consultarPorDepartamento(departamento);
             if (UtilsTabela.atualizarTabela(list, jtListaDeProdutosV)) {
@@ -1835,9 +1835,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             evt.consume();
             new AvisosDialog(null, true, "Máximo de 10 caracteres atingidos.", true);
         }
-        
+
         char c = evt.getKeyChar();
-        
+
         if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
             new AvisosDialog(null, true, "O campo código só aceita valores númericos.", true);
@@ -1849,49 +1849,49 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtCodProdutoVActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
         DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
         boolean resultadoVenda = false;
-        
+
         String cliente = txtCliente.getText();
-        
+
         if (model.getRowCount() <= 0) {
             AvisosDialog av = new AvisosDialog(null, true, "Não é possível finalizar uma venda sem itens!", true);
             return;
         }
-        
+
         if (cliente.equalsIgnoreCase("Sem cliente")) {
             AvisosDialog av = new AvisosDialog(null, true, "Não é possível finalizar uma venda sem cliente!", true);
             return;
         }
-        
+
         int codigoVendedor = 0;
         int codigoCliente = Integer.parseInt(cliente.substring(0, cliente.indexOf(" ")));
         String vendedor = txtVendedor.getText();
-        
+
         if (!vendedor.equalsIgnoreCase("Sem vendedor")) {
             codigoVendedor = Integer.parseInt(vendedor.substring(0, vendedor.indexOf(" ")));
         }
-        
+
         double valorTotal = Double.parseDouble(txtTotal.getText().replace("R$", ""));
-        
+
         java.util.Date dataAtual = new java.util.Date();
-        
+
         int numeroVenda = VendaController.cadastrar(dataAtual, codigoCliente, codigoVendedor, valorTotal);
-        
+
         if (numeroVenda > 0) {
-            
+
             int qtdLinhasTabela = model.getRowCount();
-            
+
             ArrayList<String[]> listaItens = new ArrayList<>();
-            
+
             for (int i = 0; i < qtdLinhasTabela; i++) {
-                
+
                 String codigo = model.getValueAt(i, 0).toString();
                 String precoUnitario = model.getValueAt(i, 3).toString().replace("R$", "").replace(",", ".");
                 String quantidade = model.getValueAt(i, 4).toString();
                 String subTotal = model.getValueAt(i, 5).toString().replace("R$", "").replace(",", ".");
-                
+
                 String[] item = new String[]{
                     String.valueOf(numeroVenda),
                     String.valueOf(codigo),
@@ -1922,34 +1922,34 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             new AvisosDialog(this, true, "Para adicionar ao carrinho, primeiro selecione o produto.", true);
             return;
         }
-        
+
         int estoqueAtual = Integer.parseInt(jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 4).toString());
-        
+
         QuantidadeDialog inputQtdDialog = new QuantidadeDialog(this, true, estoqueAtual);
         inputQtdDialog.setVisible(true);
-        
+
         int quantidade = inputQtdDialog.getQuantidade();
-        
+
         if (quantidade > 0 && quantidade < 100 && quantidade < estoqueAtual) {
             DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
-            
+
             String codigo = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 0).toString();
             String produto = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 1).toString();
             String departamento = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 2).toString();
             double preco = Double.parseDouble(jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 3).toString().replace("R$", ""));
-            
+
             model.addRow(new String[]{codigo, produto, departamento, String.valueOf(preco), String.valueOf(quantidade), String.valueOf(UtilsConstantes.MASCARA_REAL
                 + (preco *= quantidade))});
-            
+
             String total = txtTotal.getText().replace("R$", "");
             double totalD = Double.parseDouble(total);
-            
+
             txtTotal.setText("R$" + (totalD + preco));
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        
+
         try {
             DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
             double preco = Double.parseDouble(jtCarrinho.getValueAt(jtCarrinho.getSelectedRow(), 3).toString().replace("R$", ""));
@@ -1988,7 +1988,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         java.util.Date dataInicial = jDataInicial.getDate();
         java.util.Date dataFinal = jDataFinal.getDate();
         double totalLabel = 0;
-        
+
         if (dataInicial == null || dataFinal == null) {
             JOptionPane.showMessageDialog(this, "É preciso preencher as duas datas!", "Erro", JOptionPane.OK_OPTION);
         } else if (dataInicial.after(dataFinal)) {
@@ -1996,12 +1996,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
         Venda vd = new Venda();
         UtilsTabela.atualizarTabela(VendaController.consultarVendas(dataInicial, dataFinal), jRelatorioSintetico);
-        
+
         DefaultTableModel tabelaSintetico = (DefaultTableModel) jRelatorioSintetico.getModel();
         for (int i = 0; i < tabelaSintetico.getRowCount(); i++) {
             totalLabel += Double.parseDouble((String) tabelaSintetico.getValueAt(i, 3));
         }
-        
+
         jlbTotal.setText(String.valueOf(totalLabel));
 
     }//GEN-LAST:event_jButton11ActionPerformed
@@ -2038,7 +2038,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         String descricao = edtDescricaoProdutoE2.getText();
         String departamento = edtDepartamento.getText();
         boolean res = false;
-        
+
         if (!UtilsValidacao.isNullOuVazio(codigo)) {
             String[] list = ProdutoController.consultarPorCodigo(Integer.parseInt(codigo));
             if (UtilsTabela.atualizarTabela(list, jListaDeProdutosCadastro)) {
@@ -2048,7 +2048,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         if (!UtilsValidacao.isNullOuVazio(descricao)) {
             ArrayList<String[]> list = ProdutoController.consultarPorDescricao(descricao);
             if (UtilsTabela.atualizarTabela(list, jListaDeProdutosCadastro)) {
@@ -2058,7 +2058,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         if (!UtilsValidacao.isNullOuVazio(departamento)) {
             ArrayList<String[]> list = ProdutoController.consultarPorDepartamento(departamento);
             if (UtilsTabela.atualizarTabela(list, jListaDeProdutosCadastro)) {
@@ -2099,7 +2099,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         String codigo = edtCodigoVendedor.getText();
         String nome = edtNomeVendedor.getText();
         boolean res = false;
-        
+
         if (!UtilsValidacao.isNullOuVazio(codigo)) {
             String[] list = VendedorController.buscarPorCodigo(Integer.parseInt(codigo));
             if (UtilsTabela.atualizarTabela(list, jListaDeVendedor)) {
@@ -2109,7 +2109,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         if (!UtilsValidacao.isNullOuVazio(nome)) {
             ArrayList<String[]> list = VendedorController.buscarPorNome(nome);
             if (UtilsTabela.atualizarTabela(list, jListaDeVendedor)) {
@@ -2119,7 +2119,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         ArrayList<String[]> list = VendedorController.buscarTodos();
         if (UtilsTabela.atualizarTabela(list, jListaDeVendedor)) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
@@ -2130,7 +2130,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         try {
-            CadastroOperadorDialog co = new CadastroOperadorDialog(this, true, true, null);
+            CadastroOperadorDialog co = new CadastroOperadorDialog(this, true, true, null, 0);
+            if (co.retorno == 1) {
+                atualizarTabelaOperador();
+            }
         } catch (Exception ex) {
             Logger.getLogger(TelaPrincipalView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2138,6 +2141,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
         ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_OPERADOR, 0);
+        if (ex.retorno == 1) {
+            atualizarTabelaOperador();
+        }
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void edtCodigoOperadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoOperadorActionPerformed
@@ -2153,11 +2159,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtUsuarioOperadorActionPerformed
 
     private void btnFiltrar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar4ActionPerformed
-        
+
         String codigo = edtCodigoOperador.getText();
         String usuario = edtUsuarioOperador.getText();
         boolean res = false;
-        
+
         if (!UtilsValidacao.isNullOuVazio(codigo)) {
             String[] list = OperadorController.consultarPorCodigo(Integer.parseInt(codigo));
             if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
@@ -2167,7 +2173,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         if (!UtilsValidacao.isNullOuVazio(usuario)) {
             String[] list = OperadorController.consultarPorUsuario(Integer.parseInt(usuario));
             if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
@@ -2177,7 +2183,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         ArrayList<String[]> list = OperadorController.consultarTodos();
         if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
@@ -2215,7 +2221,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_edtCpfClienteActionPerformed
 
     private void jListaDeClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListaDeClientesMouseClicked
-        
+
         try {
             String codigo = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 0).toString();
             String cpf = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 1).toString();
@@ -2226,9 +2232,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             String numero = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 6).toString();
             String complemento = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 7).toString();
             String sexo = jListaDeClientes.getValueAt(jListaDeClientes.getSelectedRow(), 8).toString();
-            
+
             Cliente cliente = new Cliente();
-            
+
             cliente.setCodigo(Integer.parseInt(codigo));
             cliente.setCPF(cpf);
             cliente.setNome(nome);
@@ -2238,7 +2244,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             cliente.setEnderecoNumero(numero);
             cliente.setEnderecoComplemento(complemento);
             cliente.setSexo(sexo.equals(UtilsConstantes.MASCULINO) ? "M" : "F");
-            
+
             CadastroClienteDialog cc = new CadastroClienteDialog(this, true, false, cliente, 0);
             if (cc.retorno == 1) {
                 atualizarTabelaCliente();
@@ -2284,22 +2290,22 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             String email = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 2).toString();
             String salario = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 3).toString();
             String telefone = jListaDeVendedor.getValueAt(jListaDeVendedor.getSelectedRow(), 4).toString();
-            
+
             Vendedor vendedor = new Vendedor();
-            
+
             vendedor.setCodigo(Integer.parseInt(codigo));
             vendedor.setEmail(email);
             vendedor.setNome(nomeVendedor);
             vendedor.setSalario(Double.parseDouble(salario));
             vendedor.setTelefone(telefone);
-            
+
             CadastroVendedorDialog cc = new CadastroVendedorDialog(this, true, false, vendedor, 0);
             if (cc.retorno == 1) {
                 UtilsTabela.atualizarTabela(VendedorController.buscarTodos(), jListaDeVendedor);
             }
-            
+
         } catch (Exception ex) {
-            
+
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum vendedor na linha selecionada.", true);
         }
     }//GEN-LAST:event_jListaDeVendedorMouseClicked
@@ -2309,13 +2315,16 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             String codigo = jListaOperador.getValueAt(jListaOperador.getSelectedRow(), 0).toString();
             String usuario = jListaOperador.getValueAt(jListaOperador.getSelectedRow(), 1).toString();
             String senha = jListaOperador.getValueAt(jListaOperador.getSelectedRow(), 2).toString();
-            
+
             Operador operador = new Operador();
             operador.setCodigo(Integer.parseInt(codigo));
             operador.setUsuario(Integer.parseInt(usuario));
             operador.setSenha(Integer.parseInt(senha));
-            
-            CadastroOperadorDialog cv = new CadastroOperadorDialog(this, true, false, operador);
+
+            CadastroOperadorDialog cv = new CadastroOperadorDialog(this, true, false, operador, 0);
+            if (cv.retorno == 1) {
+                atualizarTabelaOperador();
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum operador na linha selecionada.", true);
@@ -2335,7 +2344,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         String cpf = edtCpfCliente.getText();
         String nome = edtNomeCliente.getText();
         boolean res = false;
-        
+
         if (!UtilsValidacao.isNullOuVazio(codigo)) {
             String[] list = ClienteController.consultarPorCodigo(Integer.parseInt(codigo));
             if (UtilsTabela.atualizarTabela(list, jListaDeClientes)) {
@@ -2345,7 +2354,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         if (!UtilsValidacao.isNullOuVazio(cpf)) {
             ArrayList<String[]> list = ClienteController.consultarPorCpf(cpf);
             if (UtilsTabela.atualizarTabela(list, jListaDeClientes)) {
@@ -2355,7 +2364,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         if (!UtilsValidacao.isNullOuVazio(nome)) {
             ArrayList<String[]> list = ClienteController.consultarPorNome(nome);
             if (UtilsTabela.atualizarTabela(list, jListaDeClientes)) {
@@ -2365,7 +2374,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        
+
         ArrayList<String[]> list = ClienteController.consultarTodos();
         if (UtilsTabela.atualizarTabela(list, jListaDeClientes)) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
@@ -2496,7 +2505,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         txtCliente.setText("Sem cliente");
         txtVendedor.setText("Sem vendedor");
         txtTotal.setText("R$00.00");
-        
+
         ArrayList<String[]> list = ProdutoController.consultarTodos();
         UtilsTabela.atualizarTabela(list, jtListaDeProdutosV);
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -2521,9 +2530,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             new AvisosDialog(this, true, "Para gerar o relatório analítico, por favor selecione uma venda!", true);
             return;
         }
-        
+
         int numeroVenda = Integer.parseInt(jRelatorioSintetico.getValueAt(jRelatorioSintetico.getSelectedRow(), 0).toString());
-        
+
         if (numeroVenda > 0) {
             UtilsTabela.atualizarTabela(ItemVendaController.consultarItens(numeroVenda), jRelatorioAnalitico);
         }
@@ -2548,15 +2557,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipalView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipalView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipalView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipalView.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -2716,16 +2725,16 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         atualizarTabelaProduto();
         atualizarTabelaOperador();
     }
-    
+
     private void atualizarTabelaCliente() {
         UtilsTabela.atualizarTabela(ClienteController.consultarTodos(), jListaDeClientes);
     }
-    
+
     private void atualizarTabelaProduto() {
         UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jListaDeProdutosCadastro);
         UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jtListaDeProdutosV);
     }
-    
+
     private void atualizarTabelaOperador() {
         UtilsTabela.atualizarTabela(OperadorController.consultarTodos(), jListaOperador);
     }

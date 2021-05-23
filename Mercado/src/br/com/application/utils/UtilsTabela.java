@@ -15,10 +15,12 @@ public class UtilsTabela {
                 modelo.addRow(c);
             }
         } else {
+            DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+            modelo.setRowCount(0);
             sucesso = false;
-        }                
-        return sucesso;        
-    }    
+        }
+        return sucesso;
+    }
 
     public static boolean atualizarTabela(String[] item, JTable tabela) {
         boolean sucesso = true;
@@ -27,6 +29,8 @@ public class UtilsTabela {
             modelo.setRowCount(0);
             modelo.addRow(item);
         } else {
+            DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+            modelo.setRowCount(0);
             sucesso = false;
         }
         return sucesso;

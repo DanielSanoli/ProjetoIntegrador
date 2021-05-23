@@ -48,6 +48,7 @@ public class OperadorController {
                 Integer.toString(operador.getUsuario()),
                 Integer.toString(operador.getSenha())});
         }
+        System.out.println("Lista.size(): " + listaRetorno.size());
         return listaRetorno;
     }
 

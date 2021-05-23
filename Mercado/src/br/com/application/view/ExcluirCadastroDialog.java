@@ -6,6 +6,7 @@
 package br.com.application.view;
 
 import br.com.application.controller.ClienteController;
+import br.com.application.controller.OperadorController;
 import br.com.application.controller.VendedorController;
 import static br.com.application.utils.UtilsConstantes.CLASS_CLIENTE;
 import static br.com.application.utils.UtilsConstantes.CLASS_DEPARTAMENTO;
@@ -206,7 +207,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
             case CLASS_CLIENTE:
                 // Realizar exclusão do cliente
                 System.out.println("CLASS_CLIENTE");
-                 res = ClienteController.excluir(codigo);
+                res = ClienteController.excluir(codigo);
                 break;
             case CLASS_DEPARTAMENTO:
                 // Realizar exclusão do departamento
@@ -214,7 +215,7 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
                 break;
             case CLASS_OPERADOR:
                 // Realizar exclusão do operador
-                System.out.println("CLASS_OPERADOR");
+                res = OperadorController.excluir(codigo);
                 break;
             case CLASS_PRODUTO:
                 // Realizar exclusão do produto
@@ -229,9 +230,10 @@ public final class ExcluirCadastroDialog extends javax.swing.JDialog {
 
         if (res) {
             AvisosDialog av = new AvisosDialog(null, true, EXCLUSAO_REALIZADA, false);
-            dispose();
             retorno = 1;
+            dispose();
         } else {
+            retorno = 0;
             AvisosDialog av = new AvisosDialog(null, true, FALHA_NA_EXCLUSAO, true);
         }
     }//GEN-LAST:event_btnCofirmarActionPerformed

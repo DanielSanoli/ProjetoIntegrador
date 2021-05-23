@@ -34,10 +34,6 @@ public class DepartamentoDAO {
         return resultado;
     }
 
-    public static boolean cadastrarDepartamento(String descricao) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public static boolean alterar(int pCodigo, int pDescricao) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

@@ -72,7 +72,7 @@ public class OperadorDAO {
         PreparedStatement instrucaoSQL = null;
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("DELETE FROM operador where codigo = ?");
+            instrucaoSQL = conexao.prepareStatement("delete from operador where codigo = ?;");
             instrucaoSQL.setInt(1, pCodigo);
             resultado = instrucaoSQL.executeUpdate() > 0;
         } catch (SQLException | ClassNotFoundException ex) {
