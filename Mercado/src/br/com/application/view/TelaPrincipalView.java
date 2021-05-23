@@ -1910,7 +1910,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         int quantidade = inputQtdDialog.getQuantidade();
 
-        if (quantidade > 0 && quantidade < 100 && quantidade < estoqueAtual) {
+        if (quantidade > 0 && quantidade < 100 && quantidade <= estoqueAtual) {
             DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
 
             String codigo = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 0).toString();
