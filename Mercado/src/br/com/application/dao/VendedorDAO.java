@@ -24,12 +24,12 @@ public class VendedorDAO {
         try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("insert into vendedor(nome,email,salario,telefone) "
+            instrucaoSQL = conexao.prepareStatement("insert into vendedor(nome,salario,email,telefone) "
                     + "values (?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
 
             instrucaoSQL.setString(1, vendedor.getNome());
-            instrucaoSQL.setString(2, vendedor.getEmail());
-            instrucaoSQL.setDouble(3, vendedor.getSalario());
+            instrucaoSQL.setDouble(2, vendedor.getSalario());
+            instrucaoSQL.setString(3, vendedor.getEmail());            
             instrucaoSQL.setString(4, vendedor.getTelefone());
 
             resultado = instrucaoSQL.executeUpdate() > 0;

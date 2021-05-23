@@ -25,13 +25,13 @@ public class VendaDAO {
         try {
             conexao = Conexao.getConnection();
             if (v.getCodigoVendedor() == 0) {
-                instrucaoSQL = conexao.prepareStatement("insert into venda (data_venda,codigo_cliente, valor_total) values (?,?,?);", Statement.RETURN_GENERATED_KEYS);
+                instrucaoSQL = conexao.prepareStatement("insert into venda (data_venda,fk_codigo_cliente, valor_total) values (?,?,?);", Statement.RETURN_GENERATED_KEYS);
                 instrucaoSQL.setDate(1, new java.sql.Date(v.getDataVenda().getTime()));
                 instrucaoSQL.setInt(2, v.getCodigoCliente());
                 instrucaoSQL.setDouble(3, v.getValorTotal());
                 instrucaoSQL.executeUpdate();
             } else {
-                instrucaoSQL = conexao.prepareStatement("insert into venda (data_venda,codigo_cliente, codigo_vendedor, valor_total) values (?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+                instrucaoSQL = conexao.prepareStatement("insert into venda (data_venda,fk_codigo_cliente, fk_codigo_vendedor, valor_total) values (?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
                 instrucaoSQL.setDate(1, new java.sql.Date(v.getDataVenda().getTime()));
                 instrucaoSQL.setInt(2, v.getCodigoCliente());
                 instrucaoSQL.setInt(3, v.getCodigoVendedor());
@@ -70,8 +70,8 @@ public class VendaDAO {
             while (rs.next()) {
                 v.setNumeroVenda(rs.getInt("num_venda"));
                 v.setDataVenda(rs.getDate("data_venda"));
-                v.setCodigoCliente(rs.getInt("codigo_cliente"));
-                v.setCodigoVendedor(rs.getInt("codigo_vendedor"));
+                v.setCodigoCliente(rs.getInt("fk_codigo_cliente"));
+                v.setCodigoVendedor(rs.getInt("fk_codigo_vendedor"));
                 v.setValorTotal(rs.getDouble("valor_total"));
             }
         } catch (SQLException | ClassNotFoundException ex) {
@@ -97,8 +97,8 @@ public class VendaDAO {
             while (rs.next()) {
                 Cliente cliente = new Cliente();
                 Venda venda = new Venda();
-                venda.setCodigoCliente(rs.getInt("codigo_cliente"));
-                venda.setCodigoVendedor(rs.getInt("codigo_vendedor"));
+                venda.setCodigoCliente(rs.getInt("fk_codigo_cliente"));
+                venda.setCodigoVendedor(rs.getInt("fk_codigo_vendedor"));
                 venda.setDataVenda(rs.getDate("data_venda"));
                 venda.setNumeroVenda(rs.getInt("num_venda"));
                 venda.setValorTotal(rs.getDouble("valor_total"));
