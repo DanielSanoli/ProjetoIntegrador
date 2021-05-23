@@ -36,8 +36,8 @@ public class DepartamentoController {
         return operadorRetorno;
     }
 
-    public static String[] consultarPorDescricao(int pDescricao) {
-        Departamento departamentoRecebido = DepartamentoDAO.consultarPorCodigo(pDescricao);
+    public static String[] consultarPorDescricao(String pDescricao) {
+        Departamento departamentoRecebido = DepartamentoDAO.consultarPorDescricao(pDescricao);
         String[] operadorRetorno = null;
         if (departamentoRecebido != null) {
             operadorRetorno = new String[]{
