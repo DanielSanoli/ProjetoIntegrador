@@ -5,11 +5,14 @@
  */
 package br.com.application.view;
 
+import br.com.application.controller.DepartamentoController;
 import br.com.application.view.AvisosDialog;
 import br.com.application.models.Cliente;
 import br.com.application.models.Departamento;
 import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
+import static br.com.application.utils.UtilsConstantes.FALHA;
 import static br.com.application.utils.UtilsConstantes.FALHA_NO_CADASTRO;
+import static br.com.application.utils.UtilsConstantes.SUCESSO;
 import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
 import java.awt.Color;
@@ -23,13 +26,15 @@ public final class CadastroDepartamentoDialog extends javax.swing.JDialog {
 
     private static boolean isCadastro;
     private static Departamento departamento;
+    public static int retorno = 0;
 
-    public CadastroDepartamentoDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Departamento departamento) {
+    public CadastroDepartamentoDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Departamento departamento, int retorno) {
         super(parent, modal);
         initComponents();
         UtilsView.configuracaoInicialJDialog(this);
         CadastroDepartamentoDialog.isCadastro = isCadastro;
         CadastroDepartamentoDialog.departamento = departamento;
+        this.retorno = retorno;
         setTitle(isCadastro);
         setDepartamento(departamento);
         setVisible(true);
@@ -89,6 +94,7 @@ public final class CadastroDepartamentoDialog extends javax.swing.JDialog {
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        edtCodigo.setEditable(false);
         edtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtCodigoActionPerformed(evt);
@@ -247,32 +253,35 @@ public final class CadastroDepartamentoDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
-            String cod = edtCodigo.getText();
-            String nomeDepartamento = edtNomeDepartamento.getText();
 
-            if (UtilsValidacao.isNullOuVazio(cod)) {
-                new AvisosDialog(null, true, "O preenchimento do campo código é obrigatório.", true);
-                edtCodigo.setBackground(Color.yellow);
-                return;
-            } else {
-                edtCodigo.setBackground(Color.white);
-            }
+            String codigo = edtCodigo.getText();
+            String descricao = edtNomeDepartamento.getText();
 
-            if (UtilsValidacao.isNullOuVazio(nomeDepartamento)) {
-                new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
+            if (UtilsValidacao.isNullOuVazio(descricao)) {
+                new AvisosDialog(null, true, "O preenchimento do campo senha é obrigatório.", true);
                 edtNomeDepartamento.setBackground(Color.yellow);
-                return;
             } else {
                 edtNomeDepartamento.setBackground(Color.white);
             }
 
-            Departamento departamento = new Departamento();
-            departamento.setDescricao(nomeDepartamento);
+            boolean res = false;
 
-            AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
-            dispose();
+            if (isCadastro) {
+                res = DepartamentoController.cadastrar(descricao);
+            } else {
+                res = DepartamentoController.alterar(Integer.parseInt(codigo), descricao);
+            }
+
+            if (res) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO, false);
+                dispose();
+                retorno = 1;
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, FALHA, true);
+            }
+
         } catch (Exception ex) {
-            AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
+            AvisosDialog av = new AvisosDialog(null, true, FALHA, false);
             dispose();
         }
 
@@ -397,7 +406,7 @@ public final class CadastroDepartamentoDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastroDepartamentoDialog dialog = new CadastroDepartamentoDialog(new javax.swing.JFrame(), true, isCadastro, departamento);
+                CadastroDepartamentoDialog dialog = new CadastroDepartamentoDialog(new javax.swing.JFrame(), true, isCadastro, departamento, retorno);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

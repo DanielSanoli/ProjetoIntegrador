@@ -1440,7 +1440,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane7" pref="324" max="32767" attributes="0"/>
+                              <Component id="jScrollPane7" pref="376" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1491,21 +1491,13 @@
                                   <Component id="btnFiltrar6" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel37" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel36" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel35" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="edtDescricaoProdutoE6" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jComboBox5" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="edtCodigoProdutoE6" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="rbCodigoProdutoE6" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="rbDepartamentoE3" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="rbDescricaoProdutoE6" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="edtDescricaoDepartamento" max="32767" attributes="0"/>
+                                          <Component id="edtCodigoDepartamento" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1519,20 +1511,12 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
                                   <Component id="jLabel35" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="edtCodigoProdutoE6" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbCodigoProdutoE6" alignment="2" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="2" attributes="0">
-                                  <Component id="jLabel36" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="edtDescricaoProdutoE6" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbDescricaoProdutoE6" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="edtCodigoDepartamento" alignment="2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="2" attributes="0">
-                                  <Component id="jLabel37" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox5" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbDepartamentoE3" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel36" alignment="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="edtDescricaoDepartamento" alignment="2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Component id="btnFiltrar6" min="-2" max="-2" attributes="0"/>
@@ -1542,31 +1526,15 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JComboBox" name="jComboBox5">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="5">
-                            <StringItem index="0" value="Todos"/>
-                            <StringItem index="1" value="Frutas"/>
-                            <StringItem index="2" value="Verduras"/>
-                            <StringItem index="3" value="Limpeza"/>
-                            <StringItem index="4" value="Cozinha"/>
-                          </StringArray>
-                        </Property>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel35">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="edtCodigoProdutoE6">
+                    <Component class="javax.swing.JTextField" name="edtCodigoDepartamento">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtCodigoProdutoE6ActionPerformed"/>
-                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtCodigoProdutoE6KeyTyped"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtCodigoDepartamentoActionPerformed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtCodigoDepartamentoKeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel36">
@@ -1574,9 +1542,10 @@
                         <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="edtDescricaoProdutoE6">
+                    <Component class="javax.swing.JTextField" name="edtDescricaoDepartamento">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtDescricaoProdutoE6ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtDescricaoDepartamentoActionPerformed"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="edtDescricaoDepartamentoKeyReleased"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnFiltrar6">
@@ -1588,17 +1557,6 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFiltrar6ActionPerformed"/>
                       </Events>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel37">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Departamento"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbCodigoProdutoE6">
-                    </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbDescricaoProdutoE6">
-                    </Component>
-                    <Component class="javax.swing.JRadioButton" name="rbDepartamentoE3">
                     </Component>
                   </SubComponents>
                 </Container>

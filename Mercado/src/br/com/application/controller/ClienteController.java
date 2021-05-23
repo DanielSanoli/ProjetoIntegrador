@@ -51,7 +51,7 @@ public class ClienteController {
     }
 
     // Select
-    public static ArrayList<String[]> consultarTodos() {
+    public static ArrayList<String[]> buscarTodos() {
         ArrayList<Cliente> listaRecebida = ClienteDAO.consultarTodos();
         ArrayList<String[]> listaRetorno = new ArrayList<>();
         for (Cliente cliente : listaRecebida) {

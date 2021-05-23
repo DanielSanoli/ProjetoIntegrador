@@ -23,13 +23,15 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
 
     private static boolean isCadastro;
     private static Produto produto;
+    public static int retorno;
 
-    public CadastroProdutoDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Produto produto) {
+    public CadastroProdutoDialog(java.awt.Frame parent, boolean modal, boolean isCadastro, Produto produto, int retorno) {
         super(parent, modal);
         initComponents();
         UtilsView.configuracaoInicialJDialog(this);
         CadastroProdutoDialog.isCadastro = isCadastro;
         CadastroProdutoDialog.produto = produto;
+        CadastroProdutoDialog.retorno = retorno;
         setTitle(isCadastro);
         setProduto(produto);
         setVisible(true);
@@ -634,7 +636,7 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastroProdutoDialog dialog = new CadastroProdutoDialog(new javax.swing.JFrame(), true, isCadastro, produto);
+                CadastroProdutoDialog dialog = new CadastroProdutoDialog(new javax.swing.JFrame(), true, isCadastro, produto, retorno);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -29,7 +29,7 @@ public class OperadorController {
     }
 
     //Select 
-    public static ArrayList<String[]> consultarTodos() {
+    public static ArrayList<String[]> buscarTodos() {
         ArrayList<Operador> listaRecebida = OperadorDAO.consultarTodos();
         ArrayList<String[]> listaRetorno = new ArrayList<>();
         for (Operador operador : listaRecebida) {

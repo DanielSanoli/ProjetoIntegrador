@@ -206,7 +206,7 @@ public class AdicionarClienteDialog extends javax.swing.JDialog {
     }
 
     public void atualizarListaCliente() {
-        ArrayList<String[]> list = ClienteController.consultarTodos();
+        ArrayList<String[]> list = ClienteController.buscarTodos();
         for (String[] cliente : list) {
             String codigo = cliente[0];
             String cpf = cliente[1];

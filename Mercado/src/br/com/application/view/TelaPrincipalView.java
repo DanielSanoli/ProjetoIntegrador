@@ -1,6 +1,7 @@
 package br.com.application.view;
 
 import br.com.application.controller.ClienteController;
+import br.com.application.controller.DepartamentoController;
 import br.com.application.controller.ItemVendaController;
 import br.com.application.controller.OperadorController;
 import br.com.application.controller.ProdutoController;
@@ -129,16 +130,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         jListaDepartamento = new javax.swing.JTable();
         jPanel35 = new javax.swing.JPanel();
-        jComboBox5 = new javax.swing.JComboBox<>();
         jLabel35 = new javax.swing.JLabel();
-        edtCodigoProdutoE6 = new javax.swing.JTextField();
+        edtCodigoDepartamento = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        edtDescricaoProdutoE6 = new javax.swing.JTextField();
+        edtDescricaoDepartamento = new javax.swing.JTextField();
         btnFiltrar6 = new javax.swing.JButton();
-        jLabel37 = new javax.swing.JLabel();
-        rbCodigoProdutoE6 = new javax.swing.JRadioButton();
-        rbDescricaoProdutoE6 = new javax.swing.JRadioButton();
-        rbDepartamentoE3 = new javax.swing.JRadioButton();
         jPanel18 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         jButton12 = new javax.swing.JButton();
@@ -1076,32 +1072,35 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel35.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar Departamentos", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Frutas", "Verduras", "Limpeza", "Cozinha" }));
-
         jLabel35.setText("Código");
 
-        edtCodigoProdutoE6.addActionListener(new java.awt.event.ActionListener() {
+        edtCodigoDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtCodigoProdutoE6ActionPerformed(evt);
+                edtCodigoDepartamentoActionPerformed(evt);
             }
         });
-        edtCodigoProdutoE6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                edtCodigoProdutoE6KeyTyped(evt);
+        edtCodigoDepartamento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtCodigoDepartamentoKeyReleased(evt);
             }
         });
 
         jLabel36.setText("Descrição");
 
-        edtDescricaoProdutoE6.addActionListener(new java.awt.event.ActionListener() {
+        edtDescricaoDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtDescricaoProdutoE6ActionPerformed(evt);
+                edtDescricaoDepartamentoActionPerformed(evt);
+            }
+        });
+        edtDescricaoDepartamento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                edtDescricaoDepartamentoKeyReleased(evt);
             }
         });
 
@@ -1111,8 +1110,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 btnFiltrar6ActionPerformed(evt);
             }
         });
-
-        jLabel37.setText("Departamento");
 
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
         jPanel35.setLayout(jPanel35Layout);
@@ -1124,19 +1121,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                     .addComponent(btnFiltrar6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel35Layout.createSequentialGroup()
                         .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel37)
                             .addComponent(jLabel36)
                             .addComponent(jLabel35))
-                        .addGap(10, 10, 10)
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edtDescricaoProdutoE6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox5, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(edtCodigoProdutoE6))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(rbCodigoProdutoE6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rbDepartamentoE3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(rbDescricaoProdutoE6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(edtDescricaoDepartamento)
+                            .addComponent(edtCodigoDepartamento))))
                 .addContainerGap())
         );
         jPanel35Layout.setVerticalGroup(
@@ -1145,18 +1135,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel35)
-                    .addComponent(edtCodigoProdutoE6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbCodigoProdutoE6))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel36)
-                    .addComponent(edtDescricaoProdutoE6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbDescricaoProdutoE6))
+                    .addComponent(edtCodigoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel37)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbDepartamentoE3))
+                    .addComponent(jLabel36)
+                    .addComponent(edtDescricaoDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(btnFiltrar6)
                 .addGap(10, 10, 10))
@@ -1811,7 +1794,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        ArrayList<String[]> list = ProdutoController.consultarTodos();
+        ArrayList<String[]> list = ProdutoController.buscarTodos();
         if (UtilsTabela.atualizarTabela(list, jtListaDeProdutosV)) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
         } else {
@@ -2021,12 +2004,18 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        CadastroProdutoDialog cc = new CadastroProdutoDialog(this, true, true, null);
+        CadastroProdutoDialog cc = new CadastroProdutoDialog(this, true, true, null, 0);
+        if (cc.retorno == 1) {
+            atualizarTabelaProduto();
+        }
+
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_PRODUTO, 0);
-
+        if (ex.retorno == 1) {
+            atualizarTabelaProduto();
+        }
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void edtDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDepartamentoActionPerformed
@@ -2068,7 +2057,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             }
             return;
         }
-        ArrayList<String[]> list = ProdutoController.consultarTodos();
+        ArrayList<String[]> list = ProdutoController.buscarTodos();
         if (UtilsTabela.atualizarTabela(list, jListaDeProdutosCadastro)) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
         } else {
@@ -2077,22 +2066,31 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFiltrar1ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        CadastroDepartamentoDialog cc = new CadastroDepartamentoDialog(this, true, true, null);
+        CadastroDepartamentoDialog cc = new CadastroDepartamentoDialog(this, true, true, null, 0);
+        if (cc.retorno == 1) {
+            atualizarTabelaDepartamento();
+        }
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_DEPARTAMENTO, 0);
+        if (ex.retorno == 1) {
+            atualizarTabelaDepartamento();
+        }
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         CadastroVendedorDialog cc = new CadastroVendedorDialog(this, true, true, null, 0);
         if (cc.retorno == 1) {
-            UtilsTabela.atualizarTabela(VendedorController.buscarTodos(), jListaDeVendedor);
+            atualizarTabelaVendedor();
         }
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_VENDEDOR, 0);
+        if(ex.retorno == 1){
+            atualizarTabelaVendedor();
+        }
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void btnFiltrar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar3ActionPerformed
@@ -2184,7 +2182,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             return;
         }
 
-        ArrayList<String[]> list = OperadorController.consultarTodos();
+        ArrayList<String[]> list = OperadorController.buscarTodos();
         if (UtilsTabela.atualizarTabela(list, jListaOperador)) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
         } else {
@@ -2192,20 +2190,45 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFiltrar4ActionPerformed
 
-    private void edtCodigoProdutoE6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE6ActionPerformed
+    private void edtCodigoDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoDepartamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtCodigoProdutoE6ActionPerformed
+    }//GEN-LAST:event_edtCodigoDepartamentoActionPerformed
 
-    private void edtCodigoProdutoE6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoProdutoE6KeyTyped
+    private void edtDescricaoDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDescricaoDepartamentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edtCodigoProdutoE6KeyTyped
-
-    private void edtDescricaoProdutoE6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtDescricaoProdutoE6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtDescricaoProdutoE6ActionPerformed
+    }//GEN-LAST:event_edtDescricaoDepartamentoActionPerformed
 
     private void btnFiltrar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar6ActionPerformed
-        // TODO add your handling code here:
+        String codigo = edtCodigoDepartamento.getText();
+        String descricao = edtDescricaoDepartamento.getText();
+        boolean res = false;
+
+        if (!UtilsValidacao.isNullOuVazio(codigo)) {
+            String[] list = DepartamentoController.consultarPorCodigo(Integer.parseInt(codigo));
+            if (UtilsTabela.atualizarTabela(list, jListaDepartamento)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Departamento não encontrado", false);
+            }
+            return;
+        }
+
+        if (!UtilsValidacao.isNullOuVazio(descricao)) {
+            String[] list = DepartamentoController.consultarPorDescricao(descricao);
+            if (UtilsTabela.atualizarTabela(list, jListaDepartamento)) {
+                AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+            } else {
+                AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Departamento não encontrado", false);
+            }
+            return;
+        }
+
+        ArrayList<String[]> list = DepartamentoController.buscarTodos();
+        if (UtilsTabela.atualizarTabela(list, jListaDepartamento)) {
+            AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
+        } else {
+            AvisosDialog av = new AvisosDialog(null, true, FALHA_BUSCA + ". Departamento não encontrado", false);
+        }
     }//GEN-LAST:event_btnFiltrar6ActionPerformed
 
     private void edtCodigoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoClienteActionPerformed
@@ -2259,7 +2282,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             String codigo = jListaDepartamento.getValueAt(jListaDepartamento.getSelectedRow(), 0).toString();
             String nomeDepartamento = jListaDepartamento.getValueAt(jListaDepartamento.getSelectedRow(), 1).toString();
             Departamento departamento = new Departamento(nomeDepartamento, Integer.parseInt(codigo));
-            CadastroDepartamentoDialog cc = new CadastroDepartamentoDialog(this, true, false, departamento);
+            CadastroDepartamentoDialog cc = new CadastroDepartamentoDialog(this, true, false, departamento, 0);
+            if (cc.retorno == 1) {
+                atualizarTabelaDepartamento();
+            }
         } catch (NullPointerException ex) {
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum departamento na linha selecionada.", true);
         }
@@ -2274,7 +2300,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             String estoqueAtual = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 4).toString();
             valor = valor.replace(",", ".");
             Produto produto = new Produto(descricaoProduto, 1, Double.parseDouble(valor), Integer.parseInt(codigo), Integer.parseInt(estoqueAtual));
-            CadastroProdutoDialog cc = new CadastroProdutoDialog(this, true, false, produto);
+            CadastroProdutoDialog cc = new CadastroProdutoDialog(this, true, false, produto, 0);
+            if (cc.retorno == 0) {
+                atualizarTabelaCliente();
+            }
         } catch (NullPointerException ex) {
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum departamento na linha selecionada.", true);
         } catch (NumberFormatException ex) {
@@ -2375,7 +2404,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             return;
         }
 
-        ArrayList<String[]> list = ClienteController.consultarTodos();
+        ArrayList<String[]> list = ClienteController.buscarTodos();
         if (UtilsTabela.atualizarTabela(list, jListaDeClientes)) {
             AvisosDialog av = new AvisosDialog(null, true, SUCESSO_BUSCA, false);
         } else {
@@ -2506,7 +2535,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         txtVendedor.setText("Sem vendedor");
         txtTotal.setText("R$00.00");
 
-        ArrayList<String[]> list = ProdutoController.consultarTodos();
+        ArrayList<String[]> list = ProdutoController.buscarTodos();
         UtilsTabela.atualizarTabela(list, jtListaDeProdutosV);
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -2537,6 +2566,22 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             UtilsTabela.atualizarTabela(ItemVendaController.consultarItens(numeroVenda), jRelatorioAnalitico);
         }
     }//GEN-LAST:event_jRelatorioSinteticoMouseClicked
+
+    private void edtCodigoDepartamentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoDepartamentoKeyReleased
+        if (!edtCodigoDepartamento.getText().equals("")) {
+            edtDescricaoDepartamento.setEnabled(false);
+        } else {
+            edtDescricaoDepartamento.setEnabled(true);
+        }
+    }//GEN-LAST:event_edtCodigoDepartamentoKeyReleased
+
+    private void edtDescricaoDepartamentoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtDescricaoDepartamentoKeyReleased
+        if (!edtDescricaoDepartamento.getText().equals("")) {
+            edtCodigoDepartamento.setEnabled(false);
+        } else {
+            edtCodigoDepartamento.setEnabled(true);
+        }
+    }//GEN-LAST:event_edtDescricaoDepartamentoKeyReleased
 
     /**
      * @param args the command line arguments
@@ -2588,15 +2633,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JTextField edtCodProdutoV;
     private javax.swing.JTextField edtCodigoCliente;
+    private javax.swing.JTextField edtCodigoDepartamento;
     private javax.swing.JTextField edtCodigoOperador;
     private javax.swing.JTextField edtCodigoProdutoE1;
-    private javax.swing.JTextField edtCodigoProdutoE6;
     private javax.swing.JTextField edtCodigoVendedor;
     private javax.swing.JTextField edtCpfCliente;
     private javax.swing.JTextField edtDepartamento;
     private javax.swing.JTextField edtDepartamentoVenda;
+    private javax.swing.JTextField edtDescricaoDepartamento;
     private javax.swing.JTextField edtDescricaoProdutoE2;
-    private javax.swing.JTextField edtDescricaoProdutoE6;
     private javax.swing.JTextField edtNomeCliente;
     private javax.swing.JTextField edtNomeVendedor;
     private javax.swing.JTextField edtUsuarioOperador;
@@ -2619,7 +2664,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox5;
     private com.toedter.calendar.JDateChooser jDataFinal;
     private com.toedter.calendar.JDateChooser jDataInicial;
     private javax.swing.JLabel jLabel1;
@@ -2647,7 +2691,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
@@ -2710,9 +2753,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JLabel jlbTotal;
     private javax.swing.JTable jtCarrinho;
     private javax.swing.JTable jtListaDeProdutosV;
-    private javax.swing.JRadioButton rbCodigoProdutoE6;
-    private javax.swing.JRadioButton rbDepartamentoE3;
-    private javax.swing.JRadioButton rbDescricaoProdutoE6;
     private javax.swing.JLabel txtCliente;
     private javax.swing.JLabel txtTotal;
     private javax.swing.JLabel txtVendedor;
@@ -2725,22 +2765,27 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         atualizarTabelaProduto();
         atualizarTabelaOperador();
         atualizarTabelaVendedor();
+        atualizarTabelaDepartamento();
     }
 
     private void atualizarTabelaCliente() {
-        UtilsTabela.atualizarTabela(ClienteController.consultarTodos(), jListaDeClientes);
+        UtilsTabela.atualizarTabela(ClienteController.buscarTodos(), jListaDeClientes);
     }
 
     private void atualizarTabelaProduto() {
-        UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jListaDeProdutosCadastro);
-        UtilsTabela.atualizarTabela(ProdutoController.consultarTodos(), jtListaDeProdutosV);
+        UtilsTabela.atualizarTabela(ProdutoController.buscarTodos(), jListaDeProdutosCadastro);
+        UtilsTabela.atualizarTabela(ProdutoController.buscarTodos(), jtListaDeProdutosV);
     }
 
     private void atualizarTabelaOperador() {
-        UtilsTabela.atualizarTabela(OperadorController.consultarTodos(), jListaOperador);
+        UtilsTabela.atualizarTabela(OperadorController.buscarTodos(), jListaOperador);
     }
 
     private void atualizarTabelaVendedor() {
         UtilsTabela.atualizarTabela(VendedorController.buscarTodos(), jListaDeVendedor);
+    }
+
+    private void atualizarTabelaDepartamento() {
+        UtilsTabela.atualizarTabela(DepartamentoController.buscarTodos(), jListaDepartamento);
     }
 }

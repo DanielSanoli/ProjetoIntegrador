@@ -41,7 +41,7 @@ public class ProdutoController {
     }
 
     // Select
-    public static ArrayList<String[]> consultarTodos() {
+    public static ArrayList<String[]> buscarTodos() {
         ArrayList<Produto> listaRecebida = ProdutoDAO.consultarTodos();
         ArrayList<String[]> listaRetorno = new ArrayList<>();
         for (Produto produto : listaRecebida) {

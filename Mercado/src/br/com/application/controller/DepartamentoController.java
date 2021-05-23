@@ -47,7 +47,7 @@ public class DepartamentoController {
         return operadorRetorno;
     }
 
-    public static ArrayList<String[]> consultarTodos() {
+    public static ArrayList<String[]> buscarTodos() {
         ArrayList<Departamento> listaRecebida = DepartamentoDAO.consultarTodos();
         ArrayList<String[]> listaRetorno = new ArrayList<>();
         for (Departamento departamento : listaRecebida) {
