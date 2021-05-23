@@ -1835,6 +1835,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
         boolean resultadoVenda = false;
+        boolean resultadoItens = false;
 
         String cliente = txtCliente.getText();
 
@@ -1862,38 +1863,34 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         int numeroVenda = VendaController.cadastrar(dataAtual, codigoCliente, codigoVendedor, valorTotal);
 
-        if (numeroVenda > 0) {
+        resultadoVenda = numeroVenda > 0;
 
+        if (resultadoVenda) {
             int qtdLinhasTabela = model.getRowCount();
-
             ArrayList<String[]> listaItens = new ArrayList<>();
-
             for (int i = 0; i < qtdLinhasTabela; i++) {
-
                 String codigo = model.getValueAt(i, 0).toString();
                 String precoUnitario = model.getValueAt(i, 3).toString().replace("R$", "").replace(",", ".");
                 String quantidade = model.getValueAt(i, 4).toString();
                 String subTotal = model.getValueAt(i, 5).toString().replace("R$", "").replace(",", ".");
+                resultadoItens = ItemVendaController.cadastrar(numeroVenda, Integer.parseInt(codigo), Integer.parseInt(quantidade), Double.parseDouble(precoUnitario), Double.parseDouble(subTotal));
+                int valorEmEstoque = ProdutoController.consultarPorCodigo(codigo).getEstoqueAtual();
+                if (resultadoItens) {
+                    System.out.println("valor atual: " + (valorEmEstoque - Integer.parseInt(quantidade)));
+                    ProdutoController.ajustarEstoque(Integer.parseInt(codigo), valorEmEstoque - Integer.parseInt(quantidade));
+                }
+            }
+            if (resultadoVenda && resultadoItens) {
+                FinalizarVendaDialog fv = new FinalizarVendaDialog(this, true, "0.0");
+                while (jtCarrinho.getRowCount() > 0) {
+                    model.removeRow(0);
+                }
+                txtTotal.setText("R$00.00");
+            } else {
+                JOptionPane.showMessageDialog(null, "Houve falha no processo de finalização da venda!");
+            }
+        }
 
-                String[] item = new String[]{
-                    String.valueOf(numeroVenda),
-                    String.valueOf(codigo),
-                    String.valueOf(quantidade),
-                    String.valueOf(precoUnitario),
-                    String.valueOf(subTotal)};
-                listaItens.add(item);
-            }
-            resultadoVenda = ItemVendaController.cadastrar(listaItens) && numeroVenda > 0;
-        }
-        if (resultadoVenda) {
-            FinalizarVendaDialog fv = new FinalizarVendaDialog(this, true, "0.0");
-            while (jtCarrinho.getRowCount() > 0) {
-                model.removeRow(0);
-            }
-            txtTotal.setText("R$00.00");
-        } else {
-            JOptionPane.showMessageDialog(null, "Houve falha no processo de finalização da venda!");
-        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton8KeyPressed
@@ -2790,5 +2787,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     private void atualizarTabelaDepartamento() {
         UtilsTabela.atualizarTabela(DepartamentoController.buscarTodos(), jListaDepartamento);
+    }
+
+    private void atualizarTabelaVenda() {
+        UtilsTabela.atualizarTabela(ProdutoController.buscarTodos(), jtListaDeProdutosV);
     }
 }

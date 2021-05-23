@@ -204,4 +204,25 @@ public class ProdutoDAO {
         }
         return produtos;
     }
+
+    public static boolean ajustarEstoque(int pCodigoProduto, int pQuantidade) {
+        boolean resultado = false;
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+
+        try {
+            conexao = Conexao.getConnection();
+            instrucaoSQL = conexao.prepareStatement("update produto set estoque_atual = ? where codigo = ?;");
+            instrucaoSQL.setInt(1, pQuantidade);
+            instrucaoSQL.setInt(2, pCodigoProduto);
+            resultado = instrucaoSQL.executeUpdate() > 0;
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            UtilsDB.fecharConexao(instrucaoSQL, conexao);
+        }
+
+        return resultado;
+    }
 }

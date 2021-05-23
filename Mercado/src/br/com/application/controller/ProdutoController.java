@@ -100,4 +100,8 @@ public class ProdutoController {
         }
         return listaRetorno;
     }
+
+    public static boolean ajustarEstoque(int pCodigoProduto, int pQuantidade) {
+        return ProdutoDAO.ajustarEstoque(pCodigoProduto, pQuantidade);
+    }
 }
