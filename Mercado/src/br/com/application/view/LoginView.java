@@ -5,12 +5,15 @@
  */
 package br.com.application.view;
 
+import br.com.application.controller.OperadorController;
 import br.com.application.view.AvisosDialog;
 import static br.com.application.utils.UtilsConstantes.INFORME_LOGIN;
 import static br.com.application.utils.UtilsConstantes.INFORME_SENHA;
 import br.com.application.utils.UtilsView;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -139,6 +142,27 @@ public class LoginView extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
 
+        String usuario = txtLogin.getText();
+        String senha = txtSenha.getText();
+
+        ArrayList<String[]> operadores = OperadorController.buscarTodos();
+
+        for (String[] operador : operadores) {
+
+            if (operador[1].equals(usuario)) {
+                if (operador[2].equals(senha)) {
+                    JOptionPane.showMessageDialog(null, "Acesso autorizado!");
+                    new TelaPrincipalView().setVisible(true);
+                    return;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Senha inválida! Tenta novamente.");
+                    return;
+                }
+            }
+        }
+
+        JOptionPane.showMessageDialog(null, "Nenhum operador encontrado.");
+        
         if (txtLogin.getText().trim().equals("")) {
             new AvisosDialog(null, true, INFORME_LOGIN, true);
             txtLogin.setBackground(Color.yellow);
@@ -154,9 +178,6 @@ public class LoginView extends javax.swing.JFrame {
         } else {
             txtSenha.setBackground(Color.white);
         }
-
-        TelaPrincipalView tl = new TelaPrincipalView();
-        tl.setVisible(true);
 
         dispose();
     }//GEN-LAST:event_btnConfirmarActionPerformed
