@@ -2494,6 +2494,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
         txtCliente.setText("Sem cliente");
         txtVendedor.setText("Sem vendedor");
+        txtTotal.setText("R$00.00");
 
         ArrayList<String[]> list = ProdutoController.consultarTodos();
         UtilsTabela.atualizarTabela(list, jtListaDeProdutosV);
