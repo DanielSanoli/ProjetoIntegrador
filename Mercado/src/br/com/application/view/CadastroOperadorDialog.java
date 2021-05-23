@@ -308,12 +308,12 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
-       try {
-            int codigo = Integer.parseInt(edtCodigo.getText());
-            int usuario = Integer.parseInt(edtUsuario.getText());
-            String senha = new String(edtSenha.getPassword()).trim();        
+        try {
 
-            if (UtilsValidacao.isNullOuVazio(Integer.toString(usuario))) {
+            String usuario = edtUsuario.getText();
+            String senha = edtSenha.getText();
+
+            if (UtilsValidacao.isNullOuVazio(usuario)) {
                 new AvisosDialog(null, true, "O preenchimento do campo nome é obrigatório.", true);
                 edtUsuario.setBackground(Color.yellow);
                 return;
@@ -327,29 +327,23 @@ public final class CadastroOperadorDialog extends javax.swing.JDialog {
             } else {
                 edtSenha.setBackground(Color.white);
             }
-              
-            int pCodigo = 0;
-            
-            if(!UtilsValidacao.isNullOuVazio(Integer.toString(codigo))){
-                pCodigo = codigo;
-            }
-            
+
             boolean res = false;
-            
+
             if (isCadastro) {
-                res = OperadorController.cadastrar(usuario, Integer.parseInt(senha));
+                res = OperadorController.cadastrar(Integer.parseInt(usuario), Integer.parseInt(senha));
             } else {
-                res = OperadorController.alterar(pCodigo, usuario, Integer.parseInt(senha));
+                res = OperadorController.alterar(Integer.parseInt(edtCodigo.getText()), Integer.parseInt(usuario), Integer.parseInt(senha));
             }
-            
+
             if (res) {
                 AvisosDialog av = new AvisosDialog(null, true, SUCESSO, false);
                 dispose();
                 retorno = 1;
             } else {
                 AvisosDialog av = new AvisosDialog(null, true, FALHA, true);
-            }          
-            
+            }
+
         } catch (Exception ex) {
             AvisosDialog av = new AvisosDialog(null, true, FALHA, false);
             dispose();
