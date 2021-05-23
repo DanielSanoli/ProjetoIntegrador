@@ -46,7 +46,7 @@ public class ItemVendaDAO {
 
         try {
             conexao = Conexao.getConnection();
-            InstrucaoSQL = conexao.prepareStatement("SELECT * FROM itemVenda where fk_num_venda = ?");
+            InstrucaoSQL = conexao.prepareStatement("SELECT * FROM item_venda where fk_num_venda = ?");
             InstrucaoSQL.setInt(1, pNumeroVenda);
             rs = InstrucaoSQL.executeQuery();
             while (rs.next()) {

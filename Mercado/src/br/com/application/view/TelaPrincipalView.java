@@ -1978,7 +1978,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Data inicial esta maior que a data final!", "Erro", JOptionPane.OK_OPTION);
         }
         Venda vd = new Venda();
-        UtilsTabela.atualizarTabela(VendaController.consultarVendas(dataInicial, dataFinal), jRelatorioSintetico);
+        if (!UtilsTabela.atualizarTabela(VendaController.consultarVendas(dataInicial, dataFinal), jRelatorioSintetico)) {
+            DefaultTableModel modelo = (DefaultTableModel) jRelatorioAnalitico.getModel();
+            modelo.setRowCount(0);
+        }
 
         DefaultTableModel tabelaSintetico = (DefaultTableModel) jRelatorioSintetico.getModel();
         for (int i = 0; i < tabelaSintetico.getRowCount(); i++) {
@@ -2088,7 +2091,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         ExcluirCadastroDialog ex = new ExcluirCadastroDialog(null, true, CLASS_VENDEDOR, 0);
-        if(ex.retorno == 1){
+        if (ex.retorno == 1) {
             atualizarTabelaVendedor();
         }
     }//GEN-LAST:event_jButton19ActionPerformed
