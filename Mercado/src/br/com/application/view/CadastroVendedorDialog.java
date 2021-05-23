@@ -371,7 +371,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
             String email = edtEmail.getText();
             double salario = 0;
             if (!UtilsValidacao.isNullOuVazio(edtSalario.getText())) {
-                Double.parseDouble(edtSalario.getText());
+                salario = Double.parseDouble(edtSalario.getText());
             }
             String telefone = edtTelefone.getText();
 
@@ -434,7 +434,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
 
         char c = evt.getKeyChar();
 
-        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && (c != '.')) {
             evt.consume();
             new AvisosDialog(null, true, "O campo salário só aceita valores númericos.", true);
         }
@@ -448,7 +448,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_edtEmailKeyTyped
 
     private void edtTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtTelefoneKeyTyped
-        if (edtSalario.getText().length() > 11) {
+        if (edtTelefone.getText().length() > 11) {
             evt.consume();
             new AvisosDialog(null, true, "Máximo de 11 caracteres atingidos.", true);
         }
