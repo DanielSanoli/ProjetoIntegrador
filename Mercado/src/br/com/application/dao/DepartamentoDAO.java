@@ -13,28 +13,11 @@ import java.util.ArrayList;
  */
 public class DepartamentoDAO {
 
-    public static boolean cadastrar(Departamento iv) {
-
-        boolean resultado = false;
-        Connection conexao = null;
-        PreparedStatement instrucaoSQL = null;
-
-        try {
-            conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("insert into departamento (descricao) values (?);");
-            instrucaoSQL.setString(1, iv.getDescricao());
-
-            resultado = instrucaoSQL.executeUpdate() > 0;
-
-        } catch (SQLException | ClassNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-            UtilsDB.fecharConexao(instrucaoSQL, conexao);
-        }
-        return resultado;
+    public static boolean cadastrar(Departamento departamento) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static boolean alterar(int pCodigo, int pDescricao) {
+    public static boolean alterar(Departamento departamento) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -42,11 +25,13 @@ public class DepartamentoDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public static Departamento consultarPorCodigo(int pCodigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public static ArrayList<Departamento> consultarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static Departamento consultarPorCodigo(int pCodigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
 }

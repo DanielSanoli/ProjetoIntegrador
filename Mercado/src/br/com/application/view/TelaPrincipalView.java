@@ -2724,6 +2724,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         atualizarTabelaCliente();
         atualizarTabelaProduto();
         atualizarTabelaOperador();
+        atualizarTabelaVendedor();
     }
 
     private void atualizarTabelaCliente() {
@@ -2737,5 +2738,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
     private void atualizarTabelaOperador() {
         UtilsTabela.atualizarTabela(OperadorController.consultarTodos(), jListaOperador);
+    }
+
+    private void atualizarTabelaVendedor() {
+        UtilsTabela.atualizarTabela(VendedorController.buscarTodos(), jListaDeVendedor);
     }
 }

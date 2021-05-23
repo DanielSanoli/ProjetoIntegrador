@@ -8,34 +8,24 @@ public class OperadorController {
 
     // Insert
     public static boolean cadastrar(int pUsuario, int pSenha) {
-
         Operador operador = new Operador();
-
         operador.setUsuario(pUsuario);
         operador.setSenha(pSenha);
-
         return OperadorDAO.cadastrar(operador);
-
     }
 
     //Update
     public static boolean alterar(int pCodigo, int pUsuario, int Senha) {
-
         Operador operador = new Operador();
-
         operador.setCodigo(pCodigo);
         operador.setUsuario(pUsuario);
         operador.setSenha(Senha);
-
         return OperadorDAO.alterar(operador);
-
     }
 
     //Delete
-    public static boolean excluir(int pCodigo) {
-
+    public static boolean excluir(int pCodigo) {        
         return OperadorDAO.excluirPorCodigo(pCodigo);
-
     }
 
     //Select 

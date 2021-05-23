@@ -245,8 +245,7 @@ public final class CadastroDepartamentoDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // O código deve ser coletado do banco de dados, com base no próximo disponível.
-        // Lembrando que o código será a primary key, auto incrementada a cada inserção.
+
         try {
             String cod = edtCodigo.getText();
             String nomeDepartamento = edtNomeDepartamento.getText();
@@ -266,15 +265,16 @@ public final class CadastroDepartamentoDialog extends javax.swing.JDialog {
             } else {
                 edtNomeDepartamento.setBackground(Color.white);
             }
-            Departamento departamento = new Departamento(nomeDepartamento);
+
+            Departamento departamento = new Departamento();
+            departamento.setDescricao(nomeDepartamento);
+
             AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
             dispose();
         } catch (Exception ex) {
             AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
             dispose();
         }
-
-        // Objeto cliente criado, resta apenas registrar no banco
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
