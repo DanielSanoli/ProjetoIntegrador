@@ -47,12 +47,7 @@ public class ProdutoDAO {
         try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("update produto set "
-                    + "fk_codigo_departamento = ?,"
-                    + "descricao = ?,"
-                    + "valor = ?,"
-                    + "estoque_atual = ?"
-                    + "where codigo = ?");
+            instrucaoSQL = conexao.prepareStatement("update produto set fk_codigo_departamento = ?, descricao = ?, valor = ?, estoque_atual = ? where codigo = ?;");
 
             instrucaoSQL.setInt(1, pProduto.getDepartamento());
             instrucaoSQL.setString(2, pProduto.getDescricao());

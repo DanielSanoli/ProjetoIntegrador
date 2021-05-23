@@ -365,13 +365,13 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // O código deve ser coletado do banco de dados, com base no próximo disponível.
         // Lembrando que o código será a primary key, auto incrementada a cada inserção.
-          try {
-              
+        try {
+
             String nomeVendedor = edtNomeVendedor.getText();
             String email = edtEmail.getText();
             double salario = 0;
-            if(!UtilsValidacao.isNullOuVazio(edtSalario.getText())){
-            Double.parseDouble(edtSalario.getText());
+            if (!UtilsValidacao.isNullOuVazio(edtSalario.getText())) {
+                Double.parseDouble(edtSalario.getText());
             }
             String telefone = edtTelefone.getText();
 
@@ -387,18 +387,17 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
             if (isCadastro) {
                 res = VendedorController.cadastrar(nomeVendedor, email, salario, telefone);
             } else {
-                if(!UtilsValidacao.isNullOuVazio(edtCodigo.getText())){
-                int codigo = Integer.parseInt(edtCodigo.getText());
-            
-                res = VendedorController.alterar(codigo, nomeVendedor, email, salario, telefone);
+                if (!UtilsValidacao.isNullOuVazio(edtCodigo.getText())) {
+                    int codigo = Integer.parseInt(edtCodigo.getText());
+                    res = VendedorController.alterar(codigo, nomeVendedor, email, salario, telefone);
                 }
             }
-            
+
             if (res) {
                 AvisosDialog av = new AvisosDialog(null, true, SUCESSO, false);
                 dispose();
                 retorno = 1;
-               
+
             } else {
                 AvisosDialog av = new AvisosDialog(null, true, FALHA, true);
             }
@@ -626,7 +625,7 @@ public final class CadastroVendedorDialog extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastroVendedorDialog dialog = new CadastroVendedorDialog(new javax.swing.JFrame(), true, isCadastro, vendedor,0);
+                CadastroVendedorDialog dialog = new CadastroVendedorDialog(new javax.swing.JFrame(), true, isCadastro, vendedor, 0);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

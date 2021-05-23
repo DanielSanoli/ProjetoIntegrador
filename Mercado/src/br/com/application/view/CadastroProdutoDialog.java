@@ -5,15 +5,20 @@
  */
 package br.com.application.view;
 
+import br.com.application.controller.DepartamentoController;
 import br.com.application.controller.ProdutoController;
 import br.com.application.view.AvisosDialog;
 import br.com.application.models.Produto;
 import static br.com.application.utils.UtilsConstantes.CADASTRO_REALIZADO;
+import static br.com.application.utils.UtilsConstantes.FALHA;
 import static br.com.application.utils.UtilsConstantes.FALHA_NO_CADASTRO;
+import static br.com.application.utils.UtilsConstantes.SUCESSO;
 import br.com.application.utils.UtilsValidacao;
 import br.com.application.utils.UtilsView;
+import static br.com.application.view.CadastroVendedorDialog.retorno;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
  *
@@ -34,6 +39,7 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         CadastroProdutoDialog.retorno = retorno;
         setTitle(isCadastro);
         setProduto(produto);
+        atualizarComboBox();
         setVisible(true);
     }
 
@@ -177,7 +183,11 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Departamento");
 
-        jListaDeDepartamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Frutas", "Verduras", "Legumes", "Padaria" }));
+        jListaDeDepartamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jListaDeDepartamentosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -401,15 +411,36 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
         } else {
             edtEstoqueAtual.setBackground(Color.white);
         }
-        preco = preco.replace(",", ".");
-        
-        // Pegar departamento da interface...e setar como primeiro parametro
 
-        if (ProdutoController.cadastrar(1, nomeProduto, Integer.parseInt(estoqueAtual), Double.parseDouble(preco))) {
-            AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
-            dispose();
+        if (UtilsValidacao.isNullOuVazio(departamento)) {
+            new AvisosDialog(null, true, "A seleão de um departamento é obrigatória.", true);
+            edtEstoqueAtual.setBackground(Color.yellow);
+            return;
         } else {
-            AvisosDialog av = new AvisosDialog(null, true, FALHA_NO_CADASTRO, false);
+            edtEstoqueAtual.setBackground(Color.white);
+        }
+
+        preco = preco.replace(",", ".");
+
+        int codigoDepartamento = Integer.parseInt(departamento.substring(0, departamento.indexOf(" ")));
+
+        boolean res = false;
+
+        if (isCadastro) {
+            res = ProdutoController.cadastrar(codigoDepartamento, nomeProduto, Integer.parseInt(estoqueAtual), Double.parseDouble(preco));
+        } else {
+            int codigo = Integer.parseInt(edtCodigo.getText());
+            if (!UtilsValidacao.isNullOuVazio(edtCodigo.getText())) {
+                res = ProdutoController.alterar(codigo, codigoDepartamento, nomeProduto, Integer.parseInt(estoqueAtual), Double.parseDouble(preco));
+            }
+        }
+
+        if (res) {
+            AvisosDialog av = new AvisosDialog(null, true, SUCESSO, false);
+            dispose();
+            retorno = 1;
+        } else {
+            AvisosDialog av = new AvisosDialog(null, true, FALHA, true);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -470,6 +501,10 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
             new AvisosDialog(null, true, "O campo estoque atual só aceita valores númericos.", true);
         }
     }//GEN-LAST:event_edtPrecoKeyTyped
+
+    private void jListaDeDepartamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListaDeDepartamentosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jListaDeDepartamentosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -694,4 +729,14 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables
+private void atualizarComboBox() {
+        ArrayList<String[]> departamentos = DepartamentoController.buscarTodos();
+        System.out.println("size: " + departamentos.size());
+        for (String[] departamento : departamentos) {
+            String codDepartamento = departamento[0];
+            String espacamento = " - ";
+            String descricaoDepartamento = departamento[1];
+            jListaDeDepartamentos.addItem(codDepartamento + espacamento + descricaoDepartamento);
+        }
+    }
 }
