@@ -22,13 +22,12 @@ public class ItemVendaDAO {
 
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("insert into itemVenda (num_venda,codigo_produto,qtd_produto,preco_unitario,sub_total) values (?,?,?,?,?);");
-            instrucaoSQL.setInt(1, iv.getNumeroVenda());
-            instrucaoSQL.setInt(2, iv.getCodigoProduto());
-            instrucaoSQL.setInt(3, iv.getQuantidadeProduto());
-            instrucaoSQL.setDouble(4, iv.getPrecoUnitario());
-            instrucaoSQL.setDouble(5, iv.getSubTotal());
-
+            instrucaoSQL = conexao.prepareStatement("insert into item_venda(qtd_produto,preco_unitario,sub_total,fk_codigo_produto,fk_num_venda) values (?,?,?,?,?);");
+            instrucaoSQL.setInt(1, iv.getQuantidadeProduto());
+            instrucaoSQL.setDouble(2, iv.getPrecoUnitario());
+            instrucaoSQL.setDouble(3, iv.getSubTotal());
+            instrucaoSQL.setInt(4, iv.getCodigoProduto());
+            instrucaoSQL.setInt(5, iv.getNumeroVenda());
             resultado = instrucaoSQL.executeUpdate() > 0;
 
         } catch (SQLException | ClassNotFoundException ex) {
@@ -47,13 +46,13 @@ public class ItemVendaDAO {
 
         try {
             conexao = Conexao.getConnection();
-            InstrucaoSQL = conexao.prepareStatement("SELECT * FROM itemVenda where num_venda = ?");
+            InstrucaoSQL = conexao.prepareStatement("SELECT * FROM itemVenda where fk_num_venda = ?");
             InstrucaoSQL.setInt(1, pNumeroVenda);
             rs = InstrucaoSQL.executeQuery();
             while (rs.next()) {
                 ItemVenda iv = new ItemVenda();
-                iv.setNumeroVenda(rs.getInt("num_venda"));
-                iv.setCodigoProduto(rs.getInt("codigo_produto"));
+                iv.setNumeroVenda(rs.getInt("fk_num_venda"));
+                iv.setCodigoProduto(rs.getInt("fk_codigo_produto"));
                 iv.setPrecoUnitario(rs.getDouble("preco_unitario"));
                 iv.setQuantidadeProduto(rs.getInt("qtd_produto"));
                 iv.setSubTotal(rs.getDouble("sub_total"));

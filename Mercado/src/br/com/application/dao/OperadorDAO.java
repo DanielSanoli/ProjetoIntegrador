@@ -22,7 +22,7 @@ public class OperadorDAO {
          try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("insert into operador(login, senha) values (\n"
+            instrucaoSQL = conexao.prepareStatement("insert into operador(usuario, senha) values (\n"
                     + "?,?);", Statement.RETURN_GENERATED_KEYS);
             
             instrucaoSQL.setInt(1, pOperador.getUsuario());
@@ -49,7 +49,7 @@ public class OperadorDAO {
             conexao = Conexao.getConnection();
 
             instrucaoSQL = conexao.prepareStatement("update cliente set "
-                    + "login = ?,"
+                    + "usuario = ?,"
                     + "senha = ?,"
                     + "where codigo = ?;");
 
@@ -155,7 +155,7 @@ public class OperadorDAO {
         try {
             conexao = Conexao.getConnection();
 
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM operador WHERE usuario usuario=?");
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM operador WHERE usuario=?");
 
             instrucaoSQL.setInt(1, pUsuario);
 
@@ -175,10 +175,5 @@ public class OperadorDAO {
         }
 
         return retorno;
-    } 
-
-    public static boolean cadastrar(Operador operador) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }     
 }

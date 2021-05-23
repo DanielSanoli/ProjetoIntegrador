@@ -22,7 +22,7 @@ public class ProdutoDAO {
 
             instrucaoSQL = conexao.prepareStatement("insert into produto(departamento,descricao,valor,estoqueAtual) values (?,?,?,?)");
 
-            instrucaoSQL.setString(1, pProduto.getDepartamento());
+            instrucaoSQL.setInt(1, pProduto.getDepartamento());
             instrucaoSQL.setString(2, pProduto.getDescricao());
             instrucaoSQL.setDouble(3, pProduto.getValor());
             instrucaoSQL.setInt(4, pProduto.getEstoqueAtual());
@@ -54,7 +54,7 @@ public class ProdutoDAO {
                     + "estoqueAtual = ?"
                     + "where codigo = ?");
 
-            instrucaoSQL.setString(1, pProduto.getDepartamento());
+            instrucaoSQL.setInt(1, pProduto.getDepartamento());
             instrucaoSQL.setString(2, pProduto.getDescricao());
             instrucaoSQL.setDouble(3, pProduto.getValor());
             instrucaoSQL.setInt(4, pProduto.getEstoqueAtual());
@@ -103,7 +103,7 @@ public class ProdutoDAO {
 
                 Produto produto = new Produto();
                 produto.setCodigo(rs.getInt("codigo"));
-                produto.setDepartamento(rs.getString("departamento"));
+                produto.setDepartamento(rs.getInt("departamento"));
                 produto.setDescricao(rs.getString("descricao"));
                 produto.setEstoqueAtual(rs.getInt("estoqueAtual"));
                 produto.setValor(rs.getDouble("valor"));
@@ -137,7 +137,7 @@ public class ProdutoDAO {
 
             while (rs.next()) {
                 retorno.setCodigo(rs.getInt("codigo"));
-                retorno.setDepartamento(rs.getString("departamento"));
+                retorno.setDepartamento(rs.getInt("departamento"));
                 retorno.setDescricao(rs.getString("descricao"));
                 retorno.setEstoqueAtual(rs.getInt("estoqueAtual"));
                 retorno.setValor(rs.getDouble("valor"));
@@ -166,7 +166,7 @@ public class ProdutoDAO {
             while (rs.next()) {
                 Produto produto = new Produto();
                 produto.setCodigo(rs.getInt("codigo"));
-                produto.setDepartamento(rs.getString("departamento"));
+                produto.setDepartamento(rs.getInt("departamento"));
                 produto.setDescricao(rs.getString("descricao"));
                 produto.setEstoqueAtual(rs.getInt("estoqueAtual"));
                 produto.setValor(rs.getDouble("valor"));
@@ -195,7 +195,7 @@ public class ProdutoDAO {
             while (rs.next()) {
                 Produto produto = new Produto();
                 produto.setCodigo(rs.getInt("codigo"));
-                produto.setDepartamento(rs.getString("departamento"));
+                produto.setDepartamento(rs.getInt("departamento"));
                 produto.setDescricao(rs.getString("descricao"));
                 produto.setEstoqueAtual(rs.getInt("estoqueAtual"));
                 produto.setValor(rs.getDouble("valor"));

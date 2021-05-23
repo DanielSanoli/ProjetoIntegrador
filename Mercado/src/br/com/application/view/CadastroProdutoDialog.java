@@ -400,8 +400,10 @@ public final class CadastroProdutoDialog extends javax.swing.JDialog {
             edtEstoqueAtual.setBackground(Color.white);
         }
         preco = preco.replace(",", ".");
+        
+        // Pegar departamento da interface...e setar como primeiro parametro
 
-        if (ProdutoController.cadastrar(departamento, nomeProduto, Integer.parseInt(estoqueAtual), Double.parseDouble(preco))) {
+        if (ProdutoController.cadastrar(1, nomeProduto, Integer.parseInt(estoqueAtual), Double.parseDouble(preco))) {
             AvisosDialog av = new AvisosDialog(null, true, CADASTRO_REALIZADO, false);
             dispose();
         } else {

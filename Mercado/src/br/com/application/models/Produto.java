@@ -2,12 +2,12 @@ package br.com.application.models;
 
 public class Produto {
     private String descricao;
-    private String departamento;
+    private int departamento;
     private double valor;
     private int codigo;
     private int estoqueAtual;
 
-    public Produto(String descricao, String departamento, double valor, int codigo, int estoqueAtual) {
+    public Produto(String descricao, int departamento, double valor, int codigo, int estoqueAtual) {
         this.descricao = descricao;
         this.departamento = departamento;        
         this.valor = valor;
@@ -42,11 +42,11 @@ public class Produto {
         this.codigo = codigo;
     }
 
-    public String getDepartamento() {
+    public int getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(String departamento) {
+    public void setDepartamento(int departamento) {
         this.departamento = departamento;
     }
 

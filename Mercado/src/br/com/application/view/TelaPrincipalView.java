@@ -2269,7 +2269,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             String valor = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 3).toString();
             String estoqueAtual = jListaDeProdutosCadastro.getValueAt(jListaDeProdutosCadastro.getSelectedRow(), 4).toString();
             valor = valor.replace(",", ".");
-            Produto produto = new Produto(descricaoProduto, departamento, Double.parseDouble(valor), Integer.parseInt(codigo), Integer.parseInt(estoqueAtual));
+            Produto produto = new Produto(descricaoProduto, 1, Double.parseDouble(valor), Integer.parseInt(codigo), Integer.parseInt(estoqueAtual));
             CadastroProdutoDialog cc = new CadastroProdutoDialog(this, true, false, produto);
         } catch (NullPointerException ex) {
             AvisosDialog av = new AvisosDialog(this, true, "Nenhum departamento na linha selecionada.", true);

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class ProdutoController {
 
     // Insert
-    public static boolean cadastrar(String pDepartamento,
+    public static boolean cadastrar(int pDepartamento,
             String pDescricao, int pEstoqueAtual, Double pValor) {
 
         Produto produto = new Produto();
@@ -21,7 +21,7 @@ public class ProdutoController {
     }
 
     // Update
-    public static boolean alterar(int pCodigo, String pDepartamento,
+    public static boolean alterar(int pCodigo, int pDepartamento,
             String pDescricao, int pEstoqueAtual, double pValor) {
 
         Produto produto = new Produto();
@@ -48,7 +48,7 @@ public class ProdutoController {
             listaRetorno.add(new String[]{
                 String.valueOf(produto.getCodigo()),
                 produto.getDescricao(),
-                produto.getDepartamento(),
+                String.valueOf(produto.getDepartamento()),
                 String.valueOf(produto.getValor()),
                 String.valueOf(produto.getEstoqueAtual())});
         }
@@ -62,7 +62,7 @@ public class ProdutoController {
             produtoRetorno = new String[]{
                 String.valueOf(produtoRecebido.getCodigo()),
                 produtoRecebido.getDescricao(),
-                produtoRecebido.getDepartamento(),
+                String.valueOf(produtoRecebido.getDepartamento()),
                 String.valueOf(produtoRecebido.getValor()),
                 String.valueOf(produtoRecebido.getEstoqueAtual())};
         }
@@ -80,7 +80,7 @@ public class ProdutoController {
             listaRetorno.add(new String[]{
                 String.valueOf(produto.getCodigo()),
                 produto.getDescricao(),
-                produto.getDepartamento(),
+                String.valueOf(produto.getDepartamento()),
                 String.valueOf(produto.getValor()),
                 String.valueOf(produto.getEstoqueAtual())});
         }
@@ -94,7 +94,7 @@ public class ProdutoController {
             listaRetorno.add(new String[]{
                 String.valueOf(produto.getCodigo()),
                 produto.getDescricao(),
-                produto.getDepartamento(),
+                String.valueOf(produto.getDepartamento()),
                 String.valueOf(produto.getValor()),
                 String.valueOf(produto.getEstoqueAtual())});
         }
