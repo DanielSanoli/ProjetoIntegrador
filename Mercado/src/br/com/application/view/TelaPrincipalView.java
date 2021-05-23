@@ -1853,29 +1853,27 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
         boolean resultadoVenda = false;
 
+        String cliente = txtCliente.getText();
+
         if (model.getRowCount() <= 0) {
             AvisosDialog av = new AvisosDialog(null, true, "Não é possível finalizar uma venda sem itens!", true);
             return;
         }
 
-        String cliente = txtCliente.getText();
+        if (cliente.equalsIgnoreCase("Sem cliente")) {
+            AvisosDialog av = new AvisosDialog(null, true, "Não é possível finalizar uma venda sem cliente!", true);
+            return;
+        }
+
+        int codigoVendedor = 0;
+        int codigoCliente = Integer.parseInt(cliente.substring(0, cliente.indexOf(" ")));
         String vendedor = txtVendedor.getText();
 
-        int codigoCliente = 1;
-        int codigoVendedor = 1;
-
-        if (!cliente.equalsIgnoreCase("Sem cliente")) {
-            codigoCliente = Integer.parseInt(cliente.substring(0, cliente.indexOf(" ")));
-            if (!vendedor.equalsIgnoreCase("Sem vendedor")) {
-                codigoVendedor = Integer.parseInt(vendedor.substring(0, vendedor.indexOf(" ")));
-            }
+        if (!vendedor.equalsIgnoreCase("Sem vendedor")) {
+            codigoVendedor = Integer.parseInt(vendedor.substring(0, vendedor.indexOf(" ")));
         }
 
         double valorTotal = Double.parseDouble(txtTotal.getText().replace("R$", ""));
-
-        System.out.println("Código cliente: " + codigoCliente);
-        System.out.println("Código vendedor: " + codigoVendedor);
-        System.out.println("Valor total: " + valorTotal);
 
         java.util.Date dataAtual = new java.util.Date();
 
@@ -1998,12 +1996,12 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         }
         Venda vd = new Venda();
         UtilsTabela.atualizarTabela(VendaController.consultarVendas(dataInicial, dataFinal), jRelatorioSintetico);
-        
+
         DefaultTableModel tabelaSintetico = (DefaultTableModel) jRelatorioSintetico.getModel();
-        for (int i = 0;  i < tabelaSintetico.getRowCount(); i++) {
-            totalLabel += Double.parseDouble((String) tabelaSintetico.getValueAt(i,3));
+        for (int i = 0; i < tabelaSintetico.getRowCount(); i++) {
+            totalLabel += Double.parseDouble((String) tabelaSintetico.getValueAt(i, 3));
         }
-        
+
         jlbTotal.setText(String.valueOf(totalLabel));
 
     }//GEN-LAST:event_jButton11ActionPerformed

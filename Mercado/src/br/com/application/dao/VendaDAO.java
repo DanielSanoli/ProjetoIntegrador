@@ -24,12 +24,20 @@ public class VendaDAO {
 
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("insert into venda (data_venda,codigo_cliente, codigo_vendedor, valor_total) values (?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
-            instrucaoSQL.setDate(1, new java.sql.Date(v.getDataVenda().getTime()));
-            instrucaoSQL.setInt(2, v.getCodigoCliente());
-            instrucaoSQL.setInt(3, v.getCodigoVendedor());
-            instrucaoSQL.setDouble(4, v.getValorTotal());
-            instrucaoSQL.executeUpdate();
+            if (v.getCodigoVendedor() == 0) {
+                instrucaoSQL = conexao.prepareStatement("insert into venda (data_venda,codigo_cliente, valor_total) values (?,?,?);", Statement.RETURN_GENERATED_KEYS);
+                instrucaoSQL.setDate(1, new java.sql.Date(v.getDataVenda().getTime()));
+                instrucaoSQL.setInt(2, v.getCodigoCliente());
+                instrucaoSQL.setDouble(3, v.getValorTotal());
+                instrucaoSQL.executeUpdate();
+            } else {
+                instrucaoSQL = conexao.prepareStatement("insert into venda (data_venda,codigo_cliente, codigo_vendedor, valor_total) values (?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+                instrucaoSQL.setDate(1, new java.sql.Date(v.getDataVenda().getTime()));
+                instrucaoSQL.setInt(2, v.getCodigoCliente());
+                instrucaoSQL.setInt(3, v.getCodigoVendedor());
+                instrucaoSQL.setDouble(4, v.getValorTotal());
+                instrucaoSQL.executeUpdate();
+            }
 
             ResultSet generatedKeys = instrucaoSQL.getGeneratedKeys();
 
