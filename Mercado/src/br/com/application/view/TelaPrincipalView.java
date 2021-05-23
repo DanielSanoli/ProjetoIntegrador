@@ -1917,7 +1917,10 @@ public class TelaPrincipalView extends javax.swing.JFrame {
             String produto = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 1).toString();
             String departamento = jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 2).toString();
             double preco = Double.parseDouble(jtListaDeProdutosV.getValueAt(jtListaDeProdutosV.getSelectedRow(), 3).toString().replace("R$", ""));
-
+            
+            jtListaDeProdutosV.setValueAt(String.valueOf(estoqueAtual - quantidade),jtListaDeProdutosV.getSelectedRow(), 4);
+          
+            
             model.addRow(new String[]{codigo, produto, departamento, String.valueOf(preco), String.valueOf(quantidade), String.valueOf(UtilsConstantes.MASCARA_REAL
                 + (preco *= quantidade))});
 
