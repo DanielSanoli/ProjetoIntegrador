@@ -1,6 +1,7 @@
 package br.com.application;
 
 import br.com.application.controller.VendaController;
+import br.com.application.view.LoginView;
 import br.com.application.view.TelaPrincipalView;
 import java.sql.Date;
 import java.text.DecimalFormat;
@@ -10,8 +11,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        TelaPrincipalView tp = new TelaPrincipalView();
-        tp.setVisible(true);
+        LoginView lv = new LoginView();
+        lv.setVisible(true);
         
 
 //        Random random = new Random();
