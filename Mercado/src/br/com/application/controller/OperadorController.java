@@ -24,7 +24,7 @@ public class OperadorController {
     }
 
     //Delete
-    public static boolean excluir(int pCodigo) {        
+    public static boolean excluir(int pCodigo) {
         return OperadorDAO.excluirPorCodigo(pCodigo);
     }
 
@@ -38,7 +38,6 @@ public class OperadorController {
                 Integer.toString(operador.getUsuario()),
                 Integer.toString(operador.getSenha())});
         }
-        System.out.println("Lista.size(): " + listaRetorno.size());
         return listaRetorno;
     }
 

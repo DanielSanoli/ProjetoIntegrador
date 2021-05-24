@@ -55,7 +55,6 @@ public class DepartamentoController {
                 String.valueOf(departamento.getCodigo()),
                 departamento.getDescricao()});
         }
-        System.out.println("Lista.size(): " + listaRetorno.size());
         return listaRetorno;
     }
 

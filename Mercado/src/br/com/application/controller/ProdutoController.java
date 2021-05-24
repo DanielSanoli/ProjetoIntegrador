@@ -87,8 +87,8 @@ public class ProdutoController {
         return listaRetorno;
     }
 
-    public static ArrayList<String[]> consultarPorDepartamento(String pDepartamento) {
-        ArrayList<Produto> listaRecebida = ProdutoDAO.consultarPorDepartamento(pDepartamento);
+    public static ArrayList<String[]> consultarPorDepartamento(int pCodigoDepartamento) {
+        ArrayList<Produto> listaRecebida = ProdutoDAO.consultarPorDepartamento(pCodigoDepartamento);
         ArrayList<String[]> listaRetorno = new ArrayList<>();
         for (Produto produto : listaRecebida) {
             listaRetorno.add(new String[]{

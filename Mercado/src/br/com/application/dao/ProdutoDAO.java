@@ -177,15 +177,15 @@ public class ProdutoDAO {
         return produtos;
     }
 
-    public static ArrayList<Produto> consultarPorDepartamento(String pDepartamento) {
+    public static ArrayList<Produto> consultarPorDepartamento(int pCodigoDepartamento) {
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
         ArrayList<Produto> produtos = new ArrayList<>();
         ResultSet rs = null;
         try {
             conexao = Conexao.getConnection();
-            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto where departamento like ?");
-            instrucaoSQL.setString(1, "%" + pDepartamento + "%");
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto where fk_codigo_departamento = ?");
+            instrucaoSQL.setInt(1, pCodigoDepartamento);
             rs = instrucaoSQL.executeQuery();
             while (rs.next()) {
                 Produto produto = new Produto();

@@ -148,11 +148,11 @@ public class LoginView extends javax.swing.JFrame {
         ArrayList<String[]> operadores = OperadorController.buscarTodos();
 
         for (String[] operador : operadores) {
-
             if (operador[1].equals(usuario)) {
                 if (operador[2].equals(senha)) {
                     JOptionPane.showMessageDialog(null, "Acesso autorizado!");
                     new TelaPrincipalView().setVisible(true);
+                    dispose();
                     return;
                 } else {
                     JOptionPane.showMessageDialog(null, "Senha inválida! Tenta novamente.");
@@ -161,8 +161,8 @@ public class LoginView extends javax.swing.JFrame {
             }
         }
 
-        JOptionPane.showMessageDialog(null, "Nenhum operador encontrado.");
-        
+        JOptionPane.showMessageDialog(null, "Nenhum operador encontrado com os dados informados.");
+
         if (txtLogin.getText().trim().equals("")) {
             new AvisosDialog(null, true, INFORME_LOGIN, true);
             txtLogin.setBackground(Color.yellow);
@@ -178,8 +178,6 @@ public class LoginView extends javax.swing.JFrame {
         } else {
             txtSenha.setBackground(Color.white);
         }
-
-        dispose();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void txtLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLoginKeyPressed
