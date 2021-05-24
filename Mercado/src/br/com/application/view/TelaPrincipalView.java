@@ -1937,7 +1937,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         
         try {
             DefaultTableModel model = (DefaultTableModel) jtCarrinho.getModel();
-            double preco = Double.parseDouble(jtCarrinho.getValueAt(jtCarrinho.getSelectedRow(), 3).toString().replace("R$", ""));
+            double preco = Double.parseDouble(jtCarrinho.getValueAt(jtCarrinho.getSelectedRow(), 5).toString().replace("R$", ""));
             model.removeRow(jtCarrinho.getSelectedRow());
             String total = txtTotal.getText().replace("R$", "");
             double totalD = Double.parseDouble(total);
