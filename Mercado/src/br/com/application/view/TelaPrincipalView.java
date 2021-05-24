@@ -1662,11 +1662,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         jLabel33.setText("Usuário");
 
-        edtUsuarioOperador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtUsuarioOperadorActionPerformed(evt);
-            }
-        });
         edtUsuarioOperador.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 edtUsuarioOperadorKeyReleased(evt);
@@ -2157,10 +2152,6 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edtCodigoOperadorKeyTyped
 
-    private void edtUsuarioOperadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtUsuarioOperadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_edtUsuarioOperadorActionPerformed
-
     private void btnFiltrar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrar4ActionPerformed
         
         String codigo = edtCodigoOperador.getText();
@@ -2556,7 +2547,7 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         if (!edtUsuarioOperador.getText().equals("")) {
             edtCodigoOperador.setEnabled(false);
         } else {
-            edtUsuarioOperador.setEnabled(true);
+            edtCodigoOperador.setEnabled(true);
     }//GEN-LAST:event_edtUsuarioOperadorKeyReleased
     }
     private void jRelatorioSinteticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRelatorioSinteticoMouseClicked
